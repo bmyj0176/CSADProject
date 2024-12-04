@@ -1,8 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import MyComponent from './MyComponent'; // Import your JSX file
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { MyCompo } from './MyComponent' // Import myCompo
+import './darkmode.css'
+import Van from './ass_tits.js' 
 
-ReactDOM.render(
-  <MyComponent />,
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Van/>);  

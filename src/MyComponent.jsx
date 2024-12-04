@@ -1,8 +1,9 @@
 // src/MyComponent.jsx
 import React from 'react';
 
-const MyComponent = () => {
+const MyCompo = () => {
   return <h1 id='sex'>Hello from MyComponent!</h1>;
 };
 
-export default MyComponent;
+// Correct export statement
+export { MyCompo }; // Named export
