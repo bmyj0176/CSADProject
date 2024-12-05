@@ -1,8 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MyComponent from './MyComponent'; // Import your JSX file
+import { get_json, api_key } from './file_reader.js'
 
-ReactDOM.render(
-  <MyComponent />,
-  document.getElementById('root')
-);
+const Display = (props) => {
+  return <h2>{props.data}</h2>
+}
+
+const main = async () => {
+  const root = ReactDOM.createRoot(document.getElementById('root'))
+  root.render(< Display data={ await api_key() } />)
+}
+
+main()

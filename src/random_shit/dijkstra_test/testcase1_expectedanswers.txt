@@ -1,0 +1,21 @@
+To find the minimum distance from A to B, A to C, ... A to I
+
+Expected Answers: 0 4 12 19 21 11 9 8 14 
+
+Explanation:  
+The minimum distance from A to B = 4. 
+    A -> B
+The minimum distance from A to C = 12. 
+    A -> B -> C
+The minimum distance from A to D = 19. 
+    A -> B -> C -> D 
+The minimum distance from A to E = 21. 
+    A -> H -> G -> F -> E
+The minimum distance from A to F = 11. 
+    A -> H -> G -> F 
+The minimum distance from A to G = 9. 
+    A -> H -> G
+The minimum distance from A to H = 8. 
+    A -> H
+The minimum distance from A to I = 14. 
+    A -> B -> C -> I 
