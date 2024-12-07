@@ -7,26 +7,6 @@
     <title>React App</title>
   </head>
   <body>
-    <div>
-      <table>
-          <tr>
-              <td><a href="pages/TravelSite.html">TravelSite</a></td>
-              <td><button id="toggle_button" onclick="toggle_theme()">Change Theme</button></td>
-              <td><a href="pages/Arrival_Times.html">Arrival Times</a></td>
-              <td><a href="pages/Travel_Time_Est.html">Travel Time Est</a></td>
-              <td><a href="pages/Login.html">Login</a></td>
-          </tr>
-      </table>
-      <div>Test: <span id="root"></span></div>
-  </div>
-  <script>
-    function toggle_theme() {
-      const themeLink = document.getElementById("lightdarkmode")
-      if (themeLink.href.endsWith("stylesheets/darkmode.css"))
-        themeLink.href = "stylesheets/lightmode.css"
-      else 
-        themeLink.href = "stylesheets/darkmode.css"
-    }
-  </script>
+    <div id="root"></div>
   </body>
 </html>

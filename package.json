@@ -141,5 +141,8 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "react-router-dom": "^7.0.2"
   }
 }
