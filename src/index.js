@@ -1,14 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { get_json, api_key } from './file_reader.js'
-
-const Display = (props) => {
-  return <h2>{props.data}</h2>
-}
+import { getBusTiming } from './helper_func';
 
 const main = async () => {
-  const root = ReactDOM.createRoot(document.getElementById('root'))
-  root.render(< Display data={ await api_key() } />)
+  console.log('START')
+  console.log(await getBusTiming(46971, "901"))
 }
 
 main()
