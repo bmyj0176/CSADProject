@@ -11,7 +11,6 @@ import User from './models/User.js';
 dotenv.config();
 
 const app = express();
-const port = 5000;
 
 // middleware
 app.use(cors());
@@ -51,50 +50,59 @@ app.get('/api/bus-arrival', async (req, res) => {
 });
 
 // Start the server
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+app.listen(process.env.PORT, () => {
+  console.log(`Server is running on http://localhost:${process.env.PORT}`);
 });
 
 // MongoDB connection
-mongoose
-  .connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
   .then(() => console.log('MongoDB connected successfully!'))
   .catch((error) => console.error('MongoDB connection error:', error));
 
 // Authentication Routes
 // Register Route
 app.post('/auth/register', async (req, res) => {
-  const { username, password } = req.body;
+  console.log('Received request at /auth/register');
+  const { email, password } = req.body;
+  const trimmedPassword = password.trim();
 
   try {
-    const hashedPassword = await bcrypt.hash(password, 10);
+    console.log(`REGISTER user: ${email}`)
+    console.log(`1IM Creating pass: ${trimmedPassword}`)
+    const hashedPassword = await bcrypt.hash(trimmedPassword, 10);
     const newUser = new User({
-      username,
+      email,
       password: hashedPassword,
     });
 
     await newUser.save();
+    console.log('User created successfully');
     res.status(201).json({ message: 'User created successfully' });
   } catch (error) {
+    console.error('Error saving user to DB:', error);
     res.status(500).json({ error: 'Error creating user' });
   }
+  
 });
 
 // Login Route
 app.post('/auth/login', async (req, res) => {
-  const { username, password } = req.body;
+  const { email, password } = req.body;
+  const trimmedPassword = password.trim();
 
   try {
-    const user = await User.findOne({ username });
+    const user = await User.findOne({ email });
     if (!user) {
+      console.error({ error: 'User not found' });
       return res.status(401).json({ error: 'User not found' });
     }
-
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
+    
+    const passwordMatch = await bcrypt.compare(trimmedPassword, user.password);
+    if (!passwordMatch) {
+      console.error({ error: 'Invalid credentials' });
       return res.status(401).json({ error: 'Invalid credentials' });
     }
 
@@ -102,11 +110,7 @@ app.post('/auth/login', async (req, res) => {
 
     res.status(200).json({ token });
   } catch (error) {
+    console.error({ error: 'Login error' });
     res.status(500).json({ error: 'Login error' });
   }
-});
-
-// Start the server
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
 });
