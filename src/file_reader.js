@@ -10,14 +10,3 @@ export async function get_json(path) {
     return data // return dict
   })
 }
-
-// THIS FUNCTION JUST RETURNS API KEY, USE AWAIT
-export async function api_key() {
-  return fetch('./api_key.txt')
-  .then(response => {
-    return response.text() // parse into string
-  })
-  .then(data => {
-    return data // return string
-  })
-}
