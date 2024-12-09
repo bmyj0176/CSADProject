@@ -1,4 +1,4 @@
-import { BusArrival } from "./api_reader";
+import { BusArrival } from "./api_caller";
 
 export async function BusArrivalTimes(BusStopCode, BusNumber) {
     try {

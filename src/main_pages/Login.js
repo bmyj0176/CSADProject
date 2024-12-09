@@ -9,8 +9,12 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/auth/login', { email, password });
+      const response = await axios.post('http://localhost:5000/auth/login', { 
+        email: email.trim(),
+        password: password.trim(),
+       });
       localStorage.setItem('token', response.data.token);
+      localStorage.setItem('username', response.data.username);
       window.location.reload();
       alert('Login successful');
     } catch (error) {

@@ -3,14 +3,20 @@ import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 
 function Register() {
+
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = async (e) => {
-    console.log(`being sent is email: ${email}, password: ${password}`);
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/auth/register', { email, password });
+      console.log(`1. sending ${username} + ${email} + ${password}`)
+      await axios.post('http://localhost:5000/auth/register', { 
+        username: username.trim(), 
+        email: email.trim(), 
+        password: password.trim(), 
+      });
       alert('Registration successful');
     } catch (error) {
       console.error(error);
@@ -21,6 +27,10 @@ function Register() {
   return (
     <form onSubmit={handleSubmit}>
       <h1>Register</h1>
+      <p>
+        Username:
+        <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+      </p>
       <p>
         Email:
         <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />

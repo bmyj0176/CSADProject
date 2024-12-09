@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet, Link } from "react-router-dom";
+import { BusRoutes } from '../api_caller';
 
 const LayoutBar = () => {
 
@@ -27,6 +28,12 @@ const LayoutBar = () => {
     window.location.reload();
   }
 
+  async function test_function() {
+    console.log("Test Start")
+    console.log(await BusRoutes("900"))
+    console.log("Test End")
+  }
+
   return (
     <>
       <table>
@@ -40,12 +47,13 @@ const LayoutBar = () => {
                   <Link to="/login">Login</Link>
                 ) : (
                   <>
-                    Hi friend 
+                    Hi {localStorage.getItem('username')} 
                     <button id="logout" onClick={logout}>Log Out</button>
                   </>
                 ) }
                 </td>
               <td><button id="toggle_button" onClick={toggle_theme}>Change Theme</button></td>
+              <td><button id="test_button" onClick={test_function}>Test Button</button></td>
           </tr>
         </tbody>
       </table>
