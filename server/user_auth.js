@@ -48,9 +48,9 @@ router.post('/register', async (req, res) => {
         return res.status(401).json({ error: 'Invalid credentials' });
       }
   
-      const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+      const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '7d' });
   
-      res.status(200).json({ token });
+      res.status(200).json({ token }); // send token to frontend
     } catch (error) {
       console.error({ error: 'Login error' });
       res.status(500).json({ error: 'Login error' });

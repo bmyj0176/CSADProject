@@ -20,24 +20,25 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LayoutBar />} >
-          {/*End of branch of LayoutBar*/}
-          <Route index element={<Homepage />} />
-          <Route path="arrivaltimes" element={<ArrivalTimes />} >
-            {/*Start of branch of ArrivalTimes*/}
-            <Route path="busnumber" element={<BusNumber />} />
-            <Route path="busstop" element={<BusStop />} />
-            <Route path="stopnumber" element={<StopNumber />} />
-            <Route path="nearme" element={<NearMe />} />
-          </Route> {/*End of branch of ArrivalTimes*/}
-          <Route path="traveltimeest" element={<TravelTimeEST />} >
-            {/*Start of branch of TravelTimeEST*/}
-            <Route path="findroutes" element={<FindRoutes />} />
-            <Route path="savedroutes" element={<SavedRoutes />} />
-          </Route> {/*End of branch of TravelTimeEST*/}
-          <Route path="login" element={<Login />} />
-          <Route path="register" element={<Register />} />
-          <Route path="*" element={<NoPage />} />
-        </Route> {/*End of branch of LayoutBar*/}
+              {/*End of branch of LayoutBar*/}
+              <Route index element={<Homepage />} />
+              
+              <Route path="arrivaltimes" element={<ArrivalTimes />} >
+                    {/*Start of branch of ArrivalTimes*/}
+                    <Route path="busnumber" element={<BusNumber />} />
+                    <Route path="busstop" element={<BusStop />} />
+                    <Route path="stopnumber" element={<StopNumber />} />
+                    <Route path="nearme" element={<NearMe />} />
+                    </Route> {/*End of branch of ArrivalTimes*/}
+              <Route path="traveltimeest" element={<TravelTimeEST />} >
+                    {/*Start of branch of TravelTimeEST*/}
+                    <Route path="findroutes" element={<FindRoutes />} />
+                    <Route path="savedroutes" element={<SavedRoutes />} />
+                    </Route> {/*End of branch of TravelTimeEST*/}
+              <Route path="login" element={<Login />} />
+              <Route path="register" element={<Register />} />
+              <Route path="*" element={<NoPage />} />
+              </Route> {/*End of branch of LayoutBar*/}
       </Routes> 
     </BrowserRouter>
   )

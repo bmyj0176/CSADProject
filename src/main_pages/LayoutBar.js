@@ -1,6 +1,17 @@
+import React, { useState, useEffect } from 'react';
 import { Outlet, Link } from "react-router-dom";
 
 const LayoutBar = () => {
+
+  const [userLoggedIn, setUserLoggedIn] = useState(false);
+
+  // check if user is logged in
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      setUserLoggedIn(true);
+    }
+  }, []);
 
   function toggle_theme() {
     const themeLink = document.getElementById("lightdarkmode");
@@ -11,6 +22,11 @@ const LayoutBar = () => {
     }
   }  
 
+  function logout() {
+    localStorage.removeItem('token');
+    window.location.reload();
+  }
+
   return (
     <>
       <table>
@@ -19,7 +35,16 @@ const LayoutBar = () => {
               <td><Link to="/">TravelSite</Link></td>
               <td><Link to="/arrivaltimes">Arrival Times</Link></td>
               <td><Link to="/traveltimeest">Travel Time Est</Link></td>
-              <td><Link to="/login">Login</Link></td>
+              <td>
+                { !userLoggedIn ? (
+                  <Link to="/login">Login</Link>
+                ) : (
+                  <>
+                    Hi friend 
+                    <button id="logout" onClick={logout}>Log Out</button>
+                  </>
+                ) }
+                </td>
               <td><button id="toggle_button" onClick={toggle_theme}>Change Theme</button></td>
           </tr>
         </tbody>
@@ -29,6 +54,4 @@ const LayoutBar = () => {
   )
 };
 
-
-  
 export default LayoutBar;
