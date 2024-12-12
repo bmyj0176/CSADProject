@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet, Link } from "react-router-dom";
 import { BusRoutes } from '../api_caller';
+import './navbar.css'
 
 const LayoutBar = () => {
 
@@ -36,27 +37,29 @@ const LayoutBar = () => {
 
   return (
     <>
-      <table>
-        <tbody>
-          <tr>
-              <td><Link to="/">TravelSite</Link></td>
-              <td><Link to="/arrivaltimes">Arrival Times</Link></td>
-              <td><Link to="/traveltimeest">Travel Time Est</Link></td>
-              <td>
-                { !userLoggedIn ? (
-                  <Link to="/login">Login</Link>
-                ) : (
-                  <>
-                    Hi {localStorage.getItem('username')} 
-                    <button id="logout" onClick={logout}>Log Out</button>
-                  </>
-                ) }
-                </td>
-              <td><button id="toggle_button" onClick={toggle_theme}>Change Theme</button></td>
-              <td><button id="test_button" onClick={test_function}>Test Button</button></td>
-          </tr>
-        </tbody>
-      </table>
+      <ul>
+          <li><Link to="/">TravelSite</Link></li>
+          <li><button id="toggle_button" onClick={toggle_theme}>Change Theme</button></li>
+          <li><Link to="/arrivaltimes">Arrival Times</Link></li>
+          <li><Link to="/traveltimeest">Travel Time Est</Link></li>
+          <li><button id="test_button" onClick={test_function}>Test Button</button></li>
+          <li style={{ float: 'right' }} class={"dropdown"}>
+          <a href="javascript:void(0)" class="dropbtn">
+            { !userLoggedIn ? (
+              <Link to="/login">Login</Link>
+            ) : (
+              <>
+                {localStorage.getItem('username')}
+              </>
+            ) }
+          </a>
+          <div class="dropdown-content">
+            <a href="#">About</a><br/>
+            <a href="#">Settings</a><br/>
+            { userLoggedIn && <button id="logout" onClick={logout}>Log Out</button>}
+          </div>
+          </li>
+      </ul>
     <Outlet />
     </>
   )
