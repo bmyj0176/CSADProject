@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet, Link } from "react-router-dom";
 import { BusRoutes } from '../api_caller';
-import './navbar.css'
+import './stylesheets/navbar.css';
 
 const LayoutBar = () => {
 
