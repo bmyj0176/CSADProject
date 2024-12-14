@@ -43,8 +43,8 @@ const LayoutBar = () => {
           <li><Link to="/arrivaltimes">Arrival Times</Link></li>
           <li><Link to="/traveltimeest">Travel Time Est</Link></li>
           <li><button id="test_button" onClick={test_function}>Test Button</button></li>
-          <li style={{ float: 'right' }} class={"dropdown"}>
-          <a href="javascript:void(0)" class="dropbtn">
+          <li style={{ float: 'right' }} className={"dropdown"}>
+          <a href="javascript:void(0)" className="dropbtn">
             { !userLoggedIn ? (
               <Link to="/login">Login</Link>
             ) : (
@@ -53,9 +53,9 @@ const LayoutBar = () => {
               </>
             ) }
           </a>
-          <div class="dropdown-content">
-            <a href="#">About</a><br/>
-            <a href="#">Settings</a><br/>
+          <div style={{}} className="dropdown-content">
+            <Link to="/about">About</Link><br/>
+            <Link to="/settings">Settings</Link><br/>
             { userLoggedIn && <button id="logout" onClick={logout}>Log Out</button>}
           </div>
           </li>

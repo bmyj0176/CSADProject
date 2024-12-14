@@ -1,26 +1,8 @@
-body {
-    color:azure;
-    background-color: rgb(23, 32, 37);
+form {
+    text-align: center;
 }
 
-h5,h3, a {
-    color: khaki;
-    text-decoration: none;
-}
-
-h1,h2 {
-    color: aquamarine;
-}
-
-button #toggle_button{
-    background-image: url("../images/LIGHT.png");
-    width: 500px;
-    height: 500px;
-    border: none;
-    cursor: pointer;
-}
-
-h1 {
+form h1 {
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px aqua, 0 0 30px aqua;
   animation: glow 1.5s infinite alternate;
 }

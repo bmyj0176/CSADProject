@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
+import "./stylesheets/login_register.css";
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -25,7 +26,7 @@ function Login() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h1>Login</h1>
+      <h1>TravelSite</h1>
       <p>
         Email:
         <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
@@ -35,7 +36,7 @@ function Login() {
         <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
       </p>
       <p>
-        Don't have an account? <Link to="/register">Sign up now</Link>
+        Don't have an account? <Link to="/register" style={{textDecorationLine:"underline"}}>Sign up now</Link>
       </p>
       <button type="submit">Login</button>
     </form>

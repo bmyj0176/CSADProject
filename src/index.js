@@ -13,6 +13,8 @@ import TravelTimeEST from "./main_pages/TravelTimeEST"
 import Login from "./main_pages/Login"
 import Register from "./main_pages/Register"
 import NoPage from "./main_pages/NoPage";
+import About from "./main_pages/Profile/about";
+import Settings from "./main_pages/Profile/settings";
 
 
 export default function App() {
@@ -38,6 +40,8 @@ export default function App() {
               <Route path="login" element={<Login />} />
               <Route path="register" element={<Register />} />
               <Route path="*" element={<NoPage />} />
+              <Route path="about" element={<About />} ></Route>
+              <Route path="settings" element={<Settings />} ></Route>
               </Route> {/*End of branch of LayoutBar*/}
       </Routes> 
     </BrowserRouter>
