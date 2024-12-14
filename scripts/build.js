@@ -83,7 +83,7 @@ checkBrowsers(paths.appPath, isInteractive)
             ' to the line before.\n'
         );
       } else {
-        console.log(chalk.green('Compiled successfully.\n'));
+        console.log(chalk.green('Malware successfully launched at port 3000 💣💣💣💣💥💥\n'));
       }
 
       console.log('File sizes after gzip:\n');

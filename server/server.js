@@ -22,7 +22,7 @@ app.use('', busRoutesAPIRouter);
 
 // start server
 app.listen(process.env.PORT, () => {
-  console.log(`Server is running on http://localhost:${process.env.PORT}`);
+  console.log(`Backend server running on deprecated roblox code 🗣️🗣️🗣️🗣️🗣️🔥🔥 (port ${process.env.PORT})`);
 });
 
 // mongodb connection
