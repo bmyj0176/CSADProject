@@ -12,13 +12,6 @@ h1,h2 {
     color: aquamarine;
 }
 
-button #toggle_button{
-    background-image: url("../images/LIGHT.png");
-    width: 500px;
-    height: 500px;
-    border: none;
-    cursor: pointer;
-}
 
 h1 {
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px aqua, 0 0 30px aqua;
