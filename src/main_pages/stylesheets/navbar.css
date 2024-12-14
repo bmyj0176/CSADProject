@@ -1,5 +1,5 @@
 /*navbar properties*/
-ul {
+.nv {
   list-style-type: none;
   margin: 12px;
   padding: 12px;
@@ -8,28 +8,24 @@ ul {
 }
 
 /*each navbar element properties*/
-li {
+.nv li {
   display: inline-block;
 }
 
 /*no text underlines*/
-li a, .dropbtn {
+.nv li a {
   display: inline-block;
-  text-align: center;
-  padding: 14px 16px;
+  padding: 16px;
 }
 
 /*all properties when hovered*/
-ul :hover {
+.nv :hover {
   background-color: rgb(120, 120, 120);
 }
 
-li.dropdown {
-  display: inline-block;
-}
 
 /*dropdown is hidden, edit profile properties*/
-.dropdown-content {
+.nv .dropdown-content {
   display: none;
   position: absolute;
   min-width: 160px;
@@ -37,12 +33,12 @@ li.dropdown {
   z-index: 1;
 }
 
-.dropdown-content a {
+.nv .dropdown-content a {
   text-align: left;
 }
 
 /*display dropdown contents when profile is hovered*/
-.dropdown:hover .dropdown-content {
+.nv .dropdown:hover .dropdown-content {
   display: block;
 }
 

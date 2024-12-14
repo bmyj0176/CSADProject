@@ -1,18 +1,36 @@
 import { Outlet, Link } from "react-router-dom";
+import React, { useState } from "react";
+import "./stylesheets/arrival_times.css";
 
 const ArrivalTimes = () => {
+
+
+
+  const [isToggled, setIsToggled] = useState(false);
+
+  const handleToggle = () => {
+    setIsToggled((prevState) => !prevState);
+  };
+
+  const linkStyle = isToggled
+    ? { fontWeight: "bold", textDecoration: "shadow=10px" }
+    : { fontWeight: "none", textDecoration: "shadow=0px" };
+
+
+
+  
   return (
     <>
-    <table>
-      <tbody>
-        <tr>
-          <td><Link to="busnumber">Bus No.</Link></td>
-          <td><Link to="busstop">Bus Stop</Link></td>
-          <td><Link to="stopnumber">Stop Number</Link></td>
-          <td><Link to="nearme">Near Me</Link></td>
-        </tr>
-      </tbody>
-    </table>
+    <ul className="at">
+      <li><Link to="busnumber" style={linkStyle} onClick={handleToggle}> Bus No.</Link></li>
+
+      <li><Link to="busstop" style={linkStyle} onClick={handleToggle}>Bus Stop</Link></li>
+
+      <li><Link to="stopnumber" style={linkStyle} onClick={handleToggle}>Stop Number</Link></li>
+
+      <li><Link to="nearme" style={linkStyle} onClick={handleToggle}>Near Me</Link></li>
+
+    </ul>
     <Outlet />
     </>
   )

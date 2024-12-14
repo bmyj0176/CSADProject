@@ -1,5 +1,5 @@
 const BusStop = () => {
-    return <h1>Bus Stop</h1>;
+    return <input type="text" placeholder="Search bus/stop"/>
   };
   
   export default BusStop;

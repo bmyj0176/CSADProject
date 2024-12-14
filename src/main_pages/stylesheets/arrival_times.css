@@ -1,0 +1,34 @@
+/*AT bar properties*/
+.at {
+    list-style-type: none;
+    margin: 12px;
+    padding: 12px;
+    overflow: hidden;
+}
+
+/*each AT bar element properties*/
+.at li {
+    display: inline-block;
+    background-color: rgb(57, 57, 57);
+    margin-right: 12px;
+}
+  
+/*no text underlines*/
+.at li a {
+    display: inline-block;
+    padding: 16px;
+}
+  
+/*all properties when hovered*/
+.at :hover {
+    background-color: rgb(120, 120, 120);
+}
+
+
+.link-default {
+    text-shadow: 0px;
+  }
+  
+  .link-toggled {
+    text-shadow: 100px;
+  }

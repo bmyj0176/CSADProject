@@ -10,3 +10,17 @@ export async function get_json(path) {
     return data // return dict
   })
 }
+
+export async function get_list(path) {
+  return fetch(path) // Fetch the text file from the given path
+    .then(response => response.text()) // Read the response as text
+    .then(text => {
+      // Parse the text into a JavaScript array
+      const data = JSON.parse(text);
+      console.log(data); // Log the array
+      return data; // Return the array
+    })
+    .catch(error => {
+      console.error("Error reading or parsing the file:", error);
+    });
+}
