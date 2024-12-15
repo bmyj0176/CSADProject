@@ -58,7 +58,7 @@ export async function getBusStopInfo(key, value) {
 // INPUT2 BSCode1 - (string) first bus stop code
 // INPUT3 BSCode2 - (string) second bus stop code
 // OUTPUT distance - (Number) distance in km between two bus stops
-export async function getDistance(BusService, BSCode1, BSCode2) {
+export async function getRoadDistance(BusService, BSCode1, BSCode2) {
     let stop1 = null;
     let stop2 = null;
     const data = await BusRoutes(BusService)
