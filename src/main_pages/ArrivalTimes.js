@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import "./stylesheets/arrivaltimes.css";
-import { link } from 'fs-extra';
+//import { link } from 'fs-extra'; this shhit gives 23 fucking errors 
 
 
 class ArrivalTimes extends Component {
