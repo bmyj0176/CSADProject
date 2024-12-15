@@ -3,20 +3,19 @@
     list-style-type: none;
     margin: 12px;
     padding: 12px;
-    overflow: hidden;
 }
 
 /*each AT bar element properties*/
 .at li {
     display: inline-block;
-    background-color: rgb(57, 57, 57);
     margin-right: 12px;
 }
   
 /*no text underlines*/
-.at li a {
+.at li button {
     display: inline-block;
-    padding: 16px;
+    background-color: rgb(57, 57, 57);
+    padding: 12px;
 }
   
 /*all properties when hovered*/
@@ -27,8 +26,16 @@
 
 .link-default {
     text-shadow: 0px;
+    
+    background-color: rgb(57, 57, 57);
   }
   
   .link-toggled {
     text-shadow: 100px;
+    
+    background-color: rgb(120, 120, 120);
   }
+
+.at input {
+
+}

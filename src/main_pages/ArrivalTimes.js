@@ -1,39 +1,88 @@
-import { Outlet, Link } from "react-router-dom";
-import React, { useState } from "react";
-import "./stylesheets/arrival_times.css";
-
-const ArrivalTimes = () => {
+import React, { Component } from 'react';
+import "./stylesheets/arrivaltimes.css";
+import { link } from 'fs-extra';
 
 
+class ArrivalTimes extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      toggles: {
+        busNo: false,
+        busStop: false,
+        stopNumber: false,
+        nearMe: false,
+      },
+    };
+  }
 
-  const [isToggled, setIsToggled] = useState(false);
-
-  const handleToggle = () => {
-    setIsToggled((prevState) => !prevState);
+  handleToggle = (buttonName) => {
+    this.setState((prevState) => ({
+      toggles: {
+        ...prevState.toggles,
+        [buttonName]: !prevState.toggles[buttonName],
+      },
+    })); 
   };
+  
 
-  const linkStyle = isToggled
-    ? { fontWeight: "bold", textDecoration: "shadow=10px" }
-    : { fontWeight: "none", textDecoration: "shadow=0px" };
+  styles1() {
+    return { link:'./'};
+  }
 
+  styles2() {
+    return { fontWeight: "normal", textDecoration: "none" };
+  }
 
+  choose(buttonName) {
+    return this.state.toggles[buttonName] ? this.styles1() : this.styles2();
+  }
 
+  render() {
+    return (
+      <>
+ {/*---------------------------------------------------------------------------------*/}
+        <ul className="at">
+          <li>
+            <button
+              style={this.choose('busNo')}
+              onClick={() => this.handleToggle('busNo')}
+            >
+            <p> Bus No.</p>
+            </button>
+          </li>
+ {/*---------------------------------------------------------------------------------*/}
+          <li> <button
+              style={this.choose('busStop')}
+              onClick={() => this.handleToggle('busStop')}
+              >
+              <p> Bus Stop </p>
+            </button>
+          </li>
+ {/*---------------------------------------------------------------------------------*/}
+          <li>
+            <button
+              style={this.choose('stopNumber')}
+              onClick={() => this.handleToggle('stopNumber')}
+            >
+              Stop Number
+            </button>
+          </li>
+ {/*---------------------------------------------------------------------------------*/}
+          <li>
+            <button
+              style={this.choose('nearMe')}
+              onClick={() => this.handleToggle('nearMe')}
+            >
+              Near Me
+            </button>
+          </li>
+        </ul>
+ {/*---------------------------------------------------------------------------------*/}
+        <input type="text" placeholder="Search bus/stop" className="at"/>
+      </>
+    );
+  }
+}
 
-  return (
-    <>
-    <ul className="at">
-      <li><Link to="busnumber" style={linkStyle} onClick={handleToggle}> Bus No.</Link></li>
-
-      <li><Link to="busstop" style={linkStyle} onClick={handleToggle}>Bus Stop</Link></li>
-
-      <li><Link to="stopnumber" style={linkStyle} onClick={handleToggle}>Stop Number</Link></li>
-
-      <li><Link to="nearme" style={linkStyle} onClick={handleToggle}>Near Me</Link></li>
-
-    </ul>
-    <Outlet />
-    </>
-  )
-  };
-
-  export default ArrivalTimes;
+export default ArrivalTimes;

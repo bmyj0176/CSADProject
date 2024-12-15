@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { busRouteAPIQuerySkip } from './helper_func2';
+import { busRouteAPIQuerySkip } from './helper_functions2';
 
 export async function BusArrival(busStopCode) {
   try {

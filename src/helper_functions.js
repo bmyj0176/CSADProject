@@ -1,5 +1,5 @@
-import { convertISO8601, timeDiffISO8601 } from "./helper_func2";
-import { BusArrival, BusStops } from "./api_caller";
+import { convertISO8601, timeDiffISO8601 } from "./helper_functions2";
+import { BusArrival, BusRoutes, BusStops } from "./api_caller";
 
 // getBusTiming() returns the arrival times of the next 3 buses
 // INPUT1 BusStopCode - (string) 5 digit code of bus stop, e.g. '46971', '83139'
@@ -52,4 +52,27 @@ export async function getBusStopInfo(key, value) {
         return output
     console.error("Key-value couldn't be found!")
     return null
+}
+
+// INPUT1 BusService - (string) bus service connecting two stops
+// INPUT2 BSCode1 - (string) first bus stop code
+// INPUT3 BSCode2 - (string) second bus stop code
+// OUTPUT distance - (Number) distance in km between two bus stops
+export async function getDistance(BusService, BSCode1, BSCode2) {
+    let stop1 = null;
+    let stop2 = null;
+    const data = await BusRoutes(BusService)
+    const list = data["value"]
+    for (let dict of list) {
+        if (dict.ServiceNo === BusService) {
+            if (dict.BusStopCode === BSCode1 || dict.BusStopCode === BSCode2) {
+                if (!stop1) { stop1 = { ...dict }; }
+                else if (!stop2) { 
+                    stop2 = { ...dict }; 
+                    break;
+                }
+            }
+        }
+    }
+    return Math.abs(stop1.Distance - stop2.Distance);
 }

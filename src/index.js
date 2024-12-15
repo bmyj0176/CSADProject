@@ -24,14 +24,7 @@ export default function App() {
         <Route path="/" element={<LayoutBar />} >
               {/*End of branch of LayoutBar*/}
               <Route index element={<Homepage />} />
-              
-              <Route path="arrivaltimes" element={<ArrivalTimes />} >
-                    {/*Start of branch of ArrivalTimes*/}
-                    <Route path="busnumber" element={<BusNumber />} />
-                    <Route path="busstop" element={<BusStop />} />
-                    <Route path="stopnumber" element={<StopNumber />} />
-                    <Route path="nearme" element={<NearMe />} />
-                    </Route> {/*End of branch of ArrivalTimes*/}
+              <Route path="arrivaltimes" element={<ArrivalTimes />} />
               <Route path="traveltimeest" element={<TravelTimeEST />} >
                     {/*Start of branch of TravelTimeEST*/}
                     <Route path="findroutes" element={<FindRoutes />} />
