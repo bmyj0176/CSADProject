@@ -1,24 +1,25 @@
+/* eslint-disable react/react-in-jsx-scope */
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import LayoutBar from "./main_pages/LayoutBar";
-import Homepage from "./main_pages/Homepage"
-import ArrivalTimes from "./main_pages/ArrivalTimes"
-import TravelTimeEST from "./main_pages/TravelTimeEST"
-  import FindRoutes from "./main_pages/TravelTimeEST/FindRoutes";
-  import SavedRoutes from "./main_pages/TravelTimeEST/SavedRoutes";
-import Login from "./main_pages/Login"
-import Register from "./main_pages/Register"
-import NoPage from "./main_pages/NoPage";
-import About from "./main_pages/Profile/about";
-import Settings from "./main_pages/Profile/settings";
+import NavBar from "./pages/NavBar";
+import Homepage from "./pages/Homepage"
+import ArrivalTimes from "./pages/ArrivalTimes"
+import TravelTimeEST from "./pages/TravelTimeEST"
+  import FindRoutes from "./pages/TravelTimeEST/FindRoutes";
+  import SavedRoutes from "./pages/TravelTimeEST/SavedRoutes";
+import Login from "./pages/Login"
+import Register from "./pages/Register"
+import NoPage from "./pages/NoPage";
+import About from "./pages/Profile/about";
+import Settings from "./pages/Profile/settings";
 
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<LayoutBar />} >
-              {/*End of branch of LayoutBar*/}
+        <Route path="/" element={<NavBar />} >
+              {/*End of branch of NavBar*/}
               <Route index element={<Homepage />} />
               <Route path="arrivaltimes" element={<ArrivalTimes />} />
               <Route path="traveltimeest" element={<TravelTimeEST />} >
@@ -31,7 +32,7 @@ export default function App() {
               <Route path="*" element={<NoPage />} />
               <Route path="about" element={<About />} ></Route>
               <Route path="settings" element={<Settings />} ></Route>
-              </Route> {/*End of branch of LayoutBar*/}
+              </Route> {/*End of branch of NavBar*/}
       </Routes> 
     </BrowserRouter>
   )

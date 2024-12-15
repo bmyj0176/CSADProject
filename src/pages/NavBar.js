@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet, Link } from "react-router-dom";
-import { getDistance } from '../helper_functions';
 import './stylesheets/navbar.css';
+import { BusStops } from '../api_caller'
 
-const LayoutBar = () => {
+const NavBar = () => {
 
   const [userLoggedIn, setUserLoggedIn] = useState(false);
 
@@ -14,6 +14,7 @@ const LayoutBar = () => {
       setUserLoggedIn(true);
     }
   }, []);
+  
 
   function toggle_theme() {
     const themeLink = document.getElementById("lightdarkmode");
@@ -31,7 +32,29 @@ const LayoutBar = () => {
 
   async function test_function() {
     console.log("Test Start")
-    console.log(await getDistance("185", "19039", "27459"))
+    const listo = []
+    for (let skip = 0; skip <= 5000; skip += 500) {
+      const data = await BusStops(skip)
+      const list = data.value
+      for (let dict of list) {
+        listo.push(dict.Description)
+      }
+    }
+    listo.sort()
+    console.log(listo)
+    // Convert the list to a single string with each string on a new line
+    const fileContent = listo.join("\",\n\"");
+
+    // Create a Blob from the content
+    const blob = new Blob([fileContent], { type: "text/plain" });
+
+    // Create a link element to trigger the download
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "output.txt";  // The name of the file to download
+
+    // Trigger the download
+    link.click();
     console.log("Test End")
   }
 
@@ -70,4 +93,4 @@ const LayoutBar = () => {
   )
 };
 
-export default LayoutBar;
+export default NavBar;
