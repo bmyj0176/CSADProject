@@ -18,7 +18,7 @@ const ArrivalTimes = () => {
 
 
 
-  
+
   return (
     <>
     <ul className="at">
@@ -35,5 +35,5 @@ const ArrivalTimes = () => {
     </>
   )
   };
-  
+
   export default ArrivalTimes;

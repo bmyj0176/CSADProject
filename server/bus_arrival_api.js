@@ -4,7 +4,7 @@ import fetch from 'node-fetch'
 const router = express.Router();
 
 // Bus Arrival API route
-router.get('/api/bus-arrival', async (req, res) => {
+router.get('/bus-arrival', async (req, res) => {
     const busStopCode = req.query.busStopCode; // Getting busStopCode from query params
   
     if (!busStopCode) {

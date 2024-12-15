@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet, Link } from "react-router-dom";
-import { get_list } from '../file_reader';
+import { getBusTiming, getBusStopInfo } from '../helper_func';
 import './stylesheets/navbar.css';
 
 const LayoutBar = () => {
@@ -31,7 +31,9 @@ const LayoutBar = () => {
 
   async function test_function() {
     console.log("Test Start")
-    console.log(await get_list('./datasets/bus_services.txt'))
+    const data = await getBusStopInfo("Description", "Dover Stn Exit B")
+    console.log(data[0].BusStopCode)
+    console.log(await getBusTiming(data[0].BusStopCode, "185"))
     console.log("Test End")
   }
 

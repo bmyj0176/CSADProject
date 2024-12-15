@@ -12,15 +12,11 @@ export async function get_json(path) {
 }
 
 export async function get_list(path) {
-  return fetch(path) // Fetch the text file from the given path
-    .then(response => response.text()) // Read the response as text
+  return fetch(path) // fetch
+    .then(response => response.text()) // read it as text
     .then(text => {
-      // Parse the text into a JavaScript array
+      // parse into a js array
       const data = JSON.parse(text);
-      console.log(data); // Log the array
-      return data; // Return the array
+      return data;
     })
-    .catch(error => {
-      console.error("Error reading or parsing the file:", error);
-    });
 }

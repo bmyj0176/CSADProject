@@ -4,7 +4,7 @@ import fetch from 'node-fetch'
 const router = express.Router();
 
 // Bus Arrival API route
-router.get('/bus-routes', async (req, res) => {
+router.get('/bus-stops', async (req, res) => {
     const skip = req.query.skip; 
   
     if (!skip) {
@@ -13,7 +13,7 @@ router.get('/bus-routes', async (req, res) => {
   
     try {
       const response = await fetch(
-        `https://datamall2.mytransport.sg/ltaodataservice/BusRoutes?$skip=${skip}`, 
+        `https://datamall2.mytransport.sg/ltaodataservice/BusStops?$skip=${skip}`, 
         {
           method: 'GET',
           headers: {
