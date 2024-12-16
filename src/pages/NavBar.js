@@ -36,27 +36,41 @@ const NavBar = () => {
 
   async function test_function() {
     console.log("Test Start");
-    const listo = [];
+
+    const myList = [];
+    
+    // Assuming BusStops is a function that returns data, and you need to loop through it
     for (let skip = 0; skip <= 5000; skip += 500) {
-      const data = await BusStops(skip);
-      const list = data.value;
-      for (let dict of list) {
-        listo.push(dict.Description);
-      }
+        const data = await BusStops(skip);
+        const list = data.value;
+        
+        // Push each relevant data into myList
+        for (let dict of list) {
+            myList.push({
+                "BusStopCode": dict.BusStopCode,
+                "Lat": dict.Latitude,
+                "Lon": dict.Longitude
+            });
+        }
     }
-    listo.sort();
-    console.log(listo);
-    const fileContent = listo.join("\",\n\"");
 
-    const blob = new Blob([fileContent], { type: "text/plain" });
+    // Convert myList to a string by stringifying each object (e.g., converting JSON to a string)
+    const listAsString = myList.map(item => JSON.stringify(item)).join(",\n");
 
-    const link = document.createElement("a");
+    // Create a Blob from the string
+    const blob = new Blob([listAsString], { type: 'text/plain' });
+
+    // Create a temporary link to trigger the download
+    const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = "output.txt";
+    link.download = 'list.txt'; // Name of the downloaded file
 
+    // Trigger the download
     link.click();
+
     console.log("Test End");
-  }
+}
+
 
   return (
     <>

@@ -91,3 +91,20 @@ export function searchInList(searchQuery, inputList, cap = null) {
     }
     return outputList;
 }
+
+export function stealCoords() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            console.log("Latitude: " + position.coords.latitude);
+            console.log("Longitude: " + position.coords.longitude);
+            return [position.coords.latitude, position.coords.longitude]
+          },
+          (error) => {
+            console.error("Error: " + error.message);
+          }
+        );
+      } else {
+        console.log("Geolocation is not supported by this browser.");
+      }    
+}
