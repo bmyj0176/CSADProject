@@ -1,8 +1,11 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect, useRef, Component } from 'react';
+import { searchInList } from '../helper_functions';
+import { get_list } from '../file_reader';
 import "./stylesheets/arrivaltimes.css";
 //import { link } from 'fs-extra'; this shhit gives 23 fucking errors 
 
-
+ // bryan u fucked this code up it was working before 
+ 
 class ArrivalTimes extends Component {
   constructor(props) {
     super(props);
@@ -24,18 +27,21 @@ class ArrivalTimes extends Component {
       },
     })); 
   };
-  
 
-  styles1() {
-    return { link:'./'};
+  filter_off() {
+    return {
+      fontWeight: "normal",
+    };
   }
 
-  styles2() {
-    return { fontWeight: "normal", textDecoration: "none" };
+  filter_on() {
+    return {
+      fontWeight: "bold",
+    };
   }
 
   choose(buttonName) {
-    return this.state.toggles[buttonName] ? this.styles1() : this.styles2();
+    return this.state.toggles[buttonName] ? this.filter_on() : this.filter_off();
   }
 
   render() {
@@ -79,10 +85,69 @@ class ArrivalTimes extends Component {
           </li>
         </ul>
  {/*---------------------------------------------------------------------------------*/}
-        <input type="text" placeholder="Search bus/stop" className="at"/>
+        {!this.state.toggles["nearMe"] ? <ArrivalTimesSearchBar toggleStates={this.state.toggles}/> : "Near Me"}
       </>
     );
   }
 }
 
+const ArrivalTimesSearchBar = (props) => {
+  const MAX_BAR_SIZE = 20;
+  const [bus_services_list, bus_stop_codes_list, bus_stops_list] = [useRef([]), useRef([]), useRef([])];
+  const [searchBarValue, setSearchBarInput] = useState(''); // search bar value
+  const [barsCount, setBarsCount] = useState(0); // count of stacked bars
+  const [barsList, setBarsList] = useState([]); // contents of stacked bars
+  
+  useEffect(() => {
+    const fetchNumbers = async () => {
+      bus_services_list.current = await get_list('./datasets/bus_services.txt');
+      bus_stop_codes_list.current = await get_list('./datasets/bus_stop_codes.txt');
+      bus_stops_list.current = await get_list('./datasets/bus_stops.txt');
+      };
+    
+      fetchNumbers();
+    }, []); // Empty dependency array ensures this runs only once when the component mounts
+    
+  // Increase the count of bars
+  const updateSearchBar = (event) => {
+    const value = event.target.value;
+    setSearchBarInput(value);
+    if (value !== '') {
+      const full_list = [] 
+      if (!props.toggleStates['busNo']) {full_list.push(...bus_services_list.current)} 
+      if (!props.toggleStates['busStop']) {full_list.push(...bus_stop_codes_list.current)}  
+      if (!props.toggleStates['stopNumber']) {full_list.push(...bus_stops_list.current)} 
+      const filtered_list = searchInList(value, full_list, MAX_BAR_SIZE)
+      setBarsList(filtered_list);
+      setBarsCount(filtered_list.length);
+    }
+    else {
+      setBarsCount(0);
+    }
+  };
+  
+  return (
+    <div className="container">
+      {/* searchbar */}
+      <input type="text" placeholder="Search..." className="search_bar" value={searchBarValue} onChange={updateSearchBar}/>
+
+      {/* stacked bars */}
+      <div className="bars">
+        {Array.from({ length: barsCount }, (_, index) => (
+          <div key={index} className="bar">
+            <SearchResultBar value={barsList[index]}/>
+          </div>
+        ))}
+      </div>
+    </div>
+    );
+  };
+
+const SearchResultBar = (props) => {
+  return (
+    <p style={{display:'block'}}>
+      {props.value}
+    </p>
+  )
+}
 export default ArrivalTimes;

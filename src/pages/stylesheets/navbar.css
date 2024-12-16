@@ -22,10 +22,6 @@
   text-decoration: underline;
 }
 
-.nv :active{
-  color: rgba(197, 197, 26, 0.201);
-}
-
 
 
 /*dropdown is hidden, edit profile properties*/
@@ -78,4 +74,9 @@
   background-color: transparent;
   background-position-y: 5px;
   
+}
+
+.nv a.activee {
+  font-weight: bold;
+  text-decoration: underline;
 }

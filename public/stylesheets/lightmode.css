@@ -1,10 +1,10 @@
 body {
     
-    background-color: azure;
+    background-color: rgba(240, 255, 255, 0.495);
 }
 
 h5,h3, a {
-  color: khaki;
+  color: rgb(234, 143, 25);
   text-decoration: none;
 }
 
@@ -26,4 +26,10 @@ h1 {
   }
 }
 
+h5 {
+  border: medium double rgb(100, 128, 0); margin-right: 994px;background-color: rgb(189, 199, 155); } 
+
 .nv{ background-color: rgba(213, 219, 150, 0.441); }
+.nv :active{
+  color: rgba(146, 170, 49, 0.379);
+} 

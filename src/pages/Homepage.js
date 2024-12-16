@@ -4,7 +4,7 @@ const Homepage = () => {
   return (
     <div>
       <h1 className="headd">Welcome to TravelSite</h1>
-      <h3 style={{textAlign: "center"}}> The Smart way To Get Labour </h3>
+      <h3 style={{textAlign: "center"}}> The Smart Way To Get Labour </h3>
       <div style={{display: "inline-block"}}>
         <h1 className="subhead"> What Do We Do? </h1>
         <h5 className = "subpar"> yapyapyapyapyapyapyapyapyapyapyapyap </h5>
