@@ -1,9 +1,9 @@
 body {
-    background-image: url(/public/stylesheets/5570834.jpg);
+    
     background-color: rgb(23, 32, 37);
 }
 
-h5,h3, a {
+h5, h3, a, p {
     color: khaki;
     text-decoration: none;
 }
@@ -35,4 +35,12 @@ h1 {
 
 .nv{ background-color: rgba(79, 119, 131, 0.441);}
 
+.nv :visited{
+  color: rgba(129, 129, 221, 0.324);
+}
+
+.nv :active{
+  color: rgba(84, 84, 144, 0.324);
+
+}
 

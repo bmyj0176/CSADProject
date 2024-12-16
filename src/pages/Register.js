@@ -92,7 +92,7 @@ function Register() {
         <div class="error" id="err_password2" style={{color:'#E03E57'}}></div>
       </p>
       <p>
-        Already have an account? <Link to="/login">Sign In</Link>
+        Already have an account? <Link to="/login" className='links'>Sign In</Link>
       </p>
       <button type="submit">Register</button>
     </form>

@@ -76,3 +76,18 @@ export async function getRoadDistance(BusService, BSCode1, BSCode2) {
     }
     return Math.abs(stop1.Distance - stop2.Distance);
 }
+
+// INPUT1 searchQuery - the search term/substring for the list
+// INPUT2 list - the full list of things that can be searched for
+// INPUT3 cap - hard caps the total entries, default = null (RECOMMENDED TO REDUCE LAG)
+export function searchInList(searchQuery, inputList, cap = null) {
+    const outputList = []
+    console.log(`typeof inputList = ${typeof inputList}`)
+    for (let item of inputList) {
+        if (item.startsWith(searchQuery)) {
+            outputList.push(item)
+            if (cap != null && outputList.length >= cap) { break; }
+        }
+    }
+    return outputList;
+}
