@@ -1,5 +1,5 @@
 body {
-    color:azure;
+    background-image: url(/public/stylesheets/5570834.jpg);
     background-color: rgb(23, 32, 37);
 }
 
@@ -12,10 +12,15 @@ h1,h2 {
     color: aquamarine;
 }
 
+h5 {
+  border: medium double teal; margin-right: 994px;background-color: rgb(9, 56, 56); } 
+
 
 h1 {
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px aqua, 0 0 30px aqua;
-  animation: glow 1.5s infinite alternate;
+  text-shadow: 0 0 5px #ffffff33, 0 0 10px #ffffff37, 0 0 20px rgba(0, 255, 255, 0.372), 0 0 30px rgba(0, 255, 255, 0.167);
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 @keyframes glow {
@@ -26,3 +31,8 @@ h1 {
     text-shadow: 0 0 10px aqua, 0 0 20px aqua, 0 0 40px aqua, 0 0 50px aqua;
   }
 }
+
+
+.nv{ background-color: rgba(79, 119, 131, 0.441);}
+
+

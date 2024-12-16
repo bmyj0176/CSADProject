@@ -29,11 +29,11 @@ function Login() {
       <h1>TravelSite</h1>
       <p>
         Email:
-        <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
+        <input type="text" placeholder="Enter Your Email Here" value={email} onChange={(e) => setEmail(e.target.value)} />
       </p>
       <p>
         Password:
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <input type="password" placeholder="Enter Password"value={password} onChange={(e) => setPassword(e.target.value)} />
       </p>
       <p>
         Don't have an account? <Link to="/register" style={{textDecorationLine:"underline"}}>Sign up now</Link>

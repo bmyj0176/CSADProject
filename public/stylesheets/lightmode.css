@@ -1,18 +1,29 @@
 body {
-    color:rgb(23, 32, 37);
+    
     background-color: azure;
-
-    
-    text-shadow: 0 0 5px white, 0 0 10px white, 0 0 20px white, 0 0 30px white;
-    animation: glow 1.5s infinite alternate;
-    
-    
-    @keyframes glow {
-      0% {
-        text-shadow: 0 0 5px aqua, 0 0 10px aqua, 0 0 20px aqua, 0 0 30px aqua;
-      }
-      100% {
-        text-shadow: 0 0 10px aqua, 0 0 20px aqua, 0 0 40px aqua, 0 0 50px aqua;
-      }
-    }
 }
+
+h5,h3, a {
+  color: khaki;
+  text-decoration: none;
+}
+
+h1 {
+ 
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgb(214, 167, 49);
+}
+
+
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 5px gold, 0 0 10px gold, 0 0 20px gold, 0 0 30px gold;
+  }
+  100% {
+    text-shadow: 0 0 10px gold, 0 0 20px gold, 0 0 40px gold, 0 0 50px gold;
+  }
+}
+
+.nv{ background-color: rgba(213, 219, 150, 0.441); }

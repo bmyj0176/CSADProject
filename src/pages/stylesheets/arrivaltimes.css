@@ -15,7 +15,11 @@
 .at li button {
     display: inline-block;
     background-color: rgb(57, 57, 57);
+    color: khaki;
     padding: 12px;
+    height: auto;
+    width: auto;
+    margin: auto;
 }
   
 /*all properties when hovered*/
@@ -37,5 +41,5 @@
   }
 
 .at input {
-
+    width: 80%;
 }
