@@ -1,10 +1,8 @@
 /*navbar properties*/
 .nv {
   list-style-type: none;
-  margin: 12px;
-  padding: 12px;
-  overflow: hidden;
-  background-color: rgb(57, 57, 57);
+  margin: 0px;
+  padding: 12px 30px 12px 30px;
 }
 
 /*each navbar element properties*/
@@ -12,16 +10,22 @@
   display: inline-block;
 }
 
-/*no text underlines*/
+/*spacing, inline*/
 .nv li a {
   display: inline-block;
   padding: 16px;
+  margin: 0px 0px 0px 0px
 }
 
-/*all properties when hovered*/
+/*properties when hovered*/
 .nv :hover {
-  background-color: rgb(120, 120, 120);
+  text-decoration: underline;
 }
+
+.nv :active{
+  color: rgba(197, 197, 26, 0.201);
+}
+
 
 
 /*dropdown is hidden, edit profile properties*/
@@ -42,3 +46,36 @@
   display: block;
 }
 
+
+
+.dark{
+  background-image: url('/public/images/DARK.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  position:relative;
+  top: 9px;
+  width: 50px;
+  height: 40px;
+  margin-top: 10px;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  background-position-y: 5px;
+  
+}
+
+.light{
+  background-image: url('/public/images/LIGHT.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  position:relative;
+  top: 9px;
+  width: 50px;
+  height: 40px;
+  margin-top: 10px;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  background-position-y: 5px;
+  
+}

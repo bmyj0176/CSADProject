@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet, Link } from "react-router-dom";
 import './stylesheets/navbar.css';
-import { BusStops } from '../api_caller'
+import { BusStops } from '../api_caller';
 
 const NavBar = () => {
 
   const [userLoggedIn, setUserLoggedIn] = useState(false);
+  var elementId = "light";
 
   // check if user is logged in
   useEffect(() => {
@@ -18,10 +19,16 @@ const NavBar = () => {
 
   function toggle_theme() {
     const themeLink = document.getElementById("lightdarkmode");
+    const targetElement = document.getElementById("theme-target");
     if (themeLink.href.endsWith("stylesheets/darkmode.css")) {
         themeLink.href = "../stylesheets/lightmode.css";
-    } else {
+        targetElement.classList.remove("light");
+        targetElement.classList.add("dark");
+        
+    } else if  (themeLink.href.endsWith("stylesheets/lightmode.css")) {
         themeLink.href = "../stylesheets/darkmode.css";
+        targetElement.classList.remove("dark");
+        targetElement.classList.add("light");
     }
   }  
 
@@ -62,12 +69,11 @@ const NavBar = () => {
     <>
       <ul className="nv">
           <li><Link to="/">TravelSite</Link></li>
-          
-
-          <li><button id="toggle_button" onClick={toggle_theme} style={{backgroundImage: "url(${DARK})"}}/></li>
-          
           <li><Link to="/arrivaltimes">Arrival Times</Link></li>
           <li><Link to="/traveltimeest">Travel Time Est</Link></li>
+
+          <li><button id="theme-target" class="light" onClick={toggle_theme}/></li>
+
           <li><button id="test_button" onClick={test_function}>Test Button</button></li>
           <li style={{ float: 'right' }} className={"dropdown"}>
           <a href="javascript:void(0)" className="dropbtn">
@@ -81,7 +87,7 @@ const NavBar = () => {
                 <Link to="/about">About</Link><br/>
                 <Link to="/settings">Settings</Link><br/>
                 { userLoggedIn && <button id="logout" onClick={logout}>Log Out</button>}
-          </div>
+                </div>
               </>
             ) // logged in
             }
@@ -93,4 +99,4 @@ const NavBar = () => {
   )
 };
 
-export default NavBar;
+export default NavBar; 

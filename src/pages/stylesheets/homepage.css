@@ -7,3 +7,31 @@ iframe {
 
 }
 
+
+
+.headd {text-align:center; animation: slideDown 2s ease-out forwards; }
+
+.subhead{position:relative; left: 95px;}
+.subpar{position:relative; top: -10px; left: 82px;}
+
+hr {position: absolute; left:0px; width:558px; height:10px}
+
+.subhead2{position:relative; left: 95px; top: 40px;}
+.subpar2{position:relative; top: 30px; left: 82px;}
+
+
+@keyframes slideDown {
+  0% {
+      transform: translateY(-20px);
+      opacity: 0;  
+  }
+  100% {
+      transform: translateY(0); 
+      opacity: 1; 
+  }
+}
+
+.headd {text-align:center; animation: slideDown 2s ease-out forwards; }
+
+
+
