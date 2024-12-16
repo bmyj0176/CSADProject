@@ -1,4 +1,5 @@
-112 Katong",
+[
+"112 Katong",
 "15 Scotts",
 "18 Woodsville",
 "216 CP",
@@ -5142,4 +5143,5 @@
 "Zhongshan Mall",
 "Zion Bible Presby Ch",
 "Zuellig Pharma",
-"blk 56
+"blk 56"
+]
