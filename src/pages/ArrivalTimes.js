@@ -11,37 +11,99 @@ class ArrivalTimes extends Component {
     super(props);
     this.state = {
       toggles: {
-        busNo: false,
-        busStop: false,
-        stopNumber: false,
-        nearMe: false,
+        busNo: null,
+        busStop: null,
+        stopNumber: null,
+        nearMe: null,
       },
     };
   }
 
   handleToggle = (buttonName) => {
-    this.setState((prevState) => ({
-      toggles: {
-        ...prevState.toggles,
-        [buttonName]: !prevState.toggles[buttonName],
-      },
-    })); 
+    this.setState((prevState) => {
+      if (buttonName === 'nearMe') {
+        if (this.state.toggles['nearMe'] === null) {
+          return {
+            toggles: {
+              ...prevState.toggles,
+              busNo: null,
+              busStop: null,
+              stopNumber: null,
+              nearMe: true,
+            },
+          };
+        } else {
+          return {
+            toggles: {
+              ...prevState.toggles,
+              busNo: null,
+              busStop: null,
+              stopNumber: null,
+              nearMe: null,
+            },
+          };
+        }
+      } else {
+        // other 3 buttons
+        if (this.state.toggles['busNo'] == null && this.state.toggles['busStop'] == null && this.state.toggles['stopNumber'] == null) {
+          return {
+            toggles: {
+              ...prevState.toggles,
+              busNo: false,
+              busStop: false,
+              stopNumber: false,
+              nearMe: null,
+              [buttonName]: true,
+            },
+          };
+        } else {
+          const bools = [this.state.toggles['busNo'], this.state.toggles['busStop'], this.state.toggles['stopNumber']];
+          const selected = this.state.toggles[buttonName];
+          if (selected && bools.filter((bool) => bool).length === 1) { // only one filter selected is picked
+            return {
+              toggles: {
+                ...prevState.toggles,
+                busNo: null,
+                busStop: null,
+                stopNumber: null,
+                nearMe: null,
+              },
+            };
+          } else {
+            return {
+              toggles: {
+                ...prevState.toggles,
+                [buttonName]: !prevState.toggles[buttonName],
+              },
+            };
+          }
+        }
+      }
+    });
   };
 
-  filter_off() {
+  default() {
     return {
       fontWeight: "normal",
     };
   }
 
-  filter_on() {
+  filtered_off() {
+    return {
+      fontWeight: "normal",
+      opacity: 0.2
+    };
+  }
+
+  filtered_on() {
     return {
       fontWeight: "bold",
+      backgroundColor: "#606060"
     };
   }
 
   choose(buttonName) {
-    return this.state.toggles[buttonName] ? this.filter_on() : this.filter_off();
+    return this.state.toggles[buttonName] !== null ? this.state.toggles[buttonName] ? this.filtered_on() : this.filtered_off() : this.default()
   }
 
   render() {
