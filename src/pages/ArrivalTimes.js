@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, Component } from 'react';
-import { searchInList } from '../helper_functions';
+import { searchInList, getBusTiming } from '../helper_functions';
 import { get_list } from '../file_reader';
 import "./stylesheets/arrivaltimes.css";
 //import { link } from 'fs-extra'; this shhit gives 23 fucking errors 
@@ -26,9 +26,9 @@ class ArrivalTimes extends Component {
           return {
             toggles: {
               ...prevState.toggles,
-              busNo: null,
-              busStop: null,
-              stopNumber: null,
+              busNo: false,
+              busStop: false,
+              stopNumber: false,
               nearMe: true,
             },
           };
@@ -45,7 +45,9 @@ class ArrivalTimes extends Component {
         }
       } else {
         // other 3 buttons
-        if (this.state.toggles['busNo'] == null && this.state.toggles['busStop'] == null && this.state.toggles['stopNumber'] == null) {
+        if ((this.state.toggles['busNo'] == null && this.state.toggles['busStop'] == null && this.state.toggles['stopNumber'] == null)
+          || (!this.state.toggles['busNo'] && !this.state.toggles['busStop'] && !this.state.toggles['stopNumber'])
+        ) {
           return {
             toggles: {
               ...prevState.toggles,
@@ -147,19 +149,20 @@ class ArrivalTimes extends Component {
           </li>
         </ul>
  {/*---------------------------------------------------------------------------------*/}
-        {!this.state.toggles["nearMe"] ? <ArrivalTimesSearchBar toggleStates={this.state.toggles}/> : "Near Me"}
+        {!this.state.toggles["nearMe"] ? <SearchBar toggleStates={this.state.toggles}/> : "Near Me"}
       </>
     );
   }
 }
 
-const ArrivalTimesSearchBar = (props) => {
+const SearchBar = (props) => {
   const MAX_BAR_SIZE = 20;
   const [bus_services_list, bus_stop_codes_list, bus_stops_list] = [useRef([]), useRef([]), useRef([])];
   const [searchBarValue, setSearchBarInput] = useState(''); // search bar value
   const [barsCount, setBarsCount] = useState(0); // count of stacked bars
   const [barsList, setBarsList] = useState([]); // contents of stacked bars
   
+  // once at start of lifecycle
   useEffect(() => {
     const fetchNumbers = async () => {
       bus_services_list.current = await get_list('./datasets/bus_services.txt');
@@ -169,35 +172,46 @@ const ArrivalTimesSearchBar = (props) => {
     
       fetchNumbers();
     }, []); // Empty dependency array ensures this runs only once when the component mounts
+  
+    useEffect(() => {
+      updateSearchBar(searchBarValue);
+    }, [props.toggleStates, searchBarValue]);
     
-  // Increase the count of bars
-  const updateSearchBar = (event) => {
-    const value = event.target.value;
-    setSearchBarInput(value);
-    if (value !== '') {
-      const full_list = [] 
-      if (!props.toggleStates['busNo']) {full_list.push(...bus_services_list.current)} 
-      if (!props.toggleStates['busStop']) {full_list.push(...bus_stop_codes_list.current)}  
-      if (!props.toggleStates['stopNumber']) {full_list.push(...bus_stops_list.current)} 
-      const filtered_list = searchInList(value, full_list, MAX_BAR_SIZE)
-      setBarsList(filtered_list);
-      setBarsCount(filtered_list.length);
-    }
-    else {
-      setBarsCount(0);
-    }
-  };
+    const onChangeSearchBar = (event) => {
+      const value = event.target.value;
+      setSearchBarInput(value);
+    };
+    
+    const updateSearchBar = (value) => {
+      const full_list = [];
+      if (props.toggleStates['busNo'] == null || props.toggleStates['busNo']) {
+        full_list.push(...bus_services_list.current);
+      }
+      if (props.toggleStates['busStop'] == null || props.toggleStates['busStop']) {
+        full_list.push(...bus_stops_list.current);
+      }
+      if (props.toggleStates['stopNumber'] == null || props.toggleStates['stopNumber']) {
+        full_list.push(...bus_stop_codes_list.current);
+      }
+      if (value !== '') {
+        const filtered_list = searchInList(value, full_list, MAX_BAR_SIZE);
+        setBarsList(filtered_list);
+        setBarsCount(filtered_list.length);
+      } else {
+        setBarsCount(0);
+      }
+    };
   
   return (
     <div className="container">
       {/* searchbar */}
-      <input type="text" placeholder="Search..." className="search_bar" value={searchBarValue} onChange={updateSearchBar}/>
+      <input type="text" placeholder="Search..." className="search_bar" value={searchBarValue} onChange={onChangeSearchBar}/>
 
       {/* stacked bars */}
       <div className="bars">
         {Array.from({ length: barsCount }, (_, index) => (
           <div key={index} className="bar">
-            <SearchResultBar value={barsList[index]}/>
+            <SearchResult value={barsList[index]} />
           </div>
         ))}
       </div>
@@ -205,11 +219,14 @@ const ArrivalTimesSearchBar = (props) => {
     );
   };
 
-const SearchResultBar = (props) => {
+const SearchResult = (props) => {
   return (
     <p style={{display:'block'}}>
       {props.value}
     </p>
   )
 }
+
+console.log(await getBusTiming("19039", "185")) // gives u the next 3 bus timings in a list, example: [3, 11, 21]
+
 export default ArrivalTimes;

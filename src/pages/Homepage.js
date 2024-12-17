@@ -9,10 +9,6 @@ const Homepage = () => {
         <h1 className="subhead"> What Do We Do? </h1>
         <h5 className = "subpar"> yapyapyapyapyapyapyapyapyapyapyapyap </h5>
         {/* Fixed iframe issue with proper syntax */}
-      <iframe
-        src="https://youtube.fandom.com/wiki/SDomingo"
-        title="YouTube Video"
-      />
       </div>
     <hr />
       <div>

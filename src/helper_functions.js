@@ -1,5 +1,6 @@
-import { convertISO8601, timeDiffISO8601 } from "./helper_functions2";
+import { convertISO8601, timeDiffISO8601, stealCoords, haversine } from "./helper_functions2";
 import { BusArrival, BusRoutes, BusStops } from "./api_caller";
+import { get_list } from "./file_reader"
 
 // getBusTiming() returns the arrival times of the next 3 buses
 // INPUT1 BusStopCode - (string) 5 digit code of bus stop, e.g. '46971', '83139'
@@ -77,12 +78,12 @@ export async function getRoadDistance(BusService, BSCode1, BSCode2) {
     return Math.abs(stop1.Distance - stop2.Distance);
 }
 
-// INPUT1 searchQuery - the search term/substring for the list
-// INPUT2 list - the full list of things that can be searched for
-// INPUT3 cap - hard caps the total entries, default = null (RECOMMENDED TO REDUCE LAG)
-export function searchInList(searchQuery, inputList, cap = null) {
+// INPUT1 searchQuery - (string) the search term/substring for the list
+// INPUT2 list - (list of strings) the full list of things that can be searched for
+// INPUT3 cap - (int number) hard caps the total entries, default = 500 (RECOMMENDED TO REDUCE LAG)
+// OUTPUT outputList - (list of strings) list of entries that is a product of substring
+export function searchInList(searchQuery, inputList, cap = 500) {
     const outputList = []
-    console.log(`typeof inputList = ${typeof inputList}`)
     for (let item of inputList) {
         if (item.startsWith(searchQuery)) {
             outputList.push(item)
@@ -92,19 +93,20 @@ export function searchInList(searchQuery, inputList, cap = null) {
     return outputList;
 }
 
-export function stealCoords() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            console.log("Latitude: " + position.coords.latitude);
-            console.log("Longitude: " + position.coords.longitude);
-            return [position.coords.latitude, position.coords.longitude]
-          },
-          (error) => {
-            console.error("Error: " + error.message);
-          }
-        );
-      } else {
-        console.log("Geolocation is not supported by this browser.");
-      }    
+// INPUT1 cap - (int number) hard caps the total entries, default = 500 (EXTREMELY RECOMMENDED TO REDUCE LAG)
+// OUTPUT outputList - (list of dicts) gives the top x closest bus stop codes to user location, and its distance in km
+export async function nearestBusStops(cap = 500) {
+    const outputList = Array(cap).fill({"BusStopCode": "", "Distance": Infinity}) // creates a list of cap size
+    const [hereLat, hereLon] = stealCoords(); // [position.coords.latitude, position.coords.longitude]
+    const BSC_CoordsList = await get_list('./datasets/bsc_coords.txt')
+    for (let dict of BSC_CoordsList) {
+        distance = haversine(hereLat, hereLon, dict.Lat, dict.Lon)
+        for (let i = 0; i < outputList.length; i++) {
+            if (distance < outputList[i].Distance) {
+                outputList[i] = {"BusStopCode": dict.BusStopCode, "Distance": distance};
+                break
+            }
+        }
+    }
+    return outputList
 }
