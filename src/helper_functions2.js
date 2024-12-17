@@ -43,24 +43,26 @@ export function busRouteAPIQuerySkip(busNumber) {
         }
 }
 
-export function stealCoords() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            console.log("Latitude: " + position.coords.latitude);
-            console.log("Longitude: " + position.coords.longitude);
-            return [position.coords.latitude, position.coords.longitude]
-          },
-          (error) => {
-            console.error("Error: " + error.message);
-          }
-        );
-    } else {
-        console.log("Geolocation is not supported by this browser.");
-    }    
+export async function doxx() {
+    return new Promise((resolve, reject) => {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+              (position) => {
+                resolve([position.coords.latitude, position.coords.longitude]);  // Resolve with coordinates
+              },
+              (error) => {
+                console.error("Geolocation error:", error.message);  // Log the error instead of rejecting
+                resolve([null, null]);  // Resolve with null values instead of rejecting the promise
+              }
+            );
+        } else {
+            console.error("Geolocation is not supported by this browser.");  // Log a message if geolocation is not available
+            resolve([null, null]);  // Resolve with null values
+        }
+    });
 }
 
-export function haversine(lat1, lon1, lat2, lon2) { // pythagoras but for world coords
+export function haversine(lat1, lon1, lat2, lon2) { // pythagoras but for geographical coords
     const R = 6371; // Earth's radius in km
     const dLat = toRadians(lat2 - lat1);
     const dLon = toRadians(lon2 - lon1);
@@ -73,4 +75,13 @@ export function haversine(lat1, lon1, lat2, lon2) { // pythagoras but for world 
 
 function toRadians(degrees) {
     return degrees * (Math.PI / 180);
+}
+
+export function insertAndShift(list, index, newValue) {
+    list.splice(index, 0, newValue); // adds newValue at index
+    
+    // remove the last element
+    list.pop(); 
+    
+    return list;
 }

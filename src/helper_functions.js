@@ -1,4 +1,4 @@
-import { convertISO8601, timeDiffISO8601, stealCoords, haversine } from "./helper_functions2";
+import { convertISO8601, timeDiffISO8601, doxx, haversine, insertAndShift } from "./helper_functions2";
 import { BusArrival, BusRoutes, BusStops } from "./api_caller";
 import { get_list } from "./file_reader"
 
@@ -96,14 +96,22 @@ export function searchInList(searchQuery, inputList, cap = 500) {
 // INPUT1 cap - (int number) hard caps the total entries, default = 500 (EXTREMELY RECOMMENDED TO REDUCE LAG)
 // OUTPUT outputList - (list of dicts) gives the top x closest bus stop codes to user location, and its distance in km
 export async function nearestBusStops(cap = 500) {
-    const outputList = Array(cap).fill({"BusStopCode": "", "Distance": Infinity}) // creates a list of cap size
-    const [hereLat, hereLon] = stealCoords(); // [position.coords.latitude, position.coords.longitude]
+    let outputList = Array(cap).fill({"BusStopCode": "", "Distance": Infinity}) // creates a list of cap size
+    
+    const [hereLat, hereLon] = await doxx(); // [position.coords.latitude, position.coords.longitude]
+    
+    // If coordinates are null, log an error and return early
+    if (hereLat === null || hereLon === null) {
+        console.error("Unable to retrieve Geolocation data.");
+        return null;
+    }
+
     const BSC_CoordsList = await get_list('./datasets/bsc_coords.txt')
     for (let dict of BSC_CoordsList) {
-        distance = haversine(hereLat, hereLon, dict.Lat, dict.Lon)
+        const distance = haversine(hereLat, hereLon, dict.Lat, dict.Lon)
         for (let i = 0; i < outputList.length; i++) {
             if (distance < outputList[i].Distance) {
-                outputList[i] = {"BusStopCode": dict.BusStopCode, "Distance": distance};
+                outputList = insertAndShift(outputList, i, {"BusStopCode": dict.BusStopCode, "Distance": distance})
                 break
             }
         }
