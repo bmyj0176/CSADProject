@@ -1,26 +1,29 @@
 body {
-    
-    background-color: rgb(23, 32, 37);
+  background-color: rgb(23, 32, 37);
 }
 
-h5, h3, a, p {
-    color: khaki;
-    text-decoration: none;
+* {
+  color: khaki;
+  text-decoration: none;
 }
-
-h1,h2 {
-    color: aquamarine;
-}
-
-h5 {
-  border: medium double teal; margin-right: 994px;background-color: rgb(9, 56, 56); } 
-
 
 h1 {
   text-shadow: 0 0 5px #ffffff33, 0 0 10px #ffffff37, 0 0 20px rgba(0, 255, 255, 0.372), 0 0 30px rgba(0, 255, 255, 0.167);
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   letter-spacing: 1px;
   text-transform: uppercase;
+}
+
+h1,h2 {
+  color: aquamarine;
+}
+
+h5 {
+  border: medium double teal; margin-right: 994px;background-color: rgb(9, 56, 56); 
+} 
+
+button, .buton{
+  background-color: rgb(60, 60, 60);
 }
 
 @keyframes glow {
@@ -33,14 +36,21 @@ h1 {
 }
 
 
-.nv{ background-color: rgba(79, 119, 131, 0.441);}
 
-.nv :visited{
-  color: rgba(129, 129, 221, 0.324);
+
+/*seperator*/
+
+
+
+
+.nv { background-color: rgba(79, 119, 131, 0.441);}
+
+.nv li a {
+  color: rgba(129, 129, 221, 0.744);
 }
 
 .nv :active{
   color: rgba(84, 84, 144, 0.324);
-
 }
+
 

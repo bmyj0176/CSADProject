@@ -69,33 +69,35 @@ function Register() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h1>Register</h1>
-      <p>
-        Username:
-        <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} />
-        <div class="error" id="err_username" style={{color:'#E03E57'}}></div> {/* '#E03E57' isdocument.getElementById("err_username").innerHTML =  red*/}
-      </p>
-      <p>
-        Email:
-        <input type="text" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        <div class="error" id="err_email" style={{color:'#E03E57'}}></div>
-      </p>
-      <p>
-        Password:
-        <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        <div class="error" id="err_password" style={{color:'#E03E57'}}></div>
-      </p>
-      <p>
-        Confirm Password:
-        <input type="password" id="password2" value={password2} onChange={(e) => setPassword2(e.target.value)}/>
-        <div class="error" id="err_password2" style={{color:'#E03E57'}}></div>
-      </p>
-      <p>
-        Already have an account? <Link to="/login" className='links'>Sign In</Link>
-      </p>
-      <button type="submit">Register</button>
-    </form>
+    <>
+      <h1 style={{textAlign:'center'}}>Register</h1>
+      <form onSubmit={handleSubmit}>
+        <p>
+          Username:
+          <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} />
+          <div class="error" id="err_username" style={{color:'#E03E57'}}></div> {/* '#E03E57' isdocument.getElementById("err_username").innerHTML =  red*/}
+        </p>
+        <p>
+          Email:
+          <input type="text" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <div class="error" id="err_email" style={{color:'#E03E57'}}></div>
+        </p>
+        <p>
+          Password:
+          <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <div class="error" id="err_password" style={{color:'#E03E57'}}></div>
+        </p>
+        <p>
+          Confirm Password:
+          <input type="password" id="password2" value={password2} onChange={(e) => setPassword2(e.target.value)}/>
+          <div class="error" id="err_password2" style={{color:'#E03E57'}}></div>
+        </p>
+        <p>
+          Already have an account? <Link to="/login" className='links' style={{textDecorationLine:"underline"}}>Sign In</Link>
+        </p>
+        <button type="submit">Register</button>
+      </form>
+    </>
   );
 }
 

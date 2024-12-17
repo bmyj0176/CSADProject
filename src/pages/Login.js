@@ -25,21 +25,23 @@ function Login() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h1>TravelSite</h1>
-      <p>
-        Email: <nbsp/>
-        <input type="text" placeholder="Enter Your Email Here" value={email} onChange={(e) => setEmail(e.target.value)} />
-      </p>
-      <p>
-        Password: <nbsp/>
-        <input type="password" placeholder="Enter Password"value={password} onChange={(e) => setPassword(e.target.value)} />
-      </p>
-      <p>
-        Don't have an account? <Link to="/register" style={{textDecorationLine:"underline"}} className='links'>Sign up now</Link>
-      </p>
-      <button type="submit">Login</button>
-    </form>
+    <>
+      <h1 style={{textAlign:'center'}}>Login</h1>
+      <form onSubmit={handleSubmit}>
+        <p>
+          Email: <nbsp/>
+          <input type="text" placeholder="Enter Your Email Here" value={email} onChange={(e) => setEmail(e.target.value)} />
+        </p>
+        <p>
+          Password: <nbsp/>
+          <input type="password" placeholder="Enter Password"value={password} onChange={(e) => setPassword(e.target.value)} />
+        </p>
+        <p>
+          Don't have an account? <Link to="/register" style={{textDecorationLine:"underline"}} className='links'>Sign up now</Link>
+        </p>
+        <button type="submit">Login</button>
+      </form>
+    </>
   );
 }
 
