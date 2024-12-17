@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet, Link, useLocation } from "react-router-dom";
 import './stylesheets/navbar.css';
-import { BusStops } from '../api_caller';
+import { nearestBusStops } from '../helper_functions';
 
 const NavBar = () => {
   const [userLoggedIn, setUserLoggedIn] = useState(false);
@@ -37,36 +37,19 @@ const NavBar = () => {
   async function test_function() {
     console.log("Test Start");
 
-    const myList = [];
-    
-    // Assuming BusStops is a function that returns data, and you need to loop through it
-    for (let skip = 0; skip <= 5000; skip += 500) {
-        const data = await BusStops(skip);
-        const list = data.value;
-        
-        // Push each relevant data into myList
-        for (let dict of list) {
-            myList.push({
-                "BusStopCode": dict.BusStopCode,
-                "Lat": dict.Latitude,
-                "Lon": dict.Longitude
-            });
-        }
+    const result = await nearestBusStops(5);
+    console.log(result);
+
+    // Create an empty string to accumulate the result
+    let string = "";
+
+    // Loop through the result array and format the output for each item
+    for (let item of result) {
+        string += item.BusStopCode + ' ';
     }
 
-    // Convert myList to a string by stringifying each object (e.g., converting JSON to a string)
-    const listAsString = myList.map(item => JSON.stringify(item)).join(",\n");
-
-    // Create a Blob from the string
-    const blob = new Blob([listAsString], { type: 'text/plain' });
-
-    // Create a temporary link to trigger the download
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = 'list.txt'; // Name of the downloaded file
-
-    // Trigger the download
-    link.click();
+    // Set the innerHTML of the 'test_text' element to display the string
+    document.getElementById('test_text').innerHTML = string;
 
     console.log("Test End");
 }
@@ -90,7 +73,7 @@ const NavBar = () => {
           <li><button id="theme-target"  className="light" onClick={toggle_theme}/> 
           </li>
 
-          <li><button id="test_button" onClick={test_function}> Test Button</button>
+          <li><button id="test_button" onClick={test_function}> Test Button</button><span id="test_text"></span>
           </li>
 
           <li style={{ float: 'right' }} className="dropdown">
