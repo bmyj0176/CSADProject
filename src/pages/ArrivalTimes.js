@@ -225,7 +225,7 @@ class ArrivalTimes extends Component {
       <div className="bars">
         {Array.from({ length: barsCount }, (_, index) => (
           <div key={index} className="bar">
-            {barsList && barsList[index] ? (
+            {barsList && barsList[index] ? ( 
               <SearchResult value={barsList[index]} />
             ) : (
               <> Unable to get Location Data <br/> Please enable it in your browser settings </>

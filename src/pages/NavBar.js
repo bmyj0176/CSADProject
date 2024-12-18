@@ -36,22 +36,9 @@ const NavBar = () => {
 
   async function test_function() {
     console.log("Test Start");
-
-    const result = await nearestBusStops(5);
-    console.log(result);
-
-    // Create an empty string to accumulate the result
-    let string = "";
-
-    // Loop through the result array and format the output for each item
-    for (let item of result) {
-        string += item.BusStopCode + ' ';
-    }
-
-    // Set the innerHTML of the 'test_text' element to display the string
-    document.getElementById('test_text').innerHTML = string;
-
+    console.log("seeexxx")
     console.log("Test End");
+    console.log(nearestBusStops(5));
 }
 
 
