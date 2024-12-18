@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet, Link, useLocation } from "react-router-dom";
 import './stylesheets/navbar.css';
-import { nearestBusStops } from '../helper_functions';
+import { getBusStopInfo } from '../helper_functions';
 
 const NavBar = () => {
   const [userLoggedIn, setUserLoggedIn] = useState(false);
@@ -36,21 +36,7 @@ const NavBar = () => {
 
   async function test_function() {
     console.log("Test Start");
-
-    const result = await nearestBusStops(5);
-    console.log(result);
-
-    // Create an empty string to accumulate the result
-    let string = "";
-
-    // Loop through the result array and format the output for each item
-    for (let item of result) {
-        string += item.BusStopCode + ' ';
-    }
-
-    // Set the innerHTML of the 'test_text' element to display the string
-    document.getElementById('test_text').innerHTML = string;
-
+    console.log(await getBusStopInfo("BusStopCode", "19039"))
     console.log("Test End");
 }
 
