@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NavBar from "./pages/NavBar";
 import Homepage from "./pages/Homepage"
 import ArrivalTimes from "./pages/ArrivalTimes"
+  import ArrivalTimesList from "./pages/ArrivalTimes/ArrivalTimesList";
 import TravelTimeEST from "./pages/TravelTimeEST"
   import FindRoutes from "./pages/TravelTimeEST/FindRoutes";
   import SavedRoutes from "./pages/TravelTimeEST/SavedRoutes";
@@ -30,8 +31,8 @@ export default function App() {
               <Route path="login" element={<Login />} />
               <Route path="register" element={<Register />} />
               <Route path="*" element={<NoPage />} />
-              <Route path="about" element={<About />} ></Route>
-              <Route path="settings" element={<Settings />} ></Route>
+              <Route path="about" element={<About />} />
+              <Route path="settings" element={<Settings />} />
               </Route> {/*End of branch of NavBar*/}
       </Routes> 
     </BrowserRouter>

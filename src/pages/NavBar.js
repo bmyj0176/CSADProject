@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet, Link, useLocation } from "react-router-dom";
 import './stylesheets/navbar.css';
-<<<<<<< HEAD
-import { getBusStopInfo } from '../helper_functions';
-=======
+
 import { nearestBusStops } from '../helper_functions';
->>>>>>> fe6fb42a8acfe89d4a26b1791df29a00213fa929
 
 const NavBar = () => {
   const [userLoggedIn, setUserLoggedIn] = useState(false);
@@ -40,14 +37,9 @@ const NavBar = () => {
 
   async function test_function() {
     console.log("Test Start");
-<<<<<<< HEAD
-    console.log(await getBusStopInfo("BusStopCode", "19039"))
-    console.log("Test End");
-=======
     console.log("seeexxx")
     console.log("Test End");
     console.log(nearestBusStops(5));
->>>>>>> fe6fb42a8acfe89d4a26b1791df29a00213fa929
 }
 
 

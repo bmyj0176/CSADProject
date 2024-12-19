@@ -80,22 +80,69 @@ export async function getRoadDistance(BusService, BSCode1, BSCode2) {
 
 // INPUT1 searchQuery - (string) the search term/substring for the list
 // INPUT2 list - (list of strings) the full list of things that can be searched for
-// INPUT3 cap - (int number) hard caps the total entries, default = 500 (RECOMMENDED TO REDUCE LAG)
+// INPUT3 cap - (int number) hard caps the total entries, default = 50 (RECOMMENDED TO REDUCE LAG)
 // OUTPUT outputList - (list of strings) list of entries that is a product of substring
-export function searchInList(searchQuery, inputList, cap = 500) {
+export function searchInList(searchQuery, inputList, cap = 50) {
     const outputList = []
-    for (let item of inputList) {
-        if (item.startsWith(searchQuery)) {
-            outputList.push(item)
-            if (cap != null && outputList.length >= cap) { break; }
+    const outputListIndexes = [] // primary search filtering
+    const cleaned_searchQuery = searchQuery.toLowerCase().replace(/\s+/g, '').replace(/[^\w\s]/g, '')
+    // PRIMARY SEARCH - if substring at start of string
+    for (let n = 0; n < inputList.length; n++) {
+        const cleaned_item = inputList[n].toLowerCase().replace(/\s+/g, '').replace(/[^\w\s]/g, '') // for search ease, remove spaces, special chars & case sensitivity
+        if (cleaned_item.startsWith(cleaned_searchQuery)) {
+            outputList.push(inputList[n])
+            outputListIndexes.push(n)
+            if (cap != null && outputList.length >= cap) 
+                return outputList;
+        }
+    }
+    // SECONDARY SEARCH - if substring at anywhere, will appear below primary search results
+    for (let n = 0; n < inputList.length; n++) { 
+        const cleaned_item = inputList[n].toLowerCase().replace(/\s+/g, '').replace(/[^\w\s]/g, '') // for search ease, remove spaces, special chars & case sensitivity
+        if (cleaned_item.includes(cleaned_searchQuery)) {
+            if (!outputListIndexes.includes(n)) // only if not already filtered by primary search
+                outputList.push(inputList[n])
+            if (cap != null && outputList.length >= cap) 
+                return outputList;
         }
     }
     return outputList;
 }
 
-// INPUT1 cap - (int number) hard caps the total entries, default = 500 (EXTREMELY RECOMMENDED TO REDUCE LAG)
+// same as searchInList but for list of dicts
+// INPUT key - represents the key in dict to search for
+// OUTPUT outputList - returns list of dicts
+/*export function searchInListOfDicts(searchQuery, inputList, key, cap = 50) {
+    const outputList = []
+    const outputListIndexes = [] // primary search filtering
+    const cleaned_searchQuery = searchQuery.toLowerCase().replace(/\s+/g, '').replace(/[^\w\s]/g, '')
+    // PRIMARY SEARCH - if substring at start of string
+    for (let n = 0; n < inputList.length; n++) {
+        const cleaned_item = inputList[n].toLowerCase().replace(/\s+/g, '').replace(/[^\w\s]/g, '') // for search ease, remove spaces, special chars & case sensitivity
+        if (cleaned_item.startsWith(cleaned_searchQuery)) {
+            outputList.push(inputList[n])
+            outputListIndexes.push(n)
+            if (cap != null && outputList.length >= cap) 
+                return outputList;
+        }
+    }
+    // SECONDARY SEARCH - if substring at anywhere, will appear below primary search results
+    for (let n = 0; n < inputList.length; n++) { 
+        const cleaned_item = inputList[n].toLowerCase().replace(/\s+/g, '').replace(/[^\w\s]/g, '') // for search ease, remove spaces, special chars & case sensitivity
+        if (cleaned_item.includes(cleaned_searchQuery)) {
+            if (!outputListIndexes.includes(n)) // only if not already filtered by primary search
+                outputList.push(inputList[n])
+            if (cap != null && outputList.length >= cap) 
+                return outputList;
+        }
+    }
+    return outputList;
+}*/
+
+
+// INPUT1 cap - (int number) hard caps the total entries, default = 50 (EXTREMELY RECOMMENDED TO REDUCE LAG)
 // OUTPUT outputList - (list of dicts) gives the top x closest bus stop codes to user location, and its distance in km
-export async function nearestBusStops(cap = 500) {
+export async function nearestBusStops(cap = 50) {
     let outputList = Array(cap).fill({"BusStopCode": "", "Distance": Infinity}) // creates a list of cap size
     
     const [hereLat, hereLon] = await doxx(); // [position.coords.latitude, position.coords.longitude]
