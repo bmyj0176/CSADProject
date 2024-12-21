@@ -7,7 +7,7 @@ const Homepage = () => {
       <h3 style={{textAlign: "center"}}> The Smart Way To Get Labour </h3>
       <div style={{display: "inline-block"}}>
         <h1 className="subhead"> What Do We Do? </h1>
-        <h5 className = "subpar"> yapyapyapyapyapyapyapyapyapyapyapyap </h5>
+        <h5 className = "subpar"> yapyapyapyapyapyapyap </h5>
         {/* Fixed iframe issue with proper syntax */}
       </div>
     <hr />
