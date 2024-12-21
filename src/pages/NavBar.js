@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet, Link, useLocation } from "react-router-dom";
 import './stylesheets/navbar.css';
-
-import { nearestBusStops } from '../helper_functions';
+import { dijkstra, shortest_path } from '../travel_algorithms';
 
 const NavBar = () => {
   const [userLoggedIn, setUserLoggedIn] = useState(false);
@@ -36,10 +35,11 @@ const NavBar = () => {
   }
 
   async function test_function() {
+    console.clear()
     console.log("Test Start");
-    console.log("seeexxx")
+    //console.log(dijkstra("A"));
+    console.log(await shortest_path(1, 2));
     console.log("Test End");
-    console.log(nearestBusStops(5));
 }
 
 
