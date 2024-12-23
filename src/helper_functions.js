@@ -55,6 +55,25 @@ export async function getBusStopInfo(key, value) {
     return null
 }
 
+// INPUT BusService - (string) bus service e.g. "185"
+// OUTPUT stopNumberList - (list of String) all bus stops this bus service passes by, in order
+export async function getAllBusStops(BusService) {
+    const stopNumberList = []
+    let direction = null
+    const data = await BusRoutes(BusService)
+    const list = data.value
+    for (const dict of list) {
+        if (!direction)
+            direction = dict.Direction 
+        if (!direction || dict.Direction == direction) {
+            if (dict.ServiceNo === BusService) 
+                stopNumberList.push(dict.BusStopCode)
+        }
+    }
+    return stopNumberList
+}
+
+
 // INPUT1 BusService - (string) bus service connecting two stops
 // INPUT2 BSCode1 - (string) first bus stop code
 // INPUT3 BSCode2 - (string) second bus stop code
@@ -63,7 +82,7 @@ export async function getRoadDistance(BusService, BSCode1, BSCode2) {
     let stop1 = null;
     let stop2 = null;
     const data = await BusRoutes(BusService)
-    const list = data["value"]
+    const list = data.value
     for (let dict of list) {
         if (dict.ServiceNo === BusService) {
             if (dict.BusStopCode === BSCode1 || dict.BusStopCode === BSCode2) {
@@ -108,37 +127,6 @@ export function searchInList(searchQuery, inputList, cap = 50) {
     }
     return outputList;
 }
-
-// same as searchInList but for list of dicts
-// INPUT key - represents the key in dict to search for
-// OUTPUT outputList - returns list of dicts
-/*export function searchInListOfDicts(searchQuery, inputList, key, cap = 50) {
-    const outputList = []
-    const outputListIndexes = [] // primary search filtering
-    const cleaned_searchQuery = searchQuery.toLowerCase().replace(/\s+/g, '').replace(/[^\w\s]/g, '')
-    // PRIMARY SEARCH - if substring at start of string
-    for (let n = 0; n < inputList.length; n++) {
-        const cleaned_item = inputList[n].toLowerCase().replace(/\s+/g, '').replace(/[^\w\s]/g, '') // for search ease, remove spaces, special chars & case sensitivity
-        if (cleaned_item.startsWith(cleaned_searchQuery)) {
-            outputList.push(inputList[n])
-            outputListIndexes.push(n)
-            if (cap != null && outputList.length >= cap) 
-                return outputList;
-        }
-    }
-    // SECONDARY SEARCH - if substring at anywhere, will appear below primary search results
-    for (let n = 0; n < inputList.length; n++) { 
-        const cleaned_item = inputList[n].toLowerCase().replace(/\s+/g, '').replace(/[^\w\s]/g, '') // for search ease, remove spaces, special chars & case sensitivity
-        if (cleaned_item.includes(cleaned_searchQuery)) {
-            if (!outputListIndexes.includes(n)) // only if not already filtered by primary search
-                outputList.push(inputList[n])
-            if (cap != null && outputList.length >= cap) 
-                return outputList;
-        }
-    }
-    return outputList;
-}*/
-
 
 // INPUT1 cap - (int number) hard caps the total entries, default = 50 (EXTREMELY RECOMMENDED TO REDUCE LAG)
 // OUTPUT outputList - (list of dicts) gives the top x closest bus stop codes to user location, and its distance in km

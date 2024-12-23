@@ -76,7 +76,7 @@
   
 }
 
-.nv a.activee {
+.nv a .activee {
   font-weight: bold;
   text-decoration: underline;
 }

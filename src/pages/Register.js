@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
+import "./stylesheets/login_register.css";
 
 function Register() {
 
@@ -73,23 +74,23 @@ function Register() {
       <h1 style={{textAlign:'center'}}>Register</h1>
       <form onSubmit={handleSubmit}>
         <p>
-          Username:
-          <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} />
+          Username: <nbsp/>
+          <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Enter Your Username Here"/>
           <div class="error" id="err_username" style={{color:'#E03E57'}}></div> {/* '#E03E57' isdocument.getElementById("err_username").innerHTML =  red*/}
         </p>
         <p>
-          Email:
-          <input type="text" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          Email: <nbsp/>
+          <input type="text" id="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter Your Email Here"/>
           <div class="error" id="err_email" style={{color:'#E03E57'}}></div>
         </p>
         <p>
-          Password:
-          <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          Password: <nbsp/>
+          <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter Password"/>
           <div class="error" id="err_password" style={{color:'#E03E57'}}></div>
         </p>
         <p>
-          Confirm Password:
-          <input type="password" id="password2" value={password2} onChange={(e) => setPassword2(e.target.value)}/>
+          Confirm Password: <nbsp/>
+          <input type="password" id="password2" value={password2} onChange={(e) => setPassword2(e.target.value)} placeholder="Enter Password"/>
           <div class="error" id="err_password2" style={{color:'#E03E57'}}></div>
         </p>
         <p>

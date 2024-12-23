@@ -43,6 +43,20 @@ export function busRouteAPIQuerySkip(busNumber) {
         }
 }
 
+/*// INPUT1 key - (string) the key of the dict you want to extract
+// INPUT2 value - (string) the value of key you want to extract
+// INPUT3 list - (list of dicts) the list to check for
+// OUTPUT outputList - (list of dicts) the filtered-out dicts
+export function extractDictsFromList(key, value, list) {
+    outputList = []
+    for (const dict of list) {
+        if (dict.key == value) {
+            outputList.push(dict)
+        }
+    }
+    return outputList
+}*/
+
 export async function doxx() {
     return new Promise((resolve, reject) => {
         if (navigator.geolocation) {

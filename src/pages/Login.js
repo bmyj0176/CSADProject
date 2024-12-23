@@ -34,7 +34,7 @@ function Login() {
         </p>
         <p>
           Password: <nbsp/>
-          <input type="password" placeholder="Enter Password"value={password} onChange={(e) => setPassword(e.target.value)} />
+          <input type="password" placeholder="Enter Password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </p>
         <p>
           Don't have an account? <Link to="/register" style={{textDecorationLine:"underline"}} className='links'>Sign up now</Link>

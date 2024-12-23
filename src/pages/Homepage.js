@@ -10,7 +10,7 @@ const Homepage = () => {
         <h5 className = "subpar"> yapyapyapyapyapyapyap </h5>
         {/* Fixed iframe issue with proper syntax */}
       </div>
-    <hr />
+      <hr style={{border: "1px solid #ccc", margin: "20px 0", width: "100%"}} />
       <div>
         <h1 className="subhead2"> More About Us </h1>
         <h5 className="subpar2"> yapyapyapyapyapyapyapyapyapyapyapyap <br/>

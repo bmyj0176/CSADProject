@@ -144,7 +144,7 @@ class ArrivalTimes extends Component {
               style={this.choose('stopNumber')}
               onClick={() => this.handleToggle('stopNumber')}
             >
-              Stop Number
+              <p> Stop Number </p>
             </button>
           </li>
  {/*---------------------------------------------------------------------------------*/}
@@ -153,7 +153,7 @@ class ArrivalTimes extends Component {
               style={this.choose('nearMe')}
               onClick={() => this.handleToggle('nearMe')}
             >
-              Near Me
+              <p> Near Me </p>
             </button>
           </li>
         </ul>
@@ -166,6 +166,7 @@ class ArrivalTimes extends Component {
             />
           </td>
           <td>
+          {console.log(this.state['searchResult'])}
             {this.state['searchResult'] ? 
             <ArrivalTimesList data={this.state.searchResult}/> 
             : null}

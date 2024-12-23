@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet, Link, useLocation } from "react-router-dom";
+import { getAllBusStops } from '../helper_functions';
 import './stylesheets/navbar.css';
 import { dijkstra, shortest_path } from '../travel_algorithms';
 
@@ -39,6 +40,7 @@ const NavBar = () => {
     console.log("Test Start");
     //console.log(dijkstra("A"));
     console.log(await shortest_path(1, 2));
+    console.log(await getAllBusStops("185"))
     console.log("Test End");
 }
 
