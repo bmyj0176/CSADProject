@@ -36,10 +36,14 @@ export function busRouteAPIQuerySkip(busNumber) {
             if (n === (firstBusPer500.length-1)) { // if already final page
                 return n*500;
             }
-            let testList = [firstBusPer500[n], firstBusPer500[n+1], busNumber];
+            let testList = null
+            if (n === 0)
+                testList = ["0", firstBusPer500[n], busNumber];
+            else
+                testList = [firstBusPer500[n-1], firstBusPer500[n], busNumber];
             testList.sort();
             if (busNumber === testList[1]) // bus index is squished between these two pages is true
-                return n*500
+                return (n-1)*500
         }
 }
 

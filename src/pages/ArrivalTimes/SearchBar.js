@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom'
-import { searchInList, getBusTiming, nearestBusStops } from '../../helper_functions';
+import { searchInList, searchInDualList, nearestBusStops, getBusStopInfo } from '../../helper_functions';
 import { get_list } from '../../file_reader';
 
 const SearchBar = (props) => {
     const MAX_BAR_SIZE = 20;
-    const [bus_services_list, bus_stop_codes_list, bus_stops_list] = [useRef([]), useRef([]), useRef([])];
+    const [bus_services_list, bsc_stopname_list] = [useRef([]), useRef([])];
     const [searchBarValue, setSearchBarInput] = useState(''); // search bar value
     const [barsCount, setBarsCount] = useState(0); // count of stacked bars
     const [barsList, setBarsList] = useState([]); // contents of stacked bars
@@ -14,8 +14,7 @@ const SearchBar = (props) => {
     useEffect(() => {
       const fetchNumbers = async () => {
         bus_services_list.current = await get_list('./datasets/bus_services.txt');
-        bus_stop_codes_list.current = await get_list('./datasets/bus_stop_codes.txt');
-        bus_stops_list.current = await get_list('./datasets/bus_stops.txt');
+        bsc_stopname_list.current = await get_list('./datasets/bsc_stopname.txt');
         };
       
         fetchNumbers();
@@ -42,7 +41,11 @@ const SearchBar = (props) => {
             return
           }
           for (const dict of nearest_services_and_dist) {
-            filtered_list.push({type: "stopNumber", value: dict.BusStopCode, distance: dict.Distance})
+            filtered_list.push({
+              type: "nearestBusStop", 
+              busStopName: (await getBusStopInfo(dict.BusStopCode, "Description")), 
+              busStopCode: dict.BusStopCode, 
+              distance: (Math.round(dict.Distance*1000) + "m Away")})
           }
         }
         else if (value !== '') { // SEARCH BAR MODE
@@ -50,15 +53,25 @@ const SearchBar = (props) => {
             full_list.push({type: "busNo", list: bus_services_list.current});
           }
           if (props.toggleStates['busStop'] == null || props.toggleStates['busStop']) {
-            full_list.push({type: "busStop", list: bus_stops_list.current});
-          }
-          if (props.toggleStates['stopNumber'] == null || props.toggleStates['stopNumber']) {
-            full_list.push({type: "stopNumber", list: bus_stop_codes_list.current});
+            full_list.push({type: "busStop", list: bsc_stopname_list.current});
           }
           for (const dict of full_list) {
-            const results = searchInList(value, dict.list, (MAX_BAR_SIZE-filtered_list.length))
-            for (const result of results)
-              filtered_list.push({type: dict.type, value: result})
+            let results = null
+            if (dict.type == "busNo") { // singular
+              results = searchInList(value, dict.list, (MAX_BAR_SIZE-filtered_list.length))
+              for (const result of results)
+                filtered_list.push({
+                type: "busNo", 
+                busNumber: result})
+            } else if (dict.type == "busStop") { // dual
+              results = searchInDualList(value, dict.list, (MAX_BAR_SIZE-filtered_list.length))
+              for (const result of results)
+                filtered_list.push({
+                type: "busStop", 
+                busStopName: result[0],
+                busStopCode: result[1]})
+            }
+            
             if (filtered_list.length >= MAX_BAR_SIZE) {break}
           }
         }
@@ -92,15 +105,43 @@ const SearchBar = (props) => {
       </div>
       );
     };
-  
+
 const SearchResult = (props) => {
+  const [header, setHeader] = useState("")
+  const [subheader1, setSubheader1] = useState("")
+  const [subheader2, setSubheader2] = useState("")
+
+  useEffect(() => {
+    setHeader("")
+    setSubheader1("")
+    setSubheader2("")
+    switch (props.dict.type) {
+      case "nearestBusStop":
+        setHeader(props.dict.busStopName)
+        setSubheader1(props.dict.busStopCode)
+        setSubheader2(props.dict.distance)
+        break
+      case "busNo":
+        setHeader(props.dict.busNumber)
+        setSubheader1(props.dict.aaaaaaaaaaaa)
+        break
+      case "busStop":
+        setHeader(props.dict.busStopName)
+        setSubheader1(props.dict.busStopCode)
+        break
+      }
+    //clearDisplay()
+    //setupDisplay();
+  }, [props.dict]);
     return (
         <p style={{display:'block'}}>
-          <button onClick={() => props.receiveSearchResult(props.dict)}>{props.dict.value}</button>
+          <button onClick={() => props.receiveSearchResult(props.dict)}>
+            <h3>{header}</h3>
+            <b>{subheader1}</b>
+            {subheader2 && ("  •  " + subheader2)}
+          </button>
         </p>
     )
 }
-
-  //console.log(await getBusTiming("19039", "185")) // gives u the next 3 bus timings in a list, example: [3, 11, 21]
   
 export default SearchBar

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet, Link, useLocation } from "react-router-dom";
+import { BusRoutes } from '../api_caller';
 import { getAllBusStops } from '../helper_functions';
 import './stylesheets/navbar.css';
 import { dijkstra, shortest_path } from '../travel_algorithms';
+import e from 'cors';
 
 const NavBar = () => {
   const [userLoggedIn, setUserLoggedIn] = useState(false);
@@ -36,11 +38,10 @@ const NavBar = () => {
   }
 
   async function test_function() {
-    console.clear()
-    console.log("Test Start");
+    console.log(await BusRoutes("900"))
+    //console.log(await getAllBusStops("900", 1))
     //console.log(dijkstra("A"));
     console.log(await shortest_path(1, 2));
-    console.log(await getAllBusStops("185"))
     console.log("Test End");
 }
 

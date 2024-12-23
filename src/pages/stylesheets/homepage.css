@@ -9,7 +9,7 @@ iframe {
 
 
 
-.headd {text-align:center; animation: slideDown 2s ease-out forwards; }
+.headd {animation: slideDown 2s ease-out forwards; }
 
 .subhead{position:relative; left: 95px;}
 .subpar{position:relative; top: -10px; left: 82px;}

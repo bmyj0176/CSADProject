@@ -13,12 +13,36 @@ import Register from "./pages/Register"
 import NoPage from "./pages/NoPage";
 import About from "./pages/Profile/about";
 import Settings from "./pages/Profile/settings";
-
+import LoadingPage from "./pages/LoadingPage";
+import React, { useState, useEffect } from "react";
 
 export default function App() {
+
+// Persistent state initialization
+const [isAuthenticated, setIsAuthenticated] = useState(
+  () => localStorage.getItem("isAuthenticated") === "true"
+);
+
+
+// Update localStorage when authentication state changes
+useEffect(() => {
+  localStorage.setItem("isAuthenticated", isAuthenticated);
+}, [isAuthenticated]);
+
+// Handle login
+const handleLogin = () => {
+  setIsAuthenticated(true); // Update state
+};
+
+// Handle logout
+const handleLogout = () => {
+  setIsAuthenticated(false); // Update state
+};
+
   return (
     <BrowserRouter>
       <Routes>
+      <Route path="/login"element={isAuthenticated ? <Navigate to="/" replace /> : <Login onLogin={handleLogin} />}/>
         <Route path="/" element={<NavBar />} >
               {/*End of branch of NavBar*/}
               <Route index element={<Homepage />} />
@@ -40,4 +64,4 @@ export default function App() {
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App />);
+root.render(<App />); 

@@ -2,9 +2,6 @@ import React, { Component, useState } from 'react';
 import SearchBar from "./ArrivalTimes/SearchBar"
 import "./stylesheets/arrivaltimes.css";
 import ArrivalTimesList from './ArrivalTimes/ArrivalTimesList';
-//import { link } from 'fs-extra'; this shhit gives 23 fucking errors 
-
- // bryan u fucked this code up it was working before 
  
 class ArrivalTimes extends Component {
   constructor(props) {
@@ -13,7 +10,6 @@ class ArrivalTimes extends Component {
       toggles: {
         busNo: null,
         busStop: null,
-        stopNumber: null,
         nearMe: null,
       },
       searchResult: null,
@@ -29,7 +25,6 @@ class ArrivalTimes extends Component {
               ...prevState.toggles,
               busNo: false,
               busStop: false,
-              stopNumber: false,
               nearMe: true,
             },
           };
@@ -39,28 +34,26 @@ class ArrivalTimes extends Component {
               ...prevState.toggles,
               busNo: null,
               busStop: null,
-              stopNumber: null,
               nearMe: null,
             },
           };
         }
       } else {
         // other 3 buttons
-        if ((this.state.toggles['busNo'] == null && this.state.toggles['busStop'] == null && this.state.toggles['stopNumber'] == null)
-          || (!this.state.toggles['busNo'] && !this.state.toggles['busStop'] && !this.state.toggles['stopNumber'])
+        if ((this.state.toggles['busNo'] == null && this.state.toggles['busStop'] == null)
+          || (!this.state.toggles['busNo'] && !this.state.toggles['busStop'])
         ) {
           return {
             toggles: {
               ...prevState.toggles,
               busNo: false,
               busStop: false,
-              stopNumber: false,
               nearMe: null,
               [buttonName]: true,
             },
           };
         } else {
-          const bools = [this.state.toggles['busNo'], this.state.toggles['busStop'], this.state.toggles['stopNumber']];
+          const bools = [this.state.toggles['busNo'], this.state.toggles['busStop']];
           const selected = this.state.toggles[buttonName];
           if (selected && bools.filter((bool) => bool).length === 1) { // only one filter selected is picked
             return {
@@ -68,7 +61,6 @@ class ArrivalTimes extends Component {
                 ...prevState.toggles,
                 busNo: null,
                 busStop: null,
-                stopNumber: null,
                 nearMe: null,
               },
             };
@@ -127,7 +119,7 @@ class ArrivalTimes extends Component {
               style={this.choose('busNo')}
               onClick={() => this.handleToggle('busNo')}
             >
-            <p> Bus No.</p>
+            <p> Bus Services </p>
             </button>
           </li>
  {/*---------------------------------------------------------------------------------*/}
@@ -135,16 +127,7 @@ class ArrivalTimes extends Component {
               style={this.choose('busStop')}
               onClick={() => this.handleToggle('busStop')}
               >
-              <p> Bus Stop </p>
-            </button>
-          </li>
- {/*---------------------------------------------------------------------------------*/}
-          <li>
-            <button
-              style={this.choose('stopNumber')}
-              onClick={() => this.handleToggle('stopNumber')}
-            >
-              <p> Stop Number </p>
+              <p> Bus Stops </p>
             </button>
           </li>
  {/*---------------------------------------------------------------------------------*/}
@@ -166,7 +149,6 @@ class ArrivalTimes extends Component {
             />
           </td>
           <td>
-          {console.log(this.state['searchResult'])}
             {this.state['searchResult'] ? 
             <ArrivalTimesList data={this.state.searchResult}/> 
             : null}

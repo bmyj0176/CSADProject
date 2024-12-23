@@ -3,7 +3,7 @@ import './stylesheets/homepage.css';
 const Homepage = () => {
   return (
     <div>
-      <h1 className="headd">Welcome to TravelSite</h1>
+      <h1 className="headd" style={{textAlign: "center"}}>Welcome to TravelSite</h1>
       <h3 style={{textAlign: "center"}}> The Smart Way To Get Labour </h3>
       <div style={{display: "inline-block"}}>
         <h1 className="subhead"> What Do We Do? </h1>

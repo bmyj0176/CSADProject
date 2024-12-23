@@ -1,20 +1,17 @@
-import { getAllBusStops, getBusStopInfo, getBusTiming } from '../../helper_functions'
+import { getAllBusStops, getBusStopInfo, getBusTiming, getBusDirections } from '../../helper_functions'
 import React, { useState, useEffect } from 'react';
+import BouncyBouncy from '../LoadingPage';
 
-// props.data.value is the value based on type, e.g. "185", "34593" or "Dover Stn Exit B"
+
 // props.data.type is the type of value, either "busNo", "busStop" or "stopNumber"
-// props.data.distance will be the distance from the busStop (only for near me search), otherwise null
 const ArrivalTimesList = (props) => {
-    console.log(`props.data.type = ${props.data.type}`)
-    console.log(`test = ${(props.data.type == "busNo")}`)
 
     return (
         <>
-        <p>test</p>
         {
             (props.data.type == "busNo") ?
             <BusRouteList data={props.data} />
-            : ((props.data.type == "busStop" || props.data.type == "stopNumber") ?
+            : ((props.data.type == "busStop" || props.data.type == "nearestBusStop") ?
             <BusStopList data={props.data} />
             : "Error")
         }
@@ -24,41 +21,95 @@ const ArrivalTimesList = (props) => {
 
 // for busNo
 const BusRouteList = (props) => {
+    let [direction, setDirection] = useState(1)
+    let [busDirections, setBusDirections] = useState([])
     const [stopNumbersList, setStopNumbersList] = useState([])
     const [busStopNameList, setBusStopNameList] = useState([])
     const [busTimesListList, setBusTimesListList] = useState([])
 
     // updates list when props updates
     useEffect(() => {
+        const resetLists = () => {
+            setBusDirections([])
+            setStopNumbersList([])
+            setBusStopNameList([])
+            setBusTimesListList([])
+        }
         const updateLists = async () => {
-            const bsc_list = await getAllBusStops(props.data.value)
+            const BusService = props.data.busNumber
+            busDirections = await getBusDirections(BusService)
+            setBusDirections(busDirections)
+            const bsc_list = await getAllBusStops(BusService, direction)
             setStopNumbersList(bsc_list)
             const stopname_list = []
             const busarrivallist_list = []
             for (const bsc of bsc_list) {
-                const data = await getBusStopInfo("BusStopCode", bsc)
-                stopname_list.push(data.Description)
-                const list = await getBusTiming(bsc, props.data.value)
+                const data = await getBusStopInfo(bsc, "Description")
+                stopname_list.push(data)
+                const list = await getBusTiming(bsc, BusService)
                 busarrivallist_list.push(list)
             }
             setBusStopNameList(stopname_list)
             setBusTimesListList(busarrivallist_list)
         }
+        resetLists();
         updateLists();
         
-    }, [props]);    
-    
+    }, [props.data, direction]);    
+
+    const toggleDirection = () => {
+        if (direction == 1)
+            setDirection(2)
+        else
+            setDirection(1)
+    }
+
     return (
         <>
-        <p>test2</p>
-        <div className="list">
-          {Array.from({ length: stopNumbersList.length }, (_, index) => (
-            <div key={index} className="bar">
-              {stopNumbersList[index]} <br/> {busStopNameList[index]} <br/>
-            </div>
-          ))}
-        </div>
+        {
+            (busStopNameList.length == stopNumbersList.length) ? // finished loading
+            (
+                <>
+                {(busDirections.length === 2) && (
+                    <button onClick={toggleDirection}>
+                        {busDirections[direction-1].start} → {busDirections[direction-1].end}
+                    </button>
+                )}
+                <div className="list">
+                {Array.from({ length: stopNumbersList.length }, (_, index) => (
+                  <div key={index} className="bar">
+                    <ul><li>
+                        <BusRouteElement 
+                        stopNo={stopNumbersList[index]} 
+                        stopName={busStopNameList[index]} 
+                        busTimesList={busTimesListList[index]} />
+                    </li></ul>
+                  </div>
+                ))}
+              </div>
+              </>
+            ) :
+            (
+                <BouncyBouncy/>
+            )
+        }
         </>
+    )
+}
+
+const BusRouteElement = (props) => {
+    return (
+    <>
+        {props.stopName}
+        <br/>
+        {props.stopNo}
+        <br/>
+        {
+            (props.busTimesList).map((busTime, index) => (
+                <span key={index}>{busTime}&nbsp;</span>
+            ))
+        }
+    </>
     )
 }
 
