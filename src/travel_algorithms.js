@@ -20,7 +20,7 @@ async function test() {
     // 
     // EXAMPLE USAGE:
     //      await getBusStopInfo("BusStopCode", "19039")
-    // RESULTS IN:
+    // RESULTS IN: 
     //      [{
 	//	        BusStopCode: "19039",
 	//	        Description: "Dover Stn Exit B",

@@ -1,0 +1,113 @@
+
+#busstopdefault.busstopcard{ 
+
+
+    width: 150px;
+    padding:20px;
+    border: solid 1px hsl(0, 0%, 80%);
+    border-radius: 8px; /* for the roundsssssss */
+    background-color: #262836;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: Arial, sans-serif;
+
+}
+
+#busstopclicked.busstopcard{
+
+    width: 150px;
+    padding:20px;
+    border: solid 1px hsl(0, 0%, 80%);
+    border-radius: 8px; /* for the roundsssssss */
+    background-color: #7c7e8a;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.432);
+    text-align: center;
+    font-family: Arial, sans-serif;
+
+}
+
+
+#busstopdefault.busstopcard:hover{
+
+    background-color: #5b5d68;
+
+}
+
+#busstopclicked.busstopcard:hover{
+
+    background-color: #5b5d68;
+
+}
+
+#busstopclicked.busstopcard:active{
+
+    background-color: #7c7e8a;
+
+}
+
+#busstopdefault.busstopcard:active{
+    background-color: #7c7e8a;
+
+}
+
+
+
+
+#busstopdefault.alternatecard{
+    width: 150px;
+    padding:20px;
+    padding-bottom:2px;
+    border: solid 1px hsl(0, 0%, 80%);
+    border-radius: 8px; /* for the roundsssssss */
+    background-color: rgb(60, 61, 74);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: Arial, sans-serif;
+
+}
+
+#busstopclicked.alternatecard{
+    width: 150px;
+    padding:20px;
+    padding-bottom:2px;
+    border: solid 1px hsl(0, 0%, 80%);
+    border-radius: 8px; /* for the roundsssssss */
+    background-color: #7c7e8a;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: Arial, sans-serif;
+
+}
+
+
+.busstopname{
+
+    font-size: 18px;
+    font-weight: bold;
+    color: #f28b00;
+    position:relative;
+    bottom:10px;
+}
+
+.busstopnumber{
+
+        font-size:14px;
+        color: rgb(238, 206, 161);
+}
+
+
+#busstopdefault.alternatecard:hover{
+    background-color: #5b5d68;
+}
+
+#busstopclicked.alternatecard:hover{
+    background-color: #5b5d68;
+}
+
+#busstopdefault.alternatecard:active{
+    background-color: #7c7e8a;
+}
+
+#busstopclicked.alternatecard:active{
+    background-color: #7c7e8a;
+}

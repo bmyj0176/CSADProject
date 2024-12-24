@@ -2,6 +2,7 @@ import React, { Component, useState } from 'react';
 import SearchBar from "./ArrivalTimes/SearchBar"
 import "./stylesheets/arrivaltimes.css";
 import ArrivalTimesList from './ArrivalTimes/ArrivalTimesList';
+import { ArrivalTimesElement } from './ArrivalTimes/ArrivalTimesList';
  
 class ArrivalTimes extends Component {
   constructor(props) {
@@ -149,9 +150,19 @@ class ArrivalTimes extends Component {
             />
           </td>
           <td>
+          {/*TEMPORARY*/}
+          <ul><li>
+          <ArrivalTimesElement
+          header={"Dover Stn Exit B"}
+          subheader={"46969"}
+          updateBusTimes={""}
+          busTimesList={["Arr", 6, 14]}
+          index={0}/>
             {this.state['searchResult'] ? 
             <ArrivalTimesList data={this.state.searchResult}/> 
             : null}
+          </li></ul>
+          {/*TEMPORARY*/}
           </td>
         </tr></tbody></table>
       </>

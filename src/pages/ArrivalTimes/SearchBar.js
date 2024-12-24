@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom'
 import { searchInList, searchInDualList, nearestBusStops, getBusStopInfo } from '../../helper_functions';
 import { get_list } from '../../file_reader';
+import '../stylesheets/busstopcard.css'
 
 const SearchBar = (props) => {
     const MAX_BAR_SIZE = 20;
@@ -9,6 +9,7 @@ const SearchBar = (props) => {
     const [searchBarValue, setSearchBarInput] = useState(''); // search bar value
     const [barsCount, setBarsCount] = useState(0); // count of stacked bars
     const [barsList, setBarsList] = useState([]); // contents of stacked bars
+    const [selectedItem, setSelectedItem] = useState(null) 
     
     // once at start of lifecycle
     useEffect(() => {
@@ -18,12 +19,12 @@ const SearchBar = (props) => {
         };
       
         fetchNumbers();
-      }, []);
+    }, []);
     
       // updates when props.toggleStates or searchBarValue changes
-      useEffect(() => {
-        updateSearchBar(searchBarValue);
-      }, [props.toggleStates, searchBarValue]);
+    useEffect(() => {
+      updateSearchBar(searchBarValue);
+    }, [props.toggleStates, searchBarValue]);
       
       const onChangeSearchBar = (event) => {
         const value = event.target.value;
@@ -45,25 +46,25 @@ const SearchBar = (props) => {
               type: "nearestBusStop", 
               busStopName: (await getBusStopInfo(dict.BusStopCode, "Description")), 
               busStopCode: dict.BusStopCode, 
-              distance: (Math.round(dict.Distance*1000) + "m Away")})
+              distance: (Math.round(dict.Distance*1000))})
           }
         }
         else if (value !== '') { // SEARCH BAR MODE
-          if (props.toggleStates['busNo'] == null || props.toggleStates['busNo']) {
+          if (props.toggleStates['busNo'] === null || props.toggleStates['busNo']) {
             full_list.push({type: "busNo", list: bus_services_list.current});
           }
-          if (props.toggleStates['busStop'] == null || props.toggleStates['busStop']) {
+          if (props.toggleStates['busStop'] === null || props.toggleStates['busStop']) {
             full_list.push({type: "busStop", list: bsc_stopname_list.current});
           }
           for (const dict of full_list) {
             let results = null
-            if (dict.type == "busNo") { // singular
+            if (dict.type === "busNo") { // singular
               results = searchInList(value, dict.list, (MAX_BAR_SIZE-filtered_list.length))
               for (const result of results)
                 filtered_list.push({
                 type: "busNo", 
                 busNumber: result})
-            } else if (dict.type == "busStop") { // dual
+            } else if (dict.type === "busStop") { // dual
               results = searchInDualList(value, dict.list, (MAX_BAR_SIZE-filtered_list.length))
               for (const result of results)
                 filtered_list.push({
@@ -83,6 +84,10 @@ const SearchBar = (props) => {
         setBarsCount(filtered_list.length);
       };
     
+    const onItemSelect = (index) => {
+      setSelectedItem(index)
+    }
+    
     return (
       <div className="container">
         {/* searchbar disables if nearMe is off */}
@@ -94,7 +99,10 @@ const SearchBar = (props) => {
               {barsList ? ( 
                 <SearchResult 
                 dict={barsList[index]} 
+                index={index}
                 receiveSearchResult={props.receiveSearchResult}
+                selectedItem={selectedItem}
+                onItemSelect={onItemSelect}
                 />
               ) : (
                 <> Unable to get Location Data <br/> Please enable it in your browser settings </>
@@ -119,25 +127,32 @@ const SearchResult = (props) => {
       case "nearestBusStop":
         setHeader(props.dict.busStopName)
         setSubheader1(props.dict.busStopCode)
-        setSubheader2(props.dict.distance)
+        setSubheader2(props.dict.distance + "m Away")
         break
       case "busNo":
-        setHeader(props.dict.busNumber)
-        setSubheader1(props.dict.aaaaaaaaaaaa)
+        setHeader("Bus " + props.dict.busNumber)
         break
       case "busStop":
         setHeader(props.dict.busStopName)
         setSubheader1(props.dict.busStopCode)
         break
+      default:
+        break
       }
-    //clearDisplay()
-    //setupDisplay();
   }, [props.dict]);
+
+  const handleClick = () => {
+    props.onItemSelect(props.index)
+    props.receiveSearchResult(props.dict)
+  };
+
+
+    // BUTTON LAYOUT
     return (
         <p style={{display:'block'}}>
-          <button onClick={() => props.receiveSearchResult(props.dict)}>
-            <h3>{header}</h3>
-            <b>{subheader1}</b>
+          <button className={subheader1 ? "busstopcard" : "alternatecard"} id={(props.selectedItem === props.index) ? "busstopclicked" : "busstopdefault"} onClick={handleClick}>
+            <h3 className="busstopname">{header}</h3>
+            <b className="busstopnumber">{subheader1}</b>
             {subheader2 && ("  •  " + subheader2)}
           </button>
         </p>

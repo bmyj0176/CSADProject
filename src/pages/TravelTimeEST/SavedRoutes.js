@@ -1,8 +1,12 @@
 import React, {Component} from 'react';
 import {useState} from 'react';
+import Popup from "../Popup.js";
 
+function SavedRoutes() {
 
-class SavedRoutes extends Component {
+  const [showPopup, setShowPopup] = useState(false);
+  // u cant use usestate in a class
+  // reevulate ur life choices react components are >>>>>>>> classes
   
   state = {
     showList: false, 
@@ -12,7 +16,6 @@ class SavedRoutes extends Component {
     ],
   };
 
-  
   toggleDropdown = () => {
     this.setState((prevState) => ({ showList: !prevState.showList }));
   };
@@ -26,7 +29,6 @@ class SavedRoutes extends Component {
     );
   };
 
-  render() {
     return (
       <>
         <p>46 MINUTES!</p>
@@ -45,9 +47,18 @@ class SavedRoutes extends Component {
             ))}
           </ol>
         )}
+
+        {showPopup && (
+        <Popup
+          title="Login now to permanently save your routes"
+          message="Proceed to login page?"
+          
+          onClose={closePopup}
+        />
+
+      )}
       </>
     );
-  }
 }
 
 export default SavedRoutes; 

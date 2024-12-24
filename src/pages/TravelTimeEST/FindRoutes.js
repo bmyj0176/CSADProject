@@ -3,8 +3,6 @@ import { useState } from 'react';
 import "../stylesheets/traveltimeest.css";
 
 const FindRoutes = () => {
-  
-
     const [inputs, setInputs] = useState({});
   
     const handleChange = (event) => {
@@ -13,24 +11,21 @@ const FindRoutes = () => {
       setInputs(values => ({...values, [name]: value}))
     }
   
-  
     const handleSubmit = (event) => {
       event.preventDefault();
       console.log(inputs);
-  
     }
 
-     return(
+    return(
       <>
-      <h1>Search Now</h1>
-    <form onSubmit={handleSubmit}>
-    <label> From: <input  type="text"  name="from" value={inputs.from || ""} onChange={handleChange}/></label>
-    <label> To: <input type="text" name="to" value={inputs.to || ""} onChange={handleChange}/></label>
-    <input  type="submit" value="Find" />
-  </form>
-   
-</>
-);
+        <h1 style={{textAlign:'center'}}>Search Now</h1>
+        <form onSubmit={handleSubmit}>
+          <label> From: <input  type="text"  name="from" value={inputs.from || ""} onChange={handleChange}/></label>
+          <label> To: <input type="text" name="to" value={inputs.to || ""} onChange={handleChange}/></label>
+          <input  type="submit" value="Find" />
+        </form>
+      </>
+    );
 }
 
 export default FindRoutes; 

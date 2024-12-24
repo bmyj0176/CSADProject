@@ -17,7 +17,7 @@ export async function getBusTiming(BusStopCode, BusNumber) {
 
     const times = []
     const currentDate = new Date().toISOString(); 
-    const nextBusDates = [service.NextBus.EstimatedArrival, service.NextBus2.EstimatedArrival, service.NextBus3.EstimatedArrival];
+    const nextBusDates = [service.NextBus?.EstimatedArrival, service.NextBus2?.EstimatedArrival, service.NextBus3?.EstimatedArrival];
     for (let nextBusDate of nextBusDates) {
         if (nextBusDate == "")
             times.push("-")
@@ -36,10 +36,10 @@ export async function getBusTiming(BusStopCode, BusNumber) {
 // INPUT1 busStopCode - (string) bus stop code of bus stop you want to query, e.g. "46971"
 // INPUT2 key - (string) key of value you want to output, like "BusStopCode", "RoadName", "Description", "Latitude" or "Longitude"
 // OUTPUT BusStopInfo - (dict) consists of "BusStopCode", "RoadName", "Description", "Latitude" & "Longitude"
-export async function getBusStopInfo(busStopCode, key) {
+export async function getBusStopInfo(BusStopCode, key) {
     const complete_list = await get_list('./datasets/bus_stops_complete.txt');
     for (const dict of complete_list) {
-        if (dict.BusStopCode == busStopCode)
+        if (dict.BusStopCode == BusStopCode)
             return dict[key]
     }
     console.error("BusStopCode couldn't be found!")
@@ -58,6 +58,19 @@ export async function getAllBusStops(BusService, direction) {
             stopNumberList.push(dict.BusStopCode)  
     }
     return stopNumberList
+}
+
+// INPUT BusStopCode - (string) bus stop code of the bus stop
+// OUTPUT busServicesList - (list of strings) all bus services available at said bus stop
+export async function getAllBusServices(BusStopCode) {
+    const busServicesList = []
+    const data = await BusArrival(BusStopCode)
+    const list = data.Services
+    for (const dict of list) {
+        if (!busServicesList.includes(dict.ServiceNo))
+            busServicesList.push(dict.ServiceNo)
+    }
+    return busServicesList
 }
 
 // INPUT1 BusService - (string) bus service e.g. "185"

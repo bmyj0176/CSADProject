@@ -7,6 +7,14 @@ form {
     align-items: center;
 }
 
+.nyoomlogin {  
+ display:block;
+ margin-left:auto;
+ margin-right:auto;
+ width: 200px; /* Set the width */
+ height: auto; /* Maintain aspect ratio */
+}
+
 form h1 {
   text-shadow: 0 0 5px #ffffff33, 0 0 10px #ffffff37, 0 0 20px rgba(0, 255, 255, 0.372), 
   0 0 30px rgba(0, 255, 255, 0.167);

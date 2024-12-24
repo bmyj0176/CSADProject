@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet, Link, useLocation } from "react-router-dom";
 import { BusRoutes } from '../api_caller';
-import { getAllBusStops } from '../helper_functions';
+import { getAllBusServices } from '../helper_functions';
 import './stylesheets/navbar.css';
 import { dijkstra, shortest_path } from '../travel_algorithms';
 import e from 'cors';
@@ -38,7 +38,7 @@ const NavBar = () => {
   }
 
   async function test_function() {
-    console.log(await BusRoutes("900"))
+    console.log(await getAllBusServices("46971"))
     //console.log(await getAllBusStops("900", 1))
     //console.log(dijkstra("A"));
     console.log(await shortest_path(1, 2));
@@ -50,23 +50,21 @@ const NavBar = () => {
     <>
       <ul className="nv">
           <li>
-            <Link to="/" className={location.pathname === "/" ? "activee" : ""}> TravelSite</Link>
+            <Link to="/" className={location.pathname === "/" ? "activee" : ""}><img className="nyoom" src="./images/nyoom_icon.png"/></Link>
           </li>
-
           <li>
-            <Link to="/arrivaltimes" className={location.pathname === "/arrivaltimes" ? "activee" : ""}>Arrival Times</Link>
+            <Link to="/arrivaltimes" className={location.pathname === "/arrivaltimes" ? "activee" : ""}>Bus Arrival Times</Link>
           </li>
-
           <li>
-            <Link to="/traveltimeest" className={location.pathname === "/traveltimeest" ? "activee" : ""}>Travel Time Est</Link>
+            <Link to="/traveltimeest" className={location.pathname === "/traveltimeest" ? "activee" : ""}>Find Travel Routes</Link>
           </li>
-
-          <li><button id="theme-target"  className="light" onClick={toggle_theme}/> 
+          <li>
+            <button id="test_button" onClick={test_function}> Test Button</button><span id="test_text"></span>
           </li>
-
-          <li><button id="test_button" onClick={test_function}> Test Button</button><span id="test_text"></span>
+        {/*------ ABOVE IS FLOATED LEFT, BELOW IS FLOATED RIGHT -----------------------------*/}
+          <li style={{ float: 'right' }}>
+            <button id="theme-target"  className="light" onClick={toggle_theme}/> 
           </li>
-
           <li style={{ float: 'right' }} className="dropdown">
             <a href="javascript:void(0)" className="dropbtn">
               { !userLoggedIn ? (

@@ -1,14 +1,26 @@
 import axios from 'axios';
-import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./stylesheets/login_register.css";
+import { login } from './Login';
 
 function Register() {
+
+  const navigate = useNavigate();
+  const location = useLocation()
+  const retainedData = location.state // from login page
 
   var [username, setUsername] = useState('');
   var [email, setEmail] = useState('');
   var [password, setPassword] = useState('');
   var [password2, setPassword2] = useState('');
+
+  useEffect(() => {
+    if (retainedData) {
+      setEmail(retainedData.email)
+      setPassword(retainedData.password)
+    }
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault(); // prevents default submission, makes this function intercept 
@@ -21,10 +33,11 @@ function Register() {
           email: email.trim(), 
           password: password, 
         });
-        alert('Registration successful');
+        console.log('Registration successful');
+        await login(email, password, navigate);
       } catch (error) {
         console.error(error);
-        alert('Registration failed');
+        console.log('Registration failed');
       }
     }
   };
@@ -44,6 +57,13 @@ function Register() {
       document.getElementById("err_email").innerHTML = "Please enter your email."
       return false
     }
+    const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+    if (!regex.test(email))
+      {
+        document.getElementById("email").focus()
+        document.getElementById("err_email").innerHTML = "You have entered an invalid email address."
+        return false
+      }
     if (password === "") {
       document.getElementById("password").focus()
       document.getElementById("err_password").innerHTML = "Please enter a password."
@@ -59,18 +79,13 @@ function Register() {
       document.getElementById("err_password2").innerHTML = "Passwords do not match."
       return false
     }
-    const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-    if (!regex.test(email))
-    {
-      document.getElementById("email").focus()
-      document.getElementById("err_email").innerHTML = "You have entered an invalid email address."
-      return false
-    }
     return true
   }
 
   return (
     <>
+      <img className="nyoomlogin" src="./images/nyoom.png"/>
+      
       <h1 style={{textAlign:'center'}}>Register</h1>
       <form onSubmit={handleSubmit}>
         <p>
@@ -94,7 +109,17 @@ function Register() {
           <div class="error" id="err_password2" style={{color:'#E03E57'}}></div>
         </p>
         <p>
-          Already have an account? <Link to="/login" className='links' style={{textDecorationLine:"underline"}}>Sign In</Link>
+          Already have an account? &nbsp;
+          <Link 
+          to="/login" 
+          className='links' 
+          style={{textDecorationLine:"underline"}}
+          state={{email: email, password: password}}>
+            Sign In
+          </Link>
+        </p>
+        <p>
+          <Link to="/" style={{textDecorationLine:"underline", color:"grey"}} className='links'>Continue as guest</Link>
         </p>
         <button type="submit">Register</button>
       </form>
