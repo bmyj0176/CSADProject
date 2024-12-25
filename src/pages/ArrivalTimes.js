@@ -1,5 +1,5 @@
 import React, { Component, useState } from 'react';
-import SearchBar from "./ArrivalTimes/SearchBar"
+import ATSearchBar from "./ArrivalTimes/ATSearchBar"
 import "./stylesheets/arrivaltimes.css";
 import ArrivalTimesList from './ArrivalTimes/ArrivalTimesList';
 import { ArrivalTimesElement } from './ArrivalTimes/ArrivalTimesList';
@@ -144,7 +144,7 @@ class ArrivalTimes extends Component {
  {/*---------------------------------------------------------------------------------*/}
         <table><tbody><tr>
           <td>
-            <SearchBar 
+            <ATSearchBar 
             toggleStates={this.state.toggles} 
             receiveSearchResult={this.receiveSearchResult}
             />

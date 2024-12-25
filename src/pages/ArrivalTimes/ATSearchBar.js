@@ -3,7 +3,7 @@ import { searchInList, searchInDualList, nearestBusStops, getBusStopInfo } from 
 import { get_list } from '../../file_reader';
 import '../stylesheets/busstopcard.css'
 
-const SearchBar = (props) => {
+const ATSearchBar = (props) => {
     const MAX_BAR_SIZE = 20;
     const [bus_services_list, bsc_stopname_list] = [useRef([]), useRef([])];
     const [searchBarValue, setSearchBarInput] = useState(''); // search bar value
@@ -159,4 +159,4 @@ const SearchResult = (props) => {
     )
 }
   
-export default SearchBar
+export default ATSearchBar
