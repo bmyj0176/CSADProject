@@ -115,7 +115,7 @@ function Register() {
           className='links' 
           style={{textDecorationLine:"underline"}}
           state={{email: email, password: password}}>
-            Sign In
+            Login
           </Link>
         </p>
         <p>

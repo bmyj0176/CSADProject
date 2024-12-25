@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import "./stylesheets/popup.css";
 
-function Popup({ title, message, onClose }) {
+function Popup({ title, message }) {
 
   const [showPopup, setShowPopup] = useState(false);
   const [userLoggedIn, setUserLoggedIn] = useState(false);
@@ -24,7 +24,7 @@ function Popup({ title, message, onClose }) {
       <div className="popup">
         <h2>{title}</h2>
         <p>{message}</p>
-        <button onClick={onClose}>Close</button>
+        <button onClick={closePopup}>Close</button>
       </div>
     </div>
   );

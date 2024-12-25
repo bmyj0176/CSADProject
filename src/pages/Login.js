@@ -64,7 +64,7 @@ function Login() {
           style={{textDecorationLine:"underline"}} 
           className='links'
           state={{email: email, password: password}}>
-            Sign up now
+            Register now
           </Link>
         </p>
         <p>

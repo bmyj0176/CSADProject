@@ -150,7 +150,7 @@ class ArrivalTimes extends Component {
             />
           </td>
           <td>
-          {/*TEMPORARY*/}
+          {/*TEMPORARY REMOVE THIS WHEN U DONT NEED ANYMORE*/}
           <ul><li>
           <ArrivalTimesElement
           header={"Dover Stn Exit B"}
@@ -162,7 +162,7 @@ class ArrivalTimes extends Component {
             <ArrivalTimesList data={this.state.searchResult}/> 
             : null}
           </li></ul>
-          {/*TEMPORARY*/}
+          {/*TEMPORARY REMOVE THIS WHEN U DONT NEED ANYMORE*/}
           </td>
         </tr></tbody></table>
       </>
