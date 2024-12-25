@@ -111,3 +111,29 @@
 #busstopclicked.alternatecard:active{
     background-color: #7c7e8a;
 }
+
+
+
+/* Default button style */
+button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .btnunfaved {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .btnfaved{
+    background-color: #ff6347; /* Change to a different color when favorited */
+    color: white;
+  }
+  
+  button:hover {
+    opacity: 0.8;
+  }
+  

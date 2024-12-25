@@ -1,9 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import "./stylesheets/popup.css";
+import "./Login";
+import Login from "./Login";
 
-function Popup({ title, message }) {
-
+function Popup({ }) {
+// sexxxxx
   const [showPopup, setShowPopup] = useState(false);
   const [userLoggedIn, setUserLoggedIn] = useState(false);
 
@@ -22,8 +24,7 @@ function Popup({ title, message }) {
   return (
     <div className="popup-overlay">
       <div className="popup">
-        <h2>{title}</h2>
-        <p>{message}</p>
+        <div>{Login()}</div>
         <button onClick={closePopup}>Close</button>
       </div>
     </div>

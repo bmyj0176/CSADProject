@@ -1,6 +1,7 @@
 import { Outlet, Link } from "react-router-dom";
 import { useState } from 'react';
 import "../stylesheets/traveltimeest.css";
+import Popup from "../Popup";
 
 const FindRoutes = () => {
     const [inputs, setInputs] = useState({});
@@ -24,6 +25,7 @@ const FindRoutes = () => {
           <label> To: <input type="text" name="to" value={inputs.to || ""} onChange={handleChange}/></label>
           <input  type="submit" value="Find" />
         </form>
+        <div>{Popup("yes","no")}</div>
       </>
     );
 }

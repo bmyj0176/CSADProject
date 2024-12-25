@@ -10,6 +10,7 @@ const ATSearchBar = (props) => {
     const [barsCount, setBarsCount] = useState(0); // count of stacked bars
     const [barsList, setBarsList] = useState([]); // contents of stacked bars
     const [selectedItem, setSelectedItem] = useState(null) 
+   
     
     // once at start of lifecycle
     useEffect(() => {
@@ -118,7 +119,7 @@ const SearchResult = (props) => {
   const [header, setHeader] = useState("")
   const [subheader1, setSubheader1] = useState("")
   const [subheader2, setSubheader2] = useState("")
-
+  
   useEffect(() => {
     setHeader("")
     setSubheader1("")
@@ -147,12 +148,24 @@ const SearchResult = (props) => {
   };
 
 
+  const [favItem, setFavItem] = useState('unselected');
+
+  const handleBtnStar = () => {
+    console.log('Button clicked');
+    setFavItem((prevState) =>
+      prevState === 'unselected' ? 'selected' : 'unselected'
+    );
+  };
+
+
     // BUTTON LAYOUT
     return (
         <p style={{display:'block'}}>
           <button className={subheader1 ? "busstopcard" : "alternatecard"} id={(props.selectedItem === props.index) ? "busstopclicked" : "busstopdefault"} onClick={handleClick}>
             <h3 className="busstopname">{header}</h3>
-            <b className="busstopnumber">{subheader1}</b>
+            <button className={favItem === 'selected' ? "btnfaved": "btnunfaved"} onClick = {handleBtnStar}> </button>
+            <b className="busstopnumber">{subheader1}</b> 
+
             {subheader2 && ("  •  " + subheader2)}
           </button>
         </p>
