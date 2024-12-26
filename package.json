@@ -66,11 +66,11 @@
     "workbox-webpack-plugin": "^6.4.1"
   },
   "scripts": {
-  "start": "concurrently \"npm run frontend\" \"npm run backend\"",
-  "frontend": "cross-env PORT=3000 node scripts/start.js",
-  "backend": "node server/server.js",
-  "build": "node scripts/build.js",
-  "test": "node scripts/test.js"
+    "start": "concurrently \"npm run frontend\" \"npm run backend\"",
+    "frontend": "cross-env PORT=3000 node scripts/start.js",
+    "backend": "node server/server.js",
+    "build": "node scripts/build.js",
+    "test": "node scripts/test.js"
   },
   "eslintConfig": {
     "extends": [

@@ -6,8 +6,6 @@ function SavedRoutes() {
 
   const [showList, setShowList] = useState(false)
   const [showPopup, setShowPopup] = useState(false);
-  // u cant use usestate in a class
-  // reevulate ur life choices react components are >>>>>>>> classes
 
   const toggleDropdown = () => {
     setShowList(!showList)
@@ -34,14 +32,7 @@ function SavedRoutes() {
             <li>some list</li>
           </ol>
         )}
-
-        {showPopup && (
-        <Popup
-          title="Login now to permanently save your routes"
-          message="Proceed to login page?"
-        />
-
-      )}
+        <div><Popup/></div>
       </>
     );
 }

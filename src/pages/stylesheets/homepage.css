@@ -34,6 +34,28 @@ hr {position: absolute; left:0px; width:558px; height:10px}
 .headd {text-align:center; animation: slideDown 2s ease-out forwards; }
 
 
+.favorite-list {
+  margin-top: 20px;
+}
+
+.busstopcard {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  background-color: #272040;
+
+}
+
+.busstopname {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.busstopnumber {
+  font-size: 16px;
+  color: gray;
+}
 
 
 

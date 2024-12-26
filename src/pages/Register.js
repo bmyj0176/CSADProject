@@ -118,9 +118,6 @@ function Register() {
             Login
           </Link>
         </p>
-        <p>
-          <Link to="/" style={{textDecorationLine:"underline", color:"grey"}} className='links'>Continue as guest</Link>
-        </p>
         <button type="submit">Register</button>
       </form>
     </>

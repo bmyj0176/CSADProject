@@ -25,7 +25,6 @@ const FindRoutes = () => {
           <label> To: <input type="text" name="to" value={inputs.to || ""} onChange={handleChange}/></label>
           <input  type="submit" value="Find" />
         </form>
-        <div>{Popup("yes","no")}</div>
       </>
     );
 }

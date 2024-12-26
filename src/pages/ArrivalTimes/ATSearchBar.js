@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef} from 'react';
 import { searchInList, searchInDualList, nearestBusStops, getBusStopInfo } from '../../helper_functions';
 import { get_list } from '../../file_reader';
+import {useNavigate} from 'react-router-dom';
 import '../stylesheets/busstopcard.css'
 
 const ATSearchBar = (props) => {
@@ -150,25 +151,64 @@ const SearchResult = (props) => {
 
   const [favItem, setFavItem] = useState('unselected');
 
+  
   const handleBtnStar = () => {
-    console.log('Button clicked');
-    setFavItem((prevState) =>
-      prevState === 'unselected' ? 'selected' : 'unselected'
+    setFavItem((prevState) => (prevState === 'unselected' ? 'selected' : 'unselected'));
+  
+    const favBusStop = {
+      header,
+      subheader1,
+      subheader2,
+    };
+  
+    let storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    const isAlreadyFavorited = storedFavorites.find(
+      (item) => item.subheader1 === favBusStop.subheader1
     );
+  
+    if (!isAlreadyFavorited) {
+      storedFavorites.push(favBusStop);
+    } else {
+      // Remove if already favoriteddd(toggle behavior)
+      storedFavorites = storedFavorites.filter(
+        (item) => item.subheader1 !== favBusStop.subheader1
+      );
+    }
+  
+    localStorage.setItem('favorites', JSON.stringify(storedFavorites));
   };
-
+  
+  
 
     // BUTTON LAYOUT
     return (
+      <div className = "cent">
         <p style={{display:'block'}}>
           <button className={subheader1 ? "busstopcard" : "alternatecard"} id={(props.selectedItem === props.index) ? "busstopclicked" : "busstopdefault"} onClick={handleClick}>
             <h3 className="busstopname">{header}</h3>
-            <button className={favItem === 'selected' ? "btnfaved": "btnunfaved"} onClick = {handleBtnStar}> </button>
             <b className="busstopnumber">{subheader1}</b> 
-
             {subheader2 && ("  •  " + subheader2)}
-          </button>
+            </button>
+
+            <button // STAR BUTTONNNNNNNNN
+        className={favItem === 'selected' ? "btnfaved" : "btnunfaved"}
+        onClick={handleBtnStar}
+        type="button"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          width="24"
+          height="24"
+        >
+          <path
+            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+            fill="currentColor"
+          />
+        </svg>
+      </button>
         </p>
+        </div>
     )
 }
   
