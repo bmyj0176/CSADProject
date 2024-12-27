@@ -135,7 +135,7 @@
   }
 
 
-button {
+  #buttonchange {
     background: none;
     border: none; 
     padding: 0; 
@@ -162,7 +162,7 @@ button {
     transition: transform 0.2s ease, fill 0.2s ease;
   }
   
-  .btnunfaved,
+.btnunfaved,
 .btnfaved {
   margin-left: 10px;
 }

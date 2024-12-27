@@ -191,6 +191,7 @@ const SearchResult = (props) => {
             </button>
 
             <button // STAR BUTTONNNNNNNNN
+        id='buttonchange'
         className={favItem === 'selected' ? "btnfaved" : "btnunfaved"}
         onClick={handleBtnStar}
         type="button"
