@@ -137,9 +137,19 @@
 
   #buttonchange {
     background: none;
+    position:relative;
+    bottom:32px;
     border: none; 
     padding: 0; 
-    margin: 0; 
+    margin-left: 10px; 
+    cursor: pointer;
+  }
+
+  #buttonchange2 {
+    background: none;
+    border: none; 
+    padding: 0; 
+    margin-left: 10px; 
     cursor: pointer;
   }
   

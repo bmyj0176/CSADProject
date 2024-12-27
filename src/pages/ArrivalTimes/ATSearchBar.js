@@ -155,29 +155,7 @@ const SearchResult = (props) => {
   const handleBtnStar = () => {
     setFavItem((prevState) => (prevState === 'unselected' ? 'selected' : 'unselected'));
   
-    const favBusStop = {
-      header,
-      subheader1,
-      subheader2,
-    };
-  
-    let storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
-    const isAlreadyFavorited = storedFavorites.find(
-      (item) => item.subheader1 === favBusStop.subheader1
-    );
-  
-    if (!isAlreadyFavorited) {
-      storedFavorites.push(favBusStop);
-    } else {
-      // Remove if already favoriteddd(toggle behavior)
-      storedFavorites = storedFavorites.filter(
-        (item) => item.subheader1 !== favBusStop.subheader1
-      );
-    }
-  
-    localStorage.setItem('favorites', JSON.stringify(storedFavorites));
   };
-  
   
 
     // BUTTON LAYOUT
@@ -191,7 +169,7 @@ const SearchResult = (props) => {
             </button>
 
             <button // STAR BUTTONNNNNNNNN
-        id='buttonchange'
+        id={subheader1 ? 'buttonchange' : 'buttonchange2'}
         className={favItem === 'selected' ? "btnfaved" : "btnunfaved"}
         onClick={handleBtnStar}
         type="button"

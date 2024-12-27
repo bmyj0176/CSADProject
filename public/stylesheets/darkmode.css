@@ -24,6 +24,8 @@ h5 {
 
 button, .buton{
   background-color: rgb(60, 60, 60);
+  border-radius: 20px;
+  cursor: pointer;
 }
 
 @keyframes glow {

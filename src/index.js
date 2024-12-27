@@ -15,30 +15,12 @@ import About from "./pages/Profile/about";
 import Settings from "./pages/Profile/settings";
 import LoadingPage from "./pages/LoadingPage";
 import Popup from "./pages/Popup.js"
+import GetStarted from './pages/GetStarted.js';
 import React, { useState, useEffect } from "react";
+import { PopupProvider } from "./pages/Popup.js";
 
 
 export default function App() {
-
-const [userLoggedIn, setUserLoggedIn] = useState(false);
-
-// Update localStorage when authentication state changes
-useEffect(() => {
-  const token = localStorage.getItem('token');
-  if (token) {
-    setUserLoggedIn(true);
-  }
-}, []);
-
-// Handle login
-const handleLogin = () => {
-  setUserLoggedIn(true); // Update state
-};
-
-// Handle logout
-const handleLogout = () => {
-  setUserLoggedIn(false); // Update state
-};
 
   return (
     <BrowserRouter>
@@ -53,6 +35,7 @@ const handleLogout = () => {
               <Route path="*" element={<NoPage />} />
               <Route path="about" element={<About />} />
               <Route path="settings" element={<Settings />} />
+              <Route path="getstarted" element={<GetStarted />} />
               </Route> {/*End of branch of NavBar*/}
       </Routes> 
     </BrowserRouter>

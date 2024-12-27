@@ -68,7 +68,7 @@ const NavBar = () => {
           <li style={{ float: 'right' }} className="dropdown">
             <a href="javascript:void(0)" className="dropbtn">
               { !userLoggedIn ? (
-                <Link to="/login">Login</Link> 
+                <Link className = "loginright"to="/login" >Login</Link> 
               ) : (
                 <>
                   {localStorage.getItem('username')}

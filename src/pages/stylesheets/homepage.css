@@ -55,3 +55,207 @@ hr {position: absolute; left:0px; width:558px; height:10px}
  height: auto; /* Maintain aspect ratio */
 }
 
+
+
+.fade {
+  transition: opacity 0.6s ease-in-out; /* Smooth fade transition */
+}
+
+/* Fade-in animation */
+.fade-in {
+  opacity: 1;
+}
+
+/* Fade-out animation */
+.fade-out {
+  opacity: 0.25;
+}
+
+
+.banner1 {
+  background-color: white;
+  padding: 215px;
+  border: 5px solid rgba(255, 255, 255, 0.635);
+  background: url('/public/images/nyoom_welcome.png');
+  background-size:100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 80px;
+}
+
+.bannerbuttonRight {
+  background-image: url('/public/images/slide_arrow_right.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  position:absolute;
+  top: 350px;
+  left:1200px;
+  width: 50px;
+  height: 43px;
+  margin-top: 10px;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  background-position-y: 0px;
+  }
+
+  .bannerbuttonLeft {
+    background-image: url('/public/images/slide_arrow_left.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    position:absolute;
+    top: 350px;
+    left:20px;
+    width: 50px;
+    height: 43px;
+    margin-top: 10px;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    background-position-y: 0px;
+    }
+    
+  
+  
+
+
+/*---------------------------------------------------------------------*/
+
+
+.banner2 {
+  background-color: white;
+  padding: 215px;
+  border: 5px solid rgba(255, 255, 255, 0.635);
+  background: url('/public/images/nyoom_slide2.png');
+  background-size:100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 80px;
+}
+
+.card2 {
+  position:relative;
+  left:-150px;
+  bottom: 90px;
+  width: 400px; 
+  padding: 50px;
+  background: rgba(255, 255, 255, 0); 
+  border-radius: 10px; 
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.336); 
+  backdrop-filter: blur(15px); 
+}
+
+.card-content2 h1 {
+  text-shadow: none;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #333; 
+}
+
+.card-content2 p {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #555; 
+  line-height: 1.5;
+}
+
+/* Button */
+.view-more-2 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 30px;
+  font-size: 16px;
+  color: #fff;
+  background: linear-gradient(90deg, #6a11cb, #2575fc); 
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); 
+  transition: all 0.3s ease;
+}
+
+.view-more-2 span {
+  margin-left: 5px;
+  font-size: 18px;
+}
+
+.view-more-2:hover {
+  background: linear-gradient(90deg, #2575fc, #6a11cb); 
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25); 
+}
+
+
+/*-----------------------------------------------------------------------------------*/
+
+
+.banner3 {
+  background-color: white;
+  padding: 215px;
+  border: 5px solid rgba(255, 255, 255, 0.635);
+  background: url('/public/images/nyoom_welcome.png');
+  background-size:100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 80px;
+}
+
+.card3 {
+  position:relative;
+  border: 3px solid rgb(213, 213, 107);
+  left:140px;
+  bottom: 70px;
+  width: 400px; 
+  padding: 50px;
+  background: rgba(255, 255, 255, 0.167); 
+  border-radius: 10px; 
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  backdrop-filter: blur(15px); 
+}
+
+.card-content3 h2 {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  text-shadow: none;
+  letter-spacing: 0px;
+  margin-bottom: 15px;
+  color: #1b1a1a; 
+}
+
+.card-content3 p {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #555; 
+  line-height: 1.5;
+}
+
+/* Button */
+.view-more-3 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 30px;
+  font-size: 16px;
+  color: #fff;
+  background: linear-gradient(90deg, rgb(67, 70, 55), rgb(117, 138, 10)); 
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); 
+  transition: all 0.3s ease;
+}
+
+.view-more-3 span {
+  margin-left: 5px;
+  font-size: 18px;
+}
+
+.view-more-3:hover {
+  background: linear-gradient(90deg, rgb(117, 138, 10),  rgb(67, 70, 55)); 
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25); 
+}

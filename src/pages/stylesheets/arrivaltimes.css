@@ -22,10 +22,6 @@
     margin: auto;
 }
   
-/*all properties when hovered*/
-.at :hover {
-    background-color: rgb(120, 120, 120);
-}
 
 
 .link-default {

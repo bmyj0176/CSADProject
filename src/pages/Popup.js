@@ -27,7 +27,7 @@ function Popup() {
           <div className="popup">
             <div><Login /></div>
             <p>
-              <Link to="" onClick={closePopup} className="links">
+              <Link to="" onClick={closePopup} id="links">
                 Continue as guest
               </Link>
             </p>

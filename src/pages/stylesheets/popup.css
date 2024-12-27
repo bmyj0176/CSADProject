@@ -13,10 +13,12 @@
   
   .popup {
     background: rgb(23, 32, 37);
-    padding: 20px;
+    padding: 10px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
+    border-radius: 50px;
+    border-style: double;
   }
   
   .popup button {
@@ -33,11 +35,11 @@
     background-color: #0056b3;
   }
 
-  .links {
+  #links {
     color:grey;
     text-decoration: none;
   }
 
-  .links :hover{
+  #links :hover{
     text-decoration: underline;
   }
