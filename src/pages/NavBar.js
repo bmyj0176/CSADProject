@@ -5,6 +5,7 @@ import { getAllBusServices } from '../helper_functions';
 import './stylesheets/navbar.css';
 import { dijkstra, shortest_path } from '../travel_algorithms';
 import e from 'cors';
+import AudioPlayer from './audio.js';
 
 const NavBar = () => {
   const [userLoggedIn, setUserLoggedIn] = useState(false);
@@ -82,6 +83,7 @@ const NavBar = () => {
             </a>
           </li>
       </ul>
+      <AudioPlayer/>
       <Outlet />
     </>
   )

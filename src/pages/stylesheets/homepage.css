@@ -90,11 +90,12 @@ hr {position: absolute; left:0px; width:558px; height:10px}
   position:absolute;
   top: 350px;
   left:1200px;
-  width: 50px;
-  height: 43px;
+  width: 45px;
+  height: 35px;
   margin-top: 10px;
   border: none;
   cursor: pointer;
+  opacity: 0.3;
   background-color: transparent;
   background-position-y: 0px;
   }
@@ -106,15 +107,27 @@ hr {position: absolute; left:0px; width:558px; height:10px}
     position:absolute;
     top: 350px;
     left:20px;
-    width: 50px;
-    height: 43px;
+    width: 45px;
+    height: 35px;
     margin-top: 10px;
+    opacity: 0.3;
     border: none;
     cursor: pointer;
     background-color: transparent;
     background-position-y: 0px;
     }
     
+  .bannerbuttonLeft:hover {
+    width: 50px;
+    height: 43px;
+    opacity: 0.8;
+  }
+
+  .bannerbuttonRight:hover {
+    width: 50px;
+    height: 43px;
+    opacity: 0.8;
+  }
   
   
 
@@ -139,7 +152,7 @@ hr {position: absolute; left:0px; width:558px; height:10px}
   bottom: 90px;
   width: 400px; 
   padding: 50px;
-  background: rgba(255, 255, 255, 0); 
+  background: rgba(255, 255, 255, 0.267); 
   border-radius: 10px; 
   text-align: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.336); 
@@ -195,8 +208,8 @@ hr {position: absolute; left:0px; width:558px; height:10px}
 .banner3 {
   background-color: white;
   padding: 215px;
-  border: 5px solid rgba(255, 255, 255, 0.635);
-  background: url('/public/images/nyoom_welcome.png');
+  border: 5px solid rgba(255, 255, 255, 0.712);
+  background: url('/public/images/nyoom_slide3.png');
   background-size:100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -205,9 +218,9 @@ hr {position: absolute; left:0px; width:558px; height:10px}
 
 .card3 {
   position:relative;
-  border: 3px solid rgb(213, 213, 107);
+  border: 3px solid rgba(213, 213, 107, 0.443);
   left:140px;
-  bottom: 70px;
+  bottom: -38px;
   width: 400px; 
   padding: 50px;
   background: rgba(255, 255, 255, 0.167); 
@@ -222,7 +235,7 @@ hr {position: absolute; left:0px; width:558px; height:10px}
   text-shadow: none;
   letter-spacing: 0px;
   margin-bottom: 15px;
-  color: #1b1a1a; 
+  color: #1b1a1ada; 
 }
 
 .card-content3 p {
@@ -240,7 +253,7 @@ hr {position: absolute; left:0px; width:558px; height:10px}
   padding: 20px 30px;
   font-size: 16px;
   color: #fff;
-  background: linear-gradient(90deg, rgb(67, 70, 55), rgb(117, 138, 10)); 
+  background: linear-gradient(90deg, #FFC837, #FF8008); 
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -256,6 +269,6 @@ hr {position: absolute; left:0px; width:558px; height:10px}
 }
 
 .view-more-3:hover {
-  background: linear-gradient(90deg, rgb(117, 138, 10),  rgb(67, 70, 55)); 
+  background: linear-gradient(90deg, #FF8008,  #FFC837); 
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25); 
 }
