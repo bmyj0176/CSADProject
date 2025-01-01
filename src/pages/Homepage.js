@@ -1,6 +1,7 @@
 import './stylesheets/homepage.css';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
+import SavedPresets from './SavedPresetsHomepage';
 
 const Homepage = () => {
 
@@ -100,7 +101,11 @@ const Homepage = () => {
       <button className="bannerbuttonRight" type="button" onClick={handleToggle} />
       <button className="bannerbuttonLeft" type="button" onClick={handleToggle2} />
       <img className="nyoom" src="./images/nyoom.png"/>
-      <h1 className="headd" style={{textAlign: "center"}}></h1>
+      <div style={{textAlign: "center"}}>
+        {true &&
+          <SavedPresets/>
+        } 
+      </div>
       <h3 style={{textAlign: "center"}}> Bus? Or maybe I'll take it all. </h3>
       <div style={{ display: 'inline-block' }}>
       </div>

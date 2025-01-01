@@ -113,6 +113,7 @@ class ArrivalTimes extends Component {
   render() {
     return (
       <>
+      <div style={{textAlign: 'center'}}>
  {/*---------------------------------------------------------------------------------*/}
         <ul className="at">
           <li>
@@ -137,11 +138,12 @@ class ArrivalTimes extends Component {
               style={this.choose('nearMe')}
               onClick={() => this.handleToggle('nearMe')}
             >
-              <p> Near Me </p>
+              <p> Near Me 🏳️ </p>
             </button>
           </li>
         </ul>
  {/*---------------------------------------------------------------------------------*/}
+      </div>
         <table><tbody><tr>
           <td>
             <ATSearchBar 
@@ -150,19 +152,9 @@ class ArrivalTimes extends Component {
             />
           </td>
           <td>
-          {/*TEMPORARY REMOVE THIS WHEN U DONT NEED ANYMORE*/}
-          <ul><li>
-          <ArrivalTimesElement
-          header={"Dover Stn Exit B"}
-          subheader={"46969"}
-          updateBusTimes={""}
-          busTimesList={["Arr", 6, 14]}
-          index={0}/>
             {this.state['searchResult'] ? 
             <ArrivalTimesList data={this.state.searchResult}/> 
             : null}
-          </li></ul>
-          {/*TEMPORARY REMOVE THIS WHEN U DONT NEED ANYMORE*/}
           </td>
         </tr></tbody></table>
       </>

@@ -28,7 +28,7 @@ function Register() {
     setEmail(email.trim())
     if (validateInput()) {
       try {
-        await axios.post('http://localhost:5000/auth/register', { 
+        await axios.post(`${process.env.REACT_APP_BACKEND_API_URL}/auth/register`, { 
           username: username.trim(), 
           email: email.trim(), 
           password: password, 

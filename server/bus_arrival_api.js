@@ -17,7 +17,7 @@ router.get('/bus-arrival', async (req, res) => {
         {
           method: 'GET',
           headers: {
-            'AccountKey': process.env.API_KEY, // Your API key here
+            'AccountKey': process.env.LTA_API_KEY, // Your API key here
             'Accept': 'application/json',  // You can specify this as JSON
           },
         }

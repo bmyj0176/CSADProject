@@ -80,7 +80,7 @@ hr {position: absolute; left:0px; width:558px; height:10px}
   background-size:100%;
   background-repeat: no-repeat;
   background-position: center;
-  height: 80px;
+  height: 274px;
 }
 
 .bannerbuttonRight {
@@ -88,8 +88,8 @@ hr {position: absolute; left:0px; width:558px; height:10px}
   background-size: contain;
   background-repeat: no-repeat;
   position:absolute;
-  top: 350px;
-  left:1200px;
+  top: 440px;
+  left:1668px;
   width: 45px;
   height: 35px;
   margin-top: 10px;
@@ -105,8 +105,8 @@ hr {position: absolute; left:0px; width:558px; height:10px}
     background-size: contain;
     background-repeat: no-repeat;
     position:absolute;
-    top: 350px;
-    left:20px;
+    top: 440px;
+    left:30px;
     width: 45px;
     height: 35px;
     margin-top: 10px;
@@ -137,19 +137,19 @@ hr {position: absolute; left:0px; width:558px; height:10px}
 
 .banner2 {
   background-color: white;
-  padding: 215px;
+  padding: 214px;
   border: 5px solid rgba(255, 255, 255, 0.635);
   background: url('/public/images/nyoom_slide2.png');
   background-size:100%;
   background-repeat: no-repeat;
   background-position: center;
-  height: 80px;
+  height: 274px;
 }
 
 .card2 {
   position:relative;
-  left:-150px;
-  bottom: 90px;
+  left:-90px;
+  bottom: 15px;
   width: 400px; 
   padding: 50px;
   background: rgba(255, 255, 255, 0.267); 
@@ -213,17 +213,17 @@ hr {position: absolute; left:0px; width:558px; height:10px}
   background-size:100%;
   background-repeat: no-repeat;
   background-position: center;
-  height: 80px;
+  height: 274px;
 }
 
 .card3 {
   position:relative;
   border: 3px solid rgba(213, 213, 107, 0.443);
-  left:140px;
-  bottom: -38px;
+  left:380px;
+  bottom: -158px;
   width: 400px; 
   padding: 50px;
-  background: rgba(255, 255, 255, 0.167); 
+  background: rgba(255, 255, 255, 0.279); 
   border-radius: 10px; 
   text-align: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 

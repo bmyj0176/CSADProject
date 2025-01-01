@@ -52,3 +52,7 @@ button{
 .nv :active{
   color: rgba(146, 170, 49, 0.379);
 } 
+
+.nv .dropdown-content{
+  background-color: rgba(216, 216, 121, 0.689);
+}

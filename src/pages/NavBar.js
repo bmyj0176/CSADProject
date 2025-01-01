@@ -4,8 +4,7 @@ import { BusRoutes } from '../api_caller';
 import { getAllBusServices } from '../helper_functions';
 import './stylesheets/navbar.css';
 import { dijkstra, shortest_path } from '../travel_algorithms';
-import e from 'cors';
-import AudioPlayer from './audio.js';
+import ToggleThemeButton from './Miscellaneous/ToggleThemeButton';
 
 const NavBar = () => {
   const [userLoggedIn, setUserLoggedIn] = useState(false);
@@ -19,27 +18,18 @@ const NavBar = () => {
     }
   }, []);
 
-  function toggle_theme() {
-    const themeLink = document.getElementById("lightdarkmode");
-    const targetElement = document.getElementById("theme-target");
-    if (themeLink.href.endsWith("stylesheets/darkmode.css")) {
-        themeLink.href = "../stylesheets/lightmode.css";
-        targetElement.classList.remove("light");
-        targetElement.classList.add("dark");
-    } else if (themeLink.href.endsWith("stylesheets/lightmode.css")) {
-        themeLink.href = "../stylesheets/darkmode.css";
-        targetElement.classList.remove("dark");
-        targetElement.classList.add("light");
-    }
-  }
-
   function logout() {
     localStorage.removeItem('token');
     window.location.reload();
   }
 
   async function test_function() {
-    console.log(await getAllBusServices("46971"))
+    try {
+        const busServices = await getAllBusServices("46971");
+        console.log(busServices);
+    } catch (error) {
+        console.error("Error fetching bus services:", error);
+    }
     //console.log(await getAllBusStops("900", 1))
     //console.log(dijkstra("A"));
     console.log(await shortest_path(1, 2));
@@ -60,11 +50,11 @@ const NavBar = () => {
             <Link to="/traveltimeest" className={location.pathname === "/traveltimeest" ? "activee" : ""}>Find Travel Routes</Link>
           </li>
           <li>
-            <button id="test_button" onClick={test_function}> Test Button</button><span id="test_text"></span>
+            <button id="test_button" onClick={test_function}> Test Button </button><span id="test_text"></span>
           </li>
         {/*------ ABOVE IS FLOATED LEFT, BELOW IS FLOATED RIGHT -----------------------------*/}
           <li style={{ float: 'right' }}>
-            <button id="theme-target"  className="light" onClick={toggle_theme}/> 
+            <ToggleThemeButton/> 
           </li>
           <li style={{ float: 'right' }} className="dropdown">
             <a href="javascript:void(0)" className="dropbtn">
@@ -72,10 +62,9 @@ const NavBar = () => {
                 <Link className = "loginright"to="/login" >Login</Link> 
               ) : (
                 <>
-                  {localStorage.getItem('username')}
+                  <div className="loginuser"> {localStorage.getItem('username')} </div>
                   <div className="dropdown-content">
-                    <Link to="/about">About</Link><br/>
-                    <Link to="/settings">Settings</Link><br/>
+                    <Link to="/about" className="dropdownItem">About</Link><br/>
                     { userLoggedIn && <button id="logout" onClick={logout}>Log Out</button>}
                   </div>
                 </>
@@ -83,7 +72,6 @@ const NavBar = () => {
             </a>
           </li>
       </ul>
-      <AudioPlayer/>
       <Outlet />
     </>
   )

@@ -23,8 +23,8 @@ app.use('/api', busRoutesAPIRouter);
 app.use('/api', busStopsAPIRouter);
 
 // start server
-app.listen(process.env.PORT, () => {
-  console.log(`Backend server running on deprecated roblox code 🗣️🗣️🗣️🗣️🗣️🔥🔥 (port ${process.env.PORT})`);
+app.listen(5000, () => {
+  console.log(`Backend server running on deprecated roblox code 🗣️🗣️🗣️🗣️🗣️🔥🔥 at Port 5000`);
 });
 
 // mongodb connection

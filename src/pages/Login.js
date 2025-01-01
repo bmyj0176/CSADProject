@@ -6,7 +6,7 @@ import "./stylesheets/login_register.css";
 export const login = async (email, password, navigate) => {
   
   try {
-    const response = await axios.post('http://localhost:5000/auth/login', { 
+    const response = await axios.post(`${process.env.REACT_APP_BACKEND_API_URL}/auth/login`, { 
       email: email.trim(),
       password: password.trim(),
      });

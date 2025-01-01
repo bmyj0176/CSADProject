@@ -20,7 +20,6 @@ router.post('/register', async (req, res) => {
   
       await newUser.save();
       console.log('User created successfully');
-      console.log(`2. sending ${username} + ${email} + ${password}`)
       res.status(201).json({ message: 'User created successfully' });
     } catch (error) {
       console.error('Error saving user to DB:', error);
@@ -49,7 +48,7 @@ router.post('/register', async (req, res) => {
   
       const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '7d' });
   
-      res.status(200).json({ token, username: user.username }); // send token to frontend
+      res.status(200).json({ token, username: user.username }); // send token & username to frontend
     } catch (error) {
       console.error({ error: 'Login error' });
       res.status(500).json({ error: 'Login error' });
