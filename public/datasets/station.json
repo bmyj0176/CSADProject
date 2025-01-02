@@ -1,12 +1,20 @@
 [
     {
-    "line": "BPL",
-    "stations": [
+        "line": "BPL",
+        "stations": [
             {"s1": "Choa Chu Kang_BP", "s2": "South View", "time": 2},
             {"s1": "South View", "s2": "Keat Hong", "time": 2},
             {"s1": "Keat Hong", "s2": "Teck Whye", "time": 2},
             {"s1": "Teck Whye", "s2": "Phoenix", "time": 2},
-            {"s1": "Phoenix", "s2": "Bukit Panjang_BP", "time": 2}
+            {"s1": "Phoenix", "s2": "Bukit Panjang_BP", "time": 2},
+            {"s1": "Bukit Panjang_BP", "s2": "Petir", "time": null},
+            {"s1": "Petir", "s2": "Pending", "time": null},
+            {"s1": "Pending", "s2": "Bangkit", "time": null},
+            {"s1": "Bangkit", "s2": "Fajar", "time": null},
+            {"s1": "Fajar", "s2": "Segar", "time": null},
+            {"s1": "Segar", "s2": "Jelapang", "time": null},
+            {"s1": "Jelapang", "s2": "Senja", "time": null},
+            {"s1": "Senja", "s2": "Bukit Panjang_BP", "time": null}
         ]
     },
 
@@ -16,8 +24,8 @@
             {"s1": "Dhoby Ghaut_CC", "s2": "Bras Basah", "time": 2},
             {"s1": "Bras Basah", "s2": "Esplanade", "time": 2},
             {"s1": "Esplanade", "s2": "Promenade_CC", "time": 2},
-            {"s1": "Marina Bay_CC", "s2": "Bayfront", "time": 2},
-            {"s1": "Bayfront", "s2": "Promenade_CC", "time": 6},
+            {"s1": "Marina Bay_CE", "s2": "Bayfront_CE", "time": 2},
+            {"s1": "Bayfront_CE", "s2": "Promenade_CC", "time": 6},
             {"s1": "Promenade_CC", "s2": "Nicoll Highway", "time": 4},
             {"s1": "Nicoll Highway", "s2": "Stadium", "time": 2},
             {"s1": "Stadium", "s2": "Mountbatten", "time": 2},
@@ -62,8 +70,8 @@
             {"s1": "Little India_DT", "s2": "Rochor", "time": 1},
             {"s1": "Rochor", "s2": "Bugis_DT", "time": 2},
             {"s1": "Bugis_DT", "s2": "Promenade_DT", "time": 2},
-            {"s1": "Promenade_DT", "s2": "Bayfront", "time": 2},
-            {"s1": "Bayfront", "s2": "Downtown", "time": 2},
+            {"s1": "Promenade_DT", "s2": "Bayfront_DT", "time": 2},
+            {"s1": "Bayfront_DT", "s2": "Downtown", "time": 2},
             {"s1": "Downtown", "s2": "Telok Ayer", "time": 1},
             {"s1": "Telok Ayer", "s2": "Chinatown_DT", "time": 2},
             {"s1": "Chinatown_DT", "s2": "Fort Canning", "time": 2},
@@ -82,8 +90,7 @@
             {"s1": "Tampines_DT", "s2": "Tampines East", "time": 2},
             {"s1": "Tampines East", "s2": "Upper Changi", "time": 3},
             {"s1": "Upper Changi", "s2": "Expo_DT", "time": 2},
-            {"s1": "Expo_DT", "s2": "Changi Airport", "time": 2},
-            {"s1": "Changi Airport", "s2": "Xilin", "time": 2},
+            {"s1": "Expo_DT", "s2": "Xilin", "time": 2},
             {"s1": "Xilin", "s2": "Sungei Bedok_DT", "time": 2}
         ]
     },
@@ -93,10 +100,10 @@
         "stations": [
             {"s1": "Pasir Ris", "s2": "Tampines_EW", "time": 5},
             {"s1": "Tampines_EW", "s2": "Simei", "time": 2},
-            {"s1": "Simei", "s2": "Tanah Merah", "time": 4},
-            {"s1": "Tanah Merah", "s2": "Expo_EW", "time": 8},
-            {"s1": "Expo_EW", "s2": "Changi Airport", "time": 4},
-            {"s1": "Tanah Merah", "s2": "Bedok", "time": 3},
+            {"s1": "Simei", "s2": "Tanah Merah_EW", "time": 4},
+            {"s1": "Tanah Merah_CG", "s2": "Expo_CG", "time": 8},
+            {"s1": "Expo_CG", "s2": "Changi Airport", "time": 4},
+            {"s1": "Tanah Merah_EW", "s2": "Bedok", "time": 3},
             {"s1": "Bedok", "s2": "Kembangan", "time": 3},
             {"s1": "Kembangan", "s2": "Eunos", "time": 2},
             {"s1": "Eunos", "s2": "Paya Lebar_EW", "time": 2},
@@ -144,9 +151,9 @@
             {"s1": "Serangoon_NE", "s2": "Kovan", "time": 3},
             {"s1": "Kovan", "s2": "Hougang", "time": 2},
             {"s1": "Hougang", "s2": "Buangkok", "time": 2},
-            {"s1": "Buangkok", "s2": "Sengkang", "time": 2},
-            {"s1": "Sengkang", "s2": "Punggol", "time": 3},
-            {"s1": "Punggol", "s2": "Punggol Coast", "time": 2}
+            {"s1": "Buangkok", "s2": "Sengkang_NE", "time": 2},
+            {"s1": "Sengkang_NE", "s2": "Punggol_NE", "time": 3},
+            {"s1": "Punggol_NE", "s2": "Punggol Coast", "time": 2}
         ]
     },
 
@@ -183,6 +190,49 @@
     },
 
     {
+        "line": "PLRT",
+        "stations": [
+            {"s1": "Punggol_PTC", "s2": "Cove", "time": null},
+            {"s1": "Cove", "s2": "Meridian", "time": null},
+            {"s1": "Meridian", "s2": "Coral Edge", "time": null},
+            {"s1": "Coral Edge", "s2": "Riviera", "time": null},
+            {"s1": "Riviera", "s2": "Kadaloor", "time": null},
+            {"s1": "Kadaloor", "s2": "Oasis", "time": null},
+            {"s1": "Oasis", "s2": "Damai", "time": null},
+            {"s1": "Damai", "s2": "Punggol_PTC", "time": null},
+            {"s1": "Punggol_PTC", "s2": "Sam Kee", "time": null},
+            {"s1": "Sam Kee", "s2": "Teck Lee", "time": null},
+            {"s1": "Teck Lee", "s2": "Punggol Point", "time": null},
+            {"s1": "Punggol Point", "s2": "Samudera", "time": null},
+            {"s1": "Samudera", "s2": "Nibong", "time": null},
+            {"s1": "Nibong", "s2": "Sumang", "time": null},
+            {"s1": "Sumang", "s2": "Soo Teck", "time": null},
+            {"s1": "Soo Teck", "s2": "Punggol_PTC", "time": null}
+        ]
+    },
+
+    {
+        "line": "SLRT",
+        "stations": [
+            {"s1": "Sengkang_STC", "s2": "Compassvale", "time": null},
+            {"s1": "Compassvale", "s2": "Rumbia", "time": null},
+            {"s1": "Rumbia", "s2": "Bakau", "time": null},
+            {"s1": "Bakau", "s2": "Kangkar", "time": null},
+            {"s1": "Kangkar", "s2": "Ranggung", "time": null},
+            {"s1": "Ranggung", "s2": "Sengkang_STC", "time": null},
+            {"s1": "Sengkang_STC", "s2": "Cheng Lim", "time": null},
+            {"s1": "Cheng Lim", "s2": "Farmway", "time": null},
+            {"s1": "Farmway", "s2": "Kupang", "time": null},
+            {"s1": "Kupang", "s2": "Thanggam", "time": null},
+            {"s1": "Thanggam", "s2": "Fernvale", "time": null},
+            {"s1": "Fernvale", "s2": "Layar", "time": null},
+            {"s1": "Layar", "s2": "Tongkang", "time": null},
+            {"s1": "Tongkang", "s2": "Renjong", "time": null},
+            {"s1": "Renjong", "s2": "Sengkang_STC", "time": null}
+        ]
+    },
+
+    {
         "line": "TEL",
         "stations": [
             {"s1": "Woodlands North", "s2": "Woodlands_TE", "time": 2},
@@ -193,8 +243,7 @@
             {"s1": "Mayflower", "s2": "Bright Hill", "time": 2},
             {"s1": "Bright Hill", "s2": "Upper Thomson", "time": 2},
             {"s1": "Upper Thomson", "s2": "Caldecott_TE", "time": 3},
-            {"s1": "Caldecott_TE", "s2": "Mount Pleasant", "time": 2},
-            {"s1": "Mount Pleasant", "s2": "Stevens_TE", "time": 2},
+            {"s1": "Caldecott_TE", "s2": "Stevens_TE", "time": 4},
             {"s1": "Stevens_TE", "s2": "Napier", "time": 3},
             {"s1": "Napier", "s2": "Orchard Boulevard", "time": 2},
             {"s1": "Orchard Boulevard", "s2": "Orchard_TE", "time": 2},
@@ -204,8 +253,7 @@
             {"s1": "Outram Park_TE", "s2": "Maxwell", "time": 2},
             {"s1": "Maxwell", "s2": "Shenton Way", "time": 2},
             {"s1": "Shenton Way", "s2": "Marina Bay_TE", "time": 1},
-            {"s1": "Marina Bay_TE", "s2": "Marina South", "time": 1},
-            {"s1": "Marina South", "s2": "Gardens by the Bay", "time": 2},
+            {"s1": "Marina Bay_TE", "s2": "Gardens by the Bay", "time": 3},
             {"s1": "Gardens by the Bay", "s2": "Tanjong Rhu", "time": 4},
             {"s1": "Tanjong Rhu", "s2": "Katong Park", "time": 2},
             {"s1": "Katong Park", "s2": "Tanjong Katong", "time": 3},

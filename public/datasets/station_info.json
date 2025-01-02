@@ -15,6 +15,8 @@
         {"code": "BP13", "name": "Senja"}
     ],
     "CCL": [
+        {"code": "CE1", "name": "Bayfront_CE"},
+        {"code": "CE2", "name": "Marina Bay_CE"},
         {"code": "CC1", "name": "Dhoby Ghaut_CC"},
         {"code": "CC2", "name": "Bras Basah"},
         {"code": "CC3", "name": "Esplanade"},
@@ -173,7 +175,6 @@
         {"code": "TE7", "name": "Bright Hill"},
         {"code": "TE8", "name": "Upper Thomson"},
         {"code": "TE9", "name": "Caldecott"},
-        {"code": "TE10", "name": "Mount Pleasant"},
         {"code": "TE11", "name": "Stevens"},
         {"code": "TE12", "name": "Napier"},
         {"code": "TE13", "name": "Orchard Boulevard"},
@@ -184,7 +185,6 @@
         {"code": "TE18", "name": "Maxwell"},
         {"code": "TE19", "name": "Shenton Way"},
         {"code": "TE20", "name": "Marina Bay_TE"},
-        {"code": "TE21", "name": "Marina South"},
         {"code": "TE22", "name": "Gardens by the Bay"},
         {"code": "TE23", "name": "Tanjong Rhu"},
         {"code": "TE24", "name": "Katong Park"},
