@@ -1,6 +1,6 @@
 import { getAllBusServices, getBusTiming } from '../../helper_functions'
 import React, { useState, useEffect } from 'react';
-import BouncyBouncy from '../LoadingPage';
+import BouncyBouncy from '../Components/LoadingIcon';
 import { ArrivalTimesElement } from './ArrivalTimesList';
 
 const BusStopList = (props) => {
@@ -14,7 +14,6 @@ const BusStopList = (props) => {
             setBusTimesListList([])
         }
         const updateLists = async () => {
-            const BusStopName = props.data.busStopName
             const BusStopCode = props.data.busStopCode
             const busServices = await getAllBusServices(BusStopCode)
             setBusServicesList(busServices)
@@ -71,7 +70,7 @@ const BusStopElement = (props) => {
     return (
         <ArrivalTimesElement
         index={props.index}
-        header={props.busService}
+        header={"Bus " + props.busService}
         subheader={""}
         busTimesList={props.busTimesList}
         updateBusTimes={props.updateBusTimes}/>

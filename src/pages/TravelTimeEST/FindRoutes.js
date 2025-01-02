@@ -1,7 +1,7 @@
 import { Outlet, Link } from "react-router-dom";
 import { useState } from 'react';
 import "../stylesheets/traveltimeest.css";
-import Popup from "../Popup";
+import Popup from "../Components/Popup";
 
 const FindRoutes = () => {
     const [inputs, setInputs] = useState({});

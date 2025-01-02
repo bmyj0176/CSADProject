@@ -1,6 +1,6 @@
 import { getAllBusStops, getBusStopInfo, getBusTiming, getBusDirections } from '../../helper_functions'
 import React, { useState, useEffect } from 'react';
-import BouncyBouncy from '../LoadingPage';
+import BouncyBouncy from '../Components/LoadingIcon';
 import { ArrivalTimesElement } from './ArrivalTimesList';
 
 const BusRouteList = (props) => {

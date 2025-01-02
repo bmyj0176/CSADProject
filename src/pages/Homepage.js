@@ -1,7 +1,7 @@
 import './stylesheets/homepage.css';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-import SavedPresets from './SavedPresetsHomepage';
+import SavedPresets from './Components/SavedPresetsHomepage';
 
 const Homepage = () => {
 

@@ -11,7 +11,7 @@ const ATSearchBar = (props) => {
     const [barsCount, setBarsCount] = useState(0); // count of stacked bars
     const [barsList, setBarsList] = useState([]); // contents of stacked bars
     const [selectedItem, setSelectedItem] = useState(null) 
-   
+    const [favedItems, setFavedItems] = useState([])
     
     // once at start of lifecycle
     useEffect(() => {
@@ -20,13 +20,18 @@ const ATSearchBar = (props) => {
         bsc_stopname_list.current = await get_list('./datasets/bsc_stopname.txt');
         };
       
-        fetchNumbers();
+      fetchNumbers();
     }, []);
     
-      // updates when props.toggleStates or searchBarValue changes
+    // updates when props.toggleStates or searchBarValue changes
     useEffect(() => {
       updateSearchBar(searchBarValue);
     }, [props.toggleStates, searchBarValue]);
+
+    // save favedItems to localStorage
+    useEffect(() => {
+      // localstorage
+    }, [favedItems])
       
       const onChangeSearchBar = (event) => {
         const value = event.target.value;
@@ -89,6 +94,20 @@ const ATSearchBar = (props) => {
     const onItemSelect = (index) => {
       setSelectedItem(index)
     }
+
+    // dict - entry to save
+    // doAdd - (bool) false: remove, true: add
+    const onFavItem = (dict, doAdd) => {
+      let favedItemsCopy = [...favedItems]
+      if (!doAdd) {
+        favedItemsCopy = favedItemsCopy.filter(item => item !== dict)
+        setFavedItems(favedItemsCopy)
+        return
+      }
+      favedItemsCopy.push(dict)
+      favedItemsCopy.sort((a, b) => a.type.localeCompare(b.type))
+      setFavedItems(favedItemsCopy)
+    }
     
     return (
       <div className="container">
@@ -105,6 +124,7 @@ const ATSearchBar = (props) => {
                 receiveSearchResult={props.receiveSearchResult}
                 selectedItem={selectedItem}
                 onItemSelect={onItemSelect}
+                onFavItem={onFavItem}
                 />
               ) : (
                 <> Unable to get Location Data <br/> Please enable it in your browser settings </>
@@ -120,6 +140,7 @@ const SearchResult = (props) => {
   const [header, setHeader] = useState("")
   const [subheader1, setSubheader1] = useState("")
   const [subheader2, setSubheader2] = useState("")
+  const [favItem, setFavItem] = useState('unselected');
   
   useEffect(() => {
     setHeader("")
@@ -138,7 +159,7 @@ const SearchResult = (props) => {
         setHeader(props.dict.busStopName)
         setSubheader1(props.dict.busStopCode)
         break
-      default:
+      default:  
         break
       }
   }, [props.dict]);
@@ -148,32 +169,26 @@ const SearchResult = (props) => {
     props.receiveSearchResult(props.dict)
   };
 
-
-  const [favItem, setFavItem] = useState('unselected');
-
-  
-  const handleBtnStar = () => {
-    setFavItem((prevState) => (prevState === 'unselected' ? 'selected' : 'unselected'));
-  
+  const handleFav = () => {
+    setFavItem((prevState) => (prevState === 'selected' ? 'unselected' : 'selected'));
+    props.onFavItem(props.dict, (favItem === 'selected' ? true : false))
   };
-  
 
-    // BUTTON LAYOUT
+  // BUTTON LAYOUT
     return (
       <div className = "cent">
         <p style={{display:'block'}}>
           <button className={subheader1 ? "busstopcard" : "alternatecard"} id={(props.selectedItem === props.index) ? "busstopclicked" : "busstopdefault"} onClick={handleClick}>
             <h3 className="busstopname">{header}</h3>
-            <b className="busstopnumber">{subheader1}</b> 
+            <b className="busstopnumber">{subheader1}</b>
             {subheader2 && ("  •  " + subheader2)}
-            </button>
-
-            <button // STAR BUTTONNNNNNNNN
-        id={subheader1 ? 'buttonchange' : 'buttonchange2'}
-        className={favItem === 'selected' ? "btnfaved" : "btnunfaved"}
-        onClick={handleBtnStar}
-        type="button"
-      >
+          </button>
+          <button // STAR BUTTONNNNNNNNN
+            id={subheader1 ? 'buttonchange' : 'buttonchange2'}
+            className={favItem === 'selected' ? "btnfaved" : "btnunfaved"}
+            onClick={handleFav}
+            type="button"
+          >   
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"

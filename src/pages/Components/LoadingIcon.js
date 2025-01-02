@@ -1,6 +1,6 @@
 // BouncingDotsLoader.js
 import React from 'react';
-import './stylesheets/loadingpage.css';
+import '../stylesheets/loadingpage.css';
 
 const BouncyBouncy = () => {
   return (

@@ -21,10 +21,13 @@ const ArrivalTimesList = (props) => {
 export const ArrivalTimesElement = (props) => {
     return (
     <>
-        <div> {props.header} 
+        <div><b>{props.header}</b>
         <br/>
-        {props.subheader}
-        <br/>
+        {props.subheader && <>
+            {props.subheader}
+            <br/>
+        </>}
+        
         <button onClick={() => props.updateBusTimes(props.index)}>
         { // list of arrivaltimes (x3)
             (props.busTimesList ? props.busTimesList : ["-", "-", "-"]).map((busTime, index) => (

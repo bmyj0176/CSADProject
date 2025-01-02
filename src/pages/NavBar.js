@@ -4,7 +4,7 @@ import { BusRoutes } from '../api_caller';
 import { getAllBusServices } from '../helper_functions';
 import './stylesheets/navbar.css';
 import { dijkstra, shortest_path } from '../travel_algorithms';
-import ToggleThemeButton from './Miscellaneous/ToggleThemeButton';
+import ToggleThemeButton from './Components/ToggleThemeButton';
 
 const NavBar = () => {
   const [userLoggedIn, setUserLoggedIn] = useState(false);
