@@ -10,6 +10,7 @@ const NavBar = () => {
   const [userLoggedIn, setUserLoggedIn] = useState(false);
   const location = useLocation(); 
   const elementId = "light";
+  const isActive = (path) => location.pathname === path;
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -65,6 +66,8 @@ const NavBar = () => {
                   <div className="loginuser"> {localStorage.getItem('username')} </div>
                   <div className="dropdown-content">
                     <Link to="/about" className="dropdownItem">About</Link><br/>
+                    <Link to="/settings" className="dropdownItem">Settings</Link><br/>
+                    <Link to="/ost" className="dropdownItem">Soundtrack</Link><br/>
                     { userLoggedIn && <button id="logout" onClick={logout}>Log Out</button>}
                   </div>
                 </>

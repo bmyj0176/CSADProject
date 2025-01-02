@@ -14,7 +14,7 @@
 .nv li {
   display: inline-block;
   position: relative;
-  bottom:30px;
+  bottom: 30px;
 }
 
 /*spacing, inline*/
@@ -36,9 +36,9 @@
 .nv .dropdown-content {
   display: none;
   position: absolute;
-  top:80px;
+  top: 80px;
   padding-right: 5px;
-  background-color: rgba(83, 91, 142, 0.388);
+  background-color: rgb(60, 60, 60);
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
@@ -114,9 +114,6 @@
 }
 
 
-.dropdownItem:link{
-  color: yellow;
-}
 
 
 

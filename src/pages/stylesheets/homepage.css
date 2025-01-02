@@ -3,7 +3,7 @@
 .subhead{position:relative; left: 95px;}
 .subpar{position:relative; top: -10px; left: 82px;}
 
-hr {position: absolute; left:0px; width:558px; height:10px}
+
 
 .subhead2{position:relative; left: 95px; top: 40px;}
 .subpar2{position:relative; top: 30px; left: 82px;}
@@ -80,7 +80,7 @@ hr {position: absolute; left:0px; width:558px; height:10px}
   background-size:100%;
   background-repeat: no-repeat;
   background-position: center;
-  height: 360px;
+  height: 345px;
 }
 
 .bannerbuttonRight {
@@ -89,7 +89,7 @@ hr {position: absolute; left:0px; width:558px; height:10px}
   background-repeat: no-repeat;
   position:absolute;
   top: 440px;
-  left:1668px;
+  left:1848px;
   width: 45px;
   height: 35px;
   margin-top: 10px;
@@ -143,13 +143,13 @@ hr {position: absolute; left:0px; width:558px; height:10px}
   background-size:100%;
   background-repeat: no-repeat;
   background-position: center;
-  height: 274px;
+  height: 345px;
 }
 
 .card2 {
   position:relative;
-  left:-90px;
-  bottom: 15px;
+  left:-40px;
+  bottom: -20px;
   width: 400px; 
   padding: 50px;
   background: rgba(255, 255, 255, 0.267); 
@@ -213,14 +213,14 @@ hr {position: absolute; left:0px; width:558px; height:10px}
   background-size:100%;
   background-repeat: no-repeat;
   background-position: center;
-  height: 274px;
+  height: 345px;
 }
 
 .card3 {
   position:relative;
   border: 3px solid rgba(213, 213, 107, 0.443);
-  left:380px;
-  bottom: -158px;
+  left:480px;
+  bottom: -208px;
   width: 400px; 
   padding: 50px;
   background: rgba(255, 255, 255, 0.279); 
@@ -271,4 +271,54 @@ hr {position: absolute; left:0px; width:558px; height:10px}
 .view-more-3:hover {
   background: linear-gradient(90deg, #FF8008,  #FFC837); 
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25); 
+}
+
+.endBanner{ background: rgba(64, 186, 207, 0.932);
+  padding-bottom: px;
+  position:relative;
+  top: 50px;
+
+
+}
+
+
+.endBanner img {
+  height: 200px;
+  width: 200px;
+  position:relative;
+  top: 50px;
+  left: 50px;
+
+}
+
+
+.endBannerhr {
+  border: none; /* Remove default border */
+  background-color: rgba(216, 216, 222, 0.42); /* Set the color */
+  height: 2px; /* Set the thickness */
+  width: 90%;
+  position:relative;
+  top: -5px;
+}
+
+.copyright{
+  border: none;
+   margin-right: 0px;
+   background-color: rgba(9, 56, 56, 0); 
+   position:relative;
+   top: -15px;
+   left: 1580px;
+   font-weight: bold;
+   color: rgba(255, 255, 255, 0.753);
+
+}
+
+.endBannerHead{
+  color: white;
+  text-align: center;
+  position:relative;
+  bottom: 140px;
+  left: 80px;
+
+
 }

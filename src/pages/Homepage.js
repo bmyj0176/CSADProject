@@ -100,13 +100,8 @@ const Homepage = () => {
       </div>
       <button className="bannerbuttonRight" type="button" onClick={handleToggle} />
       <button className="bannerbuttonLeft" type="button" onClick={handleToggle2} />
-      <img className="nyoom" src="./images/nyoom.png"/>
-      <div style={{textAlign: "center"}}>
-        {true &&
-          <SavedPresets/>
-        } 
-      </div>
-      <h3 style={{textAlign: "center"}}> Bus? Or maybe I'll take it all. </h3>
+      
+      
       <div style={{ display: 'inline-block' }}>
       </div>
       <div style={{display: "inline-block"}}>
@@ -119,13 +114,21 @@ const Homepage = () => {
       <div style={{display: "inline-block"}}>
 
       </div>
-      <hr style={{border: "1px solid #ccc", margin: "20px 0", width: "100%"}} />
-      <div>
-        <h1 className="subhead2"> More About Us </h1>
-        <h5 className="subpar2"> yapyapyapyapyapyapyapyapyapyapyapyap <br/>
-         yapyapyapyapyapyapyapyapyapyapyapyap </h5>
-      </div>
       
+   
+      <div className="endBanner">
+
+        <img className="endBannerImg" src="./images/nyoom_stroke.png" />
+
+        <p className="endBannerHead"> Contact Us! </p>
+        <p className="endBannerHead2"> Follow Us! </p>
+        <p className="endBannerHead3"> Site Map </p>
+
+        <hr className="endBannerhr"/>
+
+        <h5 className="copyright"> © All rights reserved to nyoom 2024 </h5>
+
+    </div>
     </div>
   );
 };

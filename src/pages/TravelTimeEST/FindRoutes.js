@@ -21,8 +21,13 @@ const FindRoutes = () => {
       <>
         <h1 style={{textAlign:'center'}}>Search Now</h1>
         <form onSubmit={handleSubmit}>
-          <label> From: <input  type="text"  name="from" value={inputs.from || ""} onChange={handleChange}/></label>
-          <label> To: <input type="text" name="to" value={inputs.to || ""} onChange={handleChange}/></label>
+          <label> 
+            From: <input  type="text"  name="from" value={inputs.from || ""} onChange={handleChange}/>
+            <button>Nearby</button>
+          </label>
+          <label> 
+            To: <input type="text" name="to" value={inputs.to || ""} onChange={handleChange}/>
+          </label>
           <input  type="submit" value="Find" className="buton"/>
         </form>
       </>

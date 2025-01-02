@@ -3,7 +3,7 @@ body {
 }
 
 * {
-  color: rgb(232, 162, 70);
+  color: sandybrown;
   text-decoration: none;
 }
 
@@ -15,7 +15,7 @@ h1 {
 }
 
 h1,h2 {
-  color: rgb(214, 167, 49);
+  color: goldenrod;
 }
 
 h5 {
@@ -28,12 +28,16 @@ button, .buton{
   cursor: pointer;
 }
 
+input {
+  color: black;
+}
+
 @keyframes glow {
   0% {
-    text-shadow: 0 0 5px gold, 0 0 10px gold, 0 0 20px gold, 0 0 30px gold;
+    text-shadow: 0 0 5px lime, 0 0 10px lime, 0 0 20px lime, 0 0 30px lime;
   }
   100% {
-    text-shadow: 0 0 10px gold, 0 0 20px gold, 0 0 40px gold, 0 0 50px gold;
+    text-shadow: 0 0 10px lime, 0 0 20px lime, 0 0 40px lime, 0 0 50px lime;
   }
 }
 
@@ -45,16 +49,14 @@ button, .buton{
 
 
 
-.nv{ background-color: rgba(213, 219, 150, 0.441); }
+.nv{ background-color: beige; }
 
-.nv :visited{
-  color: rgba(155, 178, 42, 0.324);
+.nv li a {
+  color: darkgreen;
 }
 
-.nv :active{
-  color: rgba(146, 170, 49, 0.379);
+.nv .activee{
+  color: forestgreen;
+  animation: glow 0.1s infinite alternate;
 } 
 
-.nv .dropdown-content{
-  background-color: rgba(216, 216, 121, 0.689);
-}
