@@ -317,9 +317,10 @@
   color: white;
   text-align: center;
   position:relative;
-  bottom: 140px;
+  bottom: 160px;
   left: 260px;
-  font-size: 40px;
+  font-size: 20px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 
 
 }
