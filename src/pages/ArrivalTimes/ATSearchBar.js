@@ -112,7 +112,9 @@ const ATSearchBar = (props) => {
         favedItemsCopy.sort((a, b) => a.type.localeCompare(b.type))
       }
       setFavedItems(favedItemsCopy)
-      localStorage.setItem("savedarrivaltimes", JSON.stringify(favedItemsCopy))
+      const key = "savedarrivaltimes"
+      localStorage.setItem(key, JSON.stringify(favedItemsCopy))
+      window.dispatchEvent(new CustomEvent('localStorageUpdate', { detail: { key } }));
     }
     
     return (

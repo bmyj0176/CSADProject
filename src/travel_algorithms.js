@@ -33,7 +33,8 @@ async function test() {
 console.clear();
 let train_transfer = await get_json('./datasets/platform.json');
 let train_paths = await get_json('./datasets/station.json');
-let trains = train_paths[0]["stations"]
+let trains2 = new Object();
+let trains = train_paths[0]["stations"];
 let map = buildAdjacencyList(trains);
 
 
@@ -79,7 +80,7 @@ export function dijkstra(graph, start, end) {
         if (distances[currentNode] === Infinity) break;
 
         // Mark the chosen node as visited
-        visited.add(currentNode);
+        visited.add(currentNode); 
 
         // For each neighbouring node of the current node
         for (let neighbour in graph[currentNode]) {

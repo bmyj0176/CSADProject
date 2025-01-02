@@ -1,77 +1,59 @@
-import React, { Component, useState } from 'react';
-import ATSearchBar from "./ArrivalTimes/ATSearchBar"
+import React, { useState } from "react";
+import ATSearchBar from "./ArrivalTimes/ATSearchBar";
 import "./stylesheets/arrivaltimes.css";
-import ArrivalTimesList from './ArrivalTimes/ArrivalTimesList';
-import { ArrivalTimesElement } from './ArrivalTimes/ArrivalTimesList';
-import SavedArrivalTimes from './ArrivalTimes/SavedArrivalTimes';
- 
-class ArrivalTimes extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      toggles: {
-        busNo: null,
-        busStop: null,
-        nearMe: null,
-      },
-      searchResult: null,
-    };
-  }
+import ArrivalTimesList from "./ArrivalTimes/ArrivalTimesList";
+import SavedArrivalTimes from "./ArrivalTimes/SavedArrivalTimes";
 
-  handleToggle = (buttonName) => {
-    this.setState((prevState) => {
-      if (buttonName === 'nearMe') {
-        if (this.state.toggles['nearMe'] === null) {
+const ArrivalTimes = () => {
+  const [toggles, setToggles] = useState({
+    busNo: null,
+    busStop: null,
+    nearMe: null,
+  });
+
+  const [searchResult, setSearchResult] = useState(null);
+
+  const handleToggle = (buttonName) => {
+    setToggles((prevToggles) => {
+      if (buttonName === "nearMe") {
+        if (prevToggles.nearMe === null) {
           return {
-            toggles: {
-              ...prevState.toggles,
-              busNo: false,
-              busStop: false,
-              nearMe: true,
-            },
+            busNo: false,
+            busStop: false,
+            nearMe: true,
           };
         } else {
           return {
-            toggles: {
-              ...prevState.toggles,
-              busNo: null,
-              busStop: null,
-              nearMe: null,
-            },
+            busNo: null,
+            busStop: null,
+            nearMe: null,
           };
         }
       } else {
-        // other 3 buttons
-        if ((this.state.toggles['busNo'] == null && this.state.toggles['busStop'] == null)
-          || (!this.state.toggles['busNo'] && !this.state.toggles['busStop'])
+        // Handle busNo and busStop buttons
+        if (
+          (prevToggles.busNo == null && prevToggles.busStop == null) ||
+          (!prevToggles.busNo && !prevToggles.busStop)
         ) {
           return {
-            toggles: {
-              ...prevState.toggles,
-              busNo: false,
-              busStop: false,
-              nearMe: null,
-              [buttonName]: true,
-            },
+            busNo: false,
+            busStop: false,
+            nearMe: null,
+            [buttonName]: true,
           };
         } else {
-          const bools = [this.state.toggles['busNo'], this.state.toggles['busStop']];
-          const selected = this.state.toggles[buttonName];
-          if (selected && bools.filter((bool) => bool).length === 1) { // only one filter selected is picked
+          const bools = [prevToggles.busNo, prevToggles.busStop];
+          const selected = prevToggles[buttonName];
+          if (selected && bools.filter((bool) => bool).length === 1) {
             return {
-              toggles: {
-                ...prevState.toggles,
-                busNo: null,
-                busStop: null,
-                nearMe: null,
-              },
+              busNo: null,
+              busStop: null,
+              nearMe: null,
             };
           } else {
             return {
-              toggles: {
-                ...prevState.toggles,
-                [buttonName]: !prevState.toggles[buttonName],
-              },
+              ...prevToggles,
+              [buttonName]: !prevToggles[buttonName],
             };
           }
         }
@@ -79,92 +61,83 @@ class ArrivalTimes extends Component {
     });
   };
 
-  receiveSearchResult = (value) => {
-    this.setState(() => {
-      return {
-        searchResult: value
-      }
-    })
-  }
+  const receiveSearchResult = (value) => {
+    setSearchResult(value);
+  };
 
-  default() {
-    return {
-      fontWeight: "normal",
-    };
-  }
+  const defaultStyle = {
+    fontWeight: "normal",
+  };
 
-  filtered_off() {
-    return {
-      fontWeight: "normal",
-      opacity: 0.2
-    };
-  }
+  const filteredOffStyle = {
+    fontWeight: "normal",
+    opacity: 0.2,
+  };
 
-  filtered_on() {
-    return {
-      fontWeight: "bold",
-      backgroundColor: "#606060"
-    };
-  }
+  const filteredOnStyle = {
+    fontWeight: "bold",
+    backgroundColor: "#606060",
+  };
 
-  choose(buttonName) {
-    return this.state.toggles[buttonName] !== null ? this.state.toggles[buttonName] ? this.filtered_on() : this.filtered_off() : this.default()
-  }
+  const chooseStyle = (buttonName) => {
+    return toggles[buttonName] !== null
+      ? toggles[buttonName]
+        ? filteredOnStyle
+        : filteredOffStyle
+      : defaultStyle;
+  };
 
-  render() {
-    return (
-      <>
-      <div style={{textAlign: 'center'}}>
- {/*---------------------------------------------------------------------------------*/}
+  return (
+    <>
+      <div style={{ textAlign: "center" }}>
         <ul className="at">
           <li>
             <button
-              style={this.choose('busNo')}
-              onClick={() => this.handleToggle('busNo')}
+              style={chooseStyle("busNo")}
+              onClick={() => handleToggle("busNo")}
             >
-            <p> Bus Services </p>
+              <p>Bus Services</p>
             </button>
           </li>
- {/*---------------------------------------------------------------------------------*/}
-          <li> <button
-              style={this.choose('busStop')}
-              onClick={() => this.handleToggle('busStop')}
-              >
-              <p> Bus Stops </p>
-            </button>
-          </li>
- {/*---------------------------------------------------------------------------------*/}
           <li>
             <button
-              style={this.choose('nearMe')}
-              onClick={() => this.handleToggle('nearMe')}
+              style={chooseStyle("busStop")}
+              onClick={() => handleToggle("busStop")}
             >
-              <p> Near Me 🏳️ </p>
+              <p>Bus Stops</p>
+            </button>
+          </li>
+          <li>
+            <button
+              style={chooseStyle("nearMe")}
+              onClick={() => handleToggle("nearMe")}
+            >
+              <p>Near Me 🏳️</p>
             </button>
           </li>
         </ul>
- {/*---------------------------------------------------------------------------------*/}
       </div>
-        <table><tbody><tr>
-          <td>
-            <ATSearchBar 
-            toggleStates={this.state.toggles} 
-            receiveSearchResult={this.receiveSearchResult}
-            />
-          </td>
-          <td>
-            {this.state['searchResult'] ? 
-            <ArrivalTimesList data={this.state.searchResult}/> 
-            : null}
-          </td>
-          <td>
-            <h2>Saved Arrival Times</h2>
-            <SavedArrivalTimes/>
-          </td>
-        </tr></tbody></table>
-      </>
-    );
-  }
-}
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <ATSearchBar
+                toggleStates={toggles}
+                receiveSearchResult={receiveSearchResult}
+              />
+            </td>
+            <td>
+              {searchResult ? <ArrivalTimesList data={searchResult} /> : null}
+            </td>
+            <td>
+              <h2>Saved Arrival Times</h2>
+              <SavedArrivalTimes receiveSearchResult={receiveSearchResult} />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </>
+  );
+};
 
 export default ArrivalTimes;

@@ -56,6 +56,7 @@ const SearchResult = (props) => {
               <b className="busstopnumber">{subheader1}</b>
               {subheader2 && (subheader2)}
             </button>
+            {props.dict.type !== "nearestBusStop" && // dont show star if nearby mode
             <button // STAR BUTTONNNNNNNNN
               id={subheader1 ? 'buttonchange' : 'buttonchange2'}
               className={favItem === 'selected' ? "btnfaved" : "btnunfaved"}
@@ -74,6 +75,7 @@ const SearchResult = (props) => {
             />
           </svg>
         </button>
+        }
           </p>
           </div>
       )
