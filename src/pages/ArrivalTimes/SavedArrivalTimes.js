@@ -26,25 +26,21 @@ const SavedArrivalTimes = (props) => {
 
   return (
     <>
-      <button onClick={() => console.log(favedItems)}>consolelog</button>
-      <button onClick={() => {localStorage.clear}}>clear</button>
       {Array.from({ length: favedItems.length }, (_, index) => (
-            <div key={index} className="bar">
-              {favedItems ? ( 
-                /*<SearchResult 
-                dict={favedItems[index]} 
-                index={index}
-                receiveSearchResult={props.receiveSearchResult}
-                selectedItem={selectedItem}
-                onItemSelect={onItemSelect}
-                favedItems={favedItems}
-                onFavItem={onFavItem}
-                />*/""
-              ) : (
-                <> Unable to get Location Data <br/> Please enable it in your browser settings </>
-              )}
-            </div>
-          ))}
+        <div key={index} className="bar">
+        {favedItems && ( 
+          <SearchResult 
+          dict={favedItems[index]} 
+          index={index}
+          receiveSearchResult={props.receiveSearchResult}
+          selectedItem={props.selectedItem}
+          onItemSelect={props.onItemSelect}
+          favedItems={props.favedItems}
+          onFavItem={props.onFavItem}
+          />
+        )}
+        </div>
+      ))}
     </>
   );
 };

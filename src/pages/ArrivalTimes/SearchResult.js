@@ -35,7 +35,7 @@ const SearchResult = (props) => {
         default:  
           break
         }
-    }, [props.dict]);
+    }, [props.dict, props.favedItems]);
   
     const handleClick = () => {
       props.onItemSelect(props.index)

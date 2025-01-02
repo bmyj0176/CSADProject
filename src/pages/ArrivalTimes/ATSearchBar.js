@@ -10,13 +10,6 @@ const ATSearchBar = (props) => {
     const [searchBarValue, setSearchBarInput] = useState(''); // search bar value
     const [barsCount, setBarsCount] = useState(0); // count of stacked bars
     const [barsList, setBarsList] = useState([]); // contents of stacked bars
-    const [selectedItem, setSelectedItem] = useState(null) 
-    const [favedItems, setFavedItems] = useState(() => {
-      const storedFavedItems = localStorage.getItem("savedarrivaltimes")
-      if (!storedFavedItems) // no localstorage data
-        return []
-      return JSON.parse(storedFavedItems)
-    })
     
     // once at start of lifecycle
     useEffect(() => {
@@ -32,11 +25,6 @@ const ATSearchBar = (props) => {
     useEffect(() => {
       updateSearchBar(searchBarValue);
     }, [props.toggleStates, searchBarValue]);
-
-    // save favedItems to localStorage
-    useEffect(() => {
-      // localstorage
-    }, [favedItems])
       
       const onChangeSearchBar = (event) => {
         const value = event.target.value;
@@ -96,27 +84,6 @@ const ATSearchBar = (props) => {
         setBarsCount(filtered_list.length);
       };
     
-    const onItemSelect = (index) => {
-      setSelectedItem(index)
-    }
-
-    // dict - entry to save
-    // doAdd - (bool) false: remove, true: add
-    const onFavItem = (dict, doAdd) => {
-      let favedItemsCopy = [...favedItems]
-      if (!doAdd) {
-        favedItemsCopy = favedItemsCopy.filter(item => JSON.stringify(item) !== JSON.stringify(dict))
-      }
-      else {
-        favedItemsCopy.push(dict)
-        favedItemsCopy.sort((a, b) => a.type.localeCompare(b.type))
-      }
-      setFavedItems(favedItemsCopy)
-      const key = "savedarrivaltimes"
-      localStorage.setItem(key, JSON.stringify(favedItemsCopy))
-      window.dispatchEvent(new CustomEvent('localStorageUpdate', { detail: { key } }));
-    }
-    
     return (
       <div className="container">
         {/* searchbar disables if nearMe is off */}
@@ -130,10 +97,10 @@ const ATSearchBar = (props) => {
                 dict={barsList[index]} 
                 index={index}
                 receiveSearchResult={props.receiveSearchResult}
-                selectedItem={selectedItem}
-                onItemSelect={onItemSelect}
-                favedItems={favedItems}
-                onFavItem={onFavItem}
+                selectedItem={props.selectedItem}
+                onItemSelect={props.onItemSelect}
+                favedItems={props.favedItems}
+                onFavItem={props.onFavItem}
                 />
               ) : (
                 <> Unable to get Location Data <br/> Please enable it in your browser settings </>

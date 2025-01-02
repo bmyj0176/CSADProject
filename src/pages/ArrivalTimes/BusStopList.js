@@ -38,11 +38,11 @@ const BusStopList = (props) => {
     
     return (
         <>
+        <h2>{props.data.busStopName}</h2>
         {
             (busServicesList.length === busTimesListList.length) ? // finished loading
             (
                 <>
-                <h2>{props.data.busStopName}</h2>
                 <div className="list">
                 {Array.from({ length: busServicesList.length }, (_, index) => (
                   <div key={index} className="bar">

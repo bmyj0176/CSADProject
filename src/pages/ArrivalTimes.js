@@ -11,7 +11,34 @@ const ArrivalTimes = () => {
     nearMe: null,
   });
 
-  const [searchResult, setSearchResult] = useState(null);
+  const [searchResult, setSearchResult] = useState(null)
+  const [selectedItem, setSelectedItem] = useState(null) 
+  const [favedItems, setFavedItems] = useState(() => {
+    const storedFavedItems = localStorage.getItem("savedarrivaltimes")
+    if (!storedFavedItems) // no localstorage data
+      return []
+    return JSON.parse(storedFavedItems)
+  })
+
+  const onItemSelect = (index) => {
+    setSelectedItem(index)
+  }
+
+  const onFavItem = (dict, doAdd) => {
+    let favedItemsCopy = [...favedItems]
+    if (!doAdd) {
+      favedItemsCopy = favedItemsCopy.filter(item => JSON.stringify(item) !== JSON.stringify(dict))
+    }
+    else {
+      favedItemsCopy.push(dict)
+      favedItemsCopy.sort()
+      favedItemsCopy.sort((a, b) => a.type.localeCompare(b.type))
+    }
+    setFavedItems(favedItemsCopy)
+    const key = "savedarrivaltimes"
+    localStorage.setItem(key, JSON.stringify(favedItemsCopy))
+    window.dispatchEvent(new CustomEvent('localStorageUpdate', { detail: { key } }));
+  }
 
   const handleToggle = (buttonName) => {
     setToggles((prevToggles) => {
@@ -124,6 +151,10 @@ const ArrivalTimes = () => {
               <ATSearchBar
                 toggleStates={toggles}
                 receiveSearchResult={receiveSearchResult}
+                selectedItem={selectedItem}
+                onItemSelect={onItemSelect}
+                favedItems={favedItems}
+                onFavItem={onFavItem}
               />
             </td>
             <td>
@@ -131,7 +162,13 @@ const ArrivalTimes = () => {
             </td>
             <td>
               <h2>Saved Arrival Times</h2>
-              <SavedArrivalTimes receiveSearchResult={receiveSearchResult} />
+              <SavedArrivalTimes 
+                receiveSearchResult={receiveSearchResult}
+                selectedItem={selectedItem}
+                onItemSelect={onItemSelect}
+                favedItems={favedItems}
+                onFavItem={onFavItem}
+              />
             </td>
           </tr>
         </tbody>

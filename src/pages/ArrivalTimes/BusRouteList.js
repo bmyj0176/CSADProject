@@ -61,11 +61,11 @@ const BusRouteList = (props) => {
 
     return (
         <>
+        <h2>{"Bus Service: " + props.data.busNumber}</h2>
         {
             (busStopNameList.length === stopNumbersList.length) ? // finished loading
             (
                 <>
-                <h2>{"Bus Service: " + props.data.busNumber}</h2>
                 <BusDirectionToggleButton 
                 direction={direction}
                 busDirections={busDirections} 
