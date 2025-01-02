@@ -8,14 +8,12 @@
 /*each AT bar element properties*/
 .at li {
     display: inline-block;
-    margin-right: 12px;
+    margin-right: 20px;
 }
   
 /*no text underlines*/
 .at li button {
     display: inline-block;
-    background-color: rgb(57, 57, 57);
-    color: khaki;
     padding: 12px;
     height: auto;
     width: auto;

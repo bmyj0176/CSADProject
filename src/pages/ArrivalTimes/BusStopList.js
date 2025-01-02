@@ -42,7 +42,7 @@ const BusStopList = (props) => {
             (busServicesList.length === busTimesListList.length) ? // finished loading
             (
                 <>
-                <h3>{props.data.busStopName}</h3>
+                <h2>{props.data.busStopName}</h2>
                 <div className="list">
                 {Array.from({ length: busServicesList.length }, (_, index) => (
                   <div key={index} className="bar">
@@ -69,11 +69,10 @@ const BusStopList = (props) => {
 const BusStopElement = (props) => {
     return (
         <ArrivalTimesElement
-        index={props.index}
         header={"Bus " + props.busService}
         subheader={""}
         busTimesList={props.busTimesList}
-        updateBusTimes={props.updateBusTimes}/>
+        updateBusTimes={() => props.updateBusTimes(props.index)}/>
     )
 }
 

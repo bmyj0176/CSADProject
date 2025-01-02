@@ -117,7 +117,7 @@ const Homepage = () => {
         {/* Fixed iframe issue with proper syntax */}
       </div>
       <div style={{display: "inline-block"}}>
-        <img src='./images/dancing_android.gif'/>
+
       </div>
       <hr style={{border: "1px solid #ccc", margin: "20px 0", width: "100%"}} />
       <div>

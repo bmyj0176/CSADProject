@@ -3,6 +3,7 @@ import ATSearchBar from "./ArrivalTimes/ATSearchBar"
 import "./stylesheets/arrivaltimes.css";
 import ArrivalTimesList from './ArrivalTimes/ArrivalTimesList';
 import { ArrivalTimesElement } from './ArrivalTimes/ArrivalTimesList';
+import SavedArrivalTimes from './ArrivalTimes/SavedArrivalTimes';
  
 class ArrivalTimes extends Component {
   constructor(props) {
@@ -155,6 +156,10 @@ class ArrivalTimes extends Component {
             {this.state['searchResult'] ? 
             <ArrivalTimesList data={this.state.searchResult}/> 
             : null}
+          </td>
+          <td>
+            <h2>Saved Arrival Times</h2>
+            <SavedArrivalTimes/>
           </td>
         </tr></tbody></table>
       </>

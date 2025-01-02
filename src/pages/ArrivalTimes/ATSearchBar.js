@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef} from 'react';
 import { searchInList, searchInDualList, nearestBusStops, getBusStopInfo } from '../../helper_functions';
 import { get_list } from '../../file_reader';
-import {useNavigate} from 'react-router-dom';
+import SearchResult from './SearchResult';
 import '../stylesheets/busstopcard.css'
 
 const ATSearchBar = (props) => {
@@ -11,7 +11,12 @@ const ATSearchBar = (props) => {
     const [barsCount, setBarsCount] = useState(0); // count of stacked bars
     const [barsList, setBarsList] = useState([]); // contents of stacked bars
     const [selectedItem, setSelectedItem] = useState(null) 
-    const [favedItems, setFavedItems] = useState([])
+    const [favedItems, setFavedItems] = useState(() => {
+      const storedFavedItems = localStorage.getItem("savedarrivaltimes")
+      if (!storedFavedItems) // no localstorage data
+        return []
+      return JSON.parse(storedFavedItems)
+    })
     
     // once at start of lifecycle
     useEffect(() => {
@@ -100,13 +105,14 @@ const ATSearchBar = (props) => {
     const onFavItem = (dict, doAdd) => {
       let favedItemsCopy = [...favedItems]
       if (!doAdd) {
-        favedItemsCopy = favedItemsCopy.filter(item => item !== dict)
-        setFavedItems(favedItemsCopy)
-        return
+        favedItemsCopy = favedItemsCopy.filter(item => JSON.stringify(item) !== JSON.stringify(dict))
       }
-      favedItemsCopy.push(dict)
-      favedItemsCopy.sort((a, b) => a.type.localeCompare(b.type))
+      else {
+        favedItemsCopy.push(dict)
+        favedItemsCopy.sort((a, b) => a.type.localeCompare(b.type))
+      }
       setFavedItems(favedItemsCopy)
+      localStorage.setItem("savedarrivaltimes", JSON.stringify(favedItemsCopy))
     }
     
     return (
@@ -124,6 +130,7 @@ const ATSearchBar = (props) => {
                 receiveSearchResult={props.receiveSearchResult}
                 selectedItem={selectedItem}
                 onItemSelect={onItemSelect}
+                favedItems={favedItems}
                 onFavItem={onFavItem}
                 />
               ) : (
@@ -135,75 +142,5 @@ const ATSearchBar = (props) => {
       </div>
       );
     };
-
-const SearchResult = (props) => {
-  const [header, setHeader] = useState("")
-  const [subheader1, setSubheader1] = useState("")
-  const [subheader2, setSubheader2] = useState("")
-  const [favItem, setFavItem] = useState('unselected');
-  
-  useEffect(() => {
-    setHeader("")
-    setSubheader1("")
-    setSubheader2("")
-    switch (props.dict.type) {
-      case "nearestBusStop":
-        setHeader(props.dict.busStopName)
-        setSubheader1(props.dict.busStopCode)
-        setSubheader2(props.dict.distance + "m Away")
-        break
-      case "busNo":
-        setHeader("Bus " + props.dict.busNumber)
-        break
-      case "busStop":
-        setHeader(props.dict.busStopName)
-        setSubheader1(props.dict.busStopCode)
-        break
-      default:  
-        break
-      }
-  }, [props.dict]);
-
-  const handleClick = () => {
-    props.onItemSelect(props.index)
-    props.receiveSearchResult(props.dict)
-  };
-
-  const handleFav = () => {
-    setFavItem((prevState) => (prevState === 'selected' ? 'unselected' : 'selected'));
-    props.onFavItem(props.dict, (favItem === 'selected' ? true : false))
-  };
-
-  // BUTTON LAYOUT
-    return (
-      <div className = "cent">
-        <p style={{display:'block'}}>
-          <button className={subheader1 ? "busstopcard" : "alternatecard"} id={(props.selectedItem === props.index) ? "busstopclicked" : "busstopdefault"} onClick={handleClick}>
-            <h3 className="busstopname">{header}</h3>
-            <b className="busstopnumber">{subheader1}</b>
-            {subheader2 && ("  •  " + subheader2)}
-          </button>
-          <button // STAR BUTTONNNNNNNNN
-            id={subheader1 ? 'buttonchange' : 'buttonchange2'}
-            className={favItem === 'selected' ? "btnfaved" : "btnunfaved"}
-            onClick={handleFav}
-            type="button"
-          >   
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          width="24"
-          height="24"
-        >
-          <path
-            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
-            fill="currentColor"
-          />
-        </svg>
-      </button>
-        </p>
-        </div>
-    )
-}
   
 export default ATSearchBar

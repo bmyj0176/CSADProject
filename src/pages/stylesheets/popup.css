@@ -19,6 +19,7 @@
     text-align: center;
     border-radius: 50px;
     border-style: double;
+    border-color: grey;
   }
   
   .popup button {

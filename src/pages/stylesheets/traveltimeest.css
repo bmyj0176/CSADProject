@@ -9,7 +9,6 @@
 /*each tte bar element properties*/
 .tte li {
     display: inline-block;
-    background-color: rgb(57, 57, 57);
     margin-right: 12px;
 }
   

@@ -22,8 +22,10 @@ h5 {
   border: medium double rgb(100, 128, 0); margin-right: 994px; background-color: rgb(189, 199, 155); 
 } 
 
-button{
-  background-color: rgb(60, 60, 60);
+button, .buton{
+  background-color: rgb(90, 90, 90);
+  border-radius: 20px;
+  cursor: pointer;
 }
 
 @keyframes glow {

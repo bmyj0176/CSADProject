@@ -65,7 +65,7 @@ const BusRouteList = (props) => {
             (busStopNameList.length === stopNumbersList.length) ? // finished loading
             (
                 <>
-                <h3>{"Bus Service: " + props.data.busNumber}</h3>
+                <h2>{"Bus Service: " + props.data.busNumber}</h2>
                 <BusDirectionToggleButton 
                 direction={direction}
                 busDirections={busDirections} 
@@ -75,11 +75,10 @@ const BusRouteList = (props) => {
                   <div key={index} className="bar">
                     <ul><li>
                         <BusRouteElement 
-                        index={index}
                         stopNo={stopNumbersList[index]} 
                         stopName={busStopNameList[index]} 
                         busTimesList={busTimesListList[index]}
-                        updateBusTimes={updateBusTimes} />
+                        updateBusTimes={() => updateBusTimes(index)} />
                     </li></ul>
                   </div>
                 ))}
@@ -109,11 +108,10 @@ const BusDirectionToggleButton = (props) => {
 const BusRouteElement = (props) => {
     return (
         <ArrivalTimesElement
-        index={props.index}
         header={props.stopName}
         subheader={props.stopNo}
         busTimesList={props.busTimesList}
-        updateBusTimes={props.updateBusTimes}/>
+        updateBusTimes={() => props.updateBusTimes(props.index)}/>
     )
 }
 

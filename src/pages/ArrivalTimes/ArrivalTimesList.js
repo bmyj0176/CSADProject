@@ -28,7 +28,7 @@ export const ArrivalTimesElement = (props) => {
             <br/>
         </>}
         
-        <button onClick={() => props.updateBusTimes(props.index)}>
+        <button onClick={props.updateBusTimes}>
         { // list of arrivaltimes (x3)
             (props.busTimesList ? props.busTimesList : ["-", "-", "-"]).map((busTime, index) => (
                 <span key={index}>{busTime}&nbsp;</span> // each arrivaltime in mins
