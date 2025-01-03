@@ -84,7 +84,7 @@ function Register() {
 
   return (
     <>
-      <img className="nyoomlogin" src="./images/nyoom.png"/>
+      <img className="nyoomlogin" src={JSON.parse(localStorage.getItem("darktheme_bool")) ? "./images/nyoom.png":"./images/nyoom_light.png" }/>
       
       <h1 style={{textAlign:'center'}}>Register</h1>
       <form onSubmit={handleSubmit}>

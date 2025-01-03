@@ -28,18 +28,14 @@ button, .buton{
   cursor: pointer;
 }
 
-input {
-  color: black;
-}
-
-@keyframes glow {
+/*@keyframes glow {
   0% {
-    text-shadow: 0 0 5px lime, 0 0 10px lime, 0 0 20px lime, 0 0 30px lime;
+    text-shadow: 0 0 5px gold, 0 0 10px gold, 0 0 20px gold, 0 0 30px gold;
   }
   100% {
-    text-shadow: 0 0 10px lime, 0 0 20px lime, 0 0 40px lime, 0 0 50px lime;
+    text-shadow: 0 0 10px gold, 0 0 20px gold, 0 0 40px gold, 0 0 50px gold;
   }
-}
+}*/
 
 
 
@@ -52,11 +48,10 @@ input {
 .nv{ background-color: beige; }
 
 .nv li a {
-  color: darkgreen;
+  color: rgb(143, 228, 15);
 }
 
 .nv .activee{
-  color: forestgreen;
-  animation: glow 0.1s infinite alternate;
+  color: rgb(0, 74, 0);
 } 
 

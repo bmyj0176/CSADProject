@@ -13,6 +13,7 @@ form {
  margin-right:auto;
  width: 200px; /* Set the width */
  height: auto; /* Maintain aspect ratio */
+ padding: 20px;
 }
 
 form h1 {
