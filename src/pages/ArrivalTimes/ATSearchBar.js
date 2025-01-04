@@ -7,7 +7,7 @@ import '../stylesheets/busstopcard.css'
 
 const ATSearchBar = (props) => {
     const MAX_BAR_SIZE = 20;
-    const [bus_services_list, bsc_stopname_list] = [useRef([]), useRef([])];
+    const [bus_services_list, bus_stops_info_list] = [useRef([]), useRef([])];
     const [searchBarValue, setSearchBarInput] = useState(''); // search bar value
     const [barsCount, setBarsCount] = useState(0); // count of stacked bars
     const [barsList, setBarsList] = useState([]); // contents of stacked bars
@@ -16,7 +16,7 @@ const ATSearchBar = (props) => {
     useEffect(() => {
       const fetchNumbers = async () => {
         bus_services_list.current = await get_list('./datasets/bus_services.txt');
-        bsc_stopname_list.current = await get_list('./datasets/bsc_stopname.txt');
+        bus_stops_info_list.current = await get_list('./datasets/bus_stops_info.json');
         };
       
       fetchNumbers();
@@ -55,7 +55,7 @@ const ATSearchBar = (props) => {
             full_list.push({type: "busNo", list: bus_services_list.current});
           }                                                                     
           if (props.toggleStates['busStop'] === null || props.toggleStates['busStop']) {
-            full_list.push({type: "busStop", list: bsc_stopname_list.current});
+            full_list.push({type: "busStop", list: bus_stops_info_list.current});
           }
           for (const dict of full_list) {
             let results = null
@@ -66,20 +66,22 @@ const ATSearchBar = (props) => {
                 type: "busNo", 
                 busNumber: result})
             } else if (dict.type === "busStop") { // dual
-              results = searchInDualList(value, dict.list, (MAX_BAR_SIZE-filtered_list.length))
-              const nearbyMRTsList = checkForNearbyMRTs(results.map(bsc => bsc[1]))
-              results = results.map((item, index) => [item, ...nearbyMRTsList[index]])
+              results = searchInDualList(value, dict.list, (MAX_BAR_SIZE - filtered_list.length), 2);
+
               for (const result of results) {
+                // Add item to filtered_list if it doesn't exceed MAX_BAR_SIZE
                 filtered_list.push({
                   type: "busStop", 
                   busStopName: result[0],
                   busStopCode: result[1],
                   nearbyMRTs: result[2]
-              })
-            }
+                });
+              }
             
-            if (filtered_list.length >= MAX_BAR_SIZE) {break}
-          }
+              if (filtered_list.length >= MAX_BAR_SIZE) {
+                break; // exit the loop when max size is reached
+              }
+            }
         }
       }
         else {// INACTIVE MODE (search bar empty)

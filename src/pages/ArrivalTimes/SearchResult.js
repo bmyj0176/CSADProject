@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { dict_in_list } from '../../helper_functions2';
+import { dict_in_list, codeToMRTImagePath } from '../../helper_functions2';
 
 const SearchResult = (props) => {
     const [header, setHeader] = useState("")
@@ -29,8 +29,15 @@ const SearchResult = (props) => {
           setHeader("Bus " + props.dict.busNumber)
           break
         case "busStop":
+          console.log("props.dict")
+          console.log(props.dict)
           setHeader(props.dict.busStopName)
           setSubheader1(props.dict.busStopCode)
+          setSubheader2(
+            Array.from({ length: props.dict.nearbyMRTs.length }, (_, index) => (
+              <img src={codeToMRTImagePath(props.dict.nearbyMRTs[index])}/>
+            ))
+          )
           break
         default:  
           break

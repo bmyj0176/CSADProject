@@ -1,4 +1,4 @@
-import { stat } from "fs-extra";
+import { get_json } from "./file_reader";
 
 export function convertISO8601(time) {
     const date = new Date(time);
@@ -107,14 +107,14 @@ export async function checkForNearbyMRTs (bsc_list) {
     const filtered_list = []
     const data = await get_json('./datasets/busstops_near_mrt.json')
     for (const bsc of bsc_list) {
-        filtered_list.append((bsc in data) ? data[bsc] : [])
+        filtered_list.push((bsc in data) ? data[bsc] : [])
     }
     return filtered_list
 }
 
 // INPUT - (string) code of MRT station
 // OUTPUT - (string) path to image
-function codeToMRTImagePath(code) {
+export function codeToMRTImagePath(code) {
     let station_code = code.replace(/[0-9]/g, "")
     let path = './images/MRTIcons/'
     switch (station_code) {

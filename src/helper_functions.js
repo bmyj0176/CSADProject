@@ -14,10 +14,12 @@ export async function getBusTiming(BusStopCode, BusNumber) {
     if (services.length === 0)
         return ["-", "-", "-"]
     const service = services.find(service => service["ServiceNo"] === BusNumber);
-
     const times = []
     const currentDate = new Date().toISOString(); 
-    const nextBusDates = [service.NextBus?.EstimatedArrival, service.NextBus2?.EstimatedArrival, service.NextBus3?.EstimatedArrival];
+    const nextBusDates = []
+    try {nextBusDates.push(service.NextBus?.EstimatedArrival)} catch {nextBusDates.push(null)}
+    try {nextBusDates.push(service.NextBus2?.EstimatedArrival)} catch {nextBusDates.push(null)}
+    try {nextBusDates.push(service.NextBus3?.EstimatedArrival)} catch {nextBusDates.push(null)}
     for (let nextBusDate of nextBusDates) {
         if (nextBusDate == "")
             times.push("-")
@@ -155,7 +157,16 @@ export function searchInList(searchQuery, inputList, cap = 50) {
 }
 
 // same as searchInList, but list contains lists of 2, example: [[1, 2], [3, 4], [3, 5]]
-export function searchInDualList(searchQuery, inputList, cap = 50) {
+export function searchInDualList(searchQuery, inputList, cap = 50, splicelistsize = null) {
+    let excludedList = []
+    if (splicelistsize) {
+        excludedList = inputList.map(sublist => sublist.slice(splicelistsize, inputList.length))
+        inputList = inputList.map(sublist => sublist.slice(0, splicelistsize))
+    }
+    console.log("inputList")
+    console.log(inputList)
+    console.log("excludedList")
+    console.log(excludedList)
     const outputList = []
     const outputListIndexes = [] // primary search filtering
     const cleaned_searchQuery = searchQuery.toLowerCase().replace(/\s+/g, '').replace(/[^\w\s]/g, '')
@@ -163,7 +174,7 @@ export function searchInDualList(searchQuery, inputList, cap = 50) {
     for (let n = 0; n < inputList.length; n++) {
         const cleaned_item = inputList[n].map(item => item.toLowerCase().replace(/\s+/g, '').replace(/[^\w\s]/g, '')) // for search ease, remove spaces, special chars & case sensitivity
         if (cleaned_item.some(item => item.startsWith(cleaned_searchQuery))) {
-            outputList.push(inputList[n])
+            outputList.push([...inputList[n], ...excludedList[n]])
             outputListIndexes.push(n)
             if (cap != null && outputList.length >= cap) 
                 return outputList;
@@ -174,7 +185,7 @@ export function searchInDualList(searchQuery, inputList, cap = 50) {
         const cleaned_item = inputList[n].map(item => item.toLowerCase().replace(/\s+/g, '').replace(/[^\w\s]/g, '')) // for search ease, remove spaces, special chars & case sensitivity
         if (cleaned_item.some(item => item.includes(cleaned_searchQuery))) {
             if (!outputListIndexes.includes(n)) // only if not already filtered by primary search
-                outputList.push(inputList[n])
+                outputList.push([...inputList[n], ...excludedList[n]])
             if (cap != null && outputList.length >= cap) 
                 return outputList;
         }
