@@ -2922,6 +2922,22 @@
         ]
     },
     {
+        "mrt": "Punggol Coast",
+        "code": "NE18",
+        "closest_stops": [
+            {
+                "BusStopCode": "65729",
+                "Name": "Punggol Coast Station",
+                "Distance": 0.12230668095189322
+            },
+            {
+                "BusStopCode": "65721",
+                "Name": "Opposite Punggol Coast Station",
+                "Distance": 0.16525771950266457
+            }
+        ]
+    },
+    {
         "mrt": "Outram Park_NE",
         "code": "NE3",
         "closest_stops": [
@@ -4613,6 +4629,148 @@
         ]
     },
     {
+        "mrt": "Tanjong Rhu",
+        "code": "TE23",
+        "closest_stops": [
+            {
+                "BusStopCode": "90049",
+                "Name": "Tanjong Rhu Stn Exit 1",
+                "Distance": 0.020264175145390056
+            },
+            {
+                "BusStopCode": "90041",
+                "Name": "Tanjong Rhu Stn Exit 2",
+                "Distance": 0.027720168657853348
+            },
+            {
+                "BusStopCode": "90029",
+                "Name": "Opp Pebble Bay",
+                "Distance": 0.10598897189280809
+            }
+        ]
+    },
+    {
+        "mrt": "Katong Park",
+        "code": "TE24",
+        "closest_stops": [
+            {
+                "BusStopCode": "91089",
+                "Name": "Opp Katong Pk Stn",
+                "Distance": 0.147704776265487
+            },
+            {
+                "BusStopCode": "91081",
+                "Name": "Aft Katong Pk Stn Exit 2",
+                "Distance": 0.16456880397909002
+            }
+        ]
+    },
+    {
+        "mrt": "Tanjong Katong",
+        "code": "TE25",
+        "closest_stops": [
+            {
+                "BusStopCode": "82051",
+                "Name": "Aft Tg Katong Stn Exit 2",
+                "Distance": 0.18078773937026807
+            },
+            {
+                "BusStopCode": "82059",
+                "Name": "Bef Tg Katong Stn Exit 3",
+                "Distance": 0.24438529108020104
+            },
+            {
+                "BusStopCode": "91071",
+                "Name": "Bef Tg Katong Rd",
+                "Distance": 0.33729125773565455
+            },
+            {
+                "BusStopCode": "92261",
+                "Name": "Opp P/G @ Big Splash",
+                "Distance": 0.3423672301440587
+            }
+        ]
+    },
+    {
+        "mrt": "Marine Parade",
+        "code": "TE26",
+        "closest_stops": [
+            {
+                "BusStopCode": "92251",
+                "Name": "Opp Parkland Green",
+                "Distance": 0.17011384681037517
+            },
+            {
+                "BusStopCode": "92049",
+                "Name": "Marine Pde Stn/Parkway Pde",
+                "Distance": 0.18612248230933304
+            },
+            {
+                "BusStopCode": "92041",
+                "Name": "Marine Pde Stn Exit 2",
+                "Distance": 0.2195699295106456
+            }
+        ]
+    },
+    {
+        "mrt": "Marine Terrace",
+        "code": "TE27",
+        "closest_stops": [
+            {
+                "BusStopCode": "92191",
+                "Name": "Opp CP C3",
+                "Distance": 0.14115682385838982
+            },
+            {
+                "BusStopCode": "92221",
+                "Name": "Blk 19",
+                "Distance": 0.14868290748831597
+            },
+            {
+                "BusStopCode": "92239",
+                "Name": "Blk 45",
+                "Distance": 0.21795896460127642
+            },
+            {
+                "BusStopCode": "92229",
+                "Name": "Blk 53",
+                "Distance": 0.21910727445872977
+            }
+        ]
+    },
+    {
+        "mrt": "Siglap",
+        "code": "TE28",
+        "closest_stops": [
+            {
+                "BusStopCode": "93179",
+                "Name": "CP D3",
+                "Distance": 0.11117109634847352
+            },
+            {
+                "BusStopCode": "93171",
+                "Name": "Opp CP D3",
+                "Distance": 0.1159283395569987
+            }
+        ]
+    },
+    {
+        "mrt": "Bayshore",
+        "code": "TE29",
+        "closest_stops": [
+            {
+                "BusStopCode": "93151",
+                "Name": "Opp Cable Ski Pk",
+                "Distance": 0.07512631240283726
+            },
+            {
+                "BusStopCode": "93159",
+                "Name": "Cable Ski Pk",
+                "Distance": 0.1981218497945124
+            }
+        ]
+    },
+    {
         "mrt": "Woodlands South",
         "code": "TE3",
         "closest_stops": [
@@ -4640,6 +4798,63 @@
                 "BusStopCode": "46989",
                 "Name": "W'lands Sth Stn Exit 1",
                 "Distance": 0.2512413178723347
+            }
+        ]
+    },
+    {
+        "mrt": "Bedok South",
+        "code": "TE30",
+        "closest_stops": [
+            {
+                "BusStopCode": "84669",
+                "Name": "Blk 73",
+                "Distance": 0.04594871120619795
+            },
+            {
+                "BusStopCode": "84661",
+                "Name": "Blk 172",
+                "Distance": 0.06821833368483228
+            },
+            {
+                "BusStopCode": "84079",
+                "Name": "Opp Blk 71",
+                "Distance": 0.116436735241038
+            },
+            {
+                "BusStopCode": "84071",
+                "Name": "Blk 71",
+                "Distance": 0.14774845785034066
+            }
+        ]
+    },
+    {
+        "mrt": "Sungei Bedok",
+        "code": "TE31",
+        "closest_stops": [
+            {
+                "BusStopCode": "85049",
+                "Name": "Opp Man Fatt Lam Tp",
+                "Distance": 0.25843975549765114
+            },
+            {
+                "BusStopCode": "85041",
+                "Name": "Man Fatt Lam Tp",
+                "Distance": 0.2757703057678695
+            },
+            {
+                "BusStopCode": "85031",
+                "Name": "Excelsior Gdns",
+                "Distance": 0.2863127402702268
+            },
+            {
+                "BusStopCode": "85039",
+                "Name": "Opp Excelsior Gdns",
+                "Distance": 0.3247555522238581
+            },
+            {
+                "BusStopCode": "85109",
+                "Name": "Bef Bedok Rd",
+                "Distance": 0.3385674273502661
             }
         ]
     },

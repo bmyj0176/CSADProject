@@ -1,5 +1,6 @@
 import axios from 'axios';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { ThemeContext } from './Components/ToggleThemeButton';
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./stylesheets/login_register.css";
 
@@ -23,6 +24,7 @@ export const login = async (email, password, navigate) => {
 
 function Login() {
 
+  const { isDarkTheme } = useContext(ThemeContext);
   const navigate = useNavigate();
   const location = useLocation()
   const retainedData = location.state // from login page
@@ -45,7 +47,7 @@ function Login() {
   return (
     <>
 
-      <img className="nyoomlogin" src={JSON.parse(localStorage.getItem("darktheme_bool")) ? "./images/nyoom.png":"./images/nyoom_light.png" }/>
+      <img className="nyoomlogin" src={isDarkTheme ? "./images/nyoom.png":"./images/nyoom_light.png" }/>
 
       <h1 style={{textAlign:'center'}}>Login</h1>
       <form onSubmit={handleSubmit}>

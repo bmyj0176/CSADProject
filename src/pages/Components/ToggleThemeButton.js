@@ -1,40 +1,60 @@
-import React, { useEffect } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
 
-const ToggleThemeButton = () => {
-    
-    // on first load, update theme; default = true
+export const ThemeContext = createContext();
+
+export const ThemeProvider = ({ children }) => {
+    const [isDarkTheme, setIsDarkTheme] = useState(true);
+
+    // Initialize theme from localStorage
     useEffect(() => {
         const storedTheme = localStorage.getItem("darktheme_bool");
-        storedTheme ? 
-        // already has a theme
-        change_theme(JSON.parse(storedTheme)) : 
-        // no theme
-        
-        change_theme(true)
+        if (storedTheme) {
+            setIsDarkTheme(JSON.parse(storedTheme));
+        } else {
+            localStorage.setItem("darktheme_bool", JSON.stringify(true));
+        }
     }, []);
 
-    const toggle_theme = () => {
-        change_theme(!JSON.parse(localStorage.getItem("darktheme_bool")))
-    }
-
-    const change_theme = (isDarkTheme) => {
-        localStorage.setItem("darktheme_bool", JSON.stringify(isDarkTheme));
+    // Apply the theme whenever isDarkTheme changes
+    useEffect(() => {
         const themeLink = document.getElementById("lightdarkmode");
         const targetElement = document.getElementById("theme-target");
-        if (!isDarkTheme) {
-            themeLink.href = "../stylesheets/lightmode.css";
+
+        if (isDarkTheme) {
+            // Apply dark mode
+            themeLink.href = "../stylesheets/darkmode.css";
             targetElement.classList.remove("light");
             targetElement.classList.add("dark");
         } else {
-            themeLink.href = "../stylesheets/darkmode.css";
+            // Apply light mode
+            themeLink.href = "../stylesheets/lightmode.css";
             targetElement.classList.remove("dark");
             targetElement.classList.add("light");
         }
-    }
+    }, [isDarkTheme]);
+
+    const changeTheme = (theme) => {
+        setIsDarkTheme(theme);
+        localStorage.setItem("darktheme_bool", JSON.stringify(theme));
+    };
 
     return (
-        <button id="theme-target" className="light" onClick={toggle_theme}/> 
-    )
-}
+        <ThemeContext.Provider value={{ isDarkTheme, changeTheme }}>
+            {children}
+        </ThemeContext.Provider>
+    );
+};
 
-export default ToggleThemeButton
+const ToggleThemeButton = () => {
+    const { isDarkTheme, changeTheme } = useContext(ThemeContext);
+
+    const toggleTheme = () => {
+        changeTheme(!isDarkTheme);
+    };
+
+    return (
+        <button id="theme-target" className={isDarkTheme ? "dark" : "light"} onClick={toggleTheme}/>
+    );
+};
+
+export default ToggleThemeButton;
