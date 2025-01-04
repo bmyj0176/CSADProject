@@ -1,5012 +1,623 @@
-[
-    {
-        "mrt": "Choa Chu Kang_BP",
-        "code": "BP1",
-        "closest_stops": [
-            {
-                "BusStopCode": "44531",
-                "Name": "Opp Choa Chu Kang Stn",
-                "Distance": 0.038678023576956974
-            },
-            {
-                "BusStopCode": "44539",
-                "Name": "Lot 1/Choa Chu Kang Stn",
-                "Distance": 0.058336238719064064
-            }
-        ]
-    },
-    {
-        "mrt": "Fajar",
-        "code": "BP10",
-        "closest_stops": [
-            {
-                "BusStopCode": "44771",
-                "Name": "Fajar Stn",
-                "Distance": 0.0039836244784785
-            },
-            {
-                "BusStopCode": "44779",
-                "Name": "Opp Fajar Stn",
-                "Distance": 0.07536539983628116
-            }
-        ]
-    },
-    {
-        "mrt": "Segar",
-        "code": "BP11",
-        "closest_stops": [
-            {
-                "BusStopCode": "44709",
-                "Name": "Blk 547C",
-                "Distance": 0.15387021933407347
-            },
-            {
-                "BusStopCode": "44701",
-                "Name": "Blk 548B",
-                "Distance": 0.1868013706798812
-            },
-            {
-                "BusStopCode": "44691",
-                "Name": "BLK 485",
-                "Distance": 0.214535940848827
-            },
-            {
-                "BusStopCode": "44699",
-                "Name": "BLK 457",
-                "Distance": 0.2187501710881901
-            },
-            {
-                "BusStopCode": "44611",
-                "Name": "Blk 516",
-                "Distance": 0.23594284704481389
-            },
-            {
-                "BusStopCode": "44619",
-                "Name": "Blk 506",
-                "Distance": 0.23683033812577284
-            }
-        ]
-    },
-    {
-        "mrt": "Jelapang",
-        "code": "BP12",
-        "closest_stops": [
-            {
-                "BusStopCode": "44721",
-                "Name": "Opp Jelapang Stn",
-                "Distance": 0.04656246357201278
-            },
-            {
-                "BusStopCode": "44821",
-                "Name": "Blk 651",
-                "Distance": 0.13023526443390013
-            },
-            {
-                "BusStopCode": "44829",
-                "Name": "Opp Blk 650",
-                "Distance": 0.16205620475684196
-            },
-            {
-                "BusStopCode": "44931",
-                "Name": "Blk 643 CP",
-                "Distance": 0.17123063886421336
-            },
-            {
-                "BusStopCode": "44831",
-                "Name": "BLK 519",
-                "Distance": 0.19555094321463695
-            }
-        ]
-    },
-    {
-        "mrt": "Senja",
-        "code": "BP13",
-        "closest_stops": [
-            {
-                "BusStopCode": "44649",
-                "Name": "Blk 541A CP",
-                "Distance": 0.0934622561471206
-            },
-            {
-                "BusStopCode": "44641",
-                "Name": "Blk 602",
-                "Distance": 0.11299556195163295
-            },
-            {
-                "BusStopCode": "44799",
-                "Name": "Blk 610",
-                "Distance": 0.17701242636950845
-            }
-        ]
-    },
-    {
-        "mrt": "South View",
-        "code": "BP2",
-        "closest_stops": [
-            {
-                "BusStopCode": "44459",
-                "Name": "Opp South View Stn",
-                "Distance": 0.08224706388380107
-            },
-            {
-                "BusStopCode": "44451",
-                "Name": "Bef South View Stn",
-                "Distance": 0.1290994621568101
-            },
-            {
-                "BusStopCode": "44489",
-                "Name": "Blk 220",
-                "Distance": 0.17407167089246048
-            },
-            {
-                "BusStopCode": "44481",
-                "Name": "Blk 223",
-                "Distance": 0.1797187997385016
-            }
-        ]
-    },
-    {
-        "mrt": "Keat Hong",
-        "code": "BP3",
-        "closest_stops": [
-            {
-                "BusStopCode": "44449",
-                "Name": "Palm Gdns",
-                "Distance": 0.1593303937395216
-            },
-            {
-                "BusStopCode": "44441",
-                "Name": "Blk 239",
-                "Distance": 0.18011420943538944
-            },
-            {
-                "BusStopCode": "44119",
-                "Name": "Blk 204",
-                "Distance": 0.21188064901398834
-            },
-            {
-                "BusStopCode": "44109",
-                "Name": "Opp Hong San Terr",
-                "Distance": 0.2224530973754253
-            },
-            {
-                "BusStopCode": "44479",
-                "Name": "Blk 206",
-                "Distance": 0.22502002476722935
-            },
-            {
-                "BusStopCode": "44121",
-                "Name": "Blk 113",
-                "Distance": 0.23429948534936546
-            },
-            {
-                "BusStopCode": "44471",
-                "Name": "Blk 234",
-                "Distance": 0.23627750717219664
-            },
-            {
-                "BusStopCode": "44129",
-                "Name": "Opp Blk 113",
-                "Distance": 0.24847091164568366
-            },
-            {
-                "BusStopCode": "44111",
-                "Name": "Opp Blk 203",
-                "Distance": 0.2725364162229271
-            }
-        ]
-    },
-    {
-        "mrt": "Teck Whye",
-        "code": "BP4",
-        "closest_stops": [
-            {
-                "BusStopCode": "44139",
-                "Name": "Opp Blk 26",
-                "Distance": 0.1916801468920175
-            },
-            {
-                "BusStopCode": "44131",
-                "Name": "Blk 26",
-                "Distance": 0.19225051494909107
-            },
-            {
-                "BusStopCode": "44411",
-                "Name": "Blk 108",
-                "Distance": 0.2114714881055659
-            },
-            {
-                "BusStopCode": "44421",
-                "Name": "Blk 25",
-                "Distance": 0.23405587735320027
-            }
-        ]
-    },
-    {
-        "mrt": "Phoenix",
-        "code": "BP5",
-        "closest_stops": [
-            {
-                "BusStopCode": "44141",
-                "Name": "Phoenix Stn",
-                "Distance": 0.04176900752121444
-            },
-            {
-                "BusStopCode": "44149",
-                "Name": "Opp Phoenix Stn",
-                "Distance": 0.07509635464598159
-            }
-        ]
-    },
-    {
-        "mrt": "Bukit Panjang_BP",
-        "code": "BP6",
-        "closest_stops": [
-            {
-                "BusStopCode": "44029",
-                "Name": "Bt Panjang Stn Exit A/Lrt",
-                "Distance": 0.038134418976646295
-            },
-            {
-                "BusStopCode": "44021",
-                "Name": "Bt Panjang Stn Exit B",
-                "Distance": 0.047309302683859925
-            },
-            {
-                "BusStopCode": "44031",
-                "Name": "Aft Bt Panjang Stn",
-                "Distance": 0.05301637815993987
-            },
-            {
-                "BusStopCode": "45009",
-                "Name": "BT PANJANG INT",
-                "Distance": 0.12907256391310096
-            },
-            {
-                "BusStopCode": "44859",
-                "Name": "Maysprings Condo",
-                "Distance": 0.14062615740734022
-            }
-        ]
-    },
-    {
-        "mrt": "Petir",
-        "code": "BP7",
-        "closest_stops": [
-            {
-                "BusStopCode": "44209",
-                "Name": "Opp Petir Stn",
-                "Distance": 0.07341339668866814
-            },
-            {
-                "BusStopCode": "44201",
-                "Name": "Aft Petir Stn",
-                "Distance": 0.08526715062164232
-            },
-            {
-                "BusStopCode": "44191",
-                "Name": "Opp Blk 171",
-                "Distance": 0.12326401717675316
-            },
-            {
-                "BusStopCode": "44199",
-                "Name": "Blk 171",
-                "Distance": 0.12563778220018484
-            }
-        ]
-    },
-    {
-        "mrt": "Pending",
-        "code": "BP8",
-        "closest_stops": [
-            {
-                "BusStopCode": "44221",
-                "Name": "Opp Pending Stn",
-                "Distance": 0.032110410096703686
-            },
-            {
-                "BusStopCode": "44229",
-                "Name": "Bef Pending Stn",
-                "Distance": 0.047449217377786394
-            }
-        ]
-    },
-    {
-        "mrt": "Bangkit",
-        "code": "BP9",
-        "closest_stops": [
-            {
-                "BusStopCode": "44329",
-                "Name": "Bangkit Stn",
-                "Distance": 0.019316919713880262
-            },
-            {
-                "BusStopCode": "44321",
-                "Name": "Opp Bangkit Stn",
-                "Distance": 0.04145280096526112
-            }
-        ]
-    },
-    {
-        "mrt": "Dhoby Ghaut_CC",
-        "code": "CC1",
-        "closest_stops": [
-            {
-                "BusStopCode": "08031",
-                "Name": "Dhoby Ghaut Stn Exit B",
-                "Distance": 0.058968477910417205
-            },
-            {
-                "BusStopCode": "08057",
-                "Name": "Dhoby Ghaut Stn",
-                "Distance": 0.06555086935458956
-            }
-        ]
-    },
-    {
-        "mrt": "MacPherson_CC",
-        "code": "CC10",
-        "closest_stops": [
-            {
-                "BusStopCode": "70371",
-                "Name": "Macpherson Stn Exit A",
-                "Distance": 0.10258792801971489
-            },
-            {
-                "BusStopCode": "70379",
-                "Name": "Opp Macpherson Stn Exit A",
-                "Distance": 0.1139411917820084
-            },
-            {
-                "BusStopCode": "70269",
-                "Name": "Citipoint Ind Cplx",
-                "Distance": 0.16887046981221387
-            },
-            {
-                "BusStopCode": "70251",
-                "Name": "Macpherson Stn Exit C",
-                "Distance": 0.19757620636878556
-            },
-            {
-                "BusStopCode": "70259",
-                "Name": "Macpherson Stn Exit B",
-                "Distance": 0.2087083991491609
-            }
-        ]
-    },
-    {
-        "mrt": "Tai Seng",
-        "code": "CC11",
-        "closest_stops": [
-            {
-                "BusStopCode": "70281",
-                "Name": "Aft Tai Seng Stn",
-                "Distance": 0.051718491119581954
-            },
-            {
-                "BusStopCode": "70289",
-                "Name": "Aft Tai Seng Stn Exit C",
-                "Distance": 0.06425228786647393
-            }
-        ]
-    },
-    {
-        "mrt": "Bartley",
-        "code": "CC12",
-        "closest_stops": [
-            {
-                "BusStopCode": "62071",
-                "Name": "BARTLEY STN EXIT A",
-                "Distance": 0.047800007001620785
-            },
-            {
-                "BusStopCode": "62079",
-                "Name": "AFT BARTLEY STN EXIT B",
-                "Distance": 0.0959605506988304
-            },
-            {
-                "BusStopCode": "62069",
-                "Name": "Bef Upp Paya Lebar Rd",
-                "Distance": 0.13479290422553514
-            },
-            {
-                "BusStopCode": "62061",
-                "Name": "Aft Upp Paya Lebar Rd",
-                "Distance": 0.167476447328933
-            }
-        ]
-    },
-    {
-        "mrt": "Serangoon_CC",
-        "code": "CC13",
-        "closest_stops": [
-            {
-                "BusStopCode": "62139",
-                "Name": "S'Goon Stn Exit A/Blk 413",
-                "Distance": 0.09356154716565253
-            },
-            {
-                "BusStopCode": "66351",
-                "Name": "S'goon Stn Exit E",
-                "Distance": 0.0965912038082102
-            },
-            {
-                "BusStopCode": "66359",
-                "Name": "S'Goon Stn Exit C/Blk 201",
-                "Distance": 0.1235724074125086
-            },
-            {
-                "BusStopCode": "62189",
-                "Name": "S'Goon Stn Exit D/Blk 416",
-                "Distance": 0.13404815158629493
-            },
-            {
-                "BusStopCode": "62131",
-                "Name": "S'Goon Stn Exit H",
-                "Distance": 0.14405548904621704
-            },
-            {
-                "BusStopCode": "62179",
-                "Name": "Blk 421",
-                "Distance": 0.1816910112755643
-            }
-        ]
-    },
-    {
-        "mrt": "Lorong Chuan",
-        "code": "CC14",
-        "closest_stops": [
-            {
-                "BusStopCode": "66399",
-                "Name": "Opp Lor Chuan Stn Exit B",
-                "Distance": 0.01653659925688559
-            },
-            {
-                "BusStopCode": "66391",
-                "Name": "Lor Chuan Stn Exit A",
-                "Distance": 0.17091193564193077
-            },
-            {
-                "BusStopCode": "66021",
-                "Name": "New Tech Pk",
-                "Distance": 0.18343898105163464
-            },
-            {
-                "BusStopCode": "66029",
-                "Name": "St. Gabriel's Pr Sch",
-                "Distance": 0.2624625367442641
-            }
-        ]
-    },
-    {
-        "mrt": "Bishan_CC",
-        "code": "CC15",
-        "closest_stops": [
-            {
-                "BusStopCode": "53231",
-                "Name": "BISHAN STN",
-                "Distance": 0.06927737415226383
-            },
-            {
-                "BusStopCode": "53239",
-                "Name": "OPP BISHAN STN",
-                "Distance": 0.08567739493458879
-            }
-        ]
-    },
-    {
-        "mrt": "Marymount",
-        "code": "CC16",
-        "closest_stops": [
-            {
-                "BusStopCode": "53129",
-                "Name": "Opp Marymount Stn",
-                "Distance": 0.13304178112387227
-            },
-            {
-                "BusStopCode": "53119",
-                "Name": "Aft Bishan St 21",
-                "Distance": 0.17408114977119482
-            },
-            {
-                "BusStopCode": "53121",
-                "Name": "Marymount Stn",
-                "Distance": 0.17466391343353904
-            },
-            {
-                "BusStopCode": "53029",
-                "Name": "Shunfu Est",
-                "Distance": 0.2329755072880501
-            },
-            {
-                "BusStopCode": "53319",
-                "Name": "Bosch",
-                "Distance": 0.2716554522366378
-            }
-        ]
-    },
-    {
-        "mrt": "Caldecott_CC",
-        "code": "CC17",
-        "closest_stops": [
-            {
-                "BusStopCode": "52219",
-                "Name": "Bef Caldecott Stn Exit 3",
-                "Distance": 0.04818730206912846
-            },
-            {
-                "BusStopCode": "52241",
-                "Name": "Bef Caldecott Stn/Savh",
-                "Distance": 0.1179668974076805
-            },
-            {
-                "BusStopCode": "52559",
-                "Name": "Caldecott Stn Exit 1",
-                "Distance": 0.1383377908007678
-            },
-            {
-                "BusStopCode": "52551",
-                "Name": "Caldecott Stn Exit 4",
-                "Distance": 0.149788837586982
-            },
-            {
-                "BusStopCode": "52249",
-                "Name": "Aft Caldecott Stn",
-                "Distance": 0.18617318598535001
-            },
-            {
-                "BusStopCode": "52211",
-                "Name": "Lighthouse Sch",
-                "Distance": 0.20847690941791633
-            }
-        ]
-    },
-    {
-        "mrt": "Botanic Gardens_CC",
-        "code": "CC19",
-        "closest_stops": [
-            {
-                "BusStopCode": "41021",
-                "Name": "Botanic Gdns Stn",
-                "Distance": 0.02513771666534494
-            },
-            {
-                "BusStopCode": "41029",
-                "Name": "Opp Botanic Gdns Stn",
-                "Distance": 0.10616146673214452
-            }
-        ]
-    },
-    {
-        "mrt": "Bras Basah",
-        "code": "CC2",
-        "closest_stops": [
-            {
-                "BusStopCode": "04179",
-                "Name": "Aft Bras Basah Stn Exit A",
-                "Distance": 0.11245250790276438
-            },
-            {
-                "BusStopCode": "04121",
-                "Name": "SMU",
-                "Distance": 0.13365294186554752
-            },
-            {
-                "BusStopCode": "04019",
-                "Name": "OPP BENCOOLEN STN EXIT B",
-                "Distance": 0.15777813862311266
-            },
-            {
-                "BusStopCode": "04151",
-                "Name": "Cath Of The Good Shepherd",
-                "Distance": 0.18525388154640163
-            },
-            {
-                "BusStopCode": "08069",
-                "Name": "Bencoolen Stn Exit B",
-                "Distance": 0.19731939616765273
-            },
-            {
-                "BusStopCode": "01012",
-                "Name": "Hotel Grand Pacific",
-                "Distance": 0.22083110558932842
-            },
-            {
-                "BusStopCode": "04159",
-                "Name": "Aft Chijmes",
-                "Distance": 0.23022534195514446
-            }
-        ]
-    },
-    {
-        "mrt": "Farrer Road",
-        "code": "CC20",
-        "closest_stops": [
-            {
-                "BusStopCode": "11119",
-                "Name": "Farrer Rd Stn Exit A",
-                "Distance": 0.018421992168188656
-            },
-            {
-                "BusStopCode": "11111",
-                "Name": "Farrer Rd Stn Exit B",
-                "Distance": 0.02066097762859178
-            }
-        ]
-    },
-    {
-        "mrt": "Holland Village",
-        "code": "CC21",
-        "closest_stops": [
-            {
-                "BusStopCode": "11419",
-                "Name": "Holland V Stn Exit A",
-                "Distance": 0.12540510099375288
-            },
-            {
-                "BusStopCode": "11269",
-                "Name": "Opp Holland Village",
-                "Distance": 0.14287576872347135
-            },
-            {
-                "BusStopCode": "11261",
-                "Name": "Holland Village",
-                "Distance": 0.14483139843459733
-            }
-        ]
-    },
-    {
-        "mrt": "Buona Vista_CC",
-        "code": "CC22",
-        "closest_stops": [
-            {
-                "BusStopCode": "11361",
-                "Name": "Buona Vista Stn Exit C",
-                "Distance": 0.08628085460653764
-            },
-            {
-                "BusStopCode": "11369",
-                "Name": "Buona Vista Stn Exit D",
-                "Distance": 0.10540402043159833
-            },
-            {
-                "BusStopCode": "11181",
-                "Name": "Opp Blk 43",
-                "Distance": 0.17474068136938822
-            },
-            {
-                "BusStopCode": "11189",
-                "Name": "Blk 43",
-                "Distance": 0.20481547890136448
-            }
-        ]
-    },
-    {
-        "mrt": "one-north",
-        "code": "CC23",
-        "closest_stops": [
-            {
-                "BusStopCode": "18051",
-                "Name": "One-North Stn",
-                "Distance": 0.10838305280514293
-            },
-            {
-                "BusStopCode": "18059",
-                "Name": "Opp One-North Stn",
-                "Distance": 0.12410898566950782
-            },
-            {
-                "BusStopCode": "18159",
-                "Name": "One-North Stn/Galaxis",
-                "Distance": 0.17043464249061024
-            },
-            {
-                "BusStopCode": "18151",
-                "Name": "Opp One-North Stn/Galaxis",
-                "Distance": 0.18543616864689755
-            }
-        ]
-    },
-    {
-        "mrt": "Kent Ridge",
-        "code": "CC24",
-        "closest_stops": [
-            {
-                "BusStopCode": "18331",
-                "Name": "Kent Ridge Stn Exit A/NUH",
-                "Distance": 0.06977555873727637
-            },
-            {
-                "BusStopCode": "15131",
-                "Name": "Kent Ridge Stn",
-                "Distance": 0.08466013452490939
-            },
-            {
-                "BusStopCode": "18339",
-                "Name": "Opp Kent Ridge Stn Exit A",
-                "Distance": 0.09206749909157015
-            },
-            {
-                "BusStopCode": "15139",
-                "Name": "Kent Ridge Stn Exit B",
-                "Distance": 0.10090287903962361
-            }
-        ]
-    },
-    {
-        "mrt": "Haw Par Villa",
-        "code": "CC25",
-        "closest_stops": [
-            {
-                "BusStopCode": "16011",
-                "Name": "Opp Haw Par Villa Stn",
-                "Distance": 0.017495462297283527
-            },
-            {
-                "BusStopCode": "16229",
-                "Name": "Haw Par Villa Stn",
-                "Distance": 0.043888339875665434
-            },
-            {
-                "BusStopCode": "16019",
-                "Name": "Haw Par Villa Stn",
-                "Distance": 0.04708798290890419
-            },
-            {
-                "BusStopCode": "16221",
-                "Name": "Opp Haw Par Villa Stn",
-                "Distance": 0.07449801249898184
-            }
-        ]
-    },
-    {
-        "mrt": "Pasir Panjang",
-        "code": "CC26",
-        "closest_stops": [
-            {
-                "BusStopCode": "15191",
-                "Name": "Pasir Panjang Stn/Fc",
-                "Distance": 0.12060455684519027
-            },
-            {
-                "BusStopCode": "15199",
-                "Name": "Opp Currency Hse",
-                "Distance": 0.17517281258450418
-            },
-            {
-                "BusStopCode": "15209",
-                "Name": "Bef Pasir Panjang Stn",
-                "Distance": 0.18244767044236326
-            },
-            {
-                "BusStopCode": "15201",
-                "Name": "Aft Pasir Panjang Stn",
-                "Distance": 0.2231417891036445
-            }
-        ]
-    },
-    {
-        "mrt": "Labrador Park",
-        "code": "CC27",
-        "closest_stops": [
-            {
-                "BusStopCode": "14189",
-                "Name": "Aft Alexandra Rd",
-                "Distance": 0.13961306122595993
-            },
-            {
-                "BusStopCode": "15141",
-                "Name": "Labrador Pk Stn",
-                "Distance": 0.20818611598003356
-            },
-            {
-                "BusStopCode": "15049",
-                "Name": "Opp Alexandra Retail Ctr",
-                "Distance": 0.2608110196152831
-            },
-            {
-                "BusStopCode": "15041",
-                "Name": "Alexandra Retail Ctr",
-                "Distance": 0.2746340182187427
-            },
-            {
-                "BusStopCode": "15149",
-                "Name": "Opp Labrador Pk Stn",
-                "Distance": 0.2756348689628881
-            }
-        ]
-    },
-    {
-        "mrt": "Telok Blangah",
-        "code": "CC28",
-        "closest_stops": [
-            {
-                "BusStopCode": "14161",
-                "Name": "Telok Blangah Stn",
-                "Distance": 0.03252205465189815
-            },
-            {
-                "BusStopCode": "14169",
-                "Name": "Opp Telok Blangah Stn",
-                "Distance": 0.08300532984926344
-            }
-        ]
-    },
-    {
-        "mrt": "HarbourFront_CC",
-        "code": "CC29",
-        "closest_stops": [
-            {
-                "BusStopCode": "14141",
-                "Name": "HarbourFront Stn/Vivocity",
-                "Distance": 0.035451755349194425
-            },
-            {
-                "BusStopCode": "14119",
-                "Name": "Opp VivoCity",
-                "Distance": 0.06071263634812781
-            }
-        ]
-    },
-    {
-        "mrt": "Esplanade",
-        "code": "CC3",
-        "closest_stops": [
-            {
-                "BusStopCode": "01619",
-                "Name": "Esplanade Stn Exit F",
-                "Distance": 0.15464469105911505
-            },
-            {
-                "BusStopCode": "02119",
-                "Name": "Opp War Memorial Pk",
-                "Distance": 0.17214446301874362
-            },
-            {
-                "BusStopCode": "02151",
-                "Name": "Suntec Convention Ctr",
-                "Distance": 0.20832059650524795
-            },
-            {
-                "BusStopCode": "01611",
-                "Name": "Aft Raffles Hotel",
-                "Distance": 0.23494300598902315
-            },
-            {
-                "BusStopCode": "02049",
-                "Name": "Raffles Hotel",
-                "Distance": 0.25851433608386365
-            }
-        ]
-    },
-    {
-        "mrt": "Promenade_CC",
-        "code": "CC4",
-        "closest_stops": [
-            {
-                "BusStopCode": "02169",
-                "Name": "Promenade Stn Exit B",
-                "Distance": 0.0844286499315989
-            },
-            {
-                "BusStopCode": "02161",
-                "Name": "Aft Promenade Stn Exit C",
-                "Distance": 0.15623883315779208
-            },
-            {
-                "BusStopCode": "02159",
-                "Name": "Opp Suntec Convention Ctr",
-                "Distance": 0.19582287323306685
-            },
-            {
-                "BusStopCode": "02149",
-                "Name": "Suntec Twr Three",
-                "Distance": 0.20561247562337856
-            },
-            {
-                "BusStopCode": "02141",
-                "Name": "Suntec Twr Two",
-                "Distance": 0.23098191846819607
-            }
-        ]
-    },
-    {
-        "mrt": "Nicoll Highway",
-        "code": "CC5",
-        "closest_stops": [
-            {
-                "BusStopCode": "80169",
-                "Name": "Nicoll Highway Stn",
-                "Distance": 0.11607462137174075
-            },
-            {
-                "BusStopCode": "80161",
-                "Name": "Opp Nicoll Highway Stn",
-                "Distance": 0.13726456240272086
-            }
-        ]
-    },
-    {
-        "mrt": "Stadium",
-        "code": "CC6",
-        "closest_stops": [
-            {
-                "BusStopCode": "80191",
-                "Name": "Opp S'pore Indoor Stadium",
-                "Distance": 0.13000179655925587
-            },
-            {
-                "BusStopCode": "80199",
-                "Name": "Stadium Stn",
-                "Distance": 0.1388173725581361
-            }
-        ]
-    },
-    {
-        "mrt": "Mountbatten",
-        "code": "CC7",
-        "closest_stops": [
-            {
-                "BusStopCode": "80271",
-                "Name": "Opp Mountbatten Stn",
-                "Distance": 0.1440310228323535
-            },
-            {
-                "BusStopCode": "80279",
-                "Name": "Mountbatten Stn Exit B",
-                "Distance": 0.15972138083084791
-            },
-            {
-                "BusStopCode": "80189",
-                "Name": "Opp Kallang Squash Ctr",
-                "Distance": 0.20744661702613967
-            }
-        ]
-    },
-    {
-        "mrt": "Dakota",
-        "code": "CC8",
-        "closest_stops": [
-            {
-                "BusStopCode": "81181",
-                "Name": "Dakota Stn Exit A/Blk 99",
-                "Distance": 0.017024150347631453
-            },
-            {
-                "BusStopCode": "81189",
-                "Name": "Dakota Stn Exit B/Blk 60",
-                "Distance": 0.03264729299809486
-            }
-        ]
-    },
-    {
-        "mrt": "Paya Lebar_CC",
-        "code": "CC9",
-        "closest_stops": [
-            {
-                "BusStopCode": "81111",
-                "Name": "Paya Lebar Stn Exit B",
-                "Distance": 0.06536431616048784
-            },
-            {
-                "BusStopCode": "81119",
-                "Name": "Paya Lebar Stn Exit C",
-                "Distance": 0.09002827834115962
-            }
-        ]
-    },
-    {
-        "mrt": "Bayfront_CE",
-        "code": "CE1",
-        "closest_stops": [
-            {
-                "BusStopCode": "03509",
-                "Name": "Bayfront Stn Exit B/MBS",
-                "Distance": 0.07677297766266694
-            },
-            {
-                "BusStopCode": "03511",
-                "Name": "Aft Bayfront Stn Exit E",
-                "Distance": 0.10672023535059552
-            },
-            {
-                "BusStopCode": "03519",
-                "Name": "Bayfront Stn Exit A",
-                "Distance": 0.1737502018449671
-            }
-        ]
-    },
-    {
-        "mrt": "Marina Bay_CE",
-        "code": "CE2",
-        "closest_stops": [
-            {
-                "BusStopCode": "03539",
-                "Name": "Marina Bay Stn",
-                "Distance": 0.2797017621793172
-            },
-            {
-                "BusStopCode": "03579",
-                "Name": "Opp Downtown Stn",
-                "Distance": 0.45523617505068176
-            },
-            {
-                "BusStopCode": "03529",
-                "Name": "Downtown Stn Exit E",
-                "Distance": 0.5183815695625895
-            },
-            {
-                "BusStopCode": "03339",
-                "Name": "Aft Marina Gdns Dr",
-                "Distance": 0.5283562532498655
-            }
-        ]
-    },
-    {
-        "mrt": "Tanah Merah_CG",
-        "code": "CG",
-        "closest_stops": [
-            {
-                "BusStopCode": "85091",
-                "Name": "Tanah Merah Stn Exit B",
-                "Distance": 0.03611238664300339
-            },
-            {
-                "BusStopCode": "85099",
-                "Name": "Tanah Merah Stn Exit A",
-                "Distance": 0.04681152068384922
-            }
-        ]
-    },
-    {
-        "mrt": "Expo_CG",
-        "code": "CG1",
-        "closest_stops": [
-            {
-                "BusStopCode": "96301",
-                "Name": "EXPO STN EXIT B",
-                "Distance": 0.1381308483763679
-            },
-            {
-                "BusStopCode": "96309",
-                "Name": "EXPO STN EXIT E",
-                "Distance": 0.1607201622049133
-            }
-        ]
-    },
-    {
-        "mrt": "Changi Airport",
-        "code": "CG2",
-        "closest_stops": [
-            {
-                "BusStopCode": "95129",
-                "Name": "Changi Airport Ter 2",
-                "Distance": 0.26002167196929976
-            },
-            {
-                "BusStopCode": "95109",
-                "Name": "Changi Airport Ter 3",
-                "Distance": 0.2630069740771402
-            }
-        ]
-    },
-    {
-        "mrt": "Bukit Panjang_DT",
-        "code": "DT1",
-        "closest_stops": [
-            {
-                "BusStopCode": "44029",
-                "Name": "Bt Panjang Stn Exit A/Lrt",
-                "Distance": 0.038134418976646295
-            },
-            {
-                "BusStopCode": "44021",
-                "Name": "Bt Panjang Stn Exit B",
-                "Distance": 0.047309302683859925
-            },
-            {
-                "BusStopCode": "44031",
-                "Name": "Aft Bt Panjang Stn",
-                "Distance": 0.05301637815993987
-            },
-            {
-                "BusStopCode": "45009",
-                "Name": "BT PANJANG INT",
-                "Distance": 0.12907256391310096
-            },
-            {
-                "BusStopCode": "44859",
-                "Name": "Maysprings Condo",
-                "Distance": 0.14062615740734022
-            }
-        ]
-    },
-    {
-        "mrt": "Stevens_DT",
-        "code": "DT10",
-        "closest_stops": [
-            {
-                "BusStopCode": "40081",
-                "Name": "STEVENS STN EXIT 1",
-                "Distance": 0.06613101915595317
-            },
-            {
-                "BusStopCode": "40229",
-                "Name": "BEF STEVENS STN EXIT 2",
-                "Distance": 0.10933734699300975
-            },
-            {
-                "BusStopCode": "40221",
-                "Name": "STEVENS STN EXIT 3",
-                "Distance": 0.12973107147939225
-            }
-        ]
-    },
-    {
-        "mrt": "Newton_DT",
-        "code": "DT11",
-        "closest_stops": [
-            {
-                "BusStopCode": "40181",
-                "Name": "Newton Stn Exit A",
-                "Distance": 0.07222954415953087
-            },
-            {
-                "BusStopCode": "40189",
-                "Name": "Newton Stn Exit B",
-                "Distance": 0.11415694364348773
-            },
-            {
-                "BusStopCode": "40049",
-                "Name": "Opp Newton Stn Exit C",
-                "Distance": 0.11822264596720015
-            },
-            {
-                "BusStopCode": "40041",
-                "Name": "Newton Stn Exit C",
-                "Distance": 0.1201895362128295
-            }
-        ]
-    },
-    {
-        "mrt": "Little India_DT",
-        "code": "DT12",
-        "closest_stops": [
-            {
-                "BusStopCode": "40019",
-                "Name": "Little India Stn",
-                "Distance": 0.013308187719662296
-            },
-            {
-                "BusStopCode": "40011",
-                "Name": "LITTLE INDIA STN EXIT A",
-                "Distance": 0.06106970387906646
-            }
-        ]
-    },
-    {
-        "mrt": "Rochor",
-        "code": "DT13",
-        "closest_stops": [
-            {
-                "BusStopCode": "07531",
-                "Name": "Rochor Stn",
-                "Distance": 0.03344254234129262
-            },
-            {
-                "BusStopCode": "07539",
-                "Name": "Bef Rochor Stn Exit B",
-                "Distance": 0.10183722400813189
-            }
-        ]
-    },
-    {
-        "mrt": "Bugis_DT",
-        "code": "DT14",
-        "closest_stops": [
-            {
-                "BusStopCode": "01059",
-                "Name": "Bugis Stn Exit B",
-                "Distance": 0.025276559019613558
-            },
-            {
-                "BusStopCode": "01113",
-                "Name": "Bugis Stn Exit A",
-                "Distance": 0.07152683152181291
-            },
-            {
-                "BusStopCode": "01112",
-                "Name": "Opp Bugis Stn Exit C",
-                "Distance": 0.11074137272273207
-            },
-            {
-                "BusStopCode": "01139",
-                "Name": "Bugis Stn/Parkview Sq",
-                "Distance": 0.12053897644835876
-            },
-            {
-                "BusStopCode": "01119",
-                "Name": "Aft Bugis Stn Exit C",
-                "Distance": 0.14873921179959654
-            }
-        ]
-    },
-    {
-        "mrt": "Promenade_DT",
-        "code": "DT15",
-        "closest_stops": [
-            {
-                "BusStopCode": "02169",
-                "Name": "Promenade Stn Exit B",
-                "Distance": 0.0844286499315989
-            },
-            {
-                "BusStopCode": "02161",
-                "Name": "Aft Promenade Stn Exit C",
-                "Distance": 0.15623883315779208
-            },
-            {
-                "BusStopCode": "02159",
-                "Name": "Opp Suntec Convention Ctr",
-                "Distance": 0.19582287323306685
-            },
-            {
-                "BusStopCode": "02149",
-                "Name": "Suntec Twr Three",
-                "Distance": 0.20561247562337856
-            },
-            {
-                "BusStopCode": "02141",
-                "Name": "Suntec Twr Two",
-                "Distance": 0.23098191846819607
-            }
-        ]
-    },
-    {
-        "mrt": "Bayfront_DT",
-        "code": "DT16",
-        "closest_stops": [
-            {
-                "BusStopCode": "03509",
-                "Name": "Bayfront Stn Exit B/MBS",
-                "Distance": 0.07677297766266694
-            },
-            {
-                "BusStopCode": "03511",
-                "Name": "Aft Bayfront Stn Exit E",
-                "Distance": 0.10672023535059552
-            },
-            {
-                "BusStopCode": "03519",
-                "Name": "Bayfront Stn Exit A",
-                "Distance": 0.1737502018449671
-            }
-        ]
-    },
-    {
-        "mrt": "Downtown",
-        "code": "DT17",
-        "closest_stops": [
-            {
-                "BusStopCode": "03579",
-                "Name": "Opp Downtown Stn",
-                "Distance": 0.06202236892907693
-            },
-            {
-                "BusStopCode": "03529",
-                "Name": "Downtown Stn Exit E",
-                "Distance": 0.06615234160772279
-            }
-        ]
-    },
-    {
-        "mrt": "Telok Ayer",
-        "code": "DT18",
-        "closest_stops": [
-            {
-                "BusStopCode": "03041",
-                "Name": "Telok Ayer Stn Exit A",
-                "Distance": 0.04203057516862224
-            },
-            {
-                "BusStopCode": "03021",
-                "Name": "Prudential Twr",
-                "Distance": 0.14651507187043733
-            },
-            {
-                "BusStopCode": "03031",
-                "Name": "Raffles Pl Stn Exit F",
-                "Distance": 0.23537357174158188
-            }
-        ]
-    },
-    {
-        "mrt": "Chinatown_DT",
-        "code": "DT19",
-        "closest_stops": [
-            {
-                "BusStopCode": "05049",
-                "Name": "Chinatown Stn Exit E",
-                "Distance": 0.06895869319117537
-            },
-            {
-                "BusStopCode": "05022",
-                "Name": "Aft Chinatown Stn Exit D",
-                "Distance": 0.08709186429294043
-            },
-            {
-                "BusStopCode": "05013",
-                "Name": "Chinatown Stn Exit C",
-                "Distance": 0.15371089999232004
-            },
-            {
-                "BusStopCode": "05131",
-                "Name": "Opp Hong Lim Cplx",
-                "Distance": 0.18197616762167015
-            }
-        ]
-    },
-    {
-        "mrt": "Cashew",
-        "code": "DT2",
-        "closest_stops": [
-            {
-                "BusStopCode": "43109",
-                "Name": "Cashew Stn",
-                "Distance": 0.10709194964469852
-            },
-            {
-                "BusStopCode": "43091",
-                "Name": "Bef Cashew Stn",
-                "Distance": 0.11795862388096212
-            },
-            {
-                "BusStopCode": "43099",
-                "Name": "Assumption Pathway Sch",
-                "Distance": 0.11856092128455592
-            }
-        ]
-    },
-    {
-        "mrt": "Fort Canning",
-        "code": "DT20",
-        "closest_stops": [
-            {
-                "BusStopCode": "04339",
-                "Name": "FORT CANNING STN EXIT B",
-                "Distance": 0.09641711372027437
-            },
-            {
-                "BusStopCode": "04329",
-                "Name": "Opp UE Sq",
-                "Distance": 0.10783327554674833
-            },
-            {
-                "BusStopCode": "04331",
-                "Name": "BEF FORT CANNING STN",
-                "Distance": 0.11594972111553166
-            },
-            {
-                "BusStopCode": "04321",
-                "Name": "UE Sq",
-                "Distance": 0.12770349131247927
-            },
-            {
-                "BusStopCode": "13109",
-                "Name": "UE Sq/Bef Mohd Sultan Rd",
-                "Distance": 0.20194701463437598
-            }
-        ]
-    },
-    {
-        "mrt": "Bencoolen",
-        "code": "DT21",
-        "closest_stops": [
-            {
-                "BusStopCode": "04029",
-                "Name": "BEF BENCOOLEN STN EXIT A",
-                "Distance": 0.09277016877278596
-            },
-            {
-                "BusStopCode": "04019",
-                "Name": "OPP BENCOOLEN STN EXIT B",
-                "Distance": 0.11106924552004517
-            },
-            {
-                "BusStopCode": "08069",
-                "Name": "Bencoolen Stn Exit B",
-                "Distance": 0.13314677628920843
-            },
-            {
-                "BusStopCode": "08079",
-                "Name": "Sch of the Arts",
-                "Distance": 0.1460898187066336
-            }
-        ]
-    },
-    {
-        "mrt": "Jalan Besar",
-        "code": "DT22",
-        "closest_stops": [
-            {
-                "BusStopCode": "07529",
-                "Name": "JLN BESAR STN EXIT A",
-                "Distance": 0.0927301874667434
-            },
-            {
-                "BusStopCode": "07419",
-                "Name": "Opp Veerasamy Rd",
-                "Distance": 0.18754685878034894
-            },
-            {
-                "BusStopCode": "07589",
-                "Name": "Ch of Our Lady of Lourdes",
-                "Distance": 0.21547292208324884
-            },
-            {
-                "BusStopCode": "01109",
-                "Name": "Queen St Ter",
-                "Distance": 0.22213281624450967
-            }
-        ]
-    },
-    {
-        "mrt": "Bendemeer",
-        "code": "DT23",
-        "closest_stops": [
-            {
-                "BusStopCode": "60011",
-                "Name": "BENDEMEER STN EXIT A",
-                "Distance": 0.1483188441155657
-            },
-            {
-                "BusStopCode": "60019",
-                "Name": "BENDEMEER STN EXIT B",
-                "Distance": 0.17997172120314958
-            },
-            {
-                "BusStopCode": "07361",
-                "Name": "Bef Kallang Bahru",
-                "Distance": 0.24885111334235752
-            },
-            {
-                "BusStopCode": "07369",
-                "Name": "Aft Kallang Bahru",
-                "Distance": 0.25365192520415675
-            },
-            {
-                "BusStopCode": "07359",
-                "Name": "OPP ARC 380",
-                "Distance": 0.26174938564434497
-            },
-            {
-                "BusStopCode": "60099",
-                "Name": "Bef Lavender St",
-                "Distance": 0.2660779753911847
-            }
-        ]
-    },
-    {
-        "mrt": "Geylang Bahru",
-        "code": "DT24",
-        "closest_stops": [
-            {
-                "BusStopCode": "60221",
-                "Name": "BLK 73/GEYLANG BAHRU STN",
-                "Distance": 0.14188017726703656
-            },
-            {
-                "BusStopCode": "60069",
-                "Name": "Kallang Basin Swim Cplx",
-                "Distance": 0.20497582948633292
-            },
-            {
-                "BusStopCode": "60229",
-                "Name": "Blk 68",
-                "Distance": 0.221750318479016
-            },
-            {
-                "BusStopCode": "80299",
-                "Name": "Opp Blk 82",
-                "Distance": 0.2293591651735345
-            },
-            {
-                "BusStopCode": "80291",
-                "Name": "Blk 82",
-                "Distance": 0.23068976263505617
-            },
-            {
-                "BusStopCode": "60031",
-                "Name": "BEF GEYLANG BAHRU STN",
-                "Distance": 0.2503482097733774
-            },
-            {
-                "BusStopCode": "60061",
-                "Name": "Aft Infineon",
-                "Distance": 0.26041551489522724
-            },
-            {
-                "BusStopCode": "60039",
-                "Name": "Opp Blk 66",
-                "Distance": 0.3012806281092017
-            }
-        ]
-    },
-    {
-        "mrt": "Mattar",
-        "code": "DT25",
-        "closest_stops": [
-            {
-                "BusStopCode": "70161",
-                "Name": "OPP MATTAR STN EXIT A",
-                "Distance": 0.0758426971624696
-            },
-            {
-                "BusStopCode": "70231",
-                "Name": "OPP MATTAR STN EXIT B",
-                "Distance": 0.17080210262944936
-            },
-            {
-                "BusStopCode": "70241",
-                "Name": "Aft Grace Baptist Ch",
-                "Distance": 0.21842084817609245
-            },
-            {
-                "BusStopCode": "70151",
-                "Name": "Aft Jln Anggerek",
-                "Distance": 0.23554891605599837
-            },
-            {
-                "BusStopCode": "70221",
-                "Name": "Blk 79 FC",
-                "Distance": 0.2549029306796562
-            }
-        ]
-    },
-    {
-        "mrt": "MacPherson_DT",
-        "code": "DT26",
-        "closest_stops": [
-            {
-                "BusStopCode": "70371",
-                "Name": "Macpherson Stn Exit A",
-                "Distance": 0.10258792801971489
-            },
-            {
-                "BusStopCode": "70379",
-                "Name": "Opp Macpherson Stn Exit A",
-                "Distance": 0.1139411917820084
-            },
-            {
-                "BusStopCode": "70269",
-                "Name": "Citipoint Ind Cplx",
-                "Distance": 0.16887046981221387
-            },
-            {
-                "BusStopCode": "70251",
-                "Name": "Macpherson Stn Exit C",
-                "Distance": 0.19757620636878556
-            },
-            {
-                "BusStopCode": "70259",
-                "Name": "Macpherson Stn Exit B",
-                "Distance": 0.2087083991491609
-            }
-        ]
-    },
-    {
-        "mrt": "Ubi ",
-        "code": "DT27",
-        "closest_stops": [
-            {
-                "BusStopCode": "71129",
-                "Name": "UBI STN EXIT A",
-                "Distance": 0.025579331567742315
-            },
-            {
-                "BusStopCode": "71121",
-                "Name": "UBI STN EXIT B",
-                "Distance": 0.03562235723194673
-            }
-        ]
-    },
-    {
-        "mrt": "Kaki Bukit ",
-        "code": "DT28",
-        "closest_stops": [
-            {
-                "BusStopCode": "72049",
-                "Name": "Opp Blk 660A CP",
-                "Distance": 0.12703736076625405
-            },
-            {
-                "BusStopCode": "72041",
-                "Name": "Blk 660A CP",
-                "Distance": 0.1356074728105239
-            },
-            {
-                "BusStopCode": "72039",
-                "Name": "KAKI BT STN EXIT A",
-                "Distance": 0.1463774788467525
-            },
-            {
-                "BusStopCode": "72031",
-                "Name": "BEF KAKI BT STN EXIT B",
-                "Distance": 0.1471488056787117
-            }
-        ]
-    },
-    {
-        "mrt": "Bedok North",
-        "code": "DT29",
-        "closest_stops": [
-            {
-                "BusStopCode": "84539",
-                "Name": "BEDOK NTH STN EXIT B",
-                "Distance": 0.06216098437767283
-            },
-            {
-                "BusStopCode": "84451",
-                "Name": "BEDOK NTH STN EXIT A",
-                "Distance": 0.09943070012856717
-            },
-            {
-                "BusStopCode": "84459",
-                "Name": "Bet Blks 705/706",
-                "Distance": 0.17724853238724766
-            }
-        ]
-    },
-    {
-        "mrt": "Hillview",
-        "code": "DT3",
-        "closest_stops": [
-            {
-                "BusStopCode": "43061",
-                "Name": "Hillview Stn",
-                "Distance": 0.07199476077685318
-            },
-            {
-                "BusStopCode": "43069",
-                "Name": "HILLVIEW STN EXIT A",
-                "Distance": 0.08963490411487693
-            },
-            {
-                "BusStopCode": "42991",
-                "Name": "BEF HILLVIEW STN EXIT B",
-                "Distance": 0.09108069551912776
-            },
-            {
-                "BusStopCode": "43271",
-                "Name": "Glendale Pk Condo",
-                "Distance": 0.13417332614687513
-            },
-            {
-                "BusStopCode": "43279",
-                "Name": "Aft Hillview Stn",
-                "Distance": 0.1365269338819905
-            }
-        ]
-    },
-    {
-        "mrt": "Bedok Reservoir",
-        "code": "DT30",
-        "closest_stops": [
-            {
-                "BusStopCode": "84201",
-                "Name": "BEDOK RESVR STN EXIT A",
-                "Distance": 0.13871694465286757
-            },
-            {
-                "BusStopCode": "84209",
-                "Name": "Bedok Resvr Stn Exit B",
-                "Distance": 0.18092452483271623
-            },
-            {
-                "BusStopCode": "84609",
-                "Name": "Waterfront Key",
-                "Distance": 0.19206130910042174
-            },
-            {
-                "BusStopCode": "84601",
-                "Name": "Opp Waterfront Key",
-                "Distance": 0.22762699348029355
-            }
-        ]
-    },
-    {
-        "mrt": "Tampines West",
-        "code": "DT31",
-        "closest_stops": [
-            {
-                "BusStopCode": "75051",
-                "Name": "TAMPINES WEST STN EXIT B",
-                "Distance": 0.17753148463930782
-            },
-            {
-                "BusStopCode": "75059",
-                "Name": "BEF TAMPINES WEST STN",
-                "Distance": 0.2048987256266111
-            },
-            {
-                "BusStopCode": "75229",
-                "Name": "Temasek Poly East G",
-                "Distance": 0.20766865917552785
-            },
-            {
-                "BusStopCode": "76289",
-                "Name": "Blk 801",
-                "Distance": 0.21278780941498668
-            },
-            {
-                "BusStopCode": "76281",
-                "Name": "Junyuan Pr Sch",
-                "Distance": 0.22973442026176388
-            },
-            {
-                "BusStopCode": "75221",
-                "Name": "Opp Temasek Poly East G",
-                "Distance": 0.29059747334584407
-            }
-        ]
-    },
-    {
-        "mrt": "Tampines_DT",
-        "code": "DT32",
-        "closest_stops": [
-            {
-                "BusStopCode": "76141",
-                "Name": "Tampines Stn/Int",
-                "Distance": 0.1165412212099362
-            },
-            {
-                "BusStopCode": "76149",
-                "Name": "Opp Tampines Stn/Int",
-                "Distance": 0.14737084577748052
-            },
-            {
-                "BusStopCode": "75009",
-                "Name": "Tampines Int",
-                "Distance": 0.2037276890647938
-            },
-            {
-                "BusStopCode": "76139",
-                "Name": "Opp Century Sq",
-                "Distance": 0.23781090155377121
-            }
-        ]
-    },
-    {
-        "mrt": "Tampines East",
-        "code": "DT33",
-        "closest_stops": [
-            {
-                "BusStopCode": "76031",
-                "Name": "TAMPINES EAST STN EXIT B",
-                "Distance": 0.11727692292815599
-            },
-            {
-                "BusStopCode": "76221",
-                "Name": "TAMPINES EAST STN EXIT A",
-                "Distance": 0.12410381508617686
-            },
-            {
-                "BusStopCode": "76039",
-                "Name": "TAMPINES EAST STN EXIT C",
-                "Distance": 0.13010694355945812
-            },
-            {
-                "BusStopCode": "76229",
-                "Name": "OPP TAMPINES EAST STN",
-                "Distance": 0.15991744280219766
-            },
-            {
-                "BusStopCode": "76319",
-                "Name": "Tampines East Stn Exit D",
-                "Distance": 0.18487733022437564
-            },
-            {
-                "BusStopCode": "76311",
-                "Name": "Blk 460",
-                "Distance": 0.2079481739214145
-            }
-        ]
-    },
-    {
-        "mrt": "Upper Changi",
-        "code": "DT34",
-        "closest_stops": [
-            {
-                "BusStopCode": "96041",
-                "Name": "Upp Changi Stn/Opp SUTD",
-                "Distance": 0.015642154073095025
-            },
-            {
-                "BusStopCode": "96049",
-                "Name": "Upp Changi Stn/SUTD",
-                "Distance": 0.09263041249481534
-            }
-        ]
-    },
-    {
-        "mrt": "Expo_DT",
-        "code": "DT35",
-        "closest_stops": [
-            {
-                "BusStopCode": "96301",
-                "Name": "EXPO STN EXIT B",
-                "Distance": 0.1381308483763679
-            },
-            {
-                "BusStopCode": "96309",
-                "Name": "EXPO STN EXIT E",
-                "Distance": 0.1607201622049133
-            }
-        ]
-    },
-    {
-        "mrt": "Beauty World",
-        "code": "DT5",
-        "closest_stops": [
-            {
-                "BusStopCode": "42099",
-                "Name": "Beauty World Stn Exit A",
-                "Distance": 0.017189161953055122
-            },
-            {
-                "BusStopCode": "42091",
-                "Name": "Beauty World Stn Exit B",
-                "Distance": 0.13876193565974593
-            },
-            {
-                "BusStopCode": "42259",
-                "Name": "Aft Upp Bt Timah Rd",
-                "Distance": 0.14361608832448308
-            },
-            {
-                "BusStopCode": "42159",
-                "Name": "Opp Beauty World Stn",
-                "Distance": 0.16007451525747915
-            },
-            {
-                "BusStopCode": "42151",
-                "Name": "Beauty World Stn Exit C",
-                "Distance": 0.18768468340655603
-            },
-            {
-                "BusStopCode": "42109",
-                "Name": "Opp Beauty World Ctr",
-                "Distance": 0.20694603093143982
-            }
-        ]
-    },
-    {
-        "mrt": "King Albert Park",
-        "code": "DT6",
-        "closest_stops": [
-            {
-                "BusStopCode": "42049",
-                "Name": "Hua Guan Gdns",
-                "Distance": 0.05487084236127737
-            },
-            {
-                "BusStopCode": "42051",
-                "Name": "King Albert Pk Stn",
-                "Distance": 0.17316946147849074
-            }
-        ]
-    },
-    {
-        "mrt": "Sixth Avenue",
-        "code": "DT7",
-        "closest_stops": [
-            {
-                "BusStopCode": "41081",
-                "Name": "Sixth Ave Stn",
-                "Distance": 0.026357543697353738
-            },
-            {
-                "BusStopCode": "42019",
-                "Name": "Opp Sixth Ave Stn",
-                "Distance": 0.14354112690651524
-            },
-            {
-                "BusStopCode": "42129",
-                "Name": "Sixth Ave Ville",
-                "Distance": 0.23499050384728265
-            }
-        ]
-    },
-    {
-        "mrt": "Tan Kah Kee",
-        "code": "DT8",
-        "closest_stops": [
-            {
-                "BusStopCode": "41051",
-                "Name": "Tan Kah Kee Stn",
-                "Distance": 0.08164948746575952
-            },
-            {
-                "BusStopCode": "41069",
-                "Name": "Opp Tan Kah Kee Stn",
-                "Distance": 0.09379288294140146
-            }
-        ]
-    },
-    {
-        "mrt": "Botanic Gardens_DT",
-        "code": "DT9",
-        "closest_stops": [
-            {
-                "BusStopCode": "41021",
-                "Name": "Botanic Gdns Stn",
-                "Distance": 0.02513771666534494
-            },
-            {
-                "BusStopCode": "41029",
-                "Name": "Opp Botanic Gdns Stn",
-                "Distance": 0.10616146673214452
-            }
-        ]
-    },
-    {
-        "mrt": "Pasir Ris",
-        "code": "EW1",
-        "closest_stops": [
-            {
-                "BusStopCode": "77039",
-                "Name": "Pasir Ris Stn Exit B",
-                "Distance": 0.0958497540176969
-            },
-            {
-                "BusStopCode": "77031",
-                "Name": "Opp Pasir Ris Stn Exit B",
-                "Distance": 0.12233335043269339
-            },
-            {
-                "BusStopCode": "77321",
-                "Name": "Aft Pasir Ris St 53",
-                "Distance": 0.1370542892797693
-            },
-            {
-                "BusStopCode": "77009",
-                "Name": "Pasir Ris Int",
-                "Distance": 0.14830914373938997
-            },
-            {
-                "BusStopCode": "77171",
-                "Name": "Aft Pasir Ris Stn Exit A",
-                "Distance": 0.15767798988056134
-            },
-            {
-                "BusStopCode": "77329",
-                "Name": "Bef Pasir Ris St 53",
-                "Distance": 0.17883772525716876
-            },
-            {
-                "BusStopCode": "77179",
-                "Name": "Opp Pasir Ris Stn Exit A",
-                "Distance": 0.18143517241437285
-            }
-        ]
-    },
-    {
-        "mrt": "Kallang",
-        "code": "EW10",
-        "closest_stops": [
-            {
-                "BusStopCode": "80031",
-                "Name": "Kallang Stn",
-                "Distance": 0.04133390247656108
-            },
-            {
-                "BusStopCode": "80009",
-                "Name": "Lor 1 Geylang Ter",
-                "Distance": 0.09692683599114829
-            },
-            {
-                "BusStopCode": "80101",
-                "Name": "Kallang Stn/Opp Blk 2C",
-                "Distance": 0.12116990285208949
-            },
-            {
-                "BusStopCode": "80039",
-                "Name": "Opp Lor 1 Geylang Ter",
-                "Distance": 0.169929172318205
-            }
-        ]
-    },
-    {
-        "mrt": "Lavender",
-        "code": "EW11",
-        "closest_stops": [
-            {
-                "BusStopCode": "01319",
-                "Name": "Lavender Stn Exit A/ICA",
-                "Distance": 0.028941023761105626
-            },
-            {
-                "BusStopCode": "01311",
-                "Name": "Lavender Stn Exit B",
-                "Distance": 0.10059705497467458
-            },
-            {
-                "BusStopCode": "01339",
-                "Name": "Bef Crawford Bridge",
-                "Distance": 0.14106793864874093
-            },
-            {
-                "BusStopCode": "01341",
-                "Name": "Southbank",
-                "Distance": 0.1981178682272316
-            }
-        ]
-    },
-    {
-        "mrt": "Bugis_EW",
-        "code": "EW12",
-        "closest_stops": [
-            {
-                "BusStopCode": "01059",
-                "Name": "Bugis Stn Exit B",
-                "Distance": 0.025276559019613558
-            },
-            {
-                "BusStopCode": "01113",
-                "Name": "Bugis Stn Exit A",
-                "Distance": 0.07152683152181291
-            },
-            {
-                "BusStopCode": "01112",
-                "Name": "Opp Bugis Stn Exit C",
-                "Distance": 0.11074137272273207
-            },
-            {
-                "BusStopCode": "01139",
-                "Name": "Bugis Stn/Parkview Sq",
-                "Distance": 0.12053897644835876
-            },
-            {
-                "BusStopCode": "01119",
-                "Name": "Aft Bugis Stn Exit C",
-                "Distance": 0.14873921179959654
-            }
-        ]
-    },
-    {
-        "mrt": "City Hall_EW",
-        "code": "EW13",
-        "closest_stops": [
-            {
-                "BusStopCode": "04167",
-                "Name": "City Hall Stn Exit B",
-                "Distance": 0.09002219854584277
-            },
-            {
-                "BusStopCode": "04111",
-                "Name": "Capitol Bldg",
-                "Distance": 0.09599666706784739
-            },
-            {
-                "BusStopCode": "04168",
-                "Name": "Aft City Hall Stn Exit B",
-                "Distance": 0.1411543086569371
-            }
-        ]
-    },
-    {
-        "mrt": "Raffles Place_EW",
-        "code": "EW14",
-        "closest_stops": [
-            {
-                "BusStopCode": "03019",
-                "Name": "OUE Bayfront",
-                "Distance": 0.18300858965190428
-            },
-            {
-                "BusStopCode": "03011",
-                "Name": "Fullerton Sq",
-                "Distance": 0.25531202897143934
-            },
-            {
-                "BusStopCode": "05319",
-                "Name": "OCBC Ctr",
-                "Distance": 0.26192792839456597
-            },
-            {
-                "BusStopCode": "03021",
-                "Name": "Prudential Twr",
-                "Distance": 0.2638051804458568
-            },
-            {
-                "BusStopCode": "03031",
-                "Name": "Raffles Pl Stn Exit F",
-                "Distance": 0.2682292701223921
-            }
-        ]
-    },
-    {
-        "mrt": "Tanjong Pagar",
-        "code": "EW15",
-        "closest_stops": [
-            {
-                "BusStopCode": "03223",
-                "Name": "Tanjong Pagar Stn Exit C",
-                "Distance": 0.10849668866000343
-            },
-            {
-                "BusStopCode": "03241",
-                "Name": "Mapletree Anson",
-                "Distance": 0.23112129852379015
-            },
-            {
-                "BusStopCode": "03217",
-                "Name": "Opp AXA Twr",
-                "Distance": 0.2571781534924101
-            },
-            {
-                "BusStopCode": "05429",
-                "Name": "Bef Craig Rd",
-                "Distance": 0.2722267286146094
-            },
-            {
-                "BusStopCode": "03111",
-                "Name": "Aft Capital Twr",
-                "Distance": 0.28307348052897363
-            },
-            {
-                "BusStopCode": "03239",
-                "Name": "Shenton Way Ter",
-                "Distance": 0.28487147613934005
-            },
-            {
-                "BusStopCode": "03218",
-                "Name": "Opp MAS Bldg",
-                "Distance": 0.29847034818750035
-            },
-            {
-                "BusStopCode": "05421",
-                "Name": "Aft Craig Rd",
-                "Distance": 0.30038553373730315
-            },
-            {
-                "BusStopCode": "03222",
-                "Name": "Hub Synergy Pt",
-                "Distance": 0.3088276069040904
-            }
-        ]
-    },
-    {
-        "mrt": "Outram Park_EW",
-        "code": "EW16",
-        "closest_stops": [
-            {
-                "BusStopCode": "05069",
-                "Name": "OUTRAM PK STN EXIT 4",
-                "Distance": 0.0458837285339248
-            },
-            {
-                "BusStopCode": "05019",
-                "Name": "Aft Duxton Plain Pk",
-                "Distance": 0.10566701429457898
-            },
-            {
-                "BusStopCode": "05012",
-                "Name": "Bef Pearl'S Hill Terr",
-                "Distance": 0.11901543449790003
-            }
-        ]
-    },
-    {
-        "mrt": "Tiong Bahru",
-        "code": "EW17",
-        "closest_stops": [
-            {
-                "BusStopCode": "10169",
-                "Name": "Tiong Bahru Stn/Plaza",
-                "Distance": 0.02078169170326532
-            },
-            {
-                "BusStopCode": "10151",
-                "Name": "Ctrl Green Condo",
-                "Distance": 0.10706176686951231
-            },
-            {
-                "BusStopCode": "10161",
-                "Name": "Opp Tiong Bahru Stn/Plaza",
-                "Distance": 0.10741757902576213
-            }
-        ]
-    },
-    {
-        "mrt": "Redhill",
-        "code": "EW18",
-        "closest_stops": [
-            {
-                "BusStopCode": "10209",
-                "Name": "Redhill Stn",
-                "Distance": 0.012268244472990958
-            },
-            {
-                "BusStopCode": "10201",
-                "Name": "Opp Redhill Stn",
-                "Distance": 0.04371314496806072
-            }
-        ]
-    },
-    {
-        "mrt": "Queenstown",
-        "code": "EW19",
-        "closest_stops": [
-            {
-                "BusStopCode": "11141",
-                "Name": "Queenstown Stn Exit A/D",
-                "Distance": 0.026937656321109733
-            },
-            {
-                "BusStopCode": "11149",
-                "Name": "Queenstown Stn Exit B/C",
-                "Distance": 0.05779668415233474
-            }
-        ]
-    },
-    {
-        "mrt": "Tampines_EW",
-        "code": "EW2",
-        "closest_stops": [
-            {
-                "BusStopCode": "76141",
-                "Name": "Tampines Stn/Int",
-                "Distance": 0.1165412212099362
-            },
-            {
-                "BusStopCode": "76149",
-                "Name": "Opp Tampines Stn/Int",
-                "Distance": 0.14737084577748052
-            },
-            {
-                "BusStopCode": "75009",
-                "Name": "Tampines Int",
-                "Distance": 0.2037276890647938
-            },
-            {
-                "BusStopCode": "76139",
-                "Name": "Opp Century Sq",
-                "Distance": 0.23781090155377121
-            }
-        ]
-    },
-    {
-        "mrt": "Commonwealth",
-        "code": "EW20",
-        "closest_stops": [
-            {
-                "BusStopCode": "11169",
-                "Name": "C'Wealth Stn Exit B/C",
-                "Distance": 0.03026219073464399
-            },
-            {
-                "BusStopCode": "11161",
-                "Name": "C'Wealth Stn Exit A/D",
-                "Distance": 0.03567313817473404
-            }
-        ]
-    },
-    {
-        "mrt": "Buona Vista_EW",
-        "code": "EW21",
-        "closest_stops": [
-            {
-                "BusStopCode": "11361",
-                "Name": "Buona Vista Stn Exit C",
-                "Distance": 0.08628085460653764
-            },
-            {
-                "BusStopCode": "11369",
-                "Name": "Buona Vista Stn Exit D",
-                "Distance": 0.10540402043159833
-            },
-            {
-                "BusStopCode": "11181",
-                "Name": "Opp Blk 43",
-                "Distance": 0.17474068136938822
-            },
-            {
-                "BusStopCode": "11189",
-                "Name": "Blk 43",
-                "Distance": 0.20481547890136448
-            }
-        ]
-    },
-    {
-        "mrt": "Dover",
-        "code": "EW22",
-        "closest_stops": [
-            {
-                "BusStopCode": "19039",
-                "Name": "Dover Stn Exit B",
-                "Distance": 0.029409298872181654
-            },
-            {
-                "BusStopCode": "19031",
-                "Name": "Dover Stn Exit A",
-                "Distance": 0.034200590104219955
-            }
-        ]
-    },
-    {
-        "mrt": "Clementi",
-        "code": "EW23",
-        "closest_stops": [
-            {
-                "BusStopCode": "17179",
-                "Name": "Clementi Stn Exit B",
-                "Distance": 0.024795933830628794
-            },
-            {
-                "BusStopCode": "17171",
-                "Name": "Clementi Stn Exit A",
-                "Distance": 0.026658737752487078
-            },
-            {
-                "BusStopCode": "17009",
-                "Name": "Clementi Int",
-                "Distance": 0.12494595993914759
-            }
-        ]
-    },
-    {
-        "mrt": "Jurong East_EW",
-        "code": "EW24",
-        "closest_stops": [
-            {
-                "BusStopCode": "28201",
-                "Name": "Opp The JTC Summit",
-                "Distance": 0.12768055702935038
-            },
-            {
-                "BusStopCode": "28199",
-                "Name": "Opposite JEM",
-                "Distance": 0.1781401519578272
-            },
-            {
-                "BusStopCode": "28009",
-                "Name": "Jurong East Int",
-                "Distance": 0.20047404334982877
-            },
-            {
-                "BusStopCode": "28211",
-                "Name": "Bef Jurong East Stn",
-                "Distance": 0.2131940764925156
-            }
-        ]
-    },
-    {
-        "mrt": "Chinese Garden",
-        "code": "EW25",
-        "closest_stops": [
-            {
-                "BusStopCode": "28341",
-                "Name": "Chinese Gdn Stn",
-                "Distance": 0.013203924231215294
-            },
-            {
-                "BusStopCode": "28349",
-                "Name": "Opp Chinese Gdn Stn",
-                "Distance": 0.06633023139644899
-            }
-        ]
-    },
-    {
-        "mrt": "Lakeside",
-        "code": "EW26",
-        "closest_stops": [
-            {
-                "BusStopCode": "28091",
-                "Name": "Lakeside Stn",
-                "Distance": 0.07532742647355528
-            },
-            {
-                "BusStopCode": "28099",
-                "Name": "Opp Lakeside Stn",
-                "Distance": 0.17065321048424753
-            },
-            {
-                "BusStopCode": "28381",
-                "Name": "Blk 515",
-                "Distance": 0.22550173221320763
-            },
-            {
-                "BusStopCode": "28421",
-                "Name": "Blk 517",
-                "Distance": 0.2415265486351286
-            },
-            {
-                "BusStopCode": "28389",
-                "Name": "Opp Blk 515",
-                "Distance": 0.2514119055114115
-            }
-        ]
-    },
-    {
-        "mrt": "Boon Lay",
-        "code": "EW27",
-        "closest_stops": [
-            {
-                "BusStopCode": "22009",
-                "Name": "Boon Lay Int",
-                "Distance": 0.101127746430596
-            },
-            {
-                "BusStopCode": "22499",
-                "Name": "Opp Blk 662C",
-                "Distance": 0.17914099704524708
-            },
-            {
-                "BusStopCode": "22491",
-                "Name": "Blk 662D",
-                "Distance": 0.2089412748148576
-            }
-        ]
-    },
-    {
-        "mrt": "Pioneer",
-        "code": "EW28",
-        "closest_stops": [
-            {
-                "BusStopCode": "22529",
-                "Name": "Pioneer Stn Exit B",
-                "Distance": 0.023232811307282428
-            },
-            {
-                "BusStopCode": "22521",
-                "Name": "Pioneer Stn Exit A",
-                "Distance": 0.049272073496713316
-            }
-        ]
-    },
-    {
-        "mrt": "Joo Koon",
-        "code": "EW29",
-        "closest_stops": [
-            {
-                "BusStopCode": "23499",
-                "Name": "Joo Koon Stn Exit A",
-                "Distance": 0.03209221369048623
-            },
-            {
-                "BusStopCode": "23491",
-                "Name": "Joo Koon Stn Exit B",
-                "Distance": 0.05761147298529071
-            },
-            {
-                "BusStopCode": "24009",
-                "Name": "Joo Koon Int",
-                "Distance": 0.08405543802614325
-            }
-        ]
-    },
-    {
-        "mrt": "Simei",
-        "code": "EW3",
-        "closest_stops": [
-            {
-                "BusStopCode": "96169",
-                "Name": "Simei Stn",
-                "Distance": 0.10243203906319186
-            },
-            {
-                "BusStopCode": "96161",
-                "Name": "Opp Simei Stn",
-                "Distance": 0.1192775358661103
-            },
-            {
-                "BusStopCode": "96149",
-                "Name": "Simei Stn/Blk 247",
-                "Distance": 0.14701103642637928
-            },
-            {
-                "BusStopCode": "96141",
-                "Name": "Blk 120/Opp Simei Stn",
-                "Distance": 0.17084458758756985
-            }
-        ]
-    },
-    {
-        "mrt": "Gul Circle",
-        "code": "EW30",
-        "closest_stops": [
-            {
-                "BusStopCode": "24511",
-                "Name": "GUL CIRCLE STN EXIT A",
-                "Distance": 0.0529927932697869
-            },
-            {
-                "BusStopCode": "24519",
-                "Name": "GUL CIRCLE STN EXIT B",
-                "Distance": 0.07794539798925887
-            }
-        ]
-    },
-    {
-        "mrt": "Tuas Crescent",
-        "code": "EW31",
-        "closest_stops": [
-            {
-                "BusStopCode": "24709",
-                "Name": "TUAS CRES STN EXIT A",
-                "Distance": 0.06165874979153182
-            },
-            {
-                "BusStopCode": "24701",
-                "Name": "TUAS CRES STN EXIT B",
-                "Distance": 0.08180153699135986
-            }
-        ]
-    },
-    {
-        "mrt": "Tuas West Road",
-        "code": "EW32",
-        "closest_stops": [
-            {
-                "BusStopCode": "24711",
-                "Name": "TUAS WEST RD STN EXIT B",
-                "Distance": 0.045220676279889016
-            },
-            {
-                "BusStopCode": "25511",
-                "Name": "MICHELMAN",
-                "Distance": 0.08111437932760121
-            },
-            {
-                "BusStopCode": "25519",
-                "Name": "OPP MICHELMAN",
-                "Distance": 0.1006932604824045
-            },
-            {
-                "BusStopCode": "24719",
-                "Name": "TUAS WEST RD STN EXIT A",
-                "Distance": 0.1098674255206212
-            },
-            {
-                "BusStopCode": "25691",
-                "Name": "AFT TUAS WEST RD STN",
-                "Distance": 0.12093449288718541
-            }
-        ]
-    },
-    {
-        "mrt": "Tuas Link",
-        "code": "EW33",
-        "closest_stops": [
-            {
-                "BusStopCode": "25429",
-                "Name": "TUAS LINK STN",
-                "Distance": 0.01436045262105985
-            },
-            {
-                "BusStopCode": "25421",
-                "Name": "OPP TUAS LINK STN",
-                "Distance": 0.12755190229253582
-            },
-            {
-                "BusStopCode": "25439",
-                "Name": "Opp Super Continental",
-                "Distance": 0.15667494766483514
-            },
-            {
-                "BusStopCode": "25431",
-                "Name": "Super Continental",
-                "Distance": 0.16677031482229027
-            },
-            {
-                "BusStopCode": "25491",
-                "Name": "Opp Super Continental",
-                "Distance": 0.20698362721413693
-            }
-        ]
-    },
-    {
-        "mrt": "Tanah Merah_EW",
-        "code": "EW4",
-        "closest_stops": [
-            {
-                "BusStopCode": "85091",
-                "Name": "Tanah Merah Stn Exit B",
-                "Distance": 0.03611238664300339
-            },
-            {
-                "BusStopCode": "85099",
-                "Name": "Tanah Merah Stn Exit A",
-                "Distance": 0.04681152068384922
-            }
-        ]
-    },
-    {
-        "mrt": "Bedok",
-        "code": "EW5",
-        "closest_stops": [
-            {
-                "BusStopCode": "84031",
-                "Name": "Bedok Stn Exit B",
-                "Distance": 0.03895839065010583
-            },
-            {
-                "BusStopCode": "84009",
-                "Name": "Bedok Int",
-                "Distance": 0.1257786911755875
-            },
-            {
-                "BusStopCode": "84039",
-                "Name": "Bedok Stn Exit A",
-                "Distance": 0.1334142141921109
-            }
-        ]
-    },
-    {
-        "mrt": "Kembangan",
-        "code": "EW6",
-        "closest_stops": [
-            {
-                "BusStopCode": "83062",
-                "Name": "Kembangan Stn",
-                "Distance": 0.06362583323940556
-            },
-            {
-                "BusStopCode": "83321",
-                "Name": "Kembangan Stn",
-                "Distance": 0.12161798407992339
-            },
-            {
-                "BusStopCode": "83329",
-                "Name": "Opp Kembangan Stn",
-                "Distance": 0.15491528993099152
-            }
-        ]
-    },
-    {
-        "mrt": "Eunos",
-        "code": "EW7",
-        "closest_stops": [
-            {
-                "BusStopCode": "82061",
-                "Name": "Eunos Stn/ Int",
-                "Distance": 0.14624301414171081
-            },
-            {
-                "BusStopCode": "82009",
-                "Name": "Eunos Int",
-                "Distance": 0.14869317993171574
-            },
-            {
-                "BusStopCode": "83101",
-                "Name": "Eunos Stn",
-                "Distance": 0.2255069189326642
-            }
-        ]
-    },
-    {
-        "mrt": "Paya Lebar_EW",
-        "code": "EW8",
-        "closest_stops": [
-            {
-                "BusStopCode": "81111",
-                "Name": "Paya Lebar Stn Exit B",
-                "Distance": 0.06536431616048784
-            },
-            {
-                "BusStopCode": "81119",
-                "Name": "Paya Lebar Stn Exit C",
-                "Distance": 0.09002827834115962
-            }
-        ]
-    },
-    {
-        "mrt": "Aljunied",
-        "code": "EW9",
-        "closest_stops": [
-            {
-                "BusStopCode": "81089",
-                "Name": "Aljunied Stn",
-                "Distance": 0.07147659927068797
-            },
-            {
-                "BusStopCode": "81081",
-                "Name": "Opp Aljunied Stn",
-                "Distance": 0.1094250388375727
-            },
-            {
-                "BusStopCode": "81011",
-                "Name": "Aft Aljunied Stn",
-                "Distance": 0.12905797772078245
-            }
-        ]
-    },
-    {
-        "mrt": "HarbourFront_NE",
-        "code": "NE1",
-        "closest_stops": [
-            {
-                "BusStopCode": "14141",
-                "Name": "HarbourFront Stn/Vivocity",
-                "Distance": 0.035451755349194425
-            },
-            {
-                "BusStopCode": "14119",
-                "Name": "Opp VivoCity",
-                "Distance": 0.06071263634812781
-            }
-        ]
-    },
-    {
-        "mrt": "Potong Pasir",
-        "code": "NE10",
-        "closest_stops": [
-            {
-                "BusStopCode": "60261",
-                "Name": "Potong Pasir Stn Exit C",
-                "Distance": 0.020988156468600593
-            },
-            {
-                "BusStopCode": "60269",
-                "Name": "Potong Pasir Stn Exit B",
-                "Distance": 0.03298545471479897
-            }
-        ]
-    },
-    {
-        "mrt": "Woodleigh",
-        "code": "NE11",
-        "closest_stops": [
-            {
-                "BusStopCode": "61039",
-                "Name": "Woodleigh Stn Exit A",
-                "Distance": 0.08336156398747276
-            },
-            {
-                "BusStopCode": "61031",
-                "Name": "Woodleigh Stn Exit B",
-                "Distance": 0.09853467075634224
-            }
-        ]
-    },
-    {
-        "mrt": "Serangoon_NE",
-        "code": "NE12",
-        "closest_stops": [
-            {
-                "BusStopCode": "62139",
-                "Name": "S'Goon Stn Exit A/Blk 413",
-                "Distance": 0.09356154716565253
-            },
-            {
-                "BusStopCode": "66351",
-                "Name": "S'goon Stn Exit E",
-                "Distance": 0.0965912038082102
-            },
-            {
-                "BusStopCode": "66359",
-                "Name": "S'Goon Stn Exit C/Blk 201",
-                "Distance": 0.1235724074125086
-            },
-            {
-                "BusStopCode": "62189",
-                "Name": "S'Goon Stn Exit D/Blk 416",
-                "Distance": 0.13404815158629493
-            },
-            {
-                "BusStopCode": "62131",
-                "Name": "S'Goon Stn Exit H",
-                "Distance": 0.14405548904621704
-            },
-            {
-                "BusStopCode": "62179",
-                "Name": "Blk 421",
-                "Distance": 0.1816910112755643
-            }
-        ]
-    },
-    {
-        "mrt": "Kovan",
-        "code": "NE13",
-        "closest_stops": [
-            {
-                "BusStopCode": "63039",
-                "Name": "Kovan Stn Exit C",
-                "Distance": 0.06485747381215873
-            },
-            {
-                "BusStopCode": "63031",
-                "Name": "Kovan Stn Exit B",
-                "Distance": 0.07913609371119042
-            }
-        ]
-    },
-    {
-        "mrt": "Hougang",
-        "code": "NE14",
-        "closest_stops": [
-            {
-                "BusStopCode": "64541",
-                "Name": "Hougang Ctrl Int",
-                "Distance": 0.0769982969950789
-            },
-            {
-                "BusStopCode": "64549",
-                "Name": "Opp Hougang Ctrl Int",
-                "Distance": 0.1289050192750288
-            },
-            {
-                "BusStopCode": "64009",
-                "Name": "Hougang Ctrl Int",
-                "Distance": 0.14454078699116252
-            },
-            {
-                "BusStopCode": "64381",
-                "Name": "Hougang Stn Exit C",
-                "Distance": 0.159577317817647
-            },
-            {
-                "BusStopCode": "64389",
-                "Name": "Blk 522",
-                "Distance": 0.19028112275636497
-            }
-        ]
-    },
-    {
-        "mrt": "Buangkok",
-        "code": "NE15",
-        "closest_stops": [
-            {
-                "BusStopCode": "67601",
-                "Name": "Buangkok Stn Exit B",
-                "Distance": 0.040244402654921914
-            },
-            {
-                "BusStopCode": "67609",
-                "Name": "Buangkok Stn Exit A",
-                "Distance": 0.09753046135560495
-            },
-            {
-                "BusStopCode": "63009",
-                "Name": "Buangkok Int",
-                "Distance": 0.11406472252370335
-            }
-        ]
-    },
-    {
-        "mrt": "Sengkang_NE",
-        "code": "NE16",
-        "closest_stops": [
-            {
-                "BusStopCode": "67009",
-                "Name": "Sengkang Int",
-                "Distance": 0.08262255560432721
-            },
-            {
-                "BusStopCode": "67409",
-                "Name": "Sengkang Stn",
-                "Distance": 0.14141341309379746
-            },
-            {
-                "BusStopCode": "67401",
-                "Name": "Opp Sengkang Stn/Blk 260A",
-                "Distance": 0.17553186680849558
-            },
-            {
-                "BusStopCode": "67441",
-                "Name": "Sengkang Community Hub",
-                "Distance": 0.23048967618050162
-            }
-        ]
-    },
-    {
-        "mrt": "Punggol_NE",
-        "code": "NE17",
-        "closest_stops": [
-            {
-                "BusStopCode": "65259",
-                "Name": "Punggol Stn/Int",
-                "Distance": 0.054664352992169145
-            },
-            {
-                "BusStopCode": "65251",
-                "Name": "Punggol Stn/Waterway Pt",
-                "Distance": 0.0757851771027378
-            },
-            {
-                "BusStopCode": "65009",
-                "Name": "Punggol Temp Int",
-                "Distance": 0.17264624358200745
-            }
-        ]
-    },
-    {
-        "mrt": "Punggol Coast",
-        "code": "NE18",
-        "closest_stops": [
-            {
-                "BusStopCode": "65729",
-                "Name": "Punggol Coast Station",
-                "Distance": 0.12230668095189322
-            },
-            {
-                "BusStopCode": "65721",
-                "Name": "Opposite Punggol Coast Station",
-                "Distance": 0.16525771950266457
-            }
-        ]
-    },
-    {
-        "mrt": "Outram Park_NE",
-        "code": "NE3",
-        "closest_stops": [
-            {
-                "BusStopCode": "05069",
-                "Name": "OUTRAM PK STN EXIT 4",
-                "Distance": 0.0458837285339248
-            },
-            {
-                "BusStopCode": "05019",
-                "Name": "Aft Duxton Plain Pk",
-                "Distance": 0.10566701429457898
-            },
-            {
-                "BusStopCode": "05012",
-                "Name": "Bef Pearl'S Hill Terr",
-                "Distance": 0.11901543449790003
-            }
-        ]
-    },
-    {
-        "mrt": "Chinatown_NE",
-        "code": "NE4",
-        "closest_stops": [
-            {
-                "BusStopCode": "05049",
-                "Name": "Chinatown Stn Exit E",
-                "Distance": 0.06895869319117537
-            },
-            {
-                "BusStopCode": "05022",
-                "Name": "Aft Chinatown Stn Exit D",
-                "Distance": 0.08709186429294043
-            },
-            {
-                "BusStopCode": "05013",
-                "Name": "Chinatown Stn Exit C",
-                "Distance": 0.15371089999232004
-            },
-            {
-                "BusStopCode": "05131",
-                "Name": "Opp Hong Lim Cplx",
-                "Distance": 0.18197616762167015
-            }
-        ]
-    },
-    {
-        "mrt": "Clarke Quay",
-        "code": "NE5",
-        "closest_stops": [
-            {
-                "BusStopCode": "04222",
-                "Name": "Clarke Quay Stn Exit E",
-                "Distance": 0.024560305123092253
-            },
-            {
-                "BusStopCode": "04239",
-                "Name": "Opp Clarke Quay Stn",
-                "Distance": 0.07153327452004714
-            },
-            {
-                "BusStopCode": "04211",
-                "Name": "Clarke Quay",
-                "Distance": 0.16427395854701177
-            }
-        ]
-    },
-    {
-        "mrt": "Dhoby Ghaut_NE",
-        "code": "NE6",
-        "closest_stops": [
-            {
-                "BusStopCode": "08031",
-                "Name": "Dhoby Ghaut Stn Exit B",
-                "Distance": 0.058968477910417205
-            },
-            {
-                "BusStopCode": "08057",
-                "Name": "Dhoby Ghaut Stn",
-                "Distance": 0.06555086935458956
-            }
-        ]
-    },
-    {
-        "mrt": "Little India_NE",
-        "code": "NE7",
-        "closest_stops": [
-            {
-                "BusStopCode": "40019",
-                "Name": "Little India Stn",
-                "Distance": 0.013308187719662296
-            },
-            {
-                "BusStopCode": "40011",
-                "Name": "LITTLE INDIA STN EXIT A",
-                "Distance": 0.06106970387906646
-            }
-        ]
-    },
-    {
-        "mrt": "Farrer Park",
-        "code": "NE8",
-        "closest_stops": [
-            {
-                "BusStopCode": "50251",
-                "Name": "Farrer Pk Stn Exit A",
-                "Distance": 0.06385997668134169
-            },
-            {
-                "BusStopCode": "50259",
-                "Name": "Opp Farrer Pk Stn",
-                "Distance": 0.08690308524626146
-            }
-        ]
-    },
-    {
-        "mrt": "Boon Keng",
-        "code": "NE9",
-        "closest_stops": [
-            {
-                "BusStopCode": "60121",
-                "Name": "Boon Keng Stn/Blk 102",
-                "Distance": 0.04254022110195843
-            },
-            {
-                "BusStopCode": "60199",
-                "Name": "Boon Keng Stn/Blk 22",
-                "Distance": 0.20977323205690188
-            },
-            {
-                "BusStopCode": "50349",
-                "Name": "Blk 107",
-                "Distance": 0.22368970096526766
-            },
-            {
-                "BusStopCode": "60101",
-                "Name": "Kwong Wai Shiu Hosp",
-                "Distance": 0.2757587609919294
-            },
-            {
-                "BusStopCode": "60191",
-                "Name": "Blk 7",
-                "Distance": 0.2976365267876214
-            },
-            {
-                "BusStopCode": "60119",
-                "Name": "Opp Boon Keng Stn",
-                "Distance": 0.3080003346139673
-            }
-        ]
-    },
-    {
-        "mrt": "Jurong East_NS",
-        "code": "NS1",
-        "closest_stops": [
-            {
-                "BusStopCode": "28201",
-                "Name": "Opp The JTC Summit",
-                "Distance": 0.12768055702935038
-            },
-            {
-                "BusStopCode": "28199",
-                "Name": "Opposite JEM",
-                "Distance": 0.1781401519578272
-            },
-            {
-                "BusStopCode": "28009",
-                "Name": "Jurong East Int",
-                "Distance": 0.20047404334982877
-            },
-            {
-                "BusStopCode": "28211",
-                "Name": "Bef Jurong East Stn",
-                "Distance": 0.2131940764925156
-            }
-        ]
-    },
-    {
-        "mrt": "Admiralty",
-        "code": "NS10",
-        "closest_stops": [
-            {
-                "BusStopCode": "46779",
-                "Name": "Admiralty Stn",
-                "Distance": 0.029219843545596137
-            },
-            {
-                "BusStopCode": "46771",
-                "Name": "Opp Admiralty Stn",
-                "Distance": 0.09027378055311115
-            },
-            {
-                "BusStopCode": "46759",
-                "Name": "BLK 676A",
-                "Distance": 0.154349719103983
-            }
-        ]
-    },
-    {
-        "mrt": "Sembawang",
-        "code": "NS11",
-        "closest_stops": [
-            {
-                "BusStopCode": "58211",
-                "Name": "Sembawang Stn",
-                "Distance": 0.0346599929675465
-            },
-            {
-                "BusStopCode": "58219",
-                "Name": "Opp Sembawang Stn",
-                "Distance": 0.051074536556840994
-            }
-        ]
-    },
-    {
-        "mrt": "Canberra",
-        "code": "NS12",
-        "closest_stops": [
-            {
-                "BusStopCode": "58541",
-                "Name": "Opp Canberra Stn",
-                "Distance": 0.11120520247457945
-            },
-            {
-                "BusStopCode": "58549",
-                "Name": "Canberra Stn",
-                "Distance": 0.11312526455620285
-            }
-        ]
-    },
-    {
-        "mrt": "Yishun",
-        "code": "NS13",
-        "closest_stops": [
-            {
-                "BusStopCode": "59079",
-                "Name": "Yishun Stn",
-                "Distance": 0.031634210598815785
-            },
-            {
-                "BusStopCode": "59072",
-                "Name": "Yishun Stn Exit E",
-                "Distance": 0.05633449279699647
-            },
-            {
-                "BusStopCode": "59073",
-                "Name": "Opp Yishun Stn",
-                "Distance": 0.1049144705821071
-            },
-            {
-                "BusStopCode": "59159",
-                "Name": "Opp Yishun Stn Exit B",
-                "Distance": 0.12285358261155002
-            }
-        ]
-    },
-    {
-        "mrt": "Khatib",
-        "code": "NS14",
-        "closest_stops": [
-            {
-                "BusStopCode": "59049",
-                "Name": "Opp Khatib Stn",
-                "Distance": 0.05615338141678224
-            },
-            {
-                "BusStopCode": "59041",
-                "Name": "Bef Khatib Stn",
-                "Distance": 0.1264138425720849
-            },
-            {
-                "BusStopCode": "59569",
-                "Name": "Khatib Stn Exit D",
-                "Distance": 0.1310765808927519
-            },
-            {
-                "BusStopCode": "59561",
-                "Name": "Opp Khatib Stn Exit D",
-                "Distance": 0.15421662038773512
-            }
-        ]
-    },
-    {
-        "mrt": "Yio Chu Kang",
-        "code": "NS15",
-        "closest_stops": [
-            {
-                "BusStopCode": "55509",
-                "Name": "Yio Chu Kang Int",
-                "Distance": 0.09746565193276854
-            },
-            {
-                "BusStopCode": "55181",
-                "Name": "Opp Yio Chu Kang Stn",
-                "Distance": 0.12534764289818823
-            },
-            {
-                "BusStopCode": "55189",
-                "Name": "Yio Chu Kang Stn",
-                "Distance": 0.15444543853520623
-            }
-        ]
-    },
-    {
-        "mrt": "Ang Mo Kio",
-        "code": "NS16",
-        "closest_stops": [
-            {
-                "BusStopCode": "54009",
-                "Name": "Ang Mo Kio Int",
-                "Distance": 0.11552065142458205
-            },
-            {
-                "BusStopCode": "54261",
-                "Name": "Aft Ang Mo Kio Stn Exit A",
-                "Distance": 0.14979748324354406
-            },
-            {
-                "BusStopCode": "54399",
-                "Name": "Bef Ang Mo Kio Stn Exit B",
-                "Distance": 0.17632216320451555
-            },
-            {
-                "BusStopCode": "54269",
-                "Name": "Opp Ang Mo Kio Stn",
-                "Distance": 0.19897841558349222
-            },
-            {
-                "BusStopCode": "54391",
-                "Name": "Aft Ang Mo Kio Int",
-                "Distance": 0.22293670571267135
-            }
-        ]
-    },
-    {
-        "mrt": "Bishan_NS",
-        "code": "NS17",
-        "closest_stops": [
-            {
-                "BusStopCode": "53231",
-                "Name": "BISHAN STN",
-                "Distance": 0.06927737415226383
-            },
-            {
-                "BusStopCode": "53239",
-                "Name": "OPP BISHAN STN",
-                "Distance": 0.08567739493458879
-            }
-        ]
-    },
-    {
-        "mrt": "Braddell",
-        "code": "NS18",
-        "closest_stops": [
-            {
-                "BusStopCode": "52171",
-                "Name": "Braddell Stn/Blk 107",
-                "Distance": 0.11695420218974308
-            },
-            {
-                "BusStopCode": "52179",
-                "Name": "Braddell Stn/Blk 106",
-                "Distance": 0.1389758114772995
-            },
-            {
-                "BusStopCode": "52209",
-                "Name": "Blk 101C CP",
-                "Distance": 0.14903147895355087
-            },
-            {
-                "BusStopCode": "52161",
-                "Name": "Braddell Stn/Blk 111",
-                "Distance": 0.15814529217846113
-            },
-            {
-                "BusStopCode": "52201",
-                "Name": "Blk 121",
-                "Distance": 0.16080156804500628
-            }
-        ]
-    },
-    {
-        "mrt": "Toa Payoh",
-        "code": "NS19",
-        "closest_stops": [
-            {
-                "BusStopCode": "52009",
-                "Name": "Toa Payoh Int",
-                "Distance": 0.05398095560525409
-            },
-            {
-                "BusStopCode": "52189",
-                "Name": "Toa Payoh Stn",
-                "Distance": 0.11578481081941851
-            },
-            {
-                "BusStopCode": "52181",
-                "Name": "Opp Toa Payoh Stn",
-                "Distance": 0.12072493660721328
-            }
-        ]
-    },
-    {
-        "mrt": "Bukit Batok",
-        "code": "NS2",
-        "closest_stops": [
-            {
-                "BusStopCode": "43009",
-                "Name": "Bt Batok Int",
-                "Distance": 0.19385864239473827
-            },
-            {
-                "BusStopCode": "43389",
-                "Name": "Opp Blk 102",
-                "Distance": 0.21287351780944397
-            },
-            {
-                "BusStopCode": "43391",
-                "Name": "Bt Batok CC",
-                "Distance": 0.22002031177715262
-            },
-            {
-                "BusStopCode": "43399",
-                "Name": "Opp Blk 120",
-                "Distance": 0.24483211233389718
-            },
-            {
-                "BusStopCode": "43701",
-                "Name": "Blk 225",
-                "Distance": 0.27741833236052965
-            },
-            {
-                "BusStopCode": "43709",
-                "Name": "Blk 644",
-                "Distance": 0.27873152984815125
-            },
-            {
-                "BusStopCode": "43419",
-                "Name": "Aft Bt Batok Stn/Blk 628",
-                "Distance": 0.28127227458468024
-            },
-            {
-                "BusStopCode": "43411",
-                "Name": "Opp Blk 628",
-                "Distance": 0.3086275945717981
-            }
-        ]
-    },
-    {
-        "mrt": "Novena",
-        "code": "NS20",
-        "closest_stops": [
-            {
-                "BusStopCode": "50038",
-                "Name": "Novena Stn",
-                "Distance": 0.07849610572225048
-            },
-            {
-                "BusStopCode": "50037",
-                "Name": "Bef Novena Stn Exit B",
-                "Distance": 0.17897424471643875
-            },
-            {
-                "BusStopCode": "50031",
-                "Name": "Opp Novena Ch",
-                "Distance": 0.24142752689243926
-            }
-        ]
-    },
-    {
-        "mrt": "Newton_NS",
-        "code": "NS21",
-        "closest_stops": [
-            {
-                "BusStopCode": "40181",
-                "Name": "Newton Stn Exit A",
-                "Distance": 0.07222954415953087
-            },
-            {
-                "BusStopCode": "40189",
-                "Name": "Newton Stn Exit B",
-                "Distance": 0.11415694364348773
-            },
-            {
-                "BusStopCode": "40049",
-                "Name": "Opp Newton Stn Exit C",
-                "Distance": 0.11822264596720015
-            },
-            {
-                "BusStopCode": "40041",
-                "Name": "Newton Stn Exit C",
-                "Distance": 0.1201895362128295
-            }
-        ]
-    },
-    {
-        "mrt": "Orchard_NS",
-        "code": "NS22",
-        "closest_stops": [
-            {
-                "BusStopCode": "09023",
-                "Name": "Opp Orchard Stn/ION",
-                "Distance": 0.062251079939653994
-            },
-            {
-                "BusStopCode": "09022",
-                "Name": "ORCHARD STN EXIT 13",
-                "Distance": 0.09001828993231027
-            },
-            {
-                "BusStopCode": "09047",
-                "Name": "Orchard Stn/Tang Plaza",
-                "Distance": 0.17433294975660027
-            }
-        ]
-    },
-    {
-        "mrt": "Somerset",
-        "code": "NS23",
-        "closest_stops": [
-            {
-                "BusStopCode": "08121",
-                "Name": "Somerset Stn",
-                "Distance": 0.030811690614874807
-            },
-            {
-                "BusStopCode": "09038",
-                "Name": "Opp Somerset Stn",
-                "Distance": 0.13507990961296254
-            }
-        ]
-    },
-    {
-        "mrt": "Dhoby Ghaut_NS",
-        "code": "NS24",
-        "closest_stops": [
-            {
-                "BusStopCode": "08031",
-                "Name": "Dhoby Ghaut Stn Exit B",
-                "Distance": 0.058968477910417205
-            },
-            {
-                "BusStopCode": "08057",
-                "Name": "Dhoby Ghaut Stn",
-                "Distance": 0.06555086935458956
-            }
-        ]
-    },
-    {
-        "mrt": "City Hall_NS",
-        "code": "NS25",
-        "closest_stops": [
-            {
-                "BusStopCode": "04167",
-                "Name": "City Hall Stn Exit B",
-                "Distance": 0.09002219854584277
-            },
-            {
-                "BusStopCode": "04111",
-                "Name": "Capitol Bldg",
-                "Distance": 0.09599666706784739
-            },
-            {
-                "BusStopCode": "04168",
-                "Name": "Aft City Hall Stn Exit B",
-                "Distance": 0.1411543086569371
-            }
-        ]
-    },
-    {
-        "mrt": "Raffles Place_NS",
-        "code": "NS26",
-        "closest_stops": [
-            {
-                "BusStopCode": "03019",
-                "Name": "OUE Bayfront",
-                "Distance": 0.18300858965190428
-            },
-            {
-                "BusStopCode": "03011",
-                "Name": "Fullerton Sq",
-                "Distance": 0.25531202897143934
-            },
-            {
-                "BusStopCode": "05319",
-                "Name": "OCBC Ctr",
-                "Distance": 0.26192792839456597
-            },
-            {
-                "BusStopCode": "03021",
-                "Name": "Prudential Twr",
-                "Distance": 0.2638051804458568
-            },
-            {
-                "BusStopCode": "03031",
-                "Name": "Raffles Pl Stn Exit F",
-                "Distance": 0.2682292701223921
-            }
-        ]
-    },
-    {
-        "mrt": "Marina Bay_NS",
-        "code": "NS27",
-        "closest_stops": [
-            {
-                "BusStopCode": "03539",
-                "Name": "Marina Bay Stn",
-                "Distance": 0.2797017621793172
-            },
-            {
-                "BusStopCode": "03579",
-                "Name": "Opp Downtown Stn",
-                "Distance": 0.45523617505068176
-            },
-            {
-                "BusStopCode": "03529",
-                "Name": "Downtown Stn Exit E",
-                "Distance": 0.5183815695625895
-            },
-            {
-                "BusStopCode": "03339",
-                "Name": "Aft Marina Gdns Dr",
-                "Distance": 0.5283562532498655
-            }
-        ]
-    },
-    {
-        "mrt": "Marina South Pier",
-        "code": "NS28",
-        "closest_stops": [
-            {
-                "BusStopCode": "03411",
-                "Name": "Opp Marina Sth Pier Stn",
-                "Distance": 0.036272028505244164
-            },
-            {
-                "BusStopCode": "03419",
-                "Name": "Marina Sth Pier Stn",
-                "Distance": 0.05969344680817665
-            }
-        ]
-    },
-    {
-        "mrt": "Bukit Gombak",
-        "code": "NS3",
-        "closest_stops": [
-            {
-                "BusStopCode": "43579",
-                "Name": "Bt Gombak Stn",
-                "Distance": 0.030445844285297893
-            },
-            {
-                "BusStopCode": "43571",
-                "Name": "Opp Bt Gombak Stn",
-                "Distance": 0.05011029565014479
-            }
-        ]
-    },
-    {
-        "mrt": "Choa Chu Kang_NS",
-        "code": "NS4",
-        "closest_stops": [
-            {
-                "BusStopCode": "44531",
-                "Name": "Opp Choa Chu Kang Stn",
-                "Distance": 0.055036165096409406
-            },
-            {
-                "BusStopCode": "44539",
-                "Name": "Lot 1/Choa Chu Kang Stn",
-                "Distance": 0.05602027740265132
-            }
-        ]
-    },
-    {
-        "mrt": "Yew Tee",
-        "code": "NS5",
-        "closest_stops": [
-            {
-                "BusStopCode": "45321",
-                "Name": "Yew Tee Stn",
-                "Distance": 0.01829402384021848
-            },
-            {
-                "BusStopCode": "45329",
-                "Name": "Opp Yew Tee Stn",
-                "Distance": 0.05165041652863139
-            }
-        ]
-    },
-    {
-        "mrt": "Kranji",
-        "code": "NS7",
-        "closest_stops": [
-            {
-                "BusStopCode": "45139",
-                "Name": "Kranji Stn",
-                "Distance": 0.023556226848933926
-            },
-            {
-                "BusStopCode": "45131",
-                "Name": "Opp Kranji Stn",
-                "Distance": 0.10615004490598141
-            }
-        ]
-    },
-    {
-        "mrt": "Marsiling",
-        "code": "NS8",
-        "closest_stops": [
-            {
-                "BusStopCode": "46521",
-                "Name": "Marsiling Stn",
-                "Distance": 0.02012704875851555
-            },
-            {
-                "BusStopCode": "46529",
-                "Name": "Opp Marsiling Stn",
-                "Distance": 0.06644037254424844
-            }
-        ]
-    },
-    {
-        "mrt": "Woodlands_NS",
-        "code": "NS9",
-        "closest_stops": [
-            {
-                "BusStopCode": "46009",
-                "Name": "Woodlands Int",
-                "Distance": 0.0629025260553391
-            },
-            {
-                "BusStopCode": "47009",
-                "Name": "Woodlands Temp Int",
-                "Distance": 0.07654727746330775
-            },
-            {
-                "BusStopCode": "46008",
-                "Name": "Woodlands Int",
-                "Distance": 0.08500442634939359
-            }
-        ]
-    },
-    {
-        "mrt": "Cove",
-        "code": "PE1",
-        "closest_stops": [
-            {
-                "BusStopCode": "65151",
-                "Name": "Cove Stn Exit B",
-                "Distance": 0.10895635351079144
-            },
-            {
-                "BusStopCode": "65159",
-                "Name": "Cove Stn Exit A",
-                "Distance": 0.13355542302264542
-            },
-            {
-                "BusStopCode": "65079",
-                "Name": "Blk 102C",
-                "Distance": 0.1348281399968538
-            },
-            {
-                "BusStopCode": "65081",
-                "Name": "Opp Blk 199C",
-                "Distance": 0.17289774562771376
-            },
-            {
-                "BusStopCode": "65241",
-                "Name": "Blk 196C",
-                "Distance": 0.20486458345225425
-            },
-            {
-                "BusStopCode": "65089",
-                "Name": "Opp Blk 296",
-                "Distance": 0.2086093966055552
-            },
-            {
-                "BusStopCode": "65071",
-                "Name": "Blk 203A",
-                "Distance": 0.21888429232253342
-            }
-        ]
-    },
-    {
-        "mrt": "Meridian",
-        "code": "PE2",
-        "closest_stops": [
-            {
-                "BusStopCode": "65161",
-                "Name": "Meridian Stn Exit B",
-                "Distance": 0.052698101972679524
-            },
-            {
-                "BusStopCode": "65169",
-                "Name": "Meridian Stn Exit A",
-                "Distance": 0.07615428843640908
-            }
-        ]
-    },
-    {
-        "mrt": "Coral Edge",
-        "code": "PE3",
-        "closest_stops": [
-            {
-                "BusStopCode": "65179",
-                "Name": "Coral Edge Stn Exit A",
-                "Distance": 0.0946397527176854
-            },
-            {
-                "BusStopCode": "65171",
-                "Name": "Coral Edge Stn Exit B",
-                "Distance": 0.09713583062700125
-            }
-        ]
-    },
-    {
-        "mrt": "Riviera",
-        "code": "PE4",
-        "closest_stops": [
-            {
-                "BusStopCode": "65231",
-                "Name": "Riviera Stn Exit B",
-                "Distance": 0.052826436984664514
-            },
-            {
-                "BusStopCode": "65239",
-                "Name": "Riviera Stn Exit A",
-                "Distance": 0.054128961893168175
-            }
-        ]
-    },
-    {
-        "mrt": "Kadaloor",
-        "code": "PE5",
-        "closest_stops": [
-            {
-                "BusStopCode": "65321",
-                "Name": "Kadaloor Stn Exit B",
-                "Distance": 0.025397013313966214
-            },
-            {
-                "BusStopCode": "65329",
-                "Name": "Kadaloor Stn Exit A",
-                "Distance": 0.04787177522472411
-            }
-        ]
-    },
-    {
-        "mrt": "Oasis",
-        "code": "PE6",
-        "closest_stops": [
-            {
-                "BusStopCode": "65311",
-                "Name": "Oasis Stn Exit B/Blk 617D",
-                "Distance": 0.03869453275494148
-            },
-            {
-                "BusStopCode": "65319",
-                "Name": "Oasis Stn Exit A",
-                "Distance": 0.03935055825196653
-            }
-        ]
-    },
-    {
-        "mrt": "Damai",
-        "code": "PE7",
-        "closest_stops": [
-            {
-                "BusStopCode": "65309",
-                "Name": "Damai Stn Exit A",
-                "Distance": 0.07453864225385036
-            },
-            {
-                "BusStopCode": "65301",
-                "Name": "Damai Stn Exit B",
-                "Distance": 0.15626968723435236
-            },
-            {
-                "BusStopCode": "65099",
-                "Name": "BLK 604A",
-                "Distance": 0.18406832366689405
-            }
-        ]
-    },
-    {
-        "mrt": "Punggol_PTC",
-        "code": "PTC",
-        "closest_stops": [
-            {
-                "BusStopCode": "65259",
-                "Name": "Punggol Stn/Int",
-                "Distance": 0.054664352992169145
-            },
-            {
-                "BusStopCode": "65251",
-                "Name": "Punggol Stn/Waterway Pt",
-                "Distance": 0.0757851771027378
-            },
-            {
-                "BusStopCode": "65009",
-                "Name": "Punggol Temp Int",
-                "Distance": 0.17264624358200745
-            }
-        ]
-    },
-    {
-        "mrt": "Sam Kee",
-        "code": "PW1",
-        "closest_stops": [
-            {
-                "BusStopCode": "65481",
-                "Name": "Opp One Punggol",
-                "Distance": 0.1894668072479289
-            },
-            {
-                "BusStopCode": "65489",
-                "Name": "One Punggol",
-                "Distance": 0.21088155192669444
-            }
-        ]
-    },
-    {
-        "mrt": "Teck Lee",
-        "code": "PW2",
-        "closest_stops": [
-            {
-                "BusStopCode": "65481",
-                "Name": "Opp One Punggol",
-                "Distance": 0.43237173313564203
-            },
-            {
-                "BusStopCode": "65709",
-                "Name": "Before SIT Punggol",
-                "Distance": 0.4542554633442284
-            },
-            {
-                "BusStopCode": "65701",
-                "Name": "Opposite SIT Punggol",
-                "Distance": 0.504245738735964
-            },
-            {
-                "BusStopCode": "65489",
-                "Name": "One Punggol",
-                "Distance": 0.5132793663546293
-            },
-            {
-                "BusStopCode": "65631",
-                "Name": "Aft Punggol Pt Stn",
-                "Distance": 0.5297467060481029
-            }
-        ]
-    },
-    {
-        "mrt": "Punggol Point",
-        "code": "PW3",
-        "closest_stops": [
-            {
-                "BusStopCode": "65631",
-                "Name": "Aft Punggol Pt Stn",
-                "Distance": 0.14773785945049445
-            },
-            {
-                "BusStopCode": "65639",
-                "Name": "Bef Punggol Pt Stn",
-                "Distance": 0.1699743687409641
-            },
-            {
-                "BusStopCode": "65681",
-                "Name": "Bef Northshore Cres",
-                "Distance": 0.20965917490285108
-            },
-            {
-                "BusStopCode": "65689",
-                "Name": "Aft Northshore Cres",
-                "Distance": 0.21529133886773644
-            },
-            {
-                "BusStopCode": "65661",
-                "Name": "Blk 421C",
-                "Distance": 0.24641837255753377
-            }
-        ]
-    },
-    {
-        "mrt": "Samudera",
-        "code": "PW4",
-        "closest_stops": [
-            {
-                "BusStopCode": "65629",
-                "Name": "Samudera Stn Exit A",
-                "Distance": 0.06518518520621167
-            },
-            {
-                "BusStopCode": "65621",
-                "Name": "Samudera Stn Exit B",
-                "Distance": 0.06971007773513167
-            },
-            {
-                "BusStopCode": "65651",
-                "Name": "Blk 413C",
-                "Distance": 0.16934194772756309
-            }
-        ]
-    },
-    {
-        "mrt": "Nibong",
-        "code": "PW5",
-        "closest_stops": [
-            {
-                "BusStopCode": "65619",
-                "Name": "Nibong Stn Exit A",
-                "Distance": 0.046829330915203686
-            },
-            {
-                "BusStopCode": "65611",
-                "Name": "Nibong Stn Exit B",
-                "Distance": 0.05008383113077066
-            }
-        ]
-    },
-    {
-        "mrt": "Sumang",
-        "code": "PW6",
-        "closest_stops": [
-            {
-                "BusStopCode": "65601",
-                "Name": "Sumang Stn Exit B",
-                "Distance": 0.09285924381771875
-            },
-            {
-                "BusStopCode": "65609",
-                "Name": "Sumang Stn Exit A",
-                "Distance": 0.0984501226561832
-            }
-        ]
-    },
-    {
-        "mrt": "Soo Teck",
-        "code": "PW7",
-        "closest_stops": [
-            {
-                "BusStopCode": "65141",
-                "Name": "Aft Soo Teck Stn",
-                "Distance": 0.09441517435501975
-            },
-            {
-                "BusStopCode": "65149",
-                "Name": "Bef Soo Teck Stn",
-                "Distance": 0.11156338359909798
-            },
-            {
-                "BusStopCode": "65401",
-                "Name": "Opp Blk 264A",
-                "Distance": 0.2070843506830538
-            }
-        ]
-    },
-    {
-        "mrt": "Compassvale",
-        "code": "SE1",
-        "closest_stops": [
-            {
-                "BusStopCode": "67259",
-                "Name": "Compassvale Stn Exit B",
-                "Distance": 0.015410785874730932
-            },
-            {
-                "BusStopCode": "67251",
-                "Name": "Compassvale Stn Exit A",
-                "Distance": 0.01688660504473915
-            }
-        ]
-    },
-    {
-        "mrt": "Rumbia",
-        "code": "SE2",
-        "closest_stops": [
-            {
-                "BusStopCode": "67229",
-                "Name": "Rumbia Stn Exit A",
-                "Distance": 0.05518049771065175
-            },
-            {
-                "BusStopCode": "67221",
-                "Name": "Rumbia Stn Exit B/Blk 153",
-                "Distance": 0.06380146598862882
-            },
-            {
-                "BusStopCode": "67671",
-                "Name": "Blk 156A CP",
-                "Distance": 0.143377267602504
-            }
-        ]
-    },
-    {
-        "mrt": "Bakau",
-        "code": "SE3",
-        "closest_stops": [
-            {
-                "BusStopCode": "67131",
-                "Name": "Bakau Stn/Blk 122F",
-                "Distance": 0.044064476022804895
-            },
-            {
-                "BusStopCode": "67539",
-                "Name": "Blk 122C",
-                "Distance": 0.13289894974981997
-            },
-            {
-                "BusStopCode": "67531",
-                "Name": "Blk 158C",
-                "Distance": 0.14660071701455935
-            },
-            {
-                "BusStopCode": "67129",
-                "Name": "Blk 137",
-                "Distance": 0.1578031655252409
-            },
-            {
-                "BusStopCode": "67121",
-                "Name": "Blk 142A",
-                "Distance": 0.16604593438980228
-            },
-            {
-                "BusStopCode": "67139",
-                "Name": "Nth Spring Pr Sch",
-                "Distance": 0.17237985471382303
-            }
-        ]
-    },
-    {
-        "mrt": "Kangkar",
-        "code": "SE4",
-        "closest_stops": [
-            {
-                "BusStopCode": "67151",
-                "Name": "Kangkar Stn Exit B",
-                "Distance": 0.04356308326816229
-            },
-            {
-                "BusStopCode": "67159",
-                "Name": "Kangkar Stn Exit A",
-                "Distance": 0.049948316649183415
-            }
-        ]
-    },
-    {
-        "mrt": "Ranggung",
-        "code": "SE5",
-        "closest_stops": [
-            {
-                "BusStopCode": "67211",
-                "Name": "Ranggung Stn Exit A",
-                "Distance": 0.03595672398700362
-            },
-            {
-                "BusStopCode": "67219",
-                "Name": "Ranggung Stn Exit B",
-                "Distance": 0.0421690902625895
-            }
-        ]
-    },
-    {
-        "mrt": "Sengkang_STC",
-        "code": "STC",
-        "closest_stops": [
-            {
-                "BusStopCode": "67009",
-                "Name": "Sengkang Int",
-                "Distance": 0.08262255560432721
-            },
-            {
-                "BusStopCode": "67409",
-                "Name": "Sengkang Stn",
-                "Distance": 0.14141341309379746
-            },
-            {
-                "BusStopCode": "67401",
-                "Name": "Opp Sengkang Stn/Blk 260A",
-                "Distance": 0.17553186680849558
-            },
-            {
-                "BusStopCode": "67441",
-                "Name": "Sengkang Community Hub",
-                "Distance": 0.23048967618050162
-            }
-        ]
-    },
-    {
-        "mrt": "Cheng Lim",
-        "code": "SW1",
-        "closest_stops": [
-            {
-                "BusStopCode": "67429",
-                "Name": "Cheng Lim Stn Exit A",
-                "Distance": 0.01358791955267944
-            },
-            {
-                "BusStopCode": "67421",
-                "Name": "Cheng Lim Stn Exit B",
-                "Distance": 0.017013587751718455
-            }
-        ]
-    },
-    {
-        "mrt": "Farmway",
-        "code": "SW2",
-        "closest_stops": [
-            {
-                "BusStopCode": "67319",
-                "Name": "Farmway Stn Exit A",
-                "Distance": 0.0367044002231698
-            },
-            {
-                "BusStopCode": "67311",
-                "Name": "Farmway Stn Exit B",
-                "Distance": 0.07522246917898844
-            }
-        ]
-    },
-    {
-        "mrt": "Kupang",
-        "code": "SW3",
-        "closest_stops": [
-            {
-                "BusStopCode": "67559",
-                "Name": "Opp Blk 471A",
-                "Distance": 0.3031756727226168
-            },
-            {
-                "BusStopCode": "67551",
-                "Name": "Blk 471A",
-                "Distance": 0.3282998514895857
-            },
-            {
-                "BusStopCode": "67701",
-                "Name": "AFT BLK 467B",
-                "Distance": 0.4235288554649423
-            }
-        ]
-    },
-    {
-        "mrt": "Thanggam",
-        "code": "SW4",
-        "closest_stops": [
-            {
-                "BusStopCode": "67741",
-                "Name": "Thanggam Stn",
-                "Distance": 0.03417701118535643
-            },
-            {
-                "BusStopCode": "67701",
-                "Name": "AFT BLK 467B",
-                "Distance": 0.232198113065618
-            },
-            {
-                "BusStopCode": "67561",
-                "Name": "Opp Blk 432A",
-                "Distance": 0.2649271693985142
-            },
-            {
-                "BusStopCode": "68031",
-                "Name": "Jln Kayu Shophouse",
-                "Distance": 0.2890767865015436
-            },
-            {
-                "BusStopCode": "68039",
-                "Name": "Aft Abundant Grace Ch",
-                "Distance": 0.29879038658441137
-            },
-            {
-                "BusStopCode": "67569",
-                "Name": "Blk 432A",
-                "Distance": 0.30489376840784654
-            },
-            {
-                "BusStopCode": "67571",
-                "Name": "Aft Lor Tanggam",
-                "Distance": 0.31757350531969203
-            },
-            {
-                "BusStopCode": "68049",
-                "Name": "Opp Jln Tari Lilin",
-                "Distance": 0.32178423905831144
-            }
-        ]
-    },
-    {
-        "mrt": "Fernvale",
-        "code": "SW5",
-        "closest_stops": [
-            {
-                "BusStopCode": "67631",
-                "Name": "Blk 441D",
-                "Distance": 0.08346777097645641
-            },
-            {
-                "BusStopCode": "67639",
-                "Name": "Blk 436A",
-                "Distance": 0.13277267335275816
-            },
-            {
-                "BusStopCode": "67489",
-                "Name": "Opp Fernvale Stn",
-                "Distance": 0.1341330757130514
-            },
-            {
-                "BusStopCode": "67481",
-                "Name": "Fernvale Stn/Blk 439A",
-                "Distance": 0.15698334597806224
-            },
-            {
-                "BusStopCode": "67491",
-                "Name": "Opp Fernvale Pr Sch",
-                "Distance": 0.21518727968593965
-            },
-            {
-                "BusStopCode": "67499",
-                "Name": "Fernvale Pr Sch",
-                "Distance": 0.22636581501469397
-            }
-        ]
-    },
-    {
-        "mrt": "Layar",
-        "code": "SW6",
-        "closest_stops": [
-            {
-                "BusStopCode": "67471",
-                "Name": "Layar Stn Exit B",
-                "Distance": 0.01435866604631369
-            },
-            {
-                "BusStopCode": "67479",
-                "Name": "Layar Stn Exit A/Blk 417A",
-                "Distance": 0.02003230880339677
-            }
-        ]
-    },
-    {
-        "mrt": "Tongkang",
-        "code": "SW7",
-        "closest_stops": [
-            {
-                "BusStopCode": "65801",
-                "Name": "Blk 309D",
-                "Distance": 0.1113004553322228
-            },
-            {
-                "BusStopCode": "67301",
-                "Name": "Blk 305D",
-                "Distance": 0.1407185122850278
-            },
-            {
-                "BusStopCode": "67329",
-                "Name": "Opp Blk 310B",
-                "Distance": 0.14844693658940517
-            },
-            {
-                "BusStopCode": "65809",
-                "Name": "Anchor Green Pr Sch",
-                "Distance": 0.20403494312431816
-            },
-            {
-                "BusStopCode": "67321",
-                "Name": "Blk 311A",
-                "Distance": 0.21297777969349713
-            }
-        ]
-    },
-    {
-        "mrt": "Renjong",
-        "code": "SW8",
-        "closest_stops": [
-            {
-                "BusStopCode": "67299",
-                "Name": "Renjong Stn Exit A",
-                "Distance": 0.08488458187313073
-            },
-            {
-                "BusStopCode": "67291",
-                "Name": "Renjong Stn Exit B",
-                "Distance": 0.10010081039078035
-            },
-            {
-                "BusStopCode": "67461",
-                "Name": "Aft Sengkang East Ave",
-                "Distance": 0.13369029172246777
-            },
-            {
-                "BusStopCode": "67469",
-                "Name": "Bef Sengkang East Ave",
-                "Distance": 0.15517191614634612
-            }
-        ]
-    },
-    {
-        "mrt": "Woodlands North",
-        "code": "TE1",
-        "closest_stops": [
-            {
-                "BusStopCode": "47201",
-                "Name": "W'lands Nth Stn",
-                "Distance": 0.07150822828355136
-            },
-            {
-                "BusStopCode": "47021",
-                "Name": "Khalsa Crescent Drug Rehab Ctr",
-                "Distance": 0.37255519964561223
-            },
-            {
-                "BusStopCode": "47029",
-                "Name": "Opp Khalsa Crescent Drug Rehab Ctr",
-                "Distance": 0.42121334345926437
-            },
-            {
-                "BusStopCode": "47031",
-                "Name": "Bef Keramat Rd",
-                "Distance": 0.4531233797889975
-            }
-        ]
-    },
-    {
-        "mrt": "Stevens_TE",
-        "code": "TE11",
-        "closest_stops": [
-            {
-                "BusStopCode": "40081",
-                "Name": "STEVENS STN EXIT 1",
-                "Distance": 0.06613101915595317
-            },
-            {
-                "BusStopCode": "40229",
-                "Name": "BEF STEVENS STN EXIT 2",
-                "Distance": 0.10933734699300975
-            },
-            {
-                "BusStopCode": "40221",
-                "Name": "STEVENS STN EXIT 3",
-                "Distance": 0.12973107147939225
-            }
-        ]
-    },
-    {
-        "mrt": "Napier",
-        "code": "TE12",
-        "closest_stops": [
-            {
-                "BusStopCode": "13011",
-                "Name": "NAPIER STN EXIT 2",
-                "Distance": 0.0736269731154652
-            },
-            {
-                "BusStopCode": "13019",
-                "Name": "NAPIER STN EXIT 1",
-                "Distance": 0.1309223047948649
-            }
-        ]
-    },
-    {
-        "mrt": "Orchard Boulevard",
-        "code": "TE13",
-        "closest_stops": [
-            {
-                "BusStopCode": "09139",
-                "Name": "ORCHARD BLVD STN EXIT 1",
-                "Distance": 0.13356495749238972
-            },
-            {
-                "BusStopCode": "09131",
-                "Name": "OPP ORCHARD BLVD STN",
-                "Distance": 0.1843576970537903
-            },
-            {
-                "BusStopCode": "13189",
-                "Name": "Bef One Tree Hill",
-                "Distance": 0.225584259721529
-            },
-            {
-                "BusStopCode": "13181",
-                "Name": "Aft One Tree Hill",
-                "Distance": 0.24172244576792698
-            },
-            {
-                "BusStopCode": "13209",
-                "Name": "Opp British High Comsn",
-                "Distance": 0.28289050171149993
-            }
-        ]
-    },
-    {
-        "mrt": "Orchard_TE",
-        "code": "TE14",
-        "closest_stops": [
-            {
-                "BusStopCode": "09023",
-                "Name": "Opp Orchard Stn/ION",
-                "Distance": 0.062251079939653994
-            },
-            {
-                "BusStopCode": "09022",
-                "Name": "ORCHARD STN EXIT 13",
-                "Distance": 0.09001828993231027
-            },
-            {
-                "BusStopCode": "09047",
-                "Name": "Orchard Stn/Tang Plaza",
-                "Distance": 0.17433294975660027
-            }
-        ]
-    },
-    {
-        "mrt": "Great World",
-        "code": "TE15",
-        "closest_stops": [
-            {
-                "BusStopCode": "13119",
-                "Name": "Great World Stn Exit 3",
-                "Distance": 0.11685824406780394
-            },
-            {
-                "BusStopCode": "13071",
-                "Name": "Great World Stn Exit 5",
-                "Distance": 0.1996299232049561
-            },
-            {
-                "BusStopCode": "13079",
-                "Name": "GREAT WORLD STN EXIT 4",
-                "Distance": 0.21269638092598497
-            }
-        ]
-    },
-    {
-        "mrt": "Havelock",
-        "code": "TE16",
-        "closest_stops": [
-            {
-                "BusStopCode": "06071",
-                "Name": "HAVELOCK STN EXIT 2",
-                "Distance": 0.07120429904828644
-            },
-            {
-                "BusStopCode": "06081",
-                "Name": "HAVELOCK STN EXIT 3",
-                "Distance": 0.10064459069818828
-            },
-            {
-                "BusStopCode": "10149",
-                "Name": "Blk 1",
-                "Distance": 0.18553814344657682
-            },
-            {
-                "BusStopCode": "06069",
-                "Name": "Aft Furama RiverFront",
-                "Distance": 0.19756796356790068
-            }
-        ]
-    },
-    {
-        "mrt": "Outram Park_TE",
-        "code": "TE17",
-        "closest_stops": [
-            {
-                "BusStopCode": "05069",
-                "Name": "OUTRAM PK STN EXIT 4",
-                "Distance": 0.0458837285339248
-            },
-            {
-                "BusStopCode": "05019",
-                "Name": "Aft Duxton Plain Pk",
-                "Distance": 0.10566701429457898
-            },
-            {
-                "BusStopCode": "05012",
-                "Name": "Bef Pearl'S Hill Terr",
-                "Distance": 0.11901543449790003
-            }
-        ]
-    },
-    {
-        "mrt": "Maxwell",
-        "code": "TE18",
-        "closest_stops": [
-            {
-                "BusStopCode": "05269",
-                "Name": "MAXWELL STN EXIT 2",
-                "Distance": 0.0663458186935927
-            },
-            {
-                "BusStopCode": "05271",
-                "Name": "Opp Fairfield Meth Ch",
-                "Distance": 0.10564140166160016
-            },
-            {
-                "BusStopCode": "05259",
-                "Name": "OPP MAXWELL STN EXIT 3",
-                "Distance": 0.18267901075591342
-            },
-            {
-                "BusStopCode": "05241",
-                "Name": "Opp Blk 333",
-                "Distance": 0.19270432164086565
-            }
-        ]
-    },
-    {
-        "mrt": "Shenton Way",
-        "code": "TE19",
-        "closest_stops": [
-            {
-                "BusStopCode": "03549",
-                "Name": "Shenton Way Stn Exit 3",
-                "Distance": 0.013198151509177811
-            },
-            {
-                "BusStopCode": "03129",
-                "Name": "UIC Bldg",
-                "Distance": 0.11814098030170601
-            }
-        ]
-    },
-    {
-        "mrt": "Woodlands_TE",
-        "code": "TE2",
-        "closest_stops": [
-            {
-                "BusStopCode": "46009",
-                "Name": "Woodlands Int",
-                "Distance": 0.0629025260553391
-            },
-            {
-                "BusStopCode": "47009",
-                "Name": "Woodlands Temp Int",
-                "Distance": 0.07654727746330775
-            },
-            {
-                "BusStopCode": "46008",
-                "Name": "Woodlands Int",
-                "Distance": 0.08500442634939359
-            }
-        ]
-    },
-    {
-        "mrt": "Marina Bay_TE",
-        "code": "TE20",
-        "closest_stops": [
-            {
-                "BusStopCode": "03539",
-                "Name": "Marina Bay Stn",
-                "Distance": 0.2797017621793172
-            },
-            {
-                "BusStopCode": "03579",
-                "Name": "Opp Downtown Stn",
-                "Distance": 0.45523617505068176
-            },
-            {
-                "BusStopCode": "03529",
-                "Name": "Downtown Stn Exit E",
-                "Distance": 0.5183815695625895
-            },
-            {
-                "BusStopCode": "03339",
-                "Name": "Aft Marina Gdns Dr",
-                "Distance": 0.5283562532498655
-            }
-        ]
-    },
-    {
-        "mrt": "Gardens by the Bay",
-        "code": "TE22",
-        "closest_stops": [
-            {
-                "BusStopCode": "03361",
-                "Name": "GARDENS BY THE BAY STN EXIT 2",
-                "Distance": 0.10015574127035794
-            },
-            {
-                "BusStopCode": "03369",
-                "Name": "GARDENS BY THE BAY STN EXIT 1",
-                "Distance": 0.19537440984158028
-            },
-            {
-                "BusStopCode": "03371",
-                "Name": "Gdns by the Bay",
-                "Distance": 0.24640511517930397
-            }
-        ]
-    },
-    {
-        "mrt": "Tanjong Rhu",
-        "code": "TE23",
-        "closest_stops": [
-            {
-                "BusStopCode": "90049",
-                "Name": "Tanjong Rhu Stn Exit 1",
-                "Distance": 0.020264175145390056
-            },
-            {
-                "BusStopCode": "90041",
-                "Name": "Tanjong Rhu Stn Exit 2",
-                "Distance": 0.027720168657853348
-            },
-            {
-                "BusStopCode": "90029",
-                "Name": "Opp Pebble Bay",
-                "Distance": 0.10598897189280809
-            }
-        ]
-    },
-    {
-        "mrt": "Katong Park",
-        "code": "TE24",
-        "closest_stops": [
-            {
-                "BusStopCode": "91089",
-                "Name": "Opp Katong Pk Stn",
-                "Distance": 0.147704776265487
-            },
-            {
-                "BusStopCode": "91081",
-                "Name": "Aft Katong Pk Stn Exit 2",
-                "Distance": 0.16456880397909002
-            }
-        ]
-    },
-    {
-        "mrt": "Tanjong Katong",
-        "code": "TE25",
-        "closest_stops": [
-            {
-                "BusStopCode": "82051",
-                "Name": "Aft Tg Katong Stn Exit 2",
-                "Distance": 0.18078773937026807
-            },
-            {
-                "BusStopCode": "82059",
-                "Name": "Bef Tg Katong Stn Exit 3",
-                "Distance": 0.24438529108020104
-            },
-            {
-                "BusStopCode": "91071",
-                "Name": "Bef Tg Katong Rd",
-                "Distance": 0.33729125773565455
-            },
-            {
-                "BusStopCode": "92261",
-                "Name": "Opp P/G @ Big Splash",
-                "Distance": 0.3423672301440587
-            }
-        ]
-    },
-    {
-        "mrt": "Marine Parade",
-        "code": "TE26",
-        "closest_stops": [
-            {
-                "BusStopCode": "92251",
-                "Name": "Opp Parkland Green",
-                "Distance": 0.17011384681037517
-            },
-            {
-                "BusStopCode": "92049",
-                "Name": "Marine Pde Stn/Parkway Pde",
-                "Distance": 0.18612248230933304
-            },
-            {
-                "BusStopCode": "92041",
-                "Name": "Marine Pde Stn Exit 2",
-                "Distance": 0.2195699295106456
-            }
-        ]
-    },
-    {
-        "mrt": "Marine Terrace",
-        "code": "TE27",
-        "closest_stops": [
-            {
-                "BusStopCode": "92191",
-                "Name": "Opp CP C3",
-                "Distance": 0.14115682385838982
-            },
-            {
-                "BusStopCode": "92221",
-                "Name": "Blk 19",
-                "Distance": 0.14868290748831597
-            },
-            {
-                "BusStopCode": "92239",
-                "Name": "Blk 45",
-                "Distance": 0.21795896460127642
-            },
-            {
-                "BusStopCode": "92229",
-                "Name": "Blk 53",
-                "Distance": 0.21910727445872977
-            }
-        ]
-    },
-    {
-        "mrt": "Siglap",
-        "code": "TE28",
-        "closest_stops": [
-            {
-                "BusStopCode": "93179",
-                "Name": "CP D3",
-                "Distance": 0.11117109634847352
-            },
-            {
-                "BusStopCode": "93171",
-                "Name": "Opp CP D3",
-                "Distance": 0.1159283395569987
-            }
-        ]
-    },
-    {
-        "mrt": "Bayshore",
-        "code": "TE29",
-        "closest_stops": [
-            {
-                "BusStopCode": "93151",
-                "Name": "Opp Cable Ski Pk",
-                "Distance": 0.07512631240283726
-            },
-            {
-                "BusStopCode": "93159",
-                "Name": "Cable Ski Pk",
-                "Distance": 0.1981218497945124
-            }
-        ]
-    },
-    {
-        "mrt": "Woodlands South",
-        "code": "TE3",
-        "closest_stops": [
-            {
-                "BusStopCode": "46981",
-                "Name": "W'lands Sth Stn Exit 2",
-                "Distance": 0.08133388641801977
-            },
-            {
-                "BusStopCode": "47749",
-                "Name": "Woodlands Health Campus",
-                "Distance": 0.15328536707377582
-            },
-            {
-                "BusStopCode": "46991",
-                "Name": "Blk 589",
-                "Distance": 0.183715983077192
-            },
-            {
-                "BusStopCode": "46999",
-                "Name": "Opp Blk 589",
-                "Distance": 0.19248886691915584
-            },
-            {
-                "BusStopCode": "46989",
-                "Name": "W'lands Sth Stn Exit 1",
-                "Distance": 0.2512413178723347
-            }
-        ]
-    },
-    {
-        "mrt": "Bedok South",
-        "code": "TE30",
-        "closest_stops": [
-            {
-                "BusStopCode": "84669",
-                "Name": "Blk 73",
-                "Distance": 0.04594871120619795
-            },
-            {
-                "BusStopCode": "84661",
-                "Name": "Blk 172",
-                "Distance": 0.06821833368483228
-            },
-            {
-                "BusStopCode": "84079",
-                "Name": "Opp Blk 71",
-                "Distance": 0.116436735241038
-            },
-            {
-                "BusStopCode": "84071",
-                "Name": "Blk 71",
-                "Distance": 0.14774845785034066
-            }
-        ]
-    },
-    {
-        "mrt": "Sungei Bedok",
-        "code": "TE31",
-        "closest_stops": [
-            {
-                "BusStopCode": "85049",
-                "Name": "Opp Man Fatt Lam Tp",
-                "Distance": 0.25843975549765114
-            },
-            {
-                "BusStopCode": "85041",
-                "Name": "Man Fatt Lam Tp",
-                "Distance": 0.2757703057678695
-            },
-            {
-                "BusStopCode": "85031",
-                "Name": "Excelsior Gdns",
-                "Distance": 0.2863127402702268
-            },
-            {
-                "BusStopCode": "85039",
-                "Name": "Opp Excelsior Gdns",
-                "Distance": 0.3247555522238581
-            },
-            {
-                "BusStopCode": "85109",
-                "Name": "Bef Bedok Rd",
-                "Distance": 0.3385674273502661
-            }
-        ]
-    },
-    {
-        "mrt": "Springleaf",
-        "code": "TE4",
-        "closest_stops": [
-            {
-                "BusStopCode": "56091",
-                "Name": "Springleaf Stn Exit 3",
-                "Distance": 0.18424851468859424
-            },
-            {
-                "BusStopCode": "56099",
-                "Name": "Springleaf Stn Exit 2",
-                "Distance": 0.21404340620710505
-            },
-            {
-                "BusStopCode": "57011",
-                "Name": "Opp Springleaf Nature Pk",
-                "Distance": 0.27845924590352106
-            }
-        ]
-    },
-    {
-        "mrt": "Lentor",
-        "code": "TE5",
-        "closest_stops": [
-            {
-                "BusStopCode": "55349",
-                "Name": "Lentor Stn Exit 5",
-                "Distance": 0.015924588963397063
-            },
-            {
-                "BusStopCode": "55341",
-                "Name": "Lentor Stn Exit 3",
-                "Distance": 0.027130430788486974
-            }
-        ]
-    },
-    {
-        "mrt": "Mayflower",
-        "code": "TE6",
-        "closest_stops": [
-            {
-                "BusStopCode": "54181",
-                "Name": "Mayflower Stn Exit 6",
-                "Distance": 0.1821105872825223
-            },
-            {
-                "BusStopCode": "54189",
-                "Name": "Mayflower Stn Exit 5",
-                "Distance": 0.1869562534163202
-            },
-            {
-                "BusStopCode": "54161",
-                "Name": "Opp Blk 255",
-                "Distance": 0.24844887309419705
-            },
-            {
-                "BusStopCode": "54199",
-                "Name": "Bef Mayflower Stn Exit 3",
-                "Distance": 0.25836532985583
-            },
-            {
-                "BusStopCode": "54169",
-                "Name": "Blk 255",
-                "Distance": 0.2644369373640784
-            },
-            {
-                "BusStopCode": "54191",
-                "Name": "Mayflower Stn Exit 2",
-                "Distance": 0.27207755088756735
-            }
-        ]
-    },
-    {
-        "mrt": "Bright Hill",
-        "code": "TE7",
-        "closest_stops": [
-            {
-                "BusStopCode": "53349",
-                "Name": "Bright Hill Stn Exit 1",
-                "Distance": 0.11120854208609214
-            },
-            {
-                "BusStopCode": "53341",
-                "Name": "Bright Hill Stn Exit 2",
-                "Distance": 0.12348844479610799
-            }
-        ]
-    },
-    {
-        "mrt": "Upper Thomson",
-        "code": "TE8",
-        "closest_stops": [
-            {
-                "BusStopCode": "53051",
-                "Name": "Upp Thomson Stn Exit 5",
-                "Distance": 0.14682280583764082
-            },
-            {
-                "BusStopCode": "53049",
-                "Name": "Bef Jln Todak",
-                "Distance": 0.1828818329048852
-            },
-            {
-                "BusStopCode": "53059",
-                "Name": "Upp Thomson Stn Exit 2",
-                "Distance": 0.2084926425231421
-            },
-            {
-                "BusStopCode": "53041",
-                "Name": "Bef Thomson Ridge",
-                "Distance": 0.22860786586663442
-            }
-        ]
-    },
-    {
-        "mrt": "Caldecott_TE",
-        "code": "TE9",
-        "closest_stops": [
-            {
-                "BusStopCode": "52219",
-                "Name": "Bef Caldecott Stn Exit 3",
-                "Distance": 0.04818730206912846
-            },
-            {
-                "BusStopCode": "52241",
-                "Name": "Bef Caldecott Stn/Savh",
-                "Distance": 0.1179668974076805
-            },
-            {
-                "BusStopCode": "52559",
-                "Name": "Caldecott Stn Exit 1",
-                "Distance": 0.1383377908007678
-            },
-            {
-                "BusStopCode": "52551",
-                "Name": "Caldecott Stn Exit 4",
-                "Distance": 0.149788837586982
-            },
-            {
-                "BusStopCode": "52249",
-                "Name": "Aft Caldecott Stn",
-                "Distance": 0.18617318598535001
-            },
-            {
-                "BusStopCode": "52211",
-                "Name": "Lighthouse Sch",
-                "Distance": 0.20847690941791633
-            }
-        ]
-    }
-]
+{
+    "44531": ["BP1", "NS4"],
+    "44539": ["BP1", "NS4"],
+    "44771": ["BP10"],
+    "44779": ["BP10"],
+    "44709": ["BP11"],
+    "44701": ["BP11"],
+    "44691": ["BP11"],
+    "44699": ["BP11"],
+    "44611": ["BP11"],
+    "44619": ["BP11"],
+    "44721": ["BP12"],
+    "44821": ["BP12"],
+    "44829": ["BP12"],
+    "44931": ["BP12"],
+    "44831": ["BP12"],
+    "44649": ["BP13"],
+    "44641": ["BP13"],
+    "44799": ["BP13"],
+    "44459": ["BP2"],
+    "44451": ["BP2"],
+    "44489": ["BP2"],
+    "44481": ["BP2"],
+    "44449": ["BP3"],
+    "44441": ["BP3"],
+    "44119": ["BP3"],
+    "44109": ["BP3"],
+    "44479": ["BP3"],
+    "44121": ["BP3"],
+    "44471": ["BP3"],
+    "44129": ["BP3"],
+    "44111": ["BP3"],
+    "44139": ["BP4"],
+    "44131": ["BP4"],
+    "44411": ["BP4"],
+    "44421": ["BP4"],
+    "44141": ["BP5"],
+    "44149": ["BP5"],
+    "44029": ["BP6", "DT1"],
+    "44021": ["BP6", "DT1"],
+    "44031": ["BP6", "DT1"],
+    "45009": ["BP6", "DT1"],
+    "44859": ["BP6", "DT1"],
+    "44209": ["BP7"],
+    "44201": ["BP7"],
+    "44191": ["BP7"],
+    "44199": ["BP7"],
+    "44221": ["BP8"],
+    "44229": ["BP8"],
+    "44329": ["BP9"],
+    "44321": ["BP9"],
+    "08031": ["CC1", "NE6", "NS24"],
+    "08057": ["CC1", "NE6", "NS24"],
+    "70371": ["CC10", "DT26"],
+    "70379": ["CC10", "DT26"],
+    "70269": ["CC10", "DT26"],
+    "70251": ["CC10", "DT26"],
+    "70259": ["CC10", "DT26"],
+    "70281": ["CC11"],
+    "70289": ["CC11"],
+    "62071": ["CC12"],
+    "62079": ["CC12"],
+    "62069": ["CC12"],
+    "62061": ["CC12"],
+    "62139": ["CC13", "NE12"],
+    "66351": ["CC13", "NE12"],
+    "66359": ["CC13", "NE12"],
+    "62189": ["CC13", "NE12"],
+    "62131": ["CC13", "NE12"],
+    "62179": ["CC13", "NE12"],
+    "66399": ["CC14"],
+    "66391": ["CC14"],
+    "66021": ["CC14"],
+    "66029": ["CC14"],
+    "53231": ["CC15", "NS17"],
+    "53239": ["CC15", "NS17"],
+    "53129": ["CC16"],
+    "53119": ["CC16"],
+    "53121": ["CC16"],
+    "53029": ["CC16"],
+    "53319": ["CC16"],
+    "52219": ["CC17", "TE9"],
+    "52241": ["CC17", "TE9"],
+    "52559": ["CC17", "TE9"],
+    "52551": ["CC17", "TE9"],
+    "52249": ["CC17", "TE9"],
+    "52211": ["CC17", "TE9"],
+    "41021": ["CC19", "DT9"],
+    "41029": ["CC19", "DT9"],
+    "04179": ["CC2"],
+    "04121": ["CC2"],
+    "04019": ["CC2", "DT21"],
+    "04151": ["CC2"],
+    "08069": ["CC2", "DT21"],
+    "01012": ["CC2"],
+    "04159": ["CC2"],
+    "11119": ["CC20"],
+    "11111": ["CC20"],
+    "11419": ["CC21"],
+    "11269": ["CC21"],
+    "11261": ["CC21"],
+    "11361": ["CC22", "EW21"],
+    "11369": ["CC22", "EW21"],
+    "11181": ["CC22", "EW21"],
+    "11189": ["CC22", "EW21"],
+    "18051": ["CC23"],
+    "18059": ["CC23"],
+    "18159": ["CC23"],
+    "18151": ["CC23"],
+    "18331": ["CC24"],
+    "15131": ["CC24"],
+    "18339": ["CC24"],
+    "15139": ["CC24"],
+    "16011": ["CC25"],
+    "16229": ["CC25"],
+    "16019": ["CC25"],
+    "16221": ["CC25"],
+    "15191": ["CC26"],
+    "15199": ["CC26"],
+    "15209": ["CC26"],
+    "15201": ["CC26"],
+    "14189": ["CC27"],
+    "15141": ["CC27"],
+    "15049": ["CC27"],
+    "15041": ["CC27"],
+    "15149": ["CC27"],
+    "14161": ["CC28"],
+    "14169": ["CC28"],
+    "14141": ["CC29", "NE1"],
+    "14119": ["CC29", "NE1"],
+    "01619": ["CC3"],
+    "02119": ["CC3"],
+    "02151": ["CC3"],
+    "01611": ["CC3"],
+    "02049": ["CC3"],
+    "02169": ["CC4", "DT15"],
+    "02161": ["CC4", "DT15"],
+    "02159": ["CC4", "DT15"],
+    "02149": ["CC4", "DT15"],
+    "02141": ["CC4", "DT15"],
+    "80169": ["CC5"],
+    "80161": ["CC5"],
+    "80191": ["CC6"],
+    "80199": ["CC6"],
+    "80271": ["CC7"],
+    "80279": ["CC7"],
+    "80189": ["CC7"],
+    "81181": ["CC8"],
+    "81189": ["CC8"],
+    "81111": ["CC9", "EW8"],
+    "81119": ["CC9", "EW8"],
+    "03509": ["CE1", "DT16"],
+    "03511": ["CE1", "DT16"],
+    "03519": ["CE1", "DT16"],
+    "03539": ["CE2", "NS27", "TE20"],
+    "03579": ["CE2", "DT17", "NS27", "TE20"],
+    "03529": ["CE2", "DT17", "NS27", "TE20"],
+    "03339": ["CE2", "NS27", "TE20"],
+    "85091": ["CG", "EW4"],
+    "85099": ["CG", "EW4"],
+    "96301": ["CG1", "DT35"],
+    "96309": ["CG1", "DT35"],
+    "95129": ["CG2"],
+    "95109": ["CG2"],
+    "40081": ["DT10", "TE11"],
+    "40229": ["DT10", "TE11"],
+    "40221": ["DT10", "TE11"],
+    "40181": ["DT11", "NS21"],
+    "40189": ["DT11", "NS21"],
+    "40049": ["DT11", "NS21"],
+    "40041": ["DT11", "NS21"],
+    "40019": ["DT12", "NE7"],
+    "40011": ["DT12", "NE7"],
+    "07531": ["DT13"],
+    "07539": ["DT13"],
+    "01059": ["DT14", "EW12"],
+    "01113": ["DT14", "EW12"],
+    "01112": ["DT14", "EW12"],
+    "01139": ["DT14", "EW12"],
+    "01119": ["DT14", "EW12"],
+    "03041": ["DT18"],
+    "03021": ["DT18", "EW14", "NS26"],
+    "03031": ["DT18", "EW14", "NS26"],
+    "05049": ["DT19", "NE4"],
+    "05022": ["DT19", "NE4"],
+    "05013": ["DT19", "NE4"],
+    "05131": ["DT19", "NE4"],
+    "43109": ["DT2"],
+    "43091": ["DT2"],
+    "43099": ["DT2"],
+    "04339": ["DT20"],
+    "04329": ["DT20"],
+    "04331": ["DT20"],
+    "04321": ["DT20"],
+    "13109": ["DT20"],
+    "04029": ["DT21"],
+    "08079": ["DT21"],
+    "07529": ["DT22"],
+    "07419": ["DT22"],
+    "07589": ["DT22"],
+    "01109": ["DT22"],
+    "60011": ["DT23"],
+    "60019": ["DT23"],
+    "07361": ["DT23"],
+    "07369": ["DT23"],
+    "07359": ["DT23"],
+    "60099": ["DT23"],
+    "60221": ["DT24"],
+    "60069": ["DT24"],
+    "60229": ["DT24"],
+    "80299": ["DT24"],
+    "80291": ["DT24"],
+    "60031": ["DT24"],
+    "60061": ["DT24"],
+    "60039": ["DT24"],
+    "70161": ["DT25"],
+    "70231": ["DT25"],
+    "70241": ["DT25"],
+    "70151": ["DT25"],
+    "70221": ["DT25"],
+    "71129": ["DT27"],
+    "71121": ["DT27"],
+    "72049": ["DT28"],
+    "72041": ["DT28"],
+    "72039": ["DT28"],
+    "72031": ["DT28"],
+    "84539": ["DT29"],
+    "84451": ["DT29"],
+    "84459": ["DT29"],
+    "43061": ["DT3"],
+    "43069": ["DT3"],
+    "42991": ["DT3"],
+    "43271": ["DT3"],
+    "43279": ["DT3"],
+    "84201": ["DT30"],
+    "84209": ["DT30"],
+    "84609": ["DT30"],
+    "84601": ["DT30"],
+    "75051": ["DT31"],
+    "75059": ["DT31"],
+    "75229": ["DT31"],
+    "76289": ["DT31"],
+    "76281": ["DT31"],
+    "75221": ["DT31"],
+    "76141": ["DT32", "EW2"],
+    "76149": ["DT32", "EW2"],
+    "75009": ["DT32", "EW2"],
+    "76139": ["DT32", "EW2"],
+    "76031": ["DT33"],
+    "76221": ["DT33"],
+    "76039": ["DT33"],
+    "76229": ["DT33"],
+    "76319": ["DT33"],
+    "76311": ["DT33"],
+    "96041": ["DT34"],
+    "96049": ["DT34"],
+    "42099": ["DT5"],
+    "42091": ["DT5"],
+    "42259": ["DT5"],
+    "42159": ["DT5"],
+    "42151": ["DT5"],
+    "42109": ["DT5"],
+    "42049": ["DT6"],
+    "42051": ["DT6"],
+    "41081": ["DT7"],
+    "42019": ["DT7"],
+    "42129": ["DT7"],
+    "41051": ["DT8"],
+    "41069": ["DT8"],
+    "77039": ["EW1"],
+    "77031": ["EW1"],
+    "77321": ["EW1"],
+    "77009": ["EW1"],
+    "77171": ["EW1"],
+    "77329": ["EW1"],
+    "77179": ["EW1"],
+    "80031": ["EW10"],
+    "80009": ["EW10"],
+    "80101": ["EW10"],
+    "80039": ["EW10"],
+    "01319": ["EW11"],
+    "01311": ["EW11"],
+    "01339": ["EW11"],
+    "01341": ["EW11"],
+    "04167": ["EW13", "NS25"],
+    "04111": ["EW13", "NS25"],
+    "04168": ["EW13", "NS25"],
+    "03019": ["EW14", "NS26"],
+    "03011": ["EW14", "NS26"],
+    "05319": ["EW14", "NS26"],
+    "03223": ["EW15"],
+    "03241": ["EW15"],
+    "03217": ["EW15"],
+    "05429": ["EW15"],
+    "03111": ["EW15"],
+    "03239": ["EW15"],
+    "03218": ["EW15"],
+    "05421": ["EW15"],
+    "03222": ["EW15"],
+    "05069": ["EW16", "NE3", "TE17"],
+    "05019": ["EW16", "NE3", "TE17"],
+    "05012": ["EW16", "NE3", "TE17"],
+    "10169": ["EW17"],
+    "10151": ["EW17"],
+    "10161": ["EW17"],
+    "10209": ["EW18"],
+    "10201": ["EW18"],
+    "11141": ["EW19"],
+    "11149": ["EW19"],
+    "11169": ["EW20"],
+    "11161": ["EW20"],
+    "19039": ["EW22"],
+    "19031": ["EW22"],
+    "17179": ["EW23"],
+    "17171": ["EW23"],
+    "17009": ["EW23"],
+    "28201": ["EW24", "NS1"],
+    "28199": ["EW24", "NS1"],
+    "28009": ["EW24", "NS1"],
+    "28211": ["EW24", "NS1"],
+    "28341": ["EW25"],
+    "28349": ["EW25"],
+    "28091": ["EW26"],
+    "28099": ["EW26"],
+    "28381": ["EW26"],
+    "28421": ["EW26"],
+    "28389": ["EW26"],
+    "22009": ["EW27"],
+    "22499": ["EW27"],
+    "22491": ["EW27"],
+    "22529": ["EW28"],
+    "22521": ["EW28"],
+    "23499": ["EW29"],
+    "23491": ["EW29"],
+    "24009": ["EW29"],
+    "96169": ["EW3"],
+    "96161": ["EW3"],
+    "96149": ["EW3"],
+    "96141": ["EW3"],
+    "24511": ["EW30"],
+    "24519": ["EW30"],
+    "24709": ["EW31"],
+    "24701": ["EW31"],
+    "24711": ["EW32"],
+    "25511": ["EW32"],
+    "25519": ["EW32"],
+    "24719": ["EW32"],
+    "25691": ["EW32"],
+    "25429": ["EW33"],
+    "25421": ["EW33"],
+    "25439": ["EW33"],
+    "25431": ["EW33"],
+    "25491": ["EW33"],
+    "84031": ["EW5"],
+    "84009": ["EW5"],
+    "84039": ["EW5"],
+    "83062": ["EW6"],
+    "83321": ["EW6"],
+    "83329": ["EW6"],
+    "82061": ["EW7"],
+    "82009": ["EW7"],
+    "83101": ["EW7"],
+    "81089": ["EW9"],
+    "81081": ["EW9"],
+    "81011": ["EW9"],
+    "60261": ["NE10"],
+    "60269": ["NE10"],
+    "61039": ["NE11"],
+    "61031": ["NE11"],
+    "63039": ["NE13"],
+    "63031": ["NE13"],
+    "64541": ["NE14"],
+    "64549": ["NE14"],
+    "64009": ["NE14"],
+    "64381": ["NE14"],
+    "64389": ["NE14"],
+    "67601": ["NE15"],
+    "67609": ["NE15"],
+    "63009": ["NE15"],
+    "67009": ["NE16", "STC"],
+    "67409": ["NE16", "STC"],
+    "67401": ["NE16", "STC"],
+    "67441": ["NE16", "STC"],
+    "65259": ["NE17", "PTC"],
+    "65251": ["NE17", "PTC"],
+    "65009": ["NE17", "PTC"],
+    "65729": ["NE18"],
+    "65721": ["NE18"],
+    "04222": ["NE5"],
+    "04239": ["NE5"],
+    "04211": ["NE5"],
+    "50251": ["NE8"],
+    "50259": ["NE8"],
+    "60121": ["NE9"],
+    "60199": ["NE9"],
+    "50349": ["NE9"],
+    "60101": ["NE9"],
+    "60191": ["NE9"],
+    "60119": ["NE9"],
+    "46779": ["NS10"],
+    "46771": ["NS10"],
+    "46759": ["NS10"],
+    "58211": ["NS11"],
+    "58219": ["NS11"],
+    "58541": ["NS12"],
+    "58549": ["NS12"],
+    "59079": ["NS13"],
+    "59072": ["NS13"],
+    "59073": ["NS13"],
+    "59159": ["NS13"],
+    "59049": ["NS14"],
+    "59041": ["NS14"],
+    "59569": ["NS14"],
+    "59561": ["NS14"],
+    "55509": ["NS15"],
+    "55181": ["NS15"],
+    "55189": ["NS15"],
+    "54009": ["NS16"],
+    "54261": ["NS16"],
+    "54399": ["NS16"],
+    "54269": ["NS16"],
+    "54391": ["NS16"],
+    "52171": ["NS18"],
+    "52179": ["NS18"],
+    "52209": ["NS18"],
+    "52161": ["NS18"],
+    "52201": ["NS18"],
+    "52009": ["NS19"],
+    "52189": ["NS19"],
+    "52181": ["NS19"],
+    "43009": ["NS2"],
+    "43389": ["NS2"],
+    "43391": ["NS2"],
+    "43399": ["NS2"],
+    "43701": ["NS2"],
+    "43709": ["NS2"],
+    "43419": ["NS2"],
+    "43411": ["NS2"],
+    "50038": ["NS20"],
+    "50037": ["NS20"],
+    "50031": ["NS20"],
+    "09023": ["NS22", "TE14"],
+    "09022": ["NS22", "TE14"],
+    "09047": ["NS22", "TE14"],
+    "08121": ["NS23"],
+    "09038": ["NS23"],
+    "03411": ["NS28"],
+    "03419": ["NS28"],
+    "43579": ["NS3"],
+    "43571": ["NS3"],
+    "45321": ["NS5"],
+    "45329": ["NS5"],
+    "45139": ["NS7"],
+    "45131": ["NS7"],
+    "46521": ["NS8"],
+    "46529": ["NS8"],
+    "46009": ["NS9", "TE2"],
+    "47009": ["NS9", "TE2"],
+    "46008": ["NS9", "TE2"],
+    "65151": ["PE1"],
+    "65159": ["PE1"],
+    "65079": ["PE1"],
+    "65081": ["PE1"],
+    "65241": ["PE1"],
+    "65089": ["PE1"],
+    "65071": ["PE1"],
+    "65161": ["PE2"],
+    "65169": ["PE2"],
+    "65179": ["PE3"],
+    "65171": ["PE3"],
+    "65231": ["PE4"],
+    "65239": ["PE4"],
+    "65321": ["PE5"],
+    "65329": ["PE5"],
+    "65311": ["PE6"],
+    "65319": ["PE6"],
+    "65309": ["PE7"],
+    "65301": ["PE7"],
+    "65099": ["PE7"],
+    "65481": ["PW1", "PW2"],
+    "65489": ["PW1", "PW2"],
+    "65709": ["PW2"],
+    "65701": ["PW2"],
+    "65631": ["PW2", "PW3"],
+    "65639": ["PW3"],
+    "65681": ["PW3"],
+    "65689": ["PW3"],
+    "65661": ["PW3"],
+    "65629": ["PW4"],
+    "65621": ["PW4"],
+    "65651": ["PW4"],
+    "65619": ["PW5"],
+    "65611": ["PW5"],
+    "65601": ["PW6"],
+    "65609": ["PW6"],
+    "65141": ["PW7"],
+    "65149": ["PW7"],
+    "65401": ["PW7"],
+    "67259": ["SE1"],
+    "67251": ["SE1"],
+    "67229": ["SE2"],
+    "67221": ["SE2"],
+    "67671": ["SE2"],
+    "67131": ["SE3"],
+    "67539": ["SE3"],
+    "67531": ["SE3"],
+    "67129": ["SE3"],
+    "67121": ["SE3"],
+    "67139": ["SE3"],
+    "67151": ["SE4"],
+    "67159": ["SE4"],
+    "67211": ["SE5"],
+    "67219": ["SE5"],
+    "67429": ["SW1"],
+    "67421": ["SW1"],
+    "67319": ["SW2"],
+    "67311": ["SW2"],
+    "67559": ["SW3"],
+    "67551": ["SW3"],
+    "67701": ["SW3", "SW4"],
+    "67741": ["SW4"],
+    "67561": ["SW4"],
+    "68031": ["SW4"],
+    "68039": ["SW4"],
+    "67569": ["SW4"],
+    "67571": ["SW4"],
+    "68049": ["SW4"],
+    "67631": ["SW5"],
+    "67639": ["SW5"],
+    "67489": ["SW5"],
+    "67481": ["SW5"],
+    "67491": ["SW5"],
+    "67499": ["SW5"],
+    "67471": ["SW6"],
+    "67479": ["SW6"],
+    "65801": ["SW7"],
+    "67301": ["SW7"],
+    "67329": ["SW7"],
+    "65809": ["SW7"],
+    "67321": ["SW7"],
+    "67299": ["SW8"],
+    "67291": ["SW8"],
+    "67461": ["SW8"],
+    "67469": ["SW8"],
+    "47201": ["TE1"],
+    "47021": ["TE1"],
+    "47029": ["TE1"],
+    "47031": ["TE1"],
+    "13011": ["TE12"],
+    "13019": ["TE12"],
+    "09139": ["TE13"],
+    "09131": ["TE13"],
+    "13189": ["TE13"],
+    "13181": ["TE13"],
+    "13209": ["TE13"],
+    "13119": ["TE15"],
+    "13071": ["TE15"],
+    "13079": ["TE15"],
+    "06071": ["TE16"],
+    "06081": ["TE16"],
+    "10149": ["TE16"],
+    "06069": ["TE16"],
+    "05269": ["TE18"],
+    "05271": ["TE18"],
+    "05259": ["TE18"],
+    "05241": ["TE18"],
+    "03549": ["TE19"],
+    "03129": ["TE19"],
+    "03361": ["TE22"],
+    "03369": ["TE22"],
+    "03371": ["TE22"],
+    "90049": ["TE23"],
+    "90041": ["TE23"],
+    "90029": ["TE23"],
+    "91089": ["TE24"],
+    "91081": ["TE24"],
+    "82051": ["TE25"],
+    "82059": ["TE25"],
+    "91071": ["TE25"],
+    "92261": ["TE25"],
+    "92251": ["TE26"],
+    "92049": ["TE26"],
+    "92041": ["TE26"],
+    "92191": ["TE27"],
+    "92221": ["TE27"],
+    "92239": ["TE27"],
+    "92229": ["TE27"],
+    "93179": ["TE28"],
+    "93171": ["TE28"],
+    "93151": ["TE29"],
+    "93159": ["TE29"],
+    "46981": ["TE3"],
+    "47749": ["TE3"],
+    "46991": ["TE3"],
+    "46999": ["TE3"],
+    "46989": ["TE3"],
+    "84669": ["TE30"],
+    "84661": ["TE30"],
+    "84079": ["TE30"],
+    "84071": ["TE30"],
+    "85049": ["TE31"],
+    "85041": ["TE31"],
+    "85031": ["TE31"],
+    "85039": ["TE31"],
+    "85109": ["TE31"],
+    "56091": ["TE4"],
+    "56099": ["TE4"],
+    "57011": ["TE4"],
+    "55349": ["TE5"],
+    "55341": ["TE5"],
+    "54181": ["TE6"],
+    "54189": ["TE6"],
+    "54161": ["TE6"],
+    "54199": ["TE6"],
+    "54169": ["TE6"],
+    "54191": ["TE6"],
+    "53349": ["TE7"],
+    "53341": ["TE7"],
+    "53051": ["TE8"],
+    "53049": ["TE8"],
+    "53059": ["TE8"],
+    "53041": ["TE8"]
+}

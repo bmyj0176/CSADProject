@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef} from 'react';
 import { searchInList, searchInDualList, nearestBusStops, getBusStopInfo } from '../../helper_functions';
+import { checkForNearbyMRTs } from '../../helper_functions2';
 import { get_list } from '../../file_reader';
 import SearchResult from './SearchResult';
 import '../stylesheets/busstopcard.css'
@@ -52,7 +53,7 @@ const ATSearchBar = (props) => {
         else if (value !== '') { // SEARCH BAR MODE
           if (props.toggleStates['busNo'] === null || props.toggleStates['busNo']) {
             full_list.push({type: "busNo", list: bus_services_list.current});
-          }
+          }                                                                     
           if (props.toggleStates['busStop'] === null || props.toggleStates['busStop']) {
             full_list.push({type: "busStop", list: bsc_stopname_list.current});
           }
@@ -66,16 +67,21 @@ const ATSearchBar = (props) => {
                 busNumber: result})
             } else if (dict.type === "busStop") { // dual
               results = searchInDualList(value, dict.list, (MAX_BAR_SIZE-filtered_list.length))
-              for (const result of results)
+              const nearbyMRTsList = checkForNearbyMRTs(results.map(bsc => bsc[1]))
+              results = results.map((item, index) => [item, ...nearbyMRTsList[index]])
+              for (const result of results) {
                 filtered_list.push({
-                type: "busStop", 
-                busStopName: result[0],
-                busStopCode: result[1]})
+                  type: "busStop", 
+                  busStopName: result[0],
+                  busStopCode: result[1],
+                  nearbyMRTs: result[2]
+              })
             }
             
             if (filtered_list.length >= MAX_BAR_SIZE) {break}
           }
         }
+      }
         else {// INACTIVE MODE (search bar empty)
           setBarsCount(0);
           return
@@ -87,7 +93,9 @@ const ATSearchBar = (props) => {
     return (
       <div className="container">
         {/* searchbar disables if nearMe is off */}
-        {!props.toggleStates['nearMe'] ? <input type="text" placeholder="Search..." className="search_bar" value={searchBarValue} onChange={onChangeSearchBar}/> : ""}
+        {!props.toggleStates['nearMe'] ?
+         <input type="text" placeholder="Search..." className="search_bar" value={searchBarValue} onChange={onChangeSearchBar}/> : 
+         <h4>Please note that this may not be 100% accurate</h4> }
         {/* stacked bars */}
         <div className="bars">
           {Array.from({ length: barsCount }, (_, index) => (

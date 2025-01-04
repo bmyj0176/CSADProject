@@ -24,8 +24,9 @@ const SavedArrivalTimes = (props) => {
     };
   }, []);
 
-  return (
+  return (  
     <>
+      {favedItems.length !== 0 && <h2>Favourited List</h2>}
       {Array.from({ length: favedItems.length }, (_, index) => (
         <div key={index} className="bar">
         {favedItems && ( 

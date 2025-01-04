@@ -161,7 +161,6 @@ const ArrivalTimes = () => {
               {searchResult ? <ArrivalTimesList data={searchResult} /> : null}
             </td>
             <td>
-              <h2>Saved Arrival Times</h2>
               <SavedArrivalTimes 
                 receiveSearchResult={receiveSearchResult}
                 selectedItem={selectedItem}

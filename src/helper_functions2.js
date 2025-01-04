@@ -1,3 +1,5 @@
+import { stat } from "fs-extra";
+
 export function convertISO8601(time) {
     const date = new Date(time);
     return date.toISOString();
@@ -97,4 +99,57 @@ export function insertAndShift(list, index, newValue) {
     list.pop(); 
     
     return list;
+}
+
+// INPUT bsc_list - (list of strings) bus stop codes
+// OUTPUT filtered_list (list of lists) mapped lists of nearby mrts, no nearby is empty
+export async function checkForNearbyMRTs (bsc_list) {
+    const filtered_list = []
+    const data = await get_json('./datasets/busstops_near_mrt.json')
+    for (const bsc of bsc_list) {
+        filtered_list.append((bsc in data) ? data[bsc] : [])
+    }
+    return filtered_list
+}
+
+// INPUT - (string) code of MRT station
+// OUTPUT - (string) path to image
+function codeToMRTImagePath(code) {
+    let station_code = code.replace(/[0-9]/g, "")
+    let path = './images/MRTIcons/'
+    switch (station_code) {
+        case "BP":
+        case "PE":
+        case "PTC":
+        case "PW":
+        case "SE":
+        case "STC":
+        case "SW":
+            path += "LRT"
+            break
+        case "CC":
+        case "CE":
+            path += "CCL"
+            break
+        case "CG":
+        case "EW":
+            path += "EWL"
+            break
+        case "NE":
+            path += "NEL"
+            break
+        case "NS":
+            path += "NSL"
+            break
+        case "DT":
+            path += "DTL"
+            break
+        case "TE":
+            path += "TEL"
+            break
+        default:
+            break
+    }
+    path += ".png"
+    return path
 }

@@ -23,13 +23,13 @@ export const ThemeProvider = ({ children }) => {
         if (isDarkTheme) {
             // Apply dark mode
             themeLink.href = "../stylesheets/darkmode.css";
-            targetElement.classList.remove("light");
-            targetElement.classList.add("dark");
+            targetElement.classList.remove("dark");
+            targetElement.classList.add("light");
         } else {
             // Apply light mode
             themeLink.href = "../stylesheets/lightmode.css";
-            targetElement.classList.remove("dark");
-            targetElement.classList.add("light");
+            targetElement.classList.remove("light");
+            targetElement.classList.add("dark");
         }
     }, [isDarkTheme]);
 
