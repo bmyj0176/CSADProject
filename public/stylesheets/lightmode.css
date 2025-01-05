@@ -18,8 +18,8 @@ h1,h2 {
   color: goldenrod;
 }
 
-h5 {
-  border: medium double rgb(100, 128, 0); margin-right: 994px; background-color: rgb(189, 199, 155); 
+h5, form {
+  border: medium double goldenrod; margin-right: 994px; background-color: khaki; 
 } 
 
 button, .buton{
@@ -48,10 +48,13 @@ button, .buton{
 .nv{ background-color: beige; }
 
 .nv li a {
-  color: rgb(143, 228, 15);
+  color: goldenrod;
 }
 
 .nv .activee{
-  color: rgb(0, 74, 0);
+  color: rgb(255, 115, 0);
 } 
 
+.popup-overlay {
+  background: white;
+}

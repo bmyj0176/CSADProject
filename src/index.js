@@ -5,18 +5,22 @@ import { ThemeProvider } from './pages/Components/ToggleThemeButton.js';
 import NavBar from "./pages/NavBar";
 import Homepage from "./pages/Homepage"
 import ArrivalTimes from "./pages/ArrivalTimes"
-import TravelTimeEST from "./pages/TravelTimeEST"
+import TravelRoutes from "./pages/TravelRoutes"
 import Login from "./pages/Login"
 import Register from "./pages/Register"
 import NoPage from "./pages/Page404.js";
 import About from "./pages/Profile/About.js";
 import GetStarted from './pages/GetStarted.js';
-import React from "react";
+import React, { useEffect } from "react";
 import Audio from "./pages/Profile/Audio.js";
 import Settings from "./pages/Profile/Settings.js";
 
 
 export default function App() {
+
+  useEffect(() => {
+    localStorage.removeItem('popup_done')
+  }, [])
 
   return (
     <ThemeProvider>
@@ -26,7 +30,7 @@ export default function App() {
                 {/*End of branch of NavBar*/}
                 <Route index element={<Homepage />} />
                 <Route path="arrivaltimes" element={<ArrivalTimes />} />
-                <Route path="traveltimeest" element={<TravelTimeEST />} />
+                <Route path="traveltimeest" element={<TravelRoutes />} />
                 <Route path="login" element={<Login />} />
                 <Route path="register" element={<Register />} />
                 <Route path="*" element={<NoPage />} />

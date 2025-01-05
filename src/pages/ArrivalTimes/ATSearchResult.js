@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { dict_in_list, codeToMRTImagePath } from '../../helper_functions2';
 
-const SearchResult = (props) => {
+const ATSearchResult = (props) => {
     const [header, setHeader] = useState("")
     const [subheader1, setSubheader1] = useState("")
     const [subheader2, setSubheader2] = useState("")
@@ -29,8 +29,6 @@ const SearchResult = (props) => {
           setHeader("Bus " + props.dict.busNumber)
           break
         case "busStop":
-          console.log("props.dict")
-          console.log(props.dict)
           setHeader(props.dict.busStopName)
           setSubheader1(props.dict.busStopCode)
           setSubheader2(
@@ -88,4 +86,4 @@ const SearchResult = (props) => {
       )
   }
 
-  export default SearchResult
+  export default ATSearchResult

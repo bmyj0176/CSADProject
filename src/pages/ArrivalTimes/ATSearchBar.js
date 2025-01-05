@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef} from 'react';
 import { searchInList, searchInDualList, nearestBusStops, getBusStopInfo } from '../../helper_functions';
 import { checkForNearbyMRTs } from '../../helper_functions2';
 import { get_list } from '../../file_reader';
-import SearchResult from './SearchResult';
+import ATSearchResult from './ATSearchResult';
 import '../stylesheets/busstopcard.css'
 
 const ATSearchBar = (props) => {
@@ -67,7 +67,8 @@ const ATSearchBar = (props) => {
                 busNumber: result})
             } else if (dict.type === "busStop") { // dual
               results = searchInDualList(value, dict.list, (MAX_BAR_SIZE - filtered_list.length), 2);
-
+              console.log("results")
+              console.log(results)
               for (const result of results) {
                 // Add item to filtered_list if it doesn't exceed MAX_BAR_SIZE
                 filtered_list.push({
@@ -103,7 +104,7 @@ const ATSearchBar = (props) => {
           {Array.from({ length: barsCount }, (_, index) => (
             <div key={index} className="bar">
               {barsList ? ( 
-                <SearchResult 
+                <ATSearchResult 
                 dict={barsList[index]} 
                 index={index}
                 receiveSearchResult={props.receiveSearchResult}

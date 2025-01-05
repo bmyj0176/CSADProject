@@ -54,8 +54,13 @@ export function busRouteAPIQuerySkip(busNumber) {
 // OUTPUT isFound - (bool) false: NOT FOUND, true: FOUND
 export function dict_in_list(dict, list) {
     return list.some(item =>
-        Object.entries(dict).every(([key, value]) => item[key] === value)
+        Object.entries(dict).every(([key, value]) => 
+            Array.isArray(value) ? arraysEqual(value, item[key]) : item[key] === value
+        )
     );
+}
+function arraysEqual(a, b) {
+    return Array.isArray(a) && Array.isArray(b) && a.length === b.length && a.every((val, index) => val === b[index]);
 }
 
 export async function doxx() {
@@ -152,4 +157,12 @@ export function codeToMRTImagePath(code) {
     }
     path += ".png"
     return path
+}
+
+// cleans some mrt names like "Woodlands_TE" -> "Woodlands"
+export function cleanMRTStationName(string) {
+    const index = string.indexOf('_')
+    if (index === -1)
+        return string
+    return string.slice(0, index)
 }

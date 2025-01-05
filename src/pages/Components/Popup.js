@@ -8,7 +8,10 @@ function Popup() {
 
   const [showPopup, setShowPopup] = useState(false);
 
-  const closePopup = () => setShowPopup(false);
+  const closePopup = () => {
+    setShowPopup(false);
+    localStorage.setItem('popup_done', 'yes')
+  }
 
   // Update localStorage when authentication state changes
   useEffect(() => {
@@ -22,9 +25,14 @@ function Popup() {
 
   return (
     <>
-      {showPopup && (
+      {(!localStorage.getItem('popup_done') && showPopup) && (
         <div className="popup-overlay">
           <div className="popup">
+            <div>
+              <h2>Log in now<br/>
+              to permanently save your preferences.</h2>
+              <h4>(Otherwise your data will be gone after awhile.)</h4>
+            </div>
             <div><Login /></div>
             <p>
               <Link to="" onClick={closePopup} id="links">

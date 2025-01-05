@@ -1,15 +1,16 @@
 import { Outlet, Link } from "react-router-dom";
-import FindRoutes from "./TravelTimeEST/FindRoutes";
-import SavedRoutes from "./TravelTimeEST/SavedRoutes";
+import TRSearchBar from "./TravelRoutes/TRSearchBar";
+import FindRoutes from "./TravelRoutes/FindRoutes";
+import SavedRoutes from "./TravelRoutes/SavedRoutes";
 import "./stylesheets/traveltimeest.css";
 import { useState } from 'react';
 
-
-
-const TravelTimeEST = () => {
+const TravelRoutes = () => {
 
   const [activePage, setActivePage] = useState("FindRoutes")
   const [otherPageText, setOtherPageText] = useState("Your Saved Routes")
+  const [startPoint, setStartPoint] = useState(null)
+  const [endPoint, setEndPoint] = useState(null)
 
   const toggleActivePage = () => {
     if (activePage === "FindRoutes") {
@@ -21,12 +22,17 @@ const TravelTimeEST = () => {
     }
   }
 
+  const sendToTR = (dict) => {
+    setStartPoint(dict)
+  }
+
   return (
     <>
       <ul className="tte">
         <li><button onClick={toggleActivePage} >{otherPageText}</button></li>
         {activePage === "FindRoutes" ?
-        <FindRoutes/> :
+        <TRSearchBar
+        sendToTR={sendToTR}/> :
         <SavedRoutes/>}
       </ul>
     <Outlet />
@@ -36,4 +42,4 @@ const TravelTimeEST = () => {
 
 
 
-export default TravelTimeEST;
+export default TravelRoutes;

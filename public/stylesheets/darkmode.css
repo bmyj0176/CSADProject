@@ -18,8 +18,8 @@ h1,h2 {
   color: aquamarine;
 }
 
-h5 {
-  border: medium double aquamarine; margin-right: 994px;background-color: rgb(9, 56, 56); 
+h5, form {
+  border: medium double aquamarine; margin-right: 994px; background-color: rgb(9, 56, 56); 
 } 
 
 button, .buton{
@@ -56,3 +56,8 @@ button, .buton{
   animation: glow 1.5s infinite alternate;
 }
 
+.popup-overlay {
+  background: rgba(0, 0, 0, 0.5);
+  
+  background: rgb(23, 32, 37);
+}

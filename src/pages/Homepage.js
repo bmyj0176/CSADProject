@@ -30,11 +30,11 @@ const Homepage = () => {
   const Slide2=()=>{
     return (
     <div className="banner2"> 
-  <div class="card2">
-  <div class="card-content2">
+  <div className="card2">
+  <div className="card-content2">
     <h1>More About Us! </h1>
     <p>Extra info, Contact Details, Credits, etc.</p>
-    <button class="view-more-2" onClick={handleNavigation}>
+    <button className="view-more-2" onClick={handleNavigation}>
       View More <span>→</span>
     </button>
   </div>
@@ -47,10 +47,10 @@ const Homepage = () => {
   const Slide3=()=>{
     return (
       <div className="banner3"> 
-    <div class="card3">
-    <div class="card-content3">
+    <div className="card3">
+    <div className="card-content3">
       <h2>FIND OUT HOW THIS WEBSITE WORKS!</h2>
-      <button class="view-more-3" onClick={handleNavigation2}>
+      <button className="view-more-3" onClick={handleNavigation2}>
         Open<span>→</span>
       </button>
     </div>

@@ -1,11 +1,13 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import { ThemeContext } from './Components/ToggleThemeButton';
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./stylesheets/login_register.css";
 import { login } from './Login';
 
 function Register() {
 
+  const { isDarkTheme } = useContext(ThemeContext);
   const navigate = useNavigate();
   const location = useLocation()
   const retainedData = location.state // from login page
@@ -84,7 +86,7 @@ function Register() {
 
   return (
     <>
-      <img className="nyoomlogin" src={JSON.parse(localStorage.getItem("darktheme_bool")) ? "./images/nyoom.png":"./images/nyoom_light.png" }/>
+      <img className="nyoomlogin" src={isDarkTheme ? "./images/nyoom.png":"./images/nyoom_light.png" }/>
       
       <h1 style={{textAlign:'center'}}>Register</h1>
       <form onSubmit={handleSubmit}>

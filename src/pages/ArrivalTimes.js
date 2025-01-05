@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Popup from "./Components/Popup";
 import ATSearchBar from "./ArrivalTimes/ATSearchBar";
 import "./stylesheets/arrivaltimes.css";
 import ArrivalTimesList from "./ArrivalTimes/ArrivalTimesList";
@@ -11,6 +12,7 @@ const ArrivalTimes = () => {
     nearMe: null,
   });
 
+  const [throwPopup, setThrowPopup] = useState(false)
   const [searchResult, setSearchResult] = useState(null)
   const [selectedItem, setSelectedItem] = useState(null) 
   const [favedItems, setFavedItems] = useState(() => {
@@ -30,6 +32,7 @@ const ArrivalTimes = () => {
       favedItemsCopy = favedItemsCopy.filter(item => JSON.stringify(item) !== JSON.stringify(dict))
     }
     else {
+      setThrowPopup(true)
       favedItemsCopy.push(dict)
       favedItemsCopy.sort()
       favedItemsCopy.sort((a, b) => a.type.localeCompare(b.type))
@@ -117,6 +120,9 @@ const ArrivalTimes = () => {
   return (
     <>
       <div style={{ textAlign: "center" }}>
+        <div>
+          {throwPopup && <Popup/>}
+        </div>
         <ul className="at">
           <li>
             <button
@@ -158,7 +164,7 @@ const ArrivalTimes = () => {
               />
             </td>
             <td>
-              {searchResult ? <ArrivalTimesList data={searchResult} /> : null}
+              {searchResult && <ArrivalTimesList data={searchResult} />}
             </td>
             <td>
               <SavedArrivalTimes 

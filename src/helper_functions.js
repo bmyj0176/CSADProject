@@ -163,13 +163,10 @@ export function searchInDualList(searchQuery, inputList, cap = 50, splicelistsiz
         excludedList = inputList.map(sublist => sublist.slice(splicelistsize, inputList.length))
         inputList = inputList.map(sublist => sublist.slice(0, splicelistsize))
     }
-    console.log("inputList")
-    console.log(inputList)
-    console.log("excludedList")
-    console.log(excludedList)
     const outputList = []
     const outputListIndexes = [] // primary search filtering
     const cleaned_searchQuery = searchQuery.toLowerCase().replace(/\s+/g, '').replace(/[^\w\s]/g, '')
+
     // PRIMARY SEARCH - if substring at start of string
     for (let n = 0; n < inputList.length; n++) {
         const cleaned_item = inputList[n].map(item => item.toLowerCase().replace(/\s+/g, '').replace(/[^\w\s]/g, '')) // for search ease, remove spaces, special chars & case sensitivity

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { ArrivalTimesElement } from "./ArrivalTimesList";
-import SearchResult from "./SearchResult";
+import ATSearchResult from "./ATSearchResult";
 
 const SavedArrivalTimes = (props) => {
   const [favedItems, setFavedItems] = useState(() => {
@@ -30,7 +30,7 @@ const SavedArrivalTimes = (props) => {
       {Array.from({ length: favedItems.length }, (_, index) => (
         <div key={index} className="bar">
         {favedItems && ( 
-          <SearchResult 
+          <ATSearchResult 
           dict={favedItems[index]} 
           index={index}
           receiveSearchResult={props.receiveSearchResult}
