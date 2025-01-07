@@ -40,6 +40,7 @@ const NavBar = () => {
           <li>
             <Link to="/travelroutes" className={location.pathname === "/travelroutes" ? "activee" : ""}>Find Travel Routes</Link>
           </li>
+          
           <li>
             <button id="test_button" onClick={test_function}> Test Button </button><span id="test_text"></span>
           </li>
@@ -47,7 +48,7 @@ const NavBar = () => {
           <li style={{ float: 'right' }}>
             <ToggleThemeButton/> 
           </li>
-          <li style={{ float: 'right' }} className="dropdown">
+          <li style={{ float: 'right'}} className="dropdown">
             <a href="javascript:void(0)" className="dropbtn">
               { !userLoggedIn ? (
                 <Link className = "loginright"to="/login" >Login</Link> 
@@ -55,7 +56,7 @@ const NavBar = () => {
                 <>
                   <div className="loginuser"> {localStorage.getItem('username')} </div>
                   <div className="dropdown-content">
-                    <Link to="/about" className="dropdownItem">About</Link><br/>
+                    
                     <Link to="/settings" className="dropdownItem">Settings</Link><br/>
                     <Link to="/ost" className="dropdownItem">Soundtrack</Link><br/>
                     { userLoggedIn && <button id="logout" onClick={logout}>Log Out</button>}
@@ -63,6 +64,9 @@ const NavBar = () => {
                 </>
               )}
             </a>
+          </li>
+          <li style={{ float: 'right'}}>
+            <Link to="/about" className={location.pathname === "/about" ? "activee" : ""}>About</Link>
           </li>
       </ul>
       <Outlet />
