@@ -105,9 +105,9 @@ function Register() {
           <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter Password"/>
           <div class="error" id="err_password" style={{color:'#E03E57'}}></div>
         </p>
-        <p>
+        <p className="confirmpass">
           Confirm Password: <nbsp/>
-          <input type="password" id="password2" value={password2} onChange={(e) => setPassword2(e.target.value)} placeholder="Enter Password"/>
+          <input className="confirmpass2" size="15" type="password" id="password2" value={password2} onChange={(e) => setPassword2(e.target.value)} placeholder="Enter Password"/>
           <div class="error" id="err_password2" style={{color:'#E03E57'}}></div>
         </p>
         <p>

@@ -65,7 +65,7 @@ const NavBar = () => {
               )}
             </a>
           </li>
-          <li style={{ float: 'right'}}>
+          <li className="aboutt" style={{ float: 'right'}}>
             <Link to="/about" className={location.pathname === "/about" ? "activee" : ""}>About</Link>
           </li>
       </ul>

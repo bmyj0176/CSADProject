@@ -74,7 +74,8 @@
 
 .banner1 {
   background-color: white;
-  padding: 215px;
+
+  padding: 100px 214px 100px 214px;
   background: url('/public/images/nyoom_welcome.png');
   background-size:100%;
   background-repeat: no-repeat;
@@ -87,8 +88,8 @@
   background-size: contain;
   background-repeat: no-repeat;
   position:absolute;
-  top: 440px;
-  right:30px;
+  top: 350px;
+  right:15px;
   width: 45px;
   height: 35px;
   margin-top: 10px;
@@ -104,7 +105,7 @@
     background-size: contain;
     background-repeat: no-repeat;
     position:absolute;
-    top: 440px;
+    top: 350px;
     left:30px;
     width: 45px;
     height: 35px;
@@ -136,7 +137,7 @@
 
 .banner2 {
   background-color: white;
-  padding: 214px;
+  padding: 100px 214px 100px 214px;
   background: url('/public/images/nyoom_slide2.png');
   background-size:100%;
   background-repeat: no-repeat;
@@ -146,10 +147,11 @@
 
 .card2 {
   position:relative;
-  left:-40px;
-  bottom: -20px;
-  width: 400px; 
-  padding: 50px;
+  left:-110px;
+  bottom: -45px;
+  width: 350px; 
+  height: 180px;
+  padding: 25px;
   background: rgba(255, 255, 255, 0.267); 
   border-radius: 10px; 
   text-align: center;
@@ -205,7 +207,7 @@
 
 .banner3 {
   background-color: white;
-  padding: 215px;
+  padding: 100px 214px 100px 214px;
   background: url('/public/images/nyoom_slide3.png');
   background-size:100%;
   background-repeat: no-repeat;
@@ -218,7 +220,7 @@
   border: 3px solid rgba(213, 213, 107, 0.443);
   left: 50%; /* Move the left edge to the center */
   transform: translateX(-50%);
-  bottom: -208px;
+  bottom: -170px;
   width: 400px; 
   padding: 50px;
   background: rgba(255, 255, 255, 0.279); 
@@ -281,11 +283,12 @@
 
 
 .endBanner img {
-  height: 200px;
-  width: 200px;
+  height: 180px;
+  width: 180px;
   position:relative;
   top: 50px;
   left: 50px;
+  
 
 }
 
@@ -305,7 +308,7 @@
    background-color: rgba(9, 56, 56, 0); 
    position:relative;
    top: -15px;
-   left: 1580px;
+   left: 980px;
    font-weight: bold;
    color: rgba(255, 255, 255, 0.753);
 
