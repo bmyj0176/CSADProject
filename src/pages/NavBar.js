@@ -32,13 +32,13 @@ const NavBar = () => {
     <>
       <ul className="nv">
           <li>
-            <Link to="/" className={location.pathname === "/" ? "activee" : ""}><img className="nyoom" src="./images/nyoom_icon.png"/></Link>
+            <Link to="/" className={location.pathname === "/" ? "activee" : ""}><img className="nyoom" src="./images/IMG_2289-removebg-preview.png"/*nyoom_icon.png*//></Link>
           </li>
           <li>
             <Link to="/arrivaltimes" className={location.pathname === "/arrivaltimes" ? "activee" : ""}>Bus Arrival Times</Link>
           </li>
           <li>
-            <Link to="/traveltimeest" className={location.pathname === "/traveltimeest" ? "activee" : ""}>Find Travel Routes</Link>
+            <Link to="/travelroutes" className={location.pathname === "/travelroutes" ? "activee" : ""}>Find Travel Routes</Link>
           </li>
           <li>
             <button id="test_button" onClick={test_function}> Test Button </button><span id="test_text"></span>

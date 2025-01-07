@@ -46,3 +46,38 @@
   #links :hover{
     text-decoration: underline;
   }
+
+  .link-default {
+    text-shadow: 0px;
+  }
+  
+  .link-toggled {
+    text-shadow: 100px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column; /* Stack form rows vertically */
+    gap: 15px;              /* Space between rows */
+    max-width: 300px;       /* Optional: Limit form width */
+  }
+  
+  label {
+    display: flex;
+    align-items: center;   /* Vertically center the text and input */
+    justify-content: flex-start;
+    gap: 10px; 
+           }         /* Space between label text and input */
+  
+  input[type="text"], input[type="password"] {
+    flex: 1;               /* Allow input to take up remaining space */
+    padding: 5px;
+    font-size: 14px;
+    color: black;
+  }
+  
+  input[type="submit"] {
+    margin-top: 10px;
+    padding: 5px 10px;
+    font-size: 16px;
+  }

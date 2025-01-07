@@ -119,10 +119,14 @@ const ArrivalTimes = () => {
 
   return (
     <>
-      <div style={{ textAlign: "center" }}>
-        <div>
-          {throwPopup && <Popup/>}
-        </div>
+      <div>
+        {throwPopup && <Popup/>}
+      </div>
+    <ul className="horizontal-list">
+      <li style={{backgroundColor:'#00000010'}}>
+        {searchResult && <ArrivalTimesList data={searchResult} />}
+      </li>
+      <li>
         <ul className="at">
           <li>
             <button
@@ -149,35 +153,25 @@ const ArrivalTimes = () => {
             </button>
           </li>
         </ul>
-      </div>
-      <table>
-        <tbody>
-          <tr>
-            <td>
-              <ATSearchBar
-                toggleStates={toggles}
-                receiveSearchResult={receiveSearchResult}
-                selectedItem={selectedItem}
-                onItemSelect={onItemSelect}
-                favedItems={favedItems}
-                onFavItem={onFavItem}
-              />
-            </td>
-            <td>
-              {searchResult && <ArrivalTimesList data={searchResult} />}
-            </td>
-            <td>
-              <SavedArrivalTimes 
-                receiveSearchResult={receiveSearchResult}
-                selectedItem={selectedItem}
-                onItemSelect={onItemSelect}
-                favedItems={favedItems}
-                onFavItem={onFavItem}
-              />
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        <ATSearchBar
+          toggleStates={toggles}
+          receiveSearchResult={receiveSearchResult}
+          selectedItem={selectedItem}
+          onItemSelect={onItemSelect}
+          favedItems={favedItems}
+          onFavItem={onFavItem}
+        />
+      </li>
+      <li style={{backgroundColor:'#00000010'}}>
+      <SavedArrivalTimes 
+        receiveSearchResult={receiveSearchResult}
+        selectedItem={selectedItem}
+        onItemSelect={onItemSelect}
+        favedItems={favedItems}
+        onFavItem={onFavItem}
+      />
+      </li>
+    </ul>
     </>
   );
 };

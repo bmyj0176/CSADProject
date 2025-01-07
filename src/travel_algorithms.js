@@ -99,12 +99,12 @@ export function dijkstra(graph, start, end) {
     }
 
     // Return the shortest distance from the start node to all nodes
-    let output = "Time to " + end + " from " + start + " is " + distances[end] + " min.";
+    let output = "Time from " + start + " to " + end + " is " + distances[end] + " min.";
     return output;
 }
 
 // Example: Find shortest distances from node A to all other nodes in the graph
-console.log(dijkstra(map, "Choa Chu Kang_BP", "Phoenix")); // Outputs: {8}
+console.log(dijkstra(map, "Woodlands_NS", "Choa Chu Kang_NS")); // Outputs: {8}
 
 export async function shortest_path (station1, station2) {
     let path = []

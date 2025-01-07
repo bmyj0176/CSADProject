@@ -74,21 +74,21 @@ const Homepage = () => {
 
   const handleToggle = () => {
 
-    setFade(true);
-    setTimeout(() => {
+    //setFade(true);
+    setTimeout(() => {  
       setSlideIndex((prevIndex) => (prevIndex + 1) % slides.length); 
-      setFade(false); 
-    }, 500); 
+      //setFade(false); 
+    }, 50); 
   };
 
   const handleToggle2 = () => {
-    setFade(true);
+    //setFade(true);
     setTimeout(() => {
       setSlideIndex((prevIndex) =>
         (prevIndex - 1 + slides.length) % slides.length
       ); 
-      setFade(false);
-    }, 500);
+      //setFade(false);
+    }, 50);
   };
   
   

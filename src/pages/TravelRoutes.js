@@ -1,8 +1,7 @@
 import { Outlet, Link } from "react-router-dom";
 import TRSearchBar from "./TravelRoutes/TRSearchBar";
-import FindRoutes from "./TravelRoutes/FindRoutes";
 import SavedRoutes from "./TravelRoutes/SavedRoutes";
-import "./stylesheets/traveltimeest.css";
+import "./stylesheets/travelroutes.css";
 import { useState } from 'react';
 
 const TravelRoutes = () => {

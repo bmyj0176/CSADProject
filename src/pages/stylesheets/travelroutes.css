@@ -1,0 +1,19 @@
+/*tte bar properties*/
+.tte {
+    list-style-type: none;
+    margin: 12px;
+    padding: 12px;
+    overflow: hidden;
+}
+
+/*each tte bar element properties*/
+.tte li {
+    display: inline-block;
+    margin-right: 12px;
+}
+  
+/*no text underlines*/
+.tte li a {
+    display: inline-block;
+    padding: 16px;
+}

@@ -75,7 +75,6 @@
 .banner1 {
   background-color: white;
   padding: 215px;
-  border: 5px solid rgba(255, 255, 255, 0.635);
   background: url('/public/images/nyoom_welcome.png');
   background-size:100%;
   background-repeat: no-repeat;
@@ -89,7 +88,7 @@
   background-repeat: no-repeat;
   position:absolute;
   top: 440px;
-  left:1848px;
+  right:30px;
   width: 45px;
   height: 35px;
   margin-top: 10px;
@@ -138,7 +137,6 @@
 .banner2 {
   background-color: white;
   padding: 214px;
-  border: 5px solid rgba(255, 255, 255, 0.635);
   background: url('/public/images/nyoom_slide2.png');
   background-size:100%;
   background-repeat: no-repeat;
@@ -208,7 +206,6 @@
 .banner3 {
   background-color: white;
   padding: 215px;
-  border: 5px solid rgba(255, 255, 255, 0.712);
   background: url('/public/images/nyoom_slide3.png');
   background-size:100%;
   background-repeat: no-repeat;
@@ -219,7 +216,8 @@
 .card3 {
   position:relative;
   border: 3px solid rgba(213, 213, 107, 0.443);
-  left:480px;
+  left: 50%; /* Move the left edge to the center */
+  transform: translateX(-50%);
   bottom: -208px;
   width: 400px; 
   padding: 50px;

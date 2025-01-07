@@ -20,7 +20,21 @@
     margin: auto;
 }
   
-
+.horizontal-list {
+    display: flex;
+    height: 100vh;
+    margin: 0;
+    padding: 0; /* Removes any default padding */
+    list-style-type: none; /* Removes default list styling */
+}
+  
+  /* List items */
+  .horizontal-list li {
+    text-align: center; /* Centers the text inside each list item */
+    justify-content: center; /* Centers the contents horizontally within each li */
+    align-items: center; /* Centers the contents vertically within each li */
+    flex: 1; /* Optional: allows items to stretch and take up available space evenly */
+  }
 
 .link-default {
     text-shadow: 0px;

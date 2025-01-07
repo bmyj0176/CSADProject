@@ -30,7 +30,7 @@ export default function App() {
                 {/*End of branch of NavBar*/}
                 <Route index element={<Homepage />} />
                 <Route path="arrivaltimes" element={<ArrivalTimes />} />
-                <Route path="traveltimeest" element={<TravelRoutes />} />
+                <Route path="travelroutes" element={<TravelRoutes />} />
                 <Route path="login" element={<Login />} />
                 <Route path="register" element={<Register />} />
                 <Route path="*" element={<NoPage />} />
