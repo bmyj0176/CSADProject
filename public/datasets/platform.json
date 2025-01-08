@@ -1,6 +1,6 @@
 [
     {"p1": "Choa Chu Kang_NS", "p2": "Choa Chu Kang_BP", "line": ["North South Line", "Bukit Panjang LRT"], "time": 7},
-    {"p1": "Bukit Panjang_DT", "p2": "Bukit Panjang_BP", "line": ["Downtown Line", "Bukit Panjang LRT"], "time": 10},
+    {"p1": "Bukit Panjang_DT", "p2": "Bukit Panjang_BP", "line": ["Downtown Line", "Bukit Panjang LRT"], "time": 8},
     {"p1": "Bishan_NS", "p2": "Bishan_CC", "line": ["North South Line", "Circle Line"], "time": 8},
     {"p1": "Woodlands_NS", "p2": "Woodlands_TE", "line": ["North South Line", "Thomson Line"], "time": 10},
     {"p1": "Newton_NS", "p2": "Newton_DT", "line": ["North South Line", "Downtown Line"], "time": 9},
@@ -31,5 +31,6 @@
     {"p1": "Botanic Gardens_DT", "p2": "Botanic Gardens_CC", "line": ["Downtown Line", "Circle Line"], "time": 8},
     {"p1": "Stevens_DT", "p2": "Stevens_TE", "line": ["Downtown Line", "Thomson Line"], "time": 7},
     {"p1": "Promenade_DT", "p2": "Promenade_CC", "line": ["Downtown Line", "Circle Line"], "time": 7},
-    {"p1": "MacPherson_CC", "p2": "MacPherson_DT", "line": ["Circle Line", "Downtown Line"], "time": 6}
+    {"p1": "MacPherson_CC", "p2": "MacPherson_DT", "line": ["Circle Line", "Downtown Line"], "time": 6},
+    {"p1": "Tanah Merah_CG", "p2": "Tanah Merah_EW", "line": ["East West Line", "East West Line"], "time": 5}
 ]
