@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Outlet, Link, useLocation } from "react-router-dom";
+import { Outlet, Link, useLocation, useNavigate  } from "react-router-dom";
 import { dict_in_list } from '../helper_functions2';
 import './stylesheets/navbar.css';
 import { dijkstra, shortest_path } from '../travel_algorithms';
@@ -10,6 +10,7 @@ const NavBar = () => {
   const location = useLocation(); 
   const elementId = "light";
   const isActive = (path) => location.pathname === path;
+  const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -20,6 +21,7 @@ const NavBar = () => {
 
   function logout() {
     localStorage.removeItem('token');
+    navigate('/');
     window.location.reload();
   }
 
@@ -51,10 +53,10 @@ const NavBar = () => {
           <li style={{ float: 'right'}} className="dropdown">
             <a href="javascript:void(0)" className="dropbtn">
               { !userLoggedIn ? (
-                <Link className = "loginright"to="/login" >Login</Link> 
+                <Link className = "loginright" to="/login" >Login</Link> 
               ) : (
                 <>
-                  <div className="loginuser"> {localStorage.getItem('username')} </div>
+                  <label className="loginuser"> {localStorage.getItem('username')} </label>
                   <div className="dropdown-content">
                     
                     <Link to="/settings" className="dropdownItem">Settings</Link><br/>

@@ -120,7 +120,7 @@ const Homepage = () => {
         <img className="endBannerImg" src="./images/nyoom_stroke.png" />
 
         <p className="endBannerHead"> Contact Us! </p>
-        <a href=""
+        <a href=""></a>
         <p className="endBannerHead2"> Follow Us! </p>
         <p className="endBannerHead3"> Site Map </p>
 

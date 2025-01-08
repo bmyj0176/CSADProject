@@ -30,10 +30,10 @@ button, .buton{
 
 @keyframes glow {
   0% {
-    text-shadow: 0 0 5px aqua, 0 0 10px aqua, 0 0 20px aqua, 0 0 30px aqua;
+    text-shadow: 0 0 1px aqua, 0 0 2px aqua, 0 0 4px aqua, 0 0 6px aqua;
   }
   100% {
-    text-shadow: 0 0 10px aqua, 0 0 20px aqua, 0 0 30px aqua, 0 0 40px aqua;
+    text-shadow: 0 0 2px aqua, 0 0 4px aqua, 0 0 6px aqua, 0 0 8px aqua;
   }
 }
 
