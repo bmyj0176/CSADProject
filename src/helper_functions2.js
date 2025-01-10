@@ -1,4 +1,4 @@
-import { get_json } from "./file_reader";
+import { getjson } from "./helper_functions"
 
 export function convertISO8601(time) {
     const date = new Date(time);
@@ -110,7 +110,7 @@ export function insertAndShift(list, index, newValue) {
 // OUTPUT filtered_list (list of lists) mapped lists of nearby mrts, no nearby is empty
 export async function checkForNearbyMRTs (bsc_list) {
     const filtered_list = []
-    const data = await get_json('./datasets/busstops_near_mrt.json')
+    const data = await getjson('./datasets/busstops_near_mrt.json')
     for (const bsc of bsc_list) {
         filtered_list.push((bsc in data) ? data[bsc] : [])
     }
@@ -165,4 +165,10 @@ export function cleanMRTStationName(string) {
     if (index === -1)
         return string
     return string.slice(0, index)
+}
+
+// uncleans some mrt names like "Woodlands" -> "Woodlands_TE"
+export function suffixMRTStationName(string, code) {
+    code = code.replace(/\d+/g, '');  // removes all numbers
+    return string + "_" + code
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef} from 'react';
 import { searchInList, searchInDualList, nearestBusStops, getBusStopInfo } from '../../helper_functions';
 import { checkForNearbyMRTs } from '../../helper_functions2';
-import { get_list } from '../../file_reader';
+import { getjson } from '../../helper_functions'
 import ATSearchResult from './ATSearchResult';
 import '../stylesheets/busstopcard.css'
 
@@ -15,8 +15,8 @@ const ATSearchBar = (props) => {
     // once at start of lifecycle
     useEffect(() => {
       const fetchNumbers = async () => {
-        bus_services_list.current = await get_list('./datasets/bus_services.txt');
-        bus_stops_info_list.current = await get_list('./datasets/bus_stops_info.json');
+        bus_services_list.current = await getjson('./datasets/bus_services.txt');
+        bus_stops_info_list.current = await getjson('./datasets/bus_stops_info.json');
         };
       
       fetchNumbers();

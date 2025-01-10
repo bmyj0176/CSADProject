@@ -1,4 +1,4 @@
-import { get_json } from "./file_reader"
+import { getjson } from "./helper_functions"
 import { getRoadDistance, getBusStopInfo} from "./helper_functions"
 
 async function test() {
@@ -30,9 +30,26 @@ async function test() {
 	//      }]
 }
 
-console.clear();
-let train_transfer = await get_json('./datasets/platform.json');
-let train_paths = await get_json('./datasets/station.json');
+
+
+//CLEAR VARIABLE -- TURN OFF WHEN DONE
+let clear = false;
+
+
+if (clear == true) {
+    console.clear();
+}
+
+
+export async function getMap() {
+    let train_transfer = await getjson('./datasets/platform.json');
+    let train_paths = await getjson('./datasets/station.json');
+    let map = buildAdjacencyList(train_paths, train_transfer);
+    return map
+}
+
+let train_transfer = await getjson('./datasets/platform.json');
+let train_paths = await getjson('./datasets/station.json');
 let map = buildAdjacencyList(train_paths, train_transfer);
 console.log(map);
 
@@ -147,14 +164,18 @@ export function dijkstra(graph, start, end) {
 
     // Return both the shortest distance and the route
     return {
-        "time taken": distances[end] + " minutes",
+        time_taken: distances[end],
         route: route,
         simple_route: simple_route
     };
 }
 
-// Example: Find shortest distances from node A to all other nodes in the graph
-console.log(dijkstra(map, "Marina South Pier", "Phoenix")); // Outputs: {8}
+// running Dijkstra algorithm between the two stations
+let startTime = performance.now();
+console.log(dijkstra(map, "Marina South Pier", "Bangkit"));
+let endTime = performance.now();
+let timeTaken = endTime - startTime;
+console.log("Total time taken : " + timeTaken + " milliseconds");
 
 export async function shortest_path (station1, station2) {
     let path = []

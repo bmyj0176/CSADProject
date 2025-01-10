@@ -32,7 +32,7 @@
 .nv .dropdown-content {
   display: none;
   position: absolute;
-  top: 85px;
+  top: 95px;
   padding-right: 5px;
   background-color: rgb(60, 60, 60);
   min-width: 160px;
@@ -111,6 +111,6 @@
 
 .aboutt{
   position:relative;
-  top: 21.5px;
+  top: 22px;
   left: 30px;
 }

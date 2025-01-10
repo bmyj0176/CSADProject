@@ -1,6 +1,16 @@
 import { convertISO8601, timeDiffISO8601, doxx, haversine, insertAndShift } from "./helper_functions2";
 import { BusArrival, BusRoutes, BusStops } from "./api_caller";
-import { get_list } from "./file_reader"
+
+// THIS FUNCTION PARSES ENTIRE JSON OBJECT FROM A FILE PATH
+export async function getjson(path) {
+    return fetch(path) // fetch json then return as promise
+    .then(response => {
+      return response.json() // parse into js object (promise)
+    })
+    .then(data => {
+      return data // returns object
+    })
+  }
 
 // getBusTiming() returns the arrival times of the next 3 buses
 // INPUT1 BusStopCode - (string) 5 digit code of bus stop, e.g. '46971', '83139'
@@ -39,7 +49,7 @@ export async function getBusTiming(BusStopCode, BusNumber) {
 // INPUT2 key - (string) key of value you want to output, like "BusStopCode", "RoadName", "Description", "Latitude" or "Longitude"
 // OUTPUT BusStopInfo - (dict) consists of "BusStopCode", "RoadName", "Description", "Latitude" & "Longitude"
 export async function getBusStopInfo(BusStopCode, key) {
-    const complete_list = await get_list('./datasets/bus_stops_complete.txt');
+    const complete_list = await getjson('./datasets/bus_stops_complete.txt');
     for (const dict of complete_list) {
         if (dict.BusStopCode == BusStopCode)
             return dict[key]
@@ -202,7 +212,7 @@ export async function nearestBusStops(cap = 50) {
         return null;
     }
 
-    const BSC_CoordsList = await get_list('./datasets/bsc_coords.txt')
+    const BSC_CoordsList = await getjson('./datasets/bsc_coords.txt')
     for (let dict of BSC_CoordsList) {
         const distance = haversine(hereLat, hereLon, dict.Lat, dict.Lon)
         for (let i = 0; i < outputList.length; i++) {

@@ -12,9 +12,11 @@ const TRSearchResult = (props) => {
         setSubheader2("")
         if (props.dict.type === "station") {
             setHeader(props.dict.stationName)
-            setSubheader1(props.dict.stationCode)
+            setSubheader1(props.dict.stationCodes.join(' '))
             setSubheader2(
-                <img src={codeToMRTImagePath(props.dict.stationCode)}/>
+              Array.from({ length: props.dict.stationCodes.length }, (_, index) => (
+                <img src={codeToMRTImagePath(props.dict.stationCodes[index])}/>
+                ))
             )
         } else if (props.dict.type === "busStop") {
             setHeader(props.dict.busStopName)
@@ -28,7 +30,6 @@ const TRSearchResult = (props) => {
     }, [props.dict]);
   
     const handleClick = () => {
-      props.sendToTR(props.dict)
       props.sendToSearchBar(props.dict)
       console.log("done2")
     };

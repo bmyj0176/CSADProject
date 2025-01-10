@@ -7,14 +7,14 @@
             {"s1": "Keat Hong", "s2": "Teck Whye", "time": 2},
             {"s1": "Teck Whye", "s2": "Phoenix", "time": 2},
             {"s1": "Phoenix", "s2": "Bukit Panjang_BP", "time": 2},
-            {"s1": "Bukit Panjang_BP", "s2": "Petir", "time": null},
-            {"s1": "Petir", "s2": "Pending", "time": null},
-            {"s1": "Pending", "s2": "Bangkit", "time": null},
-            {"s1": "Bangkit", "s2": "Fajar", "time": null},
-            {"s1": "Fajar", "s2": "Segar", "time": null},
-            {"s1": "Segar", "s2": "Jelapang", "time": null},
-            {"s1": "Jelapang", "s2": "Senja", "time": null},
-            {"s1": "Senja", "s2": "Bukit Panjang_BP", "time": null}
+            {"s1": "Bukit Panjang_BP", "s2": "Petir", "time": 1},
+            {"s1": "Petir", "s2": "Pending", "time": 2},
+            {"s1": "Pending", "s2": "Bangkit", "time": 1},
+            {"s1": "Bangkit", "s2": "Fajar", "time": 2},
+            {"s1": "Fajar", "s2": "Segar", "time": 1},
+            {"s1": "Segar", "s2": "Jelapang", "time": 2},
+            {"s1": "Jelapang", "s2": "Senja", "time": 1},
+            {"s1": "Senja", "s2": "Bukit Panjang_BP", "time": 2}
         ]
     },
 

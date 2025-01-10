@@ -90,7 +90,30 @@ const Homepage = () => {
       //setFade(false);
     }, 50);
   };
+
+
+  const Emails = (props) =>{
+    return <li className="endBannerHeadContent"> <a href= {"mailto: " + props.lnkemail}>{props.email}</a></li>
+  }
+
+  const Socials = (props) => {
+    return <li className="endBannerHead2Content"> <a href={props.social}><img src={props.socialimg}/></a> </li>
+  }
+
+  const emails = [
+    {id:1, email: 'sdmgo15@gmail.com', lnkemail: 'sdmgo15@gmail.com'},
+    {id:2, email: 'bryuhh1234@rp.edu.sg', lnkemail: 'bryuh1234@gmail.com'},
+    {id:3, email: 'agilbinla@yahoo.com', lnkemail: 'aquil@gmail.com'},
+    {id:4, email: 'ca2short@hotmale.com', lnkemail: 'calong1234@gmail.com'}
+  ]
+
+  const socials = [
+    {id:1, social: 'https://x.com/SDomingoYT', socialimg:'./images/x.png'},
+    {id:2, social: 'https://www.youtube.com/c/SDomingo', socialimg: './images/youtube.png'},
+    {id:3, social: 'https://www.roblox.com/users/686546843/profile', socialimg: './images/instagram.png'}
+  ]
   
+
   
   return (
     <div>
@@ -118,17 +141,16 @@ const Homepage = () => {
       <div className="endBanner">
 
         <img className="endBannerImg" src="./images/nyoom_stroke.png" />
-
-        <p className="endBannerHead"> Contact Us! </p>
-        <a href=""></a>
-        <p className="endBannerHead2"> Follow Us! </p>
-        <p className="endBannerHead3"> Site Map </p>
-
+      
+        <ul className="no-bullets">
+        <span className="endBannerHead"> Contact Us! </span>
+        {emails.map(em => <Emails key={em.id} email={em.email} lnkemail={em.lnkemail}/>)}
+        </ul>  
         <hr className="endBannerhr"/>
 
-        <h5 className="copyright"> © All rights reserved to nyoom 2024 </h5>
+<h5 className="copyright"> © All rights reserved to nyoom 2025 </h5> 
+        </div>
 
-    </div>
     </div>
   );
 };

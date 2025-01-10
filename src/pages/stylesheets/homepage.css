@@ -9,6 +9,8 @@
 .subpar2{position:relative; top: 30px; left: 82px;}
 
 
+
+
 @keyframes slideDown {
   0% {
       transform: translateY(-20px);
@@ -274,17 +276,16 @@
 }
 
 .endBanner{ background: rgba(64, 186, 207, 0.932);
-  padding-bottom: px;
+  
   position:relative;
   top: 50px;
-
-
+  max-height: 60vh; 
 }
 
 
 .endBanner img {
-  height: 180px;
-  width: 180px;
+  height: 190px;
+  width: 190px;
   position:relative;
   top: 50px;
   left: 50px;
@@ -299,7 +300,7 @@
   height: 2px; /* Set the thickness */
   width: 90%;
   position:relative;
-  top: -5px;
+  top: -20px;
 }
 
 .copyright{
@@ -307,7 +308,7 @@
    margin-right: 0px;
    background-color: rgba(9, 56, 56, 0); 
    position:relative;
-   top: -15px;
+   top: -38px;
    left: 980px;
    font-weight: bold;
    color: rgba(255, 255, 255, 0.753);
@@ -318,10 +319,73 @@
   color: white;
   text-align: center;
   position:relative;
-  bottom: 160px;
-  left: 260px;
-  font-size: 20px;
+  bottom: 165px;
+  left: 863px;
+
+  font-size: 26px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 
 
+}
+
+.endBannerHeadContent{
+  font-size:16px;
+  position:relative;
+  bottom: 160px;
+  left: 860px;
+}
+
+.endBannerHeadContent:hover{
+text-decoration: underline;
+}
+
+
+.no-bullets{
+  list-style-type: none;
+  padding-left: 0;
+}
+
+
+.endBannerHead2{
+  color: white;
+  text-align: center;
+  position:relative;
+  bottom: 135px;
+  left: 308px;
+  font-size: 26px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  padding-bottom:0px;
+ 
+}
+
+
+.endBannerHead3{
+  position:relative;
+  bottom:200px;
+}
+
+.endBannerHead2Content {
+  display:inline-block;
+  position:relative;
+  bottom: 200px;
+  left: 835px;
+  
+}
+
+.endBannerHead2Content img {
+
+  height: 20px;
+  width:30px;
+  padding-right: 3px;
+  position:relative;
+  bottom: 540px;
+}
+
+.endBannerHead2Content img:hover {
+
+  height: 25px;
+  width:35px;
+  padding-right: 3px;
+  position:relative;
+  bottom: 540px;
 }
