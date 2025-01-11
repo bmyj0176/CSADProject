@@ -36,7 +36,7 @@ async function test() {
 let clear = false;
 
 
-if (clear == true) {
+if (clear === true) {
     console.clear();
 }
 
@@ -149,9 +149,9 @@ export function dijkstra(graph, start, end) {
         let current_station = route[i];
         let thirdLastChar = current_station.charAt(current_station.length - 3);
 
-        if (thirdLastChar == "_") { //if third last char is a "_", its an interchange
+        if (thirdLastChar === "_") { //if third last char is a "_", its an interchange
             let current_interchange = current_station.length > 3 ? current_station.slice(0, -3) : "";
-            if (current_interchange == past_interchange) { //if 2 interchanges are the same, its a transfer
+            if (current_interchange === past_interchange) { //if 2 interchanges are the same, its a transfer
                 simple_route.push(past_station, current_station); 
             } else {
                 past_interchange = current_interchange;
