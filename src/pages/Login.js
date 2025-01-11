@@ -8,7 +8,7 @@ export const login = async (email, password, navigate) => {
   
   try {
     const response = await axios.post(`${process.env.REACT_APP_BACKEND_API_URL}/auth/login`, { 
-      email: email.trim(),
+      email: email.trim().toLowerCase(),
       password: password.trim(),
      });
     localStorage.setItem('token', response.data.token);
@@ -52,11 +52,11 @@ function Login() {
       <h1 style={{textAlign:'center'}}>Login</h1>
       <form onSubmit={handleSubmit}>
         <p>
-          Email: <nbsp/>
+          Email: &nbsp;
           <input type="text" placeholder="Enter Your Email Here" value={email} onChange={(e) => setEmail(e.target.value)} />
         </p>
         <p>
-          Password: <nbsp/>
+          Password: &nbsp;
           <input type="password" placeholder="Enter Password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </p>
         <p>

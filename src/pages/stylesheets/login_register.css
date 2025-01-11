@@ -16,20 +16,21 @@ form {
  padding: 20px;
 }
 
+.error {
+  color: #E03E57
+}
+
 form h1 {
   text-shadow: 0 0 5px #ffffff33, 0 0 10px #ffffff37, 0 0 20px rgba(0, 255, 255, 0.372), 
   0 0 30px rgba(0, 255, 255, 0.167);
 }
 
-
 .confirmpass{
   position:relative;
   left: 6px;
-
 }
 
 .confirmpass2{
   position:relative;
   left: 0px;
-
 }

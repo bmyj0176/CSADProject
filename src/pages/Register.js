@@ -16,6 +16,13 @@ function Register() {
   var [email, setEmail] = useState('');
   var [password, setPassword] = useState('');
   var [password2, setPassword2] = useState('');
+  var [errors, setErrors] = useState({
+    username: '',
+    email: '',
+    password: '',
+    password2: '',
+    misc: ''
+  })
 
   useEffect(() => {
     if (retainedData) {
@@ -32,56 +39,72 @@ function Register() {
       try {
         await axios.post(`${process.env.REACT_APP_BACKEND_API_URL}/auth/register`, { 
           username: username.trim(), 
-          email: email.trim(), 
+          email: email.trim().toLowerCase(), 
           password: password, 
         });
         console.log('Registration successful');
         await login(email, password, navigate);
       } catch (error) {
-        console.error(error);
-        console.log('Registration failed');
+        clearErrorMsgs();
+        const newErrors = {...errors}
+        if (error.response.status === 409) { // email already exists error
+          document.getElementById("email").focus()
+          newErrors.email = "Email already exists, please login instead."
+        } else if (error.response.status === 500) {
+          newErrors.misc = "Internal Server Error. Please try again later."
+        } else {
+          console.error(error);
+          console.log('Registration failed for other reasons');
+        }
+        setErrors(newErrors)
       }
     }
   };
 
-  // returns true if successful, otherwise return false
-  const validateInput = () => {
+  const clearErrorMsgs = () => {
     const errorElements = document.getElementsByClassName("error")
     for (const element of errorElements)
-      element.innerHTML = ""
+      element.innerHTML = "" // clear all errors
+  }
+  
+  // returns true if successful, otherwise return false
+  const validateInput = () => {
+    clearErrorMsgs();
+    let isValid = true
+    const newErrors = {...errors}
     if (username === "") {
       document.getElementById("username").focus() // .focus() changes selection to that element
-      document.getElementById("err_username").innerHTML = "Please enter a username."
-      return false
+      newErrors.username = "Please enter a username."
+      isValid = false
     }
-    if (email === "") {
+    else if (email === "") {
       document.getElementById("email").focus()
-      document.getElementById("err_email").innerHTML = "Please enter your email."
-      return false
+      newErrors.email = "Please enter your email."
+      isValid = false
     }
-    const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-    if (!regex.test(email))
-      {
-        document.getElementById("email").focus()
-        document.getElementById("err_email").innerHTML = "You have entered an invalid email address."
-        return false
-      }
-    if (password === "") {
+    else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) // regex
+    {
+      document.getElementById("email").focus()
+      newErrors.email = "You have entered an invalid email address."
+      isValid = false
+    }
+    else if (password === "") {
       document.getElementById("password").focus()
-      document.getElementById("err_password").innerHTML = "Please enter a password."
-      return false
+      newErrors.password = "Please enter a password."
+      isValid = false
     }
-    if (password.length < 8) {
+    else if (password.length < 8) {
       document.getElementById("password").focus()
-      document.getElementById("err_password").innerHTML = "Passwords must be at least 8 characters."
-      return false
+      newErrors.password = "Passwords must be at least 8 characters."
+      isValid = false
     }
-    if (password !== password2) {
+    else if (password !== password2) {
       document.getElementById("password2").focus()
-      document.getElementById("err_password2").innerHTML = "Passwords do not match."
-      return false
+      newErrors.password2 = "Passwords do not match."
+      isValid = false
     }
-    return true
+    setErrors(newErrors)
+    return isValid
   }
 
   return (
@@ -91,24 +114,24 @@ function Register() {
       <h1 style={{textAlign:'center'}}>Register</h1>
       <form onSubmit={handleSubmit}>
         <p>
-          Username: <nbsp/>
-          <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Enter Your Username Here"/>
-          <div class="error" id="err_username" style={{color:'#E03E57'}}></div> {/* '#E03E57' isdocument.getElementById("err_username").innerHTML =  red*/}
+          Username: &nbsp;
+          <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Enter Your Username Here"/><br/>
+          <span className="error">{errors.username}</span> {/* '#E03E57' isdocument.getElementById("err_username").innerHTML =  red*/}
         </p>
         <p>
-          Email: <nbsp/>
-          <input type="text" id="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter Your Email Here"/>
-          <div class="error" id="err_email" style={{color:'#E03E57'}}></div>
+          Email: &nbsp;
+          <input type="text" id="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter Your Email Here"/><br/>
+          <span className="error">{errors.email}</span>
         </p>
         <p>
-          Password: <nbsp/>
-          <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter Password"/>
-          <div class="error" id="err_password" style={{color:'#E03E57'}}></div>
+          Password: &nbsp;
+          <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter Password"/><br/>
+          <span className="error">{errors.password}</span>
         </p>
         <p className="confirmpass">
-          Confirm Password: <nbsp/>
-          <input className="confirmpass2" size="15" type="password" id="password2" value={password2} onChange={(e) => setPassword2(e.target.value)} placeholder="Enter Password"/>
-          <div class="error" id="err_password2" style={{color:'#E03E57'}}></div>
+          Confirm Password: &nbsp;
+          <input className="confirmpass2" size="15" type="password" id="password2" value={password2} onChange={(e) => setPassword2(e.target.value)} placeholder="Enter Password"/><br/>
+          <span className="error">{errors.password2}</span>
         </p>
         <p>
           Already have an account? &nbsp;
@@ -121,6 +144,7 @@ function Register() {
           </Link>
         </p>
         <button type="submit">Register</button>
+        <div className="error">{errors.misc}</div>
       </form>
     </>
   );

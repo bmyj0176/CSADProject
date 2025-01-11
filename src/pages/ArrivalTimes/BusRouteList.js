@@ -35,8 +35,6 @@ const BusRouteList = (props) => {
                 const list = await getBusTiming(bsc, BusService)
                 busarrivallist_list.push(list)
             }
-            console.log("busarrivallist_list")
-            console.log(busarrivallist_list)
             setBusTimesListList(busarrivallist_list)
         }
         resetLists();
@@ -53,7 +51,6 @@ const BusRouteList = (props) => {
 
     const updateBusTimes = async (index) => {
         const newBusTimes = [...busTimesListList]
-        console.log(stopNumbersList[index])
         const busTiming = await getBusTiming(stopNumbersList[index], props.data.busNumber)
         newBusTimes[index] = busTiming
         setBusTimesListList(newBusTimes)

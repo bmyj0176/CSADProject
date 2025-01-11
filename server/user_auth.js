@@ -7,10 +7,15 @@ const router = express.Router();
 
 // register route
 router.post('/register', async (req, res) => {
-    console.log('Received request at /auth/register');
     const { username, email, password } = req.body;
   
     try {
+      // check if email exists
+      const existingEmail = await User.findOne({ email });
+      if (existingEmail) {
+        return res.status(409).json({ error: 'Email already exists' })
+      }
+
       const hashedPassword = await bcrypt.hash(password, 10);
       const newUser = new User({
         username,
@@ -20,10 +25,10 @@ router.post('/register', async (req, res) => {
   
       await newUser.save();
       console.log('User created successfully');
-      res.status(201).json({ message: 'User created successfully' });
+      return res.status(201).json({ message: 'User created successfully' });
     } catch (error) {
       console.error('Error saving user to DB:', error);
-      res.status(500).json({ error: 'Error creating user' });
+      return res.status(500).json({ error: 'Internal server error. Please try again later.' });
     }
     
   });

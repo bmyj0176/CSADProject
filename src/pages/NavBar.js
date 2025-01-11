@@ -51,7 +51,7 @@ const NavBar = () => {
             <ToggleThemeButton/> 
           </li>
           <li style={{ float: 'right'}} className="dropdown">
-            <a href="javascript:void(0)" className="dropbtn">
+            <div className="dropbtn">
               { !userLoggedIn ? (
                 <Link className = "loginright" to="/login" >Login</Link> 
               ) : (
@@ -65,7 +65,7 @@ const NavBar = () => {
                   </div>
                 </>
               )}
-            </a>
+            </div>
           </li>
           <li className="aboutt" style={{ float: 'right'}}>
             <Link to="/about" className={location.pathname === "/about" ? "activee" : ""}>About</Link>

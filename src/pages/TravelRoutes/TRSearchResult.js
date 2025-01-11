@@ -15,7 +15,7 @@ const TRSearchResult = (props) => {
             setSubheader1(props.dict.stationCodes.join(' '))
             setSubheader2(
               Array.from({ length: props.dict.stationCodes.length }, (_, index) => (
-                <img src={codeToMRTImagePath(props.dict.stationCodes[index])}/>
+                <img key={index} src={codeToMRTImagePath(props.dict.stationCodes[index])}/>
                 ))
             )
         } else if (props.dict.type === "busStop") {
@@ -23,7 +23,7 @@ const TRSearchResult = (props) => {
             setSubheader1(props.dict.busStopCode)
             setSubheader2(
                 Array.from({ length: props.dict.nearbyMRTs.length }, (_, index) => (
-                <img src={codeToMRTImagePath(props.dict.nearbyMRTs[index])}/>
+                <img key={index} src={codeToMRTImagePath(props.dict.nearbyMRTs[index])}/>
                 ))
             )
         }
@@ -31,7 +31,6 @@ const TRSearchResult = (props) => {
   
     const handleClick = () => {
       props.sendToSearchBar(props.dict)
-      console.log("done2")
     };
   
     // BUTTON LAYOUT

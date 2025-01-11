@@ -108,8 +108,6 @@ const TRSearchBar = (props) => {
         }
         setBarsList(filtered_list)
         setBarsCount(filtered_list.length);
-        console.log("hi")
-        console.log(filtered_list)
     };
 
     const sendToSearchBar = (dict) => {
@@ -121,13 +119,11 @@ const TRSearchBar = (props) => {
         if (searchBarSelected) {
             setSearchBarValue(value)
             setLockedInValue(value)
-            console.log("yes1")
             setLocation1(dict)
         }
         else if (searchBarSelected2) {
             setSearchBarValue2(value)
             setLockedInValue2(value)
-            console.log("yes2")
             setLocation2(dict)
         }
     }
