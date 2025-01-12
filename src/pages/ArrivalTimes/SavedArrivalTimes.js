@@ -33,8 +33,10 @@ const SavedArrivalTimes = (props) => {
           <ATSearchResult 
           dict={favedItems[index]} 
           index={index}
+          receiver={"SavedArrivalTimes"}
+          setSelectedList={props.setSelectedList}
           receiveSearchResult={props.receiveSearchResult}
-          selectedItem={props.selectedItem}
+          selectedItem={props.selectedItem === "SavedArrivalTimes" ? props.selectedItem : null}
           onItemSelect={props.onItemSelect}
           favedItems={props.favedItems}
           onFavItem={props.onFavItem}

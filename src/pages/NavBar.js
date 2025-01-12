@@ -21,6 +21,8 @@ const NavBar = () => {
 
   function logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('username');
+    localStorage.removeItem('savedarrivaltimes');
     navigate('/');
     window.location.reload();
   }

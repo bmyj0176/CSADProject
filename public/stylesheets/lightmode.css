@@ -58,3 +58,10 @@ button, .buton{
 .popup-overlay {
   background: white;
 }
+
+
+
+
+.element {
+  animation: none;
+}

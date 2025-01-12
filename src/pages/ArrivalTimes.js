@@ -5,6 +5,8 @@ import "./stylesheets/arrivaltimes.css";
 import ArrivalTimesList from "./ArrivalTimes/ArrivalTimesList";
 import SavedArrivalTimes from "./ArrivalTimes/SavedArrivalTimes";
 
+import { ArrivalTimesElement } from "./ArrivalTimes/ArrivalTimesList";
+
 const ArrivalTimes = () => {
   const [toggles, setToggles] = useState({
     busNo: null,
@@ -14,7 +16,8 @@ const ArrivalTimes = () => {
 
   const [throwPopup, setThrowPopup] = useState(false)
   const [searchResult, setSearchResult] = useState(null)
-  const [selectedItem, setSelectedItem] = useState(null) 
+  const [selectedItem, setSelectedItem] = useState(null)
+  const [selectedList, setSelectedList] = useState(-1) // "ATSearchBar" vs "SavedArrivalTimes"
   const [favedItems, setFavedItems] = useState(() => {
     const storedFavedItems = localStorage.getItem("savedarrivaltimes")
     if (!storedFavedItems) // no localstorage data
@@ -124,6 +127,12 @@ const ArrivalTimes = () => {
       </div>
     <ul className="horizontal-list">
       <li style={{backgroundColor:'#00000010'}}>
+        <h2>test example:</h2>
+        <ArrivalTimesElement
+        header={"Domingo Compound"}
+        subheader={"69420"}
+        busTimesList={["Arr", "7", "13"]}
+        updateBusTimes={() => {}}/>
         {searchResult && <ArrivalTimesList data={searchResult} />}
       </li>
       <li>
@@ -154,6 +163,8 @@ const ArrivalTimes = () => {
           </li>
         </ul>
         <ATSearchBar
+          selectedList={selectedList}
+          setSelectedList={setSelectedList}
           toggleStates={toggles}
           receiveSearchResult={receiveSearchResult}
           selectedItem={selectedItem}
@@ -164,6 +175,8 @@ const ArrivalTimes = () => {
       </li>
       <li style={{backgroundColor:'#00000010'}}>
       <SavedArrivalTimes 
+        selectedList={selectedList}
+        setSelectedList={setSelectedList}
         receiveSearchResult={receiveSearchResult}
         selectedItem={selectedItem}
         onItemSelect={onItemSelect}

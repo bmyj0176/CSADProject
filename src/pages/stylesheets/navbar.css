@@ -39,7 +39,7 @@
 .nv .dropdown-content {
   display: none;
   position: absolute;
-  top: 95px;
+  top: 85px;
   padding-right: 5px;
   background-color: rgb(60, 60, 60);
   min-width: 160px;

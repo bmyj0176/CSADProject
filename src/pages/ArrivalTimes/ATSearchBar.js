@@ -107,8 +107,10 @@ const ATSearchBar = (props) => {
                 <ATSearchResult 
                 dict={barsList[index]} 
                 index={index}
+                receiver={"ATSearchBar"}
+                setSelectedList={props.setSelectedList}
                 receiveSearchResult={props.receiveSearchResult}
-                selectedItem={props.selectedItem}
+                selectedItem={props.selectedItem === "ATSearchBar" ? props.selectedItem : null}
                 onItemSelect={props.onItemSelect}
                 favedItems={props.favedItems}
                 onFavItem={props.onFavItem}

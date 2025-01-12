@@ -17,18 +17,9 @@ const userSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
-  darktheme: { // false = light; true = dark
-    type: Boolean,
-    required: true,
-    default: true,
-  },
-  savedpresets: {
-    type: [
-      {
-        key: { type: String, required: true }, // string field for key
-        value: { type: mongoose.Schema.Types.Mixed, required: true }, // can be any type
-      },
-    ],
+  savedarrivaltimes: {
+    type: [mongoose.Schema.Types.Mixed],
+    default: [],
   },
 });
 

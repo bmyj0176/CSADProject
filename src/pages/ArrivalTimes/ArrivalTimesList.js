@@ -1,6 +1,7 @@
 import BusRouteList from './BusRouteList';
 import BusStopList from './BusStopList';
 import React from 'react';
+import "../stylesheets/at_list.css";
 
 // props.data.type is the type of value, either "busNo", "busStop" or "stopNumber"
 const ArrivalTimesList = (props) => {
@@ -21,20 +22,25 @@ const ArrivalTimesList = (props) => {
 export const ArrivalTimesElement = (props) => {
     return (
     <>
-        <div><b>{props.header}</b>
-        <br/>
-        {props.subheader && <>
-            {props.subheader}
+        <div className="atlist">
+            <b>{props.header}</b>
             <br/>
-        </>}
-        
-        <button onClick={props.updateBusTimes}>
-        { // list of arrivaltimes (x3)
-            (props.busTimesList ? props.busTimesList : ["-", "-", "-"]).map((busTime, index) => (
-                <span key={index}>{busTime}&nbsp;</span> // each arrivaltime in mins
-            ))
-        }
-        </button>
+            {props.subheader && <>
+                {props.subheader}
+                <br/>
+            </>}
+            <div className='listbutton'>
+                <button onClick={props.updateBusTimes} >
+                { // list of arrivaltimes (x3)
+                    (props.busTimesList ? props.busTimesList : ["-", "-", "-"]).map((busTime, index) => (
+                        <span key={index}>
+                            {index === 0 ? <span className="element">{busTime}</span> : busTime},&nbsp;&nbsp;
+                        </span> // each arrivaltime in mins
+                    )) 
+                }
+                </button>
+                mins
+            </div>
         </div>
     </>
     )

@@ -1,0 +1,11 @@
+.atlist button {
+    width: 120px;
+}
+
+.listbutton :hover {
+    background-color: grey;
+}
+
+.element {
+    font-size: 30px;
+}

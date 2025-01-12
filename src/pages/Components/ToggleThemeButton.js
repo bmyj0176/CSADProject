@@ -55,7 +55,6 @@ const ToggleThemeButton = () => {
     return (
         <div className="tooltip">
             <button 
-            title="Toggle Theme"
             id="theme-target"
             className={isDarkTheme ? "dark" : "light"} 
             onClick={toggleTheme}/>

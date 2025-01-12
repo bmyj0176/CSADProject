@@ -1,5 +1,8 @@
 const About = () => {
-    return <h1>About</h1>;
+    return <h1>成長的所謂 擦乾那眼淚
+    不待見的看法只是生活的點綴
+    我看過街頭泛黃被塗鴉的牆上畫著漫天星鬥
+    也感受過隨便潦草幾行的謊言拋出就可以變成鋒利匕首🔥 🔥 🔥</h1>;
   };
   
   export default About;

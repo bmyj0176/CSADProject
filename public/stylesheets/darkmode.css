@@ -61,3 +61,16 @@ button, .buton{
   
   background: rgb(23, 32, 37);
 }
+
+.element {
+  animation: glow2 1.5s infinite alternate;
+}
+
+@keyframes glow2 {
+  0% {
+    text-shadow: 0 0 1px khaki, 0 0 2px khaki, 0 0 4px khaki, 0 0 6px khaki;
+  }
+  100% {
+    text-shadow: 0 0 2px khaki, 0 0 4px khaki, 0 0 6px khaki, 0 0 8px khaki;
+  }
+}

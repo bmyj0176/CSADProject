@@ -10,7 +10,7 @@ const ATSearchResult = (props) => {
       'selected' :
       'unselected'
     });
-    
+
     useEffect(() => {
       setFavItem(dict_in_list(props.dict, props.favedItems) ?
       'selected' :
@@ -43,6 +43,7 @@ const ATSearchResult = (props) => {
     }, [props.dict, props.favedItems]);
   
     const handleClick = () => {
+      props.setSelectedList(props.receiver)
       props.onItemSelect(props.index)
       props.receiveSearchResult(props.dict)
     };
