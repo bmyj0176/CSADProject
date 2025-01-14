@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { Outlet, Link, useLocation, useNavigate  } from "react-router-dom";
-import { dict_in_list } from '../helper_functions2';
 import './stylesheets/navbar.css';
-import { dijkstra, shortest_path } from '../travel_algorithms';
+import { getAllBusStops } from '../helper_functions'
+import { downloadJSON } from '../helper_functions2';
 import ToggleThemeButton from './Components/ToggleThemeButton';
 
 const NavBar = () => {
@@ -28,8 +29,15 @@ const NavBar = () => {
   }
 
   async function test_function() {
-  console.log("Test End");
-}
+    
+  }
+  async function test_function2() {
+    console.time("Time Taken:");
+    console.log("Test Start");
+    console.log(await getAllBusStops("901", 1));
+    console.timeEnd("Time Taken:");
+    console.log("Test End");
+  }
 
 
   return (
@@ -46,7 +54,8 @@ const NavBar = () => {
           </li>
           
           <li>
-            <button id="test_button" onClick={test_function}> Test Button </button><span id="test_text"></span>
+          <button id="test_button" onClick={test_function}> Test Button </button><span id="test_text"></span>
+          <button id="test_button2" onClick={test_function2}> Test Button 2 </button><span id="test_text"></span>
           </li>
         {/*------ ABOVE IS FLOATED LEFT, BELOW IS FLOATED RIGHT -----------------------------*/}
           <li style={{ float: 'right' }}>

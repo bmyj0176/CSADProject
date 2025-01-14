@@ -63,12 +63,10 @@ export async function getBusStopInfo(BusStopCode, key) {
 // OUTPUT stopNumberList - (list of String) all bus stops this bus service passes by, in order
 export async function getAllBusStops(BusService, direction) {
     const stopNumberList = []
-    const data = await BusRoutes(BusService)
-    const list = data.value
-    for (const dict of list) {
-        if (dict.ServiceNo == BusService && dict.Direction == direction) 
-            stopNumberList.push(dict.BusStopCode)  
-    }
+    const data = await getjson('./datasets/busstops_map.json')
+    const list = data[BusService][direction]
+    for (const item of list)
+        stopNumberList.push(item[0])
     return stopNumberList
 }
 

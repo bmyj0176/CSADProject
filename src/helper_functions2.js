@@ -18,6 +18,15 @@ export function timeDiffISO8601(time1, time2) {
     return diffInSeconds
 }
 
+export async function downloadJSON(obj) {
+    const jsonStr = JSON.stringify(obj, null, 2);  // pretty-print with 2 spaces for readability
+    const blob = new Blob([jsonStr], { type: 'application/json' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'data.json';  // Name of the file to be downloaded
+    link.click();
+}
+
 // input is a bus number/service
 // output is the index for $skip bus route API parameter for finding the bus service data
 export function busRouteAPIQuerySkip(busNumber) {

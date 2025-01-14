@@ -57,7 +57,10 @@ const ATSearchResult = (props) => {
       return (
         <div className = "cent">
           <p style={{display:'block'}}>
-            <button className={subheader1 ? "busstopcard" : "alternatecard"} id={(props.selectedItem === props.index) ? "busstopclicked" : "busstopdefault"} onClick={handleClick}>
+            <button 
+            className={subheader1 ? "busstopcard" : "alternatecard"} 
+            id={(props.selectedItem === props.index) ? "busstopclicked" : "busstopdefault"} 
+            onClick={handleClick}>
               <h3 className="busstopname">{header}</h3>
               <b className="busstopnumber">{subheader1}</b>
               {subheader2 && (subheader2)}
