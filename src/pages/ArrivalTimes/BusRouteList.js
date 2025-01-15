@@ -12,12 +12,6 @@ const BusRouteList = (props) => {
 
     // updates list when props updates
     useEffect(() => {
-        const resetLists = () => {
-            setBusDirections([])
-            setStopNumbersList([])
-            setBusStopNameList([])
-            setBusTimesListList([])
-        }
         const updateLists = async () => {
             const BusService = props.data.busNumber
             busDirections = await getBusDirections(BusService)
@@ -42,7 +36,15 @@ const BusRouteList = (props) => {
         
     }, [props.data, direction]);    
 
+    const resetLists = () => {
+        setBusDirections([])
+        setStopNumbersList([])
+        setBusStopNameList([])
+        setBusTimesListList([])
+    }
+
     const toggleDirection = () => {
+        resetLists();
         if (direction === 1)
             setDirection(2)
         else

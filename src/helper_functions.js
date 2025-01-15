@@ -16,33 +16,35 @@ export async function getjson(path) {
 // INPUT1 BusStopCode - (string) 5 digit code of bus stop, e.g. '46971', '83139'
 // INPUT2 BusNumber - (string) bus number, e.g. 185, 901M
 // OUTPUT times[] - (list of strings) minutes until the next 3 buses arrive, e.g. [3, 12, 19]
-// buses arriving in <1 min will be "Arr" and if there's no bus it'll be "-"
+// buses arriving in <1 min will be "Now" and if there's no bus it'll be "-"
+// if there's no bus services, output will just be null
 export async function getBusTiming(BusStopCode, BusNumber) {
     // Fetch bus arrival data
     const response = await BusArrival(BusStopCode);
     const services = response.Services;
     if (services.length === 0)
-        return ["-", "-", "-"]
-    const service = services.find(service => service["ServiceNo"] === BusNumber);
-    const times = []
-    const currentDate = new Date().toISOString(); 
-    const nextBusDates = []
-    try {nextBusDates.push(service.NextBus?.EstimatedArrival)} catch {nextBusDates.push(null)}
-    try {nextBusDates.push(service.NextBus2?.EstimatedArrival)} catch {nextBusDates.push(null)}
-    try {nextBusDates.push(service.NextBus3?.EstimatedArrival)} catch {nextBusDates.push(null)}
-    for (let nextBusDate of nextBusDates) {
-        if (nextBusDate == "")
-            times.push("-")
-        else {
-            let time = timeDiffISO8601(convertISO8601(nextBusDate), currentDate)/60
-            if (time < 0) { time = 0 }
-            time = Math.floor(time)
-            if (time == 0) { time = "Arr" }
-            times.push(time)
-        }
+        return null
+    const service = services.find(service => service["ServiceNo"] === BusNumber); // return all bus service matching it
+    if (!service.NextBus.EstimatedArrival) {
+        return null
     }
-    return times
-    
+    const nextBusDates = [
+        service.NextBus?.EstimatedArrival || null,
+        service.NextBus2?.EstimatedArrival || null,
+        service.NextBus3?.EstimatedArrival || null
+    ];
+    const currentDate = new Date();
+    return nextBusDates.map(nextBusDate => {
+        if (!nextBusDate) {
+            return "-";
+        }
+        const arrivalTime = new Date(nextBusDate);
+        let diffMinutes = Math.floor((arrivalTime - currentDate) / 60000); // Milliseconds to minutes
+        if (diffMinutes < 0) {
+            diffMinutes = 0;
+        }
+        return diffMinutes === 0 ? "Now" : diffMinutes;
+    });
 }
 
 // INPUT1 busStopCode - (string) bus stop code of bus stop you want to query, e.g. "46971"
@@ -87,26 +89,21 @@ export async function getAllBusServices(BusStopCode) {
 // OUTPUT directions - (list of dicts) list count is number of directions, dict = {direction: x, start: "stationName", end: "stationName"}
 // direction can only be 1 or 2; start and end is the busStopName of first and last stop (usually bus interchange)
 export async function getBusDirections(BusService) {
-    const directions = []
-    const d1Dicts = []
-    const d2Dicts = []
-    const data = await BusRoutes(BusService)
-    const list = data.value
-    for (const dict of list) {
-        if (dict.ServiceNo === BusService)
-            (dict.Direction == 1) ? d1Dicts.push(dict.BusStopCode) : d2Dicts.push(dict.BusStopCode)
-    }
-    if (d1Dicts.length > 0) {
-        const d1Start = await getBusStopInfo(d1Dicts[0], "Description")
-        const d1End = await getBusStopInfo(d1Dicts[d1Dicts.length-1], "Description")
-        directions.push({direction: 1, start: d1Start, end: d1End})
-    }
-    if (d2Dicts.length > 0) {
-        const d2Start = await getBusStopInfo(d2Dicts[0], "Description")
-        const d2End = await getBusStopInfo(d2Dicts[d2Dicts.length-1], "Description")
-        directions.push({direction: 2, start: d2Start, end: d2End})
-    }
-        
+    const directions = [];
+    const data = await getjson('./datasets/busstops_map.json');
+    const service = data[BusService];
+    directions.push({
+        direction: 1, 
+        start: await getBusStopInfo(service["startend1"][0], "Description"),
+        end: await getBusStopInfo(service["startend1"][1], "Description"),
+    })
+    if (!service["startend2"])
+        return directions
+    directions.push({
+        direction: 2, 
+        start: await getBusStopInfo(service["startend2"][0], "Description"),
+        end: await getBusStopInfo(service["startend2"][1], "Description"),
+    })
     return directions
 }
 
@@ -115,22 +112,18 @@ export async function getBusDirections(BusService) {
 // INPUT3 BSCode2 - (string) second bus stop code
 // OUTPUT distance - (Number) distance in km between two bus stops
 export async function getRoadDistance(BusService, BSCode1, BSCode2) {
-    let stop1 = null;
-    let stop2 = null;
-    const data = await BusRoutes(BusService)
-    const list = data.value
-    for (let dict of list) {
-        if (dict.ServiceNo === BusService) {
-            if (dict.BusStopCode === BSCode1 || dict.BusStopCode === BSCode2) {
-                if (!stop1) { stop1 = { ...dict }; }
-                else if (!stop2) { 
-                    stop2 = { ...dict }; 
-                    break;
-                }
-            }
-        }
+    let dist1 = null;
+    let dist2 = null;
+    const data = await getjson('./datasets/busstops_map.json');
+    for (const direction of ["1", "2"]) {
+        const list = data[BusService][direction];
+        dist1 = Object.fromEntries(list)[BSCode1];
+        dist2 = Object.fromEntries(list)[BSCode2];
+        if (dist1 && dist2)
+            break;
     }
-    return Math.abs(stop1.Distance - stop2.Distance);
+    
+    return Math.abs(BSCode1 - BSCode2);
 }
 
 // INPUT1 searchQuery - (string) the search term/substring for the list
