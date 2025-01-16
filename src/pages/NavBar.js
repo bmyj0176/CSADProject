@@ -1,16 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { Outlet, Link, useLocation, useNavigate  } from "react-router-dom";
 import './stylesheets/navbar.css';
 import { getAllBusStops } from '../helper_functions'
-import { downloadJSON } from '../helper_functions2';
 import ToggleThemeButton from './Components/ToggleThemeButton';
 
 const NavBar = () => {
   const [userLoggedIn, setUserLoggedIn] = useState(false);
   const location = useLocation(); 
-  const elementId = "light";
-  const isActive = (path) => location.pathname === path;
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -29,39 +25,7 @@ const NavBar = () => {
   }
 
   async function test_function() {
-    const database = {};
-    for (let num = 0; num < 52; num++) {
-      console.log("cycle", num);
-      const rawdata = await axios.get(`${process.env.REACT_APP_BACKEND_API_URL}/api/bus-routes?skip=${num * 500}`);
-      const value = rawdata.data.value;
-      for (const dict of value) {
-        // creating 
-        if (!database[dict.ServiceNo]) {  
-            database[dict.ServiceNo] = {};  
-        }
-        const innerMap = database[dict.ServiceNo];
-        if (!innerMap[dict.Direction]) {  
-            innerMap[dict.Direction] = []; 
-        }
-        const innestMap = innerMap[dict.Direction];
-        innestMap.push([dict.BusStopCode, dict.Distance]);
-        // storing start & end busstops
-        if (dict.Direction === 1) {
-          if (!innerMap["startend1"]) {
-            innerMap["startend1"] = [dict.BusStopCode, dict.BusStopCode];
-          }
-          innerMap["startend1"][1] = dict.BusStopCode ;
-        } else { // === 2
-          if (!innerMap["startend2"]) {
-            innerMap["startend2"] = [dict.BusStopCode, dict.BusStopCode];
-          }
-          innerMap["startend2"][1] = dict.BusStopCode;
-        }
-      }
-    }
-
-    console.log(database);
-    downloadJSON(database)
+    
   }
   async function test_function2() {
     console.time("Time Taken:");
@@ -76,7 +40,7 @@ const NavBar = () => {
     <>
       <ul className="nv">
           <li>
-            <Link to="/" className={location.pathname === "/" ? "activee" : ""}><img className="nyoom" src="./images/nyoom_icon.png"/*nyoom_icon.png*//></Link>
+            <Link to="/" className={location.pathname === "/" ? "activee" : ""}><img alt="Homepage" className="nyoom" src="./images/nyoom_icon.png"/*nyoom_icon.png*//></Link>
           </li>
           <li>
             <Link to="/arrivaltimes" className={location.pathname === "/arrivaltimes" ? "activee" : ""}>Bus Arrival Times</Link>

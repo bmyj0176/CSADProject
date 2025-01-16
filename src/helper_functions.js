@@ -1,5 +1,5 @@
-import { convertISO8601, timeDiffISO8601, doxx, haversine, insertAndShift } from "./helper_functions2";
-import { BusArrival, BusRoutes, BusStops } from "./api_caller";
+import { doxx, haversine, insertAndShift } from "./helper_functions2";
+import { BusArrival } from "./api_caller";
 
 // THIS FUNCTION PARSES ENTIRE JSON OBJECT FROM A FILE PATH
 export async function getjson(path) {
@@ -53,7 +53,7 @@ export async function getBusTiming(BusStopCode, BusNumber) {
 export async function getBusStopInfo(BusStopCode, key) {
     const complete_list = await getjson('./datasets/bus_stops_complete.txt');
     for (const dict of complete_list) {
-        if (dict.BusStopCode == BusStopCode)
+        if (dict.BusStopCode === BusStopCode)
             return dict[key]
     }
     console.error("BusStopCode couldn't be found!")
