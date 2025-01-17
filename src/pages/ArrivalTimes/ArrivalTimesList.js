@@ -1,6 +1,7 @@
 import BusRouteList from './BusRouteList';
 import BusStopList from './BusStopList';
 import React from 'react';
+import BouncyBouncy from '../Components/LoadingIcon';
 import "../stylesheets/at_list.css";
 
 // props.data.type is the type of value, either "busNo", "busStop" or "stopNumber"
@@ -32,17 +33,29 @@ export const ArrivalTimesElement = (props) => {
             <div className='listbutton'>
                 <button onClick={props.updateBusTimes} >
                 { // list of arrivaltimes (x3)
-                    (props.busTimesList ? props.busTimesList : ["-", "-", "-"]).map((busTime, index) => (
+                    typeof props.busTimesList === "undefined" ? 
+                    <BouncyBouncy/> : 
+                    props.busTimesList === null ?
+                    <Unavailable/> :
+                    props.busTimesList.map((busTime, index) => (
                         <span key={index}>
                             {index === 0 ? <span className="element">{busTime}</span> : busTime},&nbsp;&nbsp;
                         </span> // each arrivaltime in mins
                     )) 
                 }
                 </button>
-                mins
+                {props.busTimesList && " mins"}
             </div>
         </div>
     </>
+    )
+}
+
+const Unavailable = () => {
+    return (
+        <>
+            No Service
+        </>
     )
 }
 

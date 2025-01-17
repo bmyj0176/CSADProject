@@ -6,16 +6,17 @@
     height: 100%;
     background: rgba(0, 0, 0, 0.5); 
     backdrop-filter: blur(5px); 
-    display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
   }
   
   .popup {
-    padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.5%;
     width: 90%;
-    max-width: 400px;
+    max-width: 35%;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     animation: fadeIn 0.3s ease-in-out;

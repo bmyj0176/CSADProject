@@ -25,7 +25,7 @@ export async function getBusTiming(BusStopCode, BusNumber) {
     if (services.length === 0)
         return null
     const service = services.find(service => service["ServiceNo"] === BusNumber); // return all bus service matching it
-    if (!service.NextBus.EstimatedArrival) {
+    if (!service || !service.NextBus || service.NextBus?.EstimatedArrival) {
         return null
     }
     const nextBusDates = [

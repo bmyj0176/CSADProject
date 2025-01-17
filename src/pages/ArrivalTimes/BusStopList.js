@@ -17,12 +17,10 @@ const BusStopList = (props) => {
             const BusStopCode = props.data.busStopCode
             const busServices = await getAllBusServices(BusStopCode)
             setBusServicesList(busServices)
-            const busTimesList = []
-            for (const busService of busServices) {
-                const list = await getBusTiming(BusStopCode, busService)
-                busTimesList.push(list)
-            }
-            setBusTimesListList(busTimesList)
+            const busTimesList = await Promise.all(
+                busServices.map((busService) => getBusTiming(BusStopCode, busService))
+            );
+            setBusTimesListList(busTimesList); // Update the state with the fetched results
         }
         resetLists();
         updateLists();

@@ -24,12 +24,10 @@ const BusRouteList = (props) => {
                 stopname_list.push(data)
             }
             setBusStopNameList(stopname_list)
-            const busarrivallist_list = []
-            for (const bsc of bsc_list) {
-                const list = await getBusTiming(bsc, BusService)
-                busarrivallist_list.push(list)
-            }
-            setBusTimesListList(busarrivallist_list)
+            const busarrivallist_list = await Promise.all(
+                bsc_list.map((bsc) => getBusTiming(bsc, BusService))
+            );
+            setBusTimesListList(busarrivallist_list); // Update the state with the fetched results
         }
         resetLists();
         updateLists();
