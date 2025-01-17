@@ -26,7 +26,7 @@ const ATSearchResult = (props) => {
           setSubheader2("  •  " + props.dict.distance + "m Away")
           break
         case "busNo":
-          setHeader("Bus " + props.dict.busNumber)
+          setHeader("Bus " + props.dict.busService)
           break
         case "busStop":
           setHeader(props.dict.busStopName)

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Outlet, Link, useLocation, useNavigate  } from "react-router-dom";
 import './stylesheets/navbar.css';
 import { getAllBusStops } from '../helper_functions'
+import { getBusDirections } from '../helper_functions';
 import ToggleThemeButton from './Components/ToggleThemeButton';
 
 const NavBar = () => {
@@ -25,7 +26,7 @@ const NavBar = () => {
   }
 
   async function test_function() {
-    
+    console.log(await getBusDirections("185"))
   }
   async function test_function2() {
     console.time("Time Taken:");

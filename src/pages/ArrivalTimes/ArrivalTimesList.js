@@ -1,60 +1,127 @@
-import BusRouteList from './BusRouteList';
-import BusStopList from './BusStopList';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { getAllBusStops, getBusStopInfo, getAllBusServices, getBusTiming, getBusDirections } from '../../helper_functions'
+import ArrivalTimesElement from './ArrivalTimesElement';
 import BouncyBouncy from '../Components/LoadingIcon';
-import "../stylesheets/at_list.css";
 
-// props.data.type is the type of value, either "busNo", "busStop" or "stopNumber"
 const ArrivalTimesList = (props) => {
+    const [direction, setDirection] = useState(1)
+    const [directionalData, setDirectionalData] = useState([])
+    const [stopCodesList, setStopCodesList] = useState([])
+    const [stopNamesList, setStopNamesList] = useState([])
+    const [servicesList, setServicesList] = useState([])
+    const [timesListList, setTimesListList] = useState([])
+
+    // updates list when props updates
+    useEffect(() => {
+        const resetLists = () => {
+            setDirectionalData([]);
+            setStopCodesList([]);
+            setStopNamesList([]);
+            setServicesList([]);
+            setTimesListList([]);
+        }
+        const updateLists = async () => {
+            if (props.data.type === "busNo") {
+                const busService = props.data.busService
+                const busDirections = await getBusDirections(busService)
+                setDirectionalData(busDirections)
+                const busStopCodes = await getAllBusStops(busService, direction)
+                setStopCodesList(busStopCodes)
+                const stopName_list = []
+                for (const bsc of busStopCodes) {
+                    const data = await getBusStopInfo(bsc, "Description")
+                    stopName_list.push(data)
+                }
+                setStopNamesList(stopName_list)
+                setServicesList(Array(busStopCodes.length).fill(busService))
+                const busarrivallist_list = await Promise.all(
+                    busStopCodes.map((bsc) => getBusTiming(bsc, busService))
+                );
+                setTimesListList(busarrivallist_list); 
+            }
+            else { // "busStop" || "nearestBusStop"
+                const busStopCode = props.data.busStopCode
+                const busStopName = props.data.busStopName
+                const busServices = await getAllBusServices(busStopCode)
+                setServicesList(busServices)
+                setStopCodesList(Array(busServices.length).fill(busStopCode))
+                setStopNamesList(Array(busServices.length).fill(busStopName))
+                const busTimesList = await Promise.all(
+                    busServices.map((busService) => getBusTiming(busStopCode, busService))
+                );
+                setTimesListList(busTimesList); 
+            }
+        }
+        resetLists();
+        updateLists();
+        
+    }, [props.data, direction]); 
+
+    const toggleDirection = () => {
+        if (direction === 1)
+            setDirection(2)
+        else
+            setDirection(1)
+    }
+
+    const updateBusTimes = async (index) => {
+            const newBusTimes = [...timesListList]
+            const busTiming = await getBusTiming(stopCodesList[index], servicesList[index])
+            newBusTimes[index] = busTiming
+            setTimesListList(newBusTimes)
+        }
 
     return (
         <>
+        <h2>{
+            (props.data.type === "busNo") 
+            ?
+            "Bus " + props.data.busService
+            :
+            props.data.busStopName
+        }</h2>
         {
-            (props.data.type === "busNo") ?
-            <BusRouteList data={props.data} />
-            : ((props.data.type === "busStop" || props.data.type === "nearestBusStop") ?
-            <BusStopList data={props.data} />
-            : "Error")
+            (stopNamesList.length === stopCodesList.length && stopCodesList.length === servicesList.length) ? // finished loading
+            (
+                <>
+                <BusDirectionToggleButton 
+                direction={direction}
+                directionalData={directionalData} 
+                toggleDirection={toggleDirection}/>
+                <div className="list">
+                {Array.from({ length: stopCodesList.length }, (_, index) => (
+                  <div key={index} className="bar">
+                    <ul><li>
+                        <ArrivalTimesElement 
+                        type={props.data.type}
+                        busStopCode={stopCodesList[index]} 
+                        busStopName={stopNamesList[index]}
+                        busService={servicesList[index]}
+                        busTimesList={timesListList[index]}
+                        updateBusTimes={() => updateBusTimes(index)}
+                        receiveSearchResult={props.receiveSearchResult} />
+                    </li></ul>
+                  </div>
+                ))}
+              </div>
+              </>
+            ) :
+            (
+                <BouncyBouncy/>
+            )
         }
         </>
     )
 };
 
-export const ArrivalTimesElement = (props) => {
-    return (
-    <>
-        <div className="atlist">
-            <b>{props.header}</b>
-            <br/>
-            {props.subheader && <>
-                {props.subheader}
-                <br/>
-            </>}
-            <div className='listbutton'>
-                <button onClick={props.updateBusTimes} >
-                { // list of arrivaltimes (x3)
-                    typeof props.busTimesList === "undefined" ? 
-                    <BouncyBouncy/> : 
-                    props.busTimesList === null ?
-                    <Unavailable/> :
-                    props.busTimesList.map((busTime, index) => (
-                        <span key={index}>
-                            {index === 0 ? <span className="element">{busTime}</span> : busTime},&nbsp;&nbsp;
-                        </span> // each arrivaltime in mins
-                    )) 
-                }
-                </button>
-                {props.busTimesList && " mins"}
-            </div>
-        </div>
-    </>
-    )
-}
-
-const Unavailable = () => {
+const BusDirectionToggleButton = (props) => {
     return (
         <>
-            No Service
+        {(props.directionalData.length === 2) && (
+            <button onClick={props.toggleDirection}>
+                {props.directionalData[props.direction-1].start} → {props.directionalData[props.direction-1].end}
+            </button>
+        )}
         </>
     )
 }

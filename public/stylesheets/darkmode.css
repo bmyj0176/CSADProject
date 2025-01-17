@@ -18,7 +18,7 @@ h1,h2 {
   color: aquamarine;
 }
 
-h5, form {
+form {
   border: medium double aquamarine; margin-right: 994px; background-color: rgb(9, 56, 56); 
 } 
 

@@ -64,7 +64,7 @@ const ATSearchBar = (props) => {
               for (const result of results)
                 filtered_list.push({
                 type: "busNo", 
-                busNumber: result})
+                busService: result})
             } else if (dict.type === "busStop") { // dual
               results = searchInDualList(value, dict.list, (MAX_BAR_SIZE - filtered_list.length), 2);
               console.log("results")

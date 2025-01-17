@@ -21,6 +21,8 @@ export async function getjson(path) {
 export async function getBusTiming(BusStopCode, BusNumber) {
     // Fetch bus arrival data
     const response = await BusArrival(BusStopCode);
+    if (!response.Services)
+        return null
     const services = response.Services;
     if (services.length === 0)
         return null

@@ -5,7 +5,7 @@ import "./stylesheets/arrivaltimes.css";
 import ArrivalTimesList from "./ArrivalTimes/ArrivalTimesList";
 import SavedArrivalTimes from "./ArrivalTimes/SavedArrivalTimes";
 
-import { ArrivalTimesElement } from "./ArrivalTimes/ArrivalTimesList";
+import ArrivalTimesElement from "./ArrivalTimes/ArrivalTimesElement";
 
 const ArrivalTimes = () => {
   const [toggles, setToggles] = useState({
@@ -127,13 +127,28 @@ const ArrivalTimes = () => {
       </div>
     <ul className="horizontal-list">
       <li style={{backgroundColor:'#00000010'}}>
-        <h2>test example:</h2>
+        <h3 style={{color: "red"}}>EXAMPLE: A bus stop</h3>
         <ArrivalTimesElement
-        header={"Domingo Compound"}
-        subheader={"69420"}
-        busTimesList={["Arr", "7", "13"]}
-        updateBusTimes={() => {}}/>
-        {searchResult && <ArrivalTimesList data={searchResult} />}
+        type={"busNo"}
+        busStopCode={"69420"}
+        busStopName={"Domingo Compound"}
+        busTimesList={["Now", "7", "13"]}/>
+        <h3 style={{color: "red"}}>EXAMPLE: A bus arriving @ bus stop</h3>
+        <ArrivalTimesElement
+        type={"busStop"}
+        busService={"911"}
+        busTimesList={null}/>
+        <h3 style={{color: "red"}}>EXAMPLE: Bookmarked ArrivalTime (hybrid)</h3>
+        <ArrivalTimesElement
+        type={null}
+        busStopCode={"69420"}
+        busStopName={"Domingo Compound"}
+        busService={"911"}
+        busTimesList={["2", "11", "-"]}/>
+        {searchResult && 
+        <ArrivalTimesList 
+        data={searchResult}
+        receiveSearchResult={receiveSearchResult} />}
       </li>
       <li>
         <ul className="at">
