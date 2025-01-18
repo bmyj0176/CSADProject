@@ -66,28 +66,36 @@ const ATSearchResult = (props) => {
               {subheader2 && (subheader2)}
             </button>
             {props.dict.type !== "nearestBusStop" && // dont show star if nearby mode
-            <button // STAR BUTTONNNNNNNNN
-              id={subheader1 ? 'buttonchange' : 'buttonchange2'}
-              className={favItem === 'selected' ? "btnfaved" : "btnunfaved"}
-              onClick={handleFav}
-              type="button"
-            >   
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            width="24"
-            height="24"
-          >
-            <path
-              d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
-              fill="currentColor"
-            />
-          </svg>
-        </button>
-        }
+            <StarButton
+            handleFav={handleFav}
+            favItem={favItem}
+            subheader1={subheader1}/>}
           </p>
-          </div>
+        </div>
       )
   }
 
-  export default ATSearchResult
+const StarButton = (props) => {
+  return (
+    <button // STAR BUTTONNNNNNNNN
+        id={props.subheader1 ? 'buttonchange' : 'buttonchange2'}
+        className={props.favItem === 'selected' ? "btnfaved" : "btnunfaved"}
+        onClick={props.handleFav}
+        type="button"
+      >   
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          width="24"
+          height="24"
+        >
+          <path
+            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+            fill="currentColor"
+          />
+        </svg>
+      </button>
+  )
+}
+
+export default ATSearchResult

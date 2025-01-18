@@ -74,3 +74,10 @@ button, .buton{
     text-shadow: 0 0 2px khaki, 0 0 4px khaki, 0 0 6px khaki, 0 0 8px khaki;
   }
 }
+
+input {
+  background-color: black;
+  color: white;
+  border: 1px solid white; /* Optional: Add a white border */
+  padding: 5px;           /* Optional: Add some padding */
+}

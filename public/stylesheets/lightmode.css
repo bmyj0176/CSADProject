@@ -59,9 +59,13 @@ button, .buton{
   background: white;
 }
 
-
-
-
 .element {
   animation: none;
+}
+
+input {
+  background-color: white;
+  color: black;
+  border: 1px solid black; /* Optional: Add a white border */
+  padding: 5px;           /* Optional: Add some padding */
 }

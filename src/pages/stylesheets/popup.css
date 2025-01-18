@@ -70,7 +70,7 @@
     gap: 10px; 
            }         /* Space between label text and input */
   
-  input[type="text"], input[type="password"] {
+  form input[type="text"], form input[type="password"] {
     flex: 1;               /* Allow input to take up remaining space */
     padding: 5px;
     font-size: 14px;
