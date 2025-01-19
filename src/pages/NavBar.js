@@ -7,8 +7,13 @@ import { getMap } from '../travel_algorithms_bus'
 
 const NavBar = () => {
   const [userLoggedIn, setUserLoggedIn] = useState(false);
+  const [path, setPath] = useState("/");
   const location = useLocation(); 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setPath(location.pathname); 
+  }, [location]);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -75,7 +80,17 @@ const NavBar = () => {
             <Link to="/about" className={location.pathname === "/about" ? "activee" : ""}>About</Link>
           </li>
       </ul>
-      <Outlet />
+      {/* (path !== "/") &&
+      <div style={{ display: 'flex', height: '100vh' }}>
+        <div style={{ width: '80%', padding: '0 10%' }}>
+          <Outlet />
+        </div>
+      </div>
+      */}
+      {
+        /*(path === "/") && */<Outlet />
+      }
+
     </>
   )
 };

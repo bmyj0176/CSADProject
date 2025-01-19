@@ -67,8 +67,6 @@ const ATSearchBar = (props) => {
                 busService: result})
             } else if (dict.type === "busStop") { // dual
               results = searchInDualList(value, dict.list, (MAX_BAR_SIZE - filtered_list.length), 2);
-              console.log("results")
-              console.log(results)
               for (const result of results) {
                 // Add item to filtered_list if it doesn't exceed MAX_BAR_SIZE
                 filtered_list.push({

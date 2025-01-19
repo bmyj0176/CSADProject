@@ -4,14 +4,12 @@ import { dict_in_list } from '../../helper_functions2';
 import "../stylesheets/ATpages/at_list.css";
 
 const ArrivalTimesElement = (props) => {
-    const [data, setData] = useState(
-        {
-            type: (props.type === "busNo") ? "busStop" : "busNo",
-            busService: props.busService,
-            busStopName: props.busStopName,
-            busStopCode: props.busStopCode
-        }
-    )
+
+    const [data, setData] = useState({
+        busService: props.busService,
+        busStopName: props.busStopName,
+        busStopCode: props.busStopCode
+    })
     const [favItem, setFavItem] = useState(() => {
         return dict_in_list(data, props.favedItems) ?
         'selected' :
@@ -19,16 +17,8 @@ const ArrivalTimesElement = (props) => {
       });
     
     useEffect(() => {
-        setFavItem(dict_in_list(data, props.favedItems) ?
-        'selected' :
-        'unselected'
-        )
-    }, [props.favedItems])
-    
-    useEffect(() => {
         setData(
             {
-                type: (props.type === "busNo") ? "busStop" : "busNo",
                 busService: props.busService,
                 busStopName: props.busStopName,
                 busStopCode: props.busStopCode
@@ -36,9 +26,24 @@ const ArrivalTimesElement = (props) => {
         )
     }, [props.type, props.busService, props.busStopName, props.busStopCode])
 
+    useEffect(() => {
+        setFavItem(dict_in_list(data, props.favedItems) ?
+        'selected' :
+        'unselected'
+        )
+    }, [props.favedItems])
+
     const onDivClick = () => {
-        if (props.type && data)
-            props.receiveSearchResult(data)
+        if (props.type) {
+            props.receiveSearchResult(
+                {
+                    type: (props.type === "busNo") ? "busStop" : "busNo", // invert type
+                    busService: props.busService,
+                    busStopName: props.busStopName,
+                    busStopCode: props.busStopCode
+                }
+            )
+        }
     }
 
     const onTimesClick = (e) => {

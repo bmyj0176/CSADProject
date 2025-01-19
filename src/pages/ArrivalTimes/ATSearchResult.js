@@ -25,7 +25,7 @@ const ATSearchResult = (props) => {
           setSubheader1(props.dict.busStopCode)
           setSubheader2(
             Array.from({ length: props.dict.nearbyMRTs.length }, (_, index) => (
-              <img className='mrticon' src={codeToMRTImagePath(props.dict.nearbyMRTs[index])}/>
+              <img key={index} className='mrticon' src={codeToMRTImagePath(props.dict.nearbyMRTs[index])}/>
             ))
           )
           break

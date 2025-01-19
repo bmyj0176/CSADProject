@@ -36,8 +36,6 @@ const ArrivalTimes = () => {
     else {
       setThrowPopup(true)
       favedItemsCopy.push(dict)
-      favedItemsCopy.sort()
-      favedItemsCopy.sort((a, b) => a.type.localeCompare(b.type))
     }
     setFavedItems(favedItemsCopy)
     const key = "savedarrivaltimes"
@@ -126,33 +124,6 @@ const ArrivalTimes = () => {
       </div>
     <ul className="horizontal-list">
       <li style={{backgroundColor:'#00000010'}}>
-        <h3 style={{color: "red"}}>EXAMPLE: A bus stop</h3>
-        <ArrivalTimesElement
-        type={"busNo"}
-        busStopCode={"69420"}
-        busStopName={"Domingo Compound"}
-        busTimesList={["Now", "7", "13"]}
-        receiveSearchResult={()=>{}}
-        favedItems={favedItems}
-        onFavItem={()=>{}}/>
-        <h3 style={{color: "red"}}>EXAMPLE: A bus arriving @ bus stop</h3>
-        <ArrivalTimesElement
-        type={"busStop"}
-        busService={"911"}
-        busTimesList={null}
-        receiveSearchResult={()=>{}}
-        favedItems={favedItems}
-        onFavItem={()=>{}}/>
-        <h3 style={{color: "red"}}>EXAMPLE: Bookmarked ArrivalTime (hybrid)</h3>
-        <ArrivalTimesElement
-        type={null}
-        busStopCode={"69420"}
-        busStopName={"Domingo Compound"}
-        busService={"911"}
-        busTimesList={["2", "11", "-"]}
-        receiveSearchResult={()=>{}}
-        favedItems={favedItems}
-        onFavItem={()=>{}}/>
         {searchResult && 
         <ArrivalTimesList 
         data={searchResult}
@@ -197,11 +168,37 @@ const ArrivalTimes = () => {
         />
       </li>
       <li style={{backgroundColor:'#00000010'}}>
-      {<SavedArrivalTimes 
-        receiveSearchResult={receiveSearchResult}
+      <SavedArrivalTimes 
         favedItems={favedItems}
         onFavItem={onFavItem}
-      />}
+      />
+      <h3 style={{color: "red"}}>EXAMPLE: A bus stop</h3>
+        <ArrivalTimesElement
+        type={"busNo"}
+        busStopCode={"69420"}
+        busStopName={"Domingo Compound"}
+        busTimesList={["Now", "7", "13"]}
+        receiveSearchResult={()=>{}}
+        favedItems={favedItems}
+        onFavItem={()=>{}}/>
+        <h3 style={{color: "red"}}>EXAMPLE: A bus arriving @ bus stop</h3>
+        <ArrivalTimesElement
+        type={"busStop"}
+        busService={"911"}
+        busTimesList={null}
+        receiveSearchResult={()=>{}}
+        favedItems={favedItems}
+        onFavItem={()=>{}}/>
+        <h3 style={{color: "red"}}>EXAMPLE: Bookmarked ArrivalTime (hybrid)</h3>
+        <ArrivalTimesElement
+        type={null}
+        busStopCode={"69420"}
+        busStopName={"Domingo Compound"}
+        busService={"911"}
+        busTimesList={["2", "11", "-"]}
+        receiveSearchResult={()=>{}}
+        favedItems={favedItems}
+        onFavItem={()=>{}}/>
       {
         favedItems.map((favedItems, index) => (
           <div key={index}>{favedItems[index]}</div>

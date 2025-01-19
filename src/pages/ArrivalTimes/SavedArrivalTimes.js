@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { ArrivalTimesList } from "./ArrivalTimesList";
 import { getBusTiming } from "../../helper_functions";
 import ArrivalTimesElement from './ArrivalTimesElement';
 
@@ -52,7 +51,6 @@ const SavedArrivalTimes = (props) => {
           busStopName={favedItems[index].busStopName}
           busService={favedItems[index].busService}
           busTimesList={timesListList[index]}
-          receiveSearchResult={props.receiveSearchResult}
           favedItems={props.favedItems}
           onFavItem={props.onFavItem}/>)}
         </div>
