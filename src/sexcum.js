@@ -1,7 +1,36 @@
 import { getjson } from "./helper_functions"
 import { getRoadDistance, getBusStopInfo} from "./helper_functions"
 
+async function test() {
+    //let x = await get_json('./datasets/platform.json')
+    // gets platform-to-platform travel time in mins
 
+    //await get_json('./datasets/station.json')
+    // gets mrt station-to-station travel time in mins
+
+    //await getRoadDistance(BusService, BSCode1, BSCode2) 
+    // gets distance in km between two bus stops
+    // BusService is bus number like 185,,, BSCode1 and BSCode2 are the bus stop codes like 26969
+
+
+    //await getBusStopInfo(key, value)
+    // INPUT1 key - (string) can be "BusStopCode", "RoadName" or "Description", e.g. "Description"
+    // INPUT2 value - (string) has to be the corresponding value you are searching for, e.g. "Dover Stn Exit B"
+    // OUTPUT BusStopInfo - (list of dicts) dicts consist of "BusStopCode", "RoadName", "Description", "Latitude" and "Longitude"
+    // 
+    // EXAMPLE USAGE:
+    //      await getBusStopInfo("BusStopCode", "19039")
+    // RESULTS IN: 
+    //      [{
+	//	        BusStopCode: "19039",
+	//	        Description: "Dover Stn Exit B",
+	//	        Latitude: 1.31167951129602,
+	//	        Longitude: 103.77868390552867,
+	//	        RoadName: "C'wealth Ave West"
+	//      }]
+}
+
+console.log('YOOOOOOOOOOO');
 
 //CLEAR VARIABLE -- TURN OFF WHEN DONE
 let clear = false;
@@ -13,24 +42,24 @@ if (clear === true) {
 
 
 export async function getMap() {
-    let train_transfer = await getjson('./datasets/platform.json');
-    let train_paths = await getjson('./datasets/station.json');
-    let map = buildAdjacencyList(train_paths, train_transfer);
+    let mrt_to_bus = await getjson('./datasets/mrt_to_bus.json');
+    let bus_dist = await getjson('./datasets/busstops_map.json');
+    let map = buildAdjacencyList(bus_dist, mrt_to_bus);
     return map
-}
+} 
 
-let train_transfer = await getjson('./datasets/platform.json');
-let train_paths = await getjson('./datasets/station.json');
-let map = buildAdjacencyList(train_paths, train_transfer);
+let mrt_to_bus = await getjson('./public/datasets/mrt_to_bus.json');
+let bus_dist = await getjson('./datasets/busstops_map.json');
+let map = buildAdjacencyList(bus_dist, mrt_to_bus);
 console.log(map);
 
 
-function buildAdjacencyList(time_between_stations, connections) {
+function buildAdjacencyList(time_between_busstops, connections) {
 
     const adjMap = {};
 
-    for (let i in time_between_stations){ //adding time between stations
-        let x = time_between_stations[i]["stations"]
+    for (let i in time_between_busstops){ //adding time between stations
+        let x = time_between_busstops[i]["stations"]
         for (const { s1, s2, time } of x) {
             // Add connection from s1 to s2
             if (!adjMap[s1]) adjMap[s1] = {};
@@ -54,7 +83,7 @@ function buildAdjacencyList(time_between_stations, connections) {
 
     return adjMap;
 }
-
+/*
 export function dijkstra(graph, start, end) {
     // Create an object to store the shortest distance from the start node to every other node
     let distances = {};
@@ -160,3 +189,4 @@ export async function time_between_stations (path) {
     // COOK HERE
     return time
 }
+    */

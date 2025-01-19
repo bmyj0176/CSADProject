@@ -1,12 +1,24 @@
 import { useState, useEffect } from "react";
-import { ArrivalTimesElement } from "./ArrivalTimesList";
-import ATSearchResult from "./ATSearchResult";
+import { ArrivalTimesList } from "./ArrivalTimesList";
+import { getBusTiming } from "../../helper_functions";
+import ArrivalTimesElement from './ArrivalTimesElement';
 
 const SavedArrivalTimes = (props) => {
   const [favedItems, setFavedItems] = useState(() => {
     const storedFavedItems = localStorage.getItem("savedarrivaltimes");
     return storedFavedItems ? JSON.parse(storedFavedItems) : [];
   });
+  const [timesListList, setTimesListList] = useState([])
+
+  useEffect(() => {
+    const updateTimesList = async () => {
+      const timesList = await Promise.all(
+        props.favedItems.map((dict) => getBusTiming(dict.busStopCode, dict.busService))
+      );
+      setTimesListList(timesList)
+    }
+    updateTimesList();
+  }, [props.favedItems])
 
   useEffect(() => {
     const handleStorageUpdate = (event) => {
@@ -24,24 +36,25 @@ const SavedArrivalTimes = (props) => {
     };
   }, []);
 
+  useEffect(() => {
+
+  }, [])
+
   return (  
     <>
       {favedItems.length !== 0 && <h2>Favourited List</h2>}
       {Array.from({ length: favedItems.length }, (_, index) => (
         <div key={index} className="bar">
         {favedItems && ( 
-          <ATSearchResult 
-          dict={favedItems[index]} 
-          index={index}
-          receiver={"SavedArrivalTimes"}
-          setSelectedList={props.setSelectedList}
+          <ArrivalTimesElement
+          type={favedItems[index].type}
+          busStopCode={favedItems[index].busStopCode}
+          busStopName={favedItems[index].busStopName}
+          busService={favedItems[index].busService}
+          busTimesList={timesListList[index]}
           receiveSearchResult={props.receiveSearchResult}
-          selectedItem={props.selectedItem === "SavedArrivalTimes" ? props.selectedItem : null}
-          onItemSelect={props.onItemSelect}
           favedItems={props.favedItems}
-          onFavItem={props.onFavItem}
-          />
-        )}
+          onFavItem={props.onFavItem}/>)}
         </div>
       ))}
     </>

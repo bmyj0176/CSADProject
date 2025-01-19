@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { getAllBusStops, getBusStopInfo, getAllBusServices, getBusTiming, getBusDirections } from '../../helper_functions'
-import ArrivalTimesElement from './ArrivalTimesElement';
 import BouncyBouncy from '../Components/LoadingIcon';
+import ArrivalTimesElement from './ArrivalTimesElement';
+import "../stylesheets/ATpages/at_list.css";
 
 const ArrivalTimesList = (props) => {
     const [direction, setDirection] = useState(1)
@@ -99,7 +100,9 @@ const ArrivalTimesList = (props) => {
                         busService={servicesList[index]}
                         busTimesList={timesListList[index]}
                         updateBusTimes={() => updateBusTimes(index)}
-                        receiveSearchResult={props.receiveSearchResult} />
+                        receiveSearchResult={props.receiveSearchResult}
+                        favedItems={props.favedItems}
+                        onFavItem={props.onFavItem} />
                     </li></ul>
                   </div>
                 ))}

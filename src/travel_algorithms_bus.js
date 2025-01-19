@@ -1,7 +1,7 @@
 import { getjson } from "./helper_functions"
 import { getRoadDistance, getBusStopInfo} from "./helper_functions"
 
-
+// console.log('YOOOOOOOOOOO');
 
 //CLEAR VARIABLE -- TURN OFF WHEN DONE
 let clear = false;
@@ -13,24 +13,24 @@ if (clear === true) {
 
 
 export async function getMap() {
-    let train_transfer = await getjson('./datasets/platform.json');
-    let train_paths = await getjson('./datasets/station.json');
-    let map = buildAdjacencyList(train_paths, train_transfer);
+    let mrt_to_bus = await getjson('./datasets/mrt_to_bus.json');
+    let bus_dist = await getjson('./datasets/busstops_map.json');
+    let map = buildAdjacencyList(bus_dist, mrt_to_bus);
     return map
-}
+} 
 
-let train_transfer = await getjson('./datasets/platform.json');
-let train_paths = await getjson('./datasets/station.json');
-let map = buildAdjacencyList(train_paths, train_transfer);
-console.log(map);
+// let mrt_to_bus = await getjson('./public/datasets/mrt_to_bus.json');
+// let bus_dist = await getjson('./datasets/busstops_map.json');
+// let map = buildAdjacencyList(bus_dist, mrt_to_bus);
+// console.log(map);
 
 
-function buildAdjacencyList(time_between_stations, connections) {
+function buildAdjacencyList(time_between_busstops, connections) {
 
     const adjMap = {};
 
-    for (let i in time_between_stations){ //adding time between stations
-        let x = time_between_stations[i]["stations"]
+    for (let i in time_between_busstops){ //adding time between stations
+        let x = time_between_busstops[i]["stations"]
         for (const { s1, s2, time } of x) {
             // Add connection from s1 to s2
             if (!adjMap[s1]) adjMap[s1] = {};
@@ -54,7 +54,7 @@ function buildAdjacencyList(time_between_stations, connections) {
 
     return adjMap;
 }
-
+/*
 export function dijkstra(graph, start, end) {
     // Create an object to store the shortest distance from the start node to every other node
     let distances = {};
@@ -160,3 +160,4 @@ export async function time_between_stations (path) {
     // COOK HERE
     return time
 }
+    */

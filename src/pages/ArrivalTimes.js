@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Popup from "./Components/Popup";
 import ATSearchBar from "./ArrivalTimes/ATSearchBar";
-import "./stylesheets/arrivaltimes.css";
+import "./stylesheets/ATpages/arrivaltimes.css";
 import ArrivalTimesList from "./ArrivalTimes/ArrivalTimesList";
 import SavedArrivalTimes from "./ArrivalTimes/SavedArrivalTimes";
-
 import ArrivalTimesElement from "./ArrivalTimes/ArrivalTimesElement";
 
 const ArrivalTimes = () => {
@@ -132,23 +131,34 @@ const ArrivalTimes = () => {
         type={"busNo"}
         busStopCode={"69420"}
         busStopName={"Domingo Compound"}
-        busTimesList={["Now", "7", "13"]}/>
+        busTimesList={["Now", "7", "13"]}
+        receiveSearchResult={()=>{}}
+        favedItems={favedItems}
+        onFavItem={()=>{}}/>
         <h3 style={{color: "red"}}>EXAMPLE: A bus arriving @ bus stop</h3>
         <ArrivalTimesElement
         type={"busStop"}
         busService={"911"}
-        busTimesList={null}/>
+        busTimesList={null}
+        receiveSearchResult={()=>{}}
+        favedItems={favedItems}
+        onFavItem={()=>{}}/>
         <h3 style={{color: "red"}}>EXAMPLE: Bookmarked ArrivalTime (hybrid)</h3>
         <ArrivalTimesElement
         type={null}
         busStopCode={"69420"}
         busStopName={"Domingo Compound"}
         busService={"911"}
-        busTimesList={["2", "11", "-"]}/>
+        busTimesList={["2", "11", "-"]}
+        receiveSearchResult={()=>{}}
+        favedItems={favedItems}
+        onFavItem={()=>{}}/>
         {searchResult && 
         <ArrivalTimesList 
         data={searchResult}
-        receiveSearchResult={receiveSearchResult} />}
+        receiveSearchResult={receiveSearchResult}
+        favedItems={favedItems}
+        onFavItem={onFavItem} />}
       </li>
       <li>
         <ul className="at">
@@ -184,20 +194,19 @@ const ArrivalTimes = () => {
           receiveSearchResult={receiveSearchResult}
           selectedItem={selectedItem}
           onItemSelect={onItemSelect}
-          favedItems={favedItems}
-          onFavItem={onFavItem}
         />
       </li>
       <li style={{backgroundColor:'#00000010'}}>
-      <SavedArrivalTimes 
-        selectedList={selectedList}
-        setSelectedList={setSelectedList}
+      {<SavedArrivalTimes 
         receiveSearchResult={receiveSearchResult}
-        selectedItem={selectedItem}
-        onItemSelect={onItemSelect}
         favedItems={favedItems}
         onFavItem={onFavItem}
-      />
+      />}
+      {
+        favedItems.map((favedItems, index) => (
+          <div key={index}>{favedItems[index]}</div>
+        ))
+      }
       </li>
     </ul>
     </>

@@ -2,27 +2,26 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     background: rgba(0, 0, 0, 0.5); 
-    backdrop-filter: blur(5px); 
-    justify-content: center;
-    align-items: center;
+    backdrop-filter: blur(10px); 
     z-index: 1000;
   }
   
   .popup {
-    margin-left: auto;
-    margin-right: auto;
-    padding: 1.5%;
-    width: 90%;
-    max-width: 35%;
+    margin: auto;
+    margin-top: -6.5%;
+    padding: 0.5%;
+    max-width: 35%; 
+
+    
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    animation: fadeIn 0.3s ease-in-out;
+    /*animation: fadeIn 1s ease-in-out;*/
     border-radius: 50px;
     border-style: double;
     border-color: grey;
+    transform: scale(0.75);
   }
   
   .popup button {
@@ -74,7 +73,6 @@
     flex: 1;               /* Allow input to take up remaining space */
     padding: 5px;
     font-size: 14px;
-    color: black;
   }
   
   input[type="submit"] {

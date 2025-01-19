@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import BouncyBouncy from '../Components/LoadingIcon';
-import "../stylesheets/at_list.css";
+import { dict_in_list } from '../../helper_functions2';
+import "../stylesheets/ATpages/at_list.css";
 
 const ArrivalTimesElement = (props) => {
     const [data, setData] = useState(
@@ -11,6 +12,19 @@ const ArrivalTimesElement = (props) => {
             busStopCode: props.busStopCode
         }
     )
+    const [favItem, setFavItem] = useState(() => {
+        return dict_in_list(data, props.favedItems) ?
+        'selected' :
+        'unselected'
+      });
+    
+    useEffect(() => {
+        setFavItem(dict_in_list(data, props.favedItems) ?
+        'selected' :
+        'unselected'
+        )
+    }, [props.favedItems])
+    
     useEffect(() => {
         setData(
             {
@@ -31,6 +45,12 @@ const ArrivalTimesElement = (props) => {
         e.stopPropagation();
         props.updateBusTimes();
     }
+
+    const handleFav = (e) => {
+        e.stopPropagation();
+        props.onFavItem(data, (favItem === 'selected' ? false : true))
+        setFavItem((prevState) => (prevState === 'selected' ? 'unselected' : 'selected')); // toggle
+      };
 
     return (
     <>
@@ -73,10 +93,37 @@ const ArrivalTimesElement = (props) => {
                 </button>
                 {props.busTimesList && " mins"}
             </div>
+            <StarButton
+            className='star'
+            handleFav={handleFav}
+            favItem={favItem}/>
         </div>
     </>
     )
 }
+
+const StarButton = (props) => {
+    return (
+      <button // STAR BUTTONNNNNNNNN
+          id="starbutton"
+          className={props.favItem === 'selected' ? "btnfaved" : "btnunfaved"}
+          onClick={props.handleFav}
+          type="button"
+        >   
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+          >
+            <path
+              d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+              fill="currentColor"
+            />
+          </svg>
+        </button>
+    )
+  }
 
 const Unavailable = () => {
     return (

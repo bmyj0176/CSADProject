@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet, Link, useLocation, useNavigate  } from "react-router-dom";
 import './stylesheets/navbar.css';
-import { getAllBusStops } from '../helper_functions'
-import { getBusDirections } from '../helper_functions';
+import { getBusTiming } from '../helper_functions';
 import ToggleThemeButton from './Components/ToggleThemeButton';
+import { getMap } from '../travel_algorithms_bus'
 
 const NavBar = () => {
   const [userLoggedIn, setUserLoggedIn] = useState(false);
@@ -26,14 +26,7 @@ const NavBar = () => {
   }
 
   async function test_function() {
-    console.log(await getBusDirections("185"))
-  }
-  async function test_function2() {
-    console.time("Time Taken:");
-    console.log("Test Start");
-    console.log(await getAllBusStops("901", 1));
-    console.timeEnd("Time Taken:");
-    console.log("Test End");
+    console.log(await getBusTiming("46971", "901"))
   }
 
 
@@ -52,7 +45,6 @@ const NavBar = () => {
           
           <li>
           <button id="test_button" onClick={test_function}> Test Button </button><span id="test_text"></span>
-          <button id="test_button2" onClick={test_function2}> Test Button 2 </button><span id="test_text"></span>
           </li>
         {/*------ ABOVE IS FLOATED LEFT, BELOW IS FLOATED RIGHT -----------------------------*/}
           <li style={{ float: 'right' }}>
@@ -66,10 +58,14 @@ const NavBar = () => {
                 <>
                   <label className="loginuser"> {localStorage.getItem('username')} </label>
                   <div className="dropdown-content">
-                    
-                    <Link to="/settings" className="dropdownItem">Settings</Link><br/>
-                    <Link to="/ost" className="dropdownItem">Soundtrack</Link><br/>
-                    { userLoggedIn && <button id="logout" onClick={logout}>Log Out</button>}
+                    { userLoggedIn && 
+                    <button 
+                    id="logout" 
+                    style={{borderWidth:"0"}}
+                    className="dropdownItem" 
+                    onClick={logout}>
+                      Log&nbsp;Out
+                    </button>}
                   </div>
                 </>
               )}
