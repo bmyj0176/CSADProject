@@ -1,12 +1,12 @@
 import './stylesheets/homepage.css';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-
 const Homepage = () => {
 
   const [favorites, setFavorites] = useState([]);
   const [slideIndex, setSlideIndex] = useState(0); // Toggle state
   const [fade, setFade] = useState(false);  // Controls fade animation
+
 
     const navigate = useNavigate();
     const handleNavigation = () => {

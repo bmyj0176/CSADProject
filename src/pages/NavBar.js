@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext, createContext } from 'react';
 import { Outlet, Link, useLocation, useNavigate  } from "react-router-dom";
 import './stylesheets/navbar.css';
 import { getBusTiming } from '../helper_functions';
 import ToggleThemeButton from './Components/ToggleThemeButton';
-import { getMap } from '../travel_algorithms_bus'
+import '../travel_algorithms_bus';
+const loginContext = createContext();
 
 const NavBar = () => {
   const [userLoggedIn, setUserLoggedIn] = useState(false);
@@ -11,6 +12,8 @@ const NavBar = () => {
   const location = useLocation(); 
   const navigate = useNavigate();
 
+
+  
   useEffect(() => {
     setPath(location.pathname); 
   }, [location]);

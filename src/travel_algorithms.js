@@ -2,28 +2,12 @@ import { getjson } from "./helper_functions"
 import { getRoadDistance, getBusStopInfo} from "./helper_functions"
 
 
-
-//CLEAR VARIABLE -- TURN OFF WHEN DONE
-let clear = false;
-
-
-if (clear === true) {
-    console.clear();
-}
-
-
 export async function getMap() {
     let train_transfer = await getjson('./datasets/platform.json');
     let train_paths = await getjson('./datasets/station.json');
     let map = buildAdjacencyList(train_paths, train_transfer);
     return map
 }
-
-let train_transfer = await getjson('./datasets/platform.json');
-let train_paths = await getjson('./datasets/station.json');
-let map = buildAdjacencyList(train_paths, train_transfer);
-console.log(map);
-
 
 function buildAdjacencyList(time_between_stations, connections) {
 
@@ -141,12 +125,6 @@ export function dijkstra(graph, start, end) {
     };
 }
 
-// running Dijkstra algorithm between the two stations
-let startTime = performance.now();
-console.log(dijkstra(map, "Marina South Pier", "Bangkit"));
-let endTime = performance.now();
-let timeTaken = endTime - startTime;
-console.log("Total time taken : " + timeTaken + " milliseconds");
 
 export async function shortest_path (station1, station2) {
     let path = []
