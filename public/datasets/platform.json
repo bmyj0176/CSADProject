@@ -23,7 +23,7 @@
     {"p1": "Jurong East_EW", "p2": "Jurong East_NS", "line": ["East West Line", "North South Line"], "time": 5},
     {"p1": "Sungei Bedok_DT", "p2": "Sungei Bedok_TE", "line": ["Downtown Line", "Thomson Line"], "time": 10},
     {"p1": "Expo_EW", "p2": "Expo_DT", "line": ["East West Line", "Downtown Line"], "time": 8},
-    {"p1": "Habourfront_NE", "p2": "Habourfront_CC", "line": ["North East Line", "Circle Line"], "time": 7},
+    {"p1": "Harbourfront_NE", "p2": "Harbourfront_CC", "line": ["North East Line", "Circle Line"], "time": 7},
     {"p1": "Chinatown_NE", "p2": "Chinatown_DT", "line": ["North East Line", "Downtown Line"], "time": 7},
     {"p1": "Little India_NE", "p2": "Little India_DT", "line": ["North East Line", "Downtown Line"], "time": 8},
     {"p1": "Serangoon_NE", "p2": "Serangoon_CC", "line": ["North East Line", "Circle Line"], "time": 8},
@@ -32,5 +32,7 @@
     {"p1": "Stevens_DT", "p2": "Stevens_TE", "line": ["Downtown Line", "Thomson Line"], "time": 7},
     {"p1": "Promenade_DT", "p2": "Promenade_CC", "line": ["Downtown Line", "Circle Line"], "time": 7},
     {"p1": "MacPherson_CC", "p2": "MacPherson_DT", "line": ["Circle Line", "Downtown Line"], "time": 6},
-    {"p1": "Tanah Merah_CG", "p2": "Tanah Merah_EW", "line": ["East West Line", "East West Line"], "time": 5}
+    {"p1": "Tanah Merah_CG", "p2": "Tanah Merah_EW", "line": ["East West Line", "East West Line"], "time": 5},
+    {"p1": "Punggol_NE", "p2": "Punggol_PTC", "line": ["North South Line", "Punggol LRT"], "time": 6},
+    {"p1": "Sengkang_NE", "p2": "Sengkang_STC", "line": ["North South Line", "Sengkang LRT"], "time": 6}
 ]

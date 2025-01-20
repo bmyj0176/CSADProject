@@ -5,8 +5,9 @@ import { getRoadDistance, getBusStopInfo} from "./helper_functions"
 export async function getMap() {
     let train_transfer = await getjson('./datasets/platform.json');
     let train_paths = await getjson('./datasets/station.json');
+    let interchanges = await getjson('./datasets/interchanges.json');
     let map = buildAdjacencyList(train_paths, train_transfer);
-    return map
+    return [map, interchanges]
 }
 
 function buildAdjacencyList(time_between_stations, connections) {
@@ -39,7 +40,7 @@ function buildAdjacencyList(time_between_stations, connections) {
     return adjMap;
 }
 
-export function dijkstra(graph, start, end) {
+export function dijkstra(graph, start, end, interchanges) {
     // Create an object to store the shortest distance from the start node to every other node
     let distances = {};
     let predecessors = {}; // Map to store the predecessor of each node for route reconstruction
@@ -102,10 +103,8 @@ export function dijkstra(graph, start, end) {
 
     for (let i in route) {
         let current_station = route[i];
-        let thirdLastChar = current_station.charAt(current_station.length - 3);
-
-        if (thirdLastChar === "_") { //if third last char is a "_", its an interchange
-            let current_interchange = current_station.length > 3 ? current_station.slice(0, -3) : "";
+        if (interchanges.includes(current_station)) { //if inside interchange list, is interchange
+            let current_interchange = current_station.length > 3 ? current_station.slice(0, 3) : "";
             if (current_interchange === past_interchange) { //if 2 interchanges are the same, its a transfer
                 simple_route.push(past_station, current_station); 
             } else {
@@ -125,6 +124,16 @@ export function dijkstra(graph, start, end) {
     };
 }
 
+// running Dijkstra algorithm between the two stations
+console.clear();
+let [map, interchanges] = await getMap();
+
+let startTime = performance.now();
+console.log(dijkstra(map, "Marina South Pier", "Bangkit", interchanges));
+let endTime = performance.now();
+
+let timeTaken = endTime - startTime;
+console.log("Total time taken : " + timeTaken + " milliseconds");
 
 export async function shortest_path (station1, station2) {
     let path = []
