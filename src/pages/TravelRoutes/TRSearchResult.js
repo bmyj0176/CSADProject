@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { codeToMRTImagePath } from '../../helper_functions2';
+import "../stylesheets/travelroutes.css";
 
 const TRSearchResult = (props) => {
     const [header, setHeader] = useState("")
@@ -15,7 +16,7 @@ const TRSearchResult = (props) => {
             setSubheader1(props.dict.stationCodes.join(' '))
             setSubheader2(
               Array.from({ length: props.dict.stationCodes.length }, (_, index) => (
-                <img key={index} src={codeToMRTImagePath(props.dict.stationCodes[index])}/>
+                <img className='mrticon' key={index} src={codeToMRTImagePath(props.dict.stationCodes[index])}/>
                 ))
             )
         } else if (props.dict.type === "busStop") {
@@ -23,7 +24,7 @@ const TRSearchResult = (props) => {
             setSubheader1(props.dict.busStopCode)
             setSubheader2(
                 Array.from({ length: props.dict.nearbyMRTs.length }, (_, index) => (
-                <img key={index} src={codeToMRTImagePath(props.dict.nearbyMRTs[index])}/>
+                <img className='mrticon' key={index} src={codeToMRTImagePath(props.dict.nearbyMRTs[index])}/>
                 ))
             )
         }
@@ -36,10 +37,11 @@ const TRSearchResult = (props) => {
     // BUTTON LAYOUT
       return (
         <div>
-          <p style={{display:'block'}}>
+          <p className='trbutton' style={{display:'block'}}>
             <button onClick={handleClick}>
               <h3 className="busstopname">{header}</h3>
               <b className="busstopnumber">{subheader1}</b>
+              <br/>
               {subheader2 && (subheader2)}
             </button>
           </p>

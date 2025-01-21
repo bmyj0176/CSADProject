@@ -1,14 +1,34 @@
 .headd {animation: slideDown 2s ease-out forwards; }
 
-.subhead{position:relative; left: 95px;}
-.subpar{position:relative; top: -10px; left: 82px;}
+.subhead{position:relative; left: 3%;
+font-size: 7.2vh;
+padding-top: 10vh;
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+letter-spacing: none;
 
+
+}
+
+.subpar{position:relative;
+  top: -1.25vh; 
+  font-size: 6.2vh;
+  color: white;
+  font-family: Arial;
+  left: 4%;}
+
+
+.lineunderslides{
+  align-items: center;
+  margin-top: 2.5vh;
+  margin-top: 2.5vh;
+  width: 70%;  background-color: white;
+  opacity: .7;
+  height: .1vh;
+}
 
 
 .subhead2{position:relative; left: 95px; top: 40px;}
 .subpar2{position:relative; top: 30px; left: 82px;}
-
-
 
 
 @keyframes slideDown {
@@ -83,7 +103,7 @@
   background-position: center; 
   background-repeat: no-repeat; 
   width: 100%;
-  height: 80vh; 
+  height: 90vh; 
   position:relative;
   top: 0.6vh;
 
@@ -94,11 +114,11 @@
   background-size: contain;
   background-repeat: no-repeat;
   position: absolute;
-  top: 50%; /* Center vertically relative to parent */
+  top: 56%; /* Center vertically relative to parent */
   right: 30px;
   width: 45px; /* Fixed width in pixels */
   height: 35px; /* Fixed height in pixels */
-  margin-top: 10px;
+
   border: none;
   cursor: pointer;
   opacity: 0.3;
@@ -116,11 +136,10 @@
     background-size: contain;
     background-repeat: no-repeat;
     position:absolute;
-    top: 50%;
+    top: 56%;
     left: 30px;
     width: 45px;
     height: 35px;
-    margin-top: 10px;
     opacity: 0.3;
     border: none;
     cursor: pointer;
@@ -156,7 +175,8 @@
   position:relative;
   top: 0.6vh;
   width: 100%;
-  height: 80vh; 
+  height: 90vh; 
+  box-shadow:0px 5px 0px rgba(166, 162, 227, 0.249);
 }
 
 .card2 {
@@ -232,7 +252,7 @@
   position:relative;
   top: 0.6vh;
   width: 100%;
-  height: 80vh; 
+  height: 90vh; 
 
 }
 
@@ -240,6 +260,7 @@
   position:relative;
   border: 3px solid rgba(213, 213, 107, 0.443);
   left: 50%; 
+  text-align: center;
   transform: translateX(-50%);
   top: 52%;
   max-width: 23rem; 

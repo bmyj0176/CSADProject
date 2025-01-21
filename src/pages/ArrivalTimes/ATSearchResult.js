@@ -50,6 +50,7 @@ const ATSearchResult = (props) => {
             onClick={handleClick}>
               <h3 className="busstopname">{header}</h3>
               <b className="busstopnumber">{subheader1}</b>
+              <br/>
               {subheader2 && (subheader2)}
             </button>
           </p>

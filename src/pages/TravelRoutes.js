@@ -45,6 +45,4 @@ const TravelRoutes = () => {
   )
 };
 
-
-
 export default TravelRoutes;

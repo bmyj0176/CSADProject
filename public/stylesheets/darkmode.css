@@ -11,7 +11,7 @@ h1 {
   text-shadow: 0 0 5px #ffffff33, 0 0 10px #ffffff37, 0 0 20px rgba(0, 255, 255, 0.372), 0 0 30px rgba(0, 255, 255, 0.167);
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   letter-spacing: 1px;
-  text-transform: uppercase;
+  
 }
 
 h1,h2 {

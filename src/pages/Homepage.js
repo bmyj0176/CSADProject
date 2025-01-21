@@ -1,8 +1,8 @@
 import './stylesheets/homepage.css';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from "react-router-dom";
-const Homepage = () => {
 
+const Homepage = () => {
   const [favorites, setFavorites] = useState([]);
   const [slideIndex, setSlideIndex] = useState(0); // Toggle state
   const [fade, setFade] = useState(false);  // Controls fade animation
@@ -120,19 +120,22 @@ const Homepage = () => {
       <div className={`fade ${fade ? "fade-out" : "fade-in"}`}>
       {slides[slideIndex]}
       </div>
-      <button className="bannerbuttonRight" type="button" onClick={handleToggle} />
-      <button className="bannerbuttonLeft" type="button" onClick={handleToggle2} />
       
-      
+    
       <div style={{ display: 'inline-block' }}>
+      <button className="bannerbuttonLeft" type="button" onClick={handleToggle2} />
+      <button className="bannerbuttonRight" type="button" onClick={handleToggle} />
       </div>
       <div style={{display: "inline-block"}}>
-        <h1 className="subhead"> Never miss your buses again </h1>
-        <h5 className = "subpar"> 
-          Our Bus Arrival Times page will allow you to quickly search for the arrival times of buses.
-        </h5>
+        </div>
+        <hr className="lineunderslides" />
+        <h1 className="subhead"> Revolutionize Your <br/>Travel Experience  </h1>
+        <h1 className = "subpar"> 
+        Optimizing Bus & Train Travel for <br/> Time-Saving, Effortless Journey
+        </h1>
+        <p> text here text here text here text here text here text here </p>
         {/* Fixed iframe issue with proper syntax */}
-      </div>
+      
       <div style={{display: "inline-block"}}>
 
       </div>

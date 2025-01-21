@@ -43,7 +43,8 @@ const ArrivalTimesList = (props) => {
             else { // "busStop" || "nearestBusStop"
                 const busStopCode = props.data.busStopCode
                 const busStopName = props.data.busStopName
-                const busServices = await getAllBusServices(busStopCode)
+                const rawBusServices = await getAllBusServices(busStopCode)
+                const busServices = sortByNumericalOrder(rawBusServices)
                 setServicesList(busServices)
                 setStopCodesList(Array(busServices.length).fill(busStopCode))
                 setStopNamesList(Array(busServices.length).fill(busStopName))
@@ -128,5 +129,21 @@ const BusDirectionToggleButton = (props) => {
         </>
     )
 }
+
+function sortByNumericalOrder(list) {
+    return list.sort((a, b) => {
+      // Extract numeric part for comparison
+      const numA = parseInt(a, 10);
+      const numB = parseInt(b, 10);
+  
+      // Handle cases where numeric part is equal (e.g., "243G" and "243W")
+      if (numA === numB) {
+        return a.localeCompare(b); // Compare full strings lexicographically
+      }
+  
+      // Sort by numeric value
+      return numA - numB;
+    });
+  }
 
 export default ArrivalTimesList

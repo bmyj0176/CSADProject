@@ -22,7 +22,7 @@
     {"p1": "Paya Lebar_EW", "p2": "Paya Lebar_CC", "line": ["East West Line", "Circle Line"], "time": 8},
     {"p1": "Jurong East_EW", "p2": "Jurong East_NS", "line": ["East West Line", "North South Line"], "time": 5},
     {"p1": "Sungei Bedok_DT", "p2": "Sungei Bedok_TE", "line": ["Downtown Line", "Thomson Line"], "time": 10},
-    {"p1": "Expo_EW", "p2": "Expo_DT", "line": ["East West Line", "Downtown Line"], "time": 8},
+    {"p1": "Expo_CG", "p2": "Expo_DT", "line": ["East West Line", "Downtown Line"], "time": 8},
     {"p1": "Harbourfront_NE", "p2": "Harbourfront_CC", "line": ["North East Line", "Circle Line"], "time": 7},
     {"p1": "Chinatown_NE", "p2": "Chinatown_DT", "line": ["North East Line", "Downtown Line"], "time": 7},
     {"p1": "Little India_NE", "p2": "Little India_DT", "line": ["North East Line", "Downtown Line"], "time": 8},
