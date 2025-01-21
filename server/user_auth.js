@@ -1,12 +1,11 @@
 import express from 'express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { getAuth, fetchSignInMethodsForEmail } from 'firebase/auth';
-import { db } from './firebase.js';  // Firestore
+import { db, auth } from './firebase.js';
+import { fetchSignInMethodsForEmail, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc, getDoc } from 'firebase/firestore';  // Firestore functions
 
 const router = express.Router();
-const auth = getAuth();
 
 // Register route
 router.post('/register', async (req, res) => {
@@ -30,7 +29,8 @@ router.post('/register', async (req, res) => {
       savedarrivaltimes: savedarrivaltimes || []
     });
 
-    // Optionally, you can also create a custom JWT token if needed
+    // // Optionally, you can also create a custom JWT token if needed
+
     const token = jwt.sign({ id: user.uid }, process.env.JWT_SECRET, { expiresIn: '7d' });
 
     return res.status(201).json({

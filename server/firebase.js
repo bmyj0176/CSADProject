@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import { getAuth } from "firebase/auth"; // Import Firebase Auth
 
 // Firebase configuration object from Firebase Console
 const firebaseConfig = {
@@ -12,11 +13,13 @@ const firebaseConfig = {
     measurementId: "G-HTDRL2TRRW"
   };
   
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
+// Initialize Firebase Authentication before other services
+const auth = getAuth(app);
 
 // Initialize Firestore
 const db = getFirestore(app);
 
-export { db };
+export { db, auth }; // Export both Firestore and Auth
