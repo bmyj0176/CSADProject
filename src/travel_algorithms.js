@@ -50,11 +50,9 @@ export function dijkstra(graph, start, end, interchanges) {
     }
     if (end in interchanges[1]) {
         end = interchanges[1][end];
-    } else if (typeof(end) === "end") {
+    } else if (typeof(end) === "string") {
         end = [end];
     }
-        console.log(start);
-        console.log(end);
     
     for (let realstart of start) {
         for (let realend of end) {
@@ -105,7 +103,7 @@ export function dijkstra(graph, start, end, interchanges) {
                 final_time_taken = distances[realend];
                 final_predecessors = predecessors;
                 final_end = realend;
-            }
+            } console.log(realstart, realend, distances[realend]);
         }
     }
     let predecessors = final_predecessors;
@@ -155,25 +153,26 @@ export function dijkstra(graph, start, end, interchanges) {
 
 
 // running Dijkstra algorithm between the two stations
-console.clear();
-let [map, interchanges] = await getMap();
+// console.clear();
+// let [map, interchanges] = await getMap();
 
-let startTime = performance.now();
-console.log(dijkstra(map, "Dover", "Khatib", interchanges));
-let endTime = performance.now();
-
-let timeTaken = endTime - startTime;
-console.log("Total time taken : " + timeTaken + " milliseconds");
-
-export async function shortest_path (station1, station2) {
-    let path = []
-    // COOK HERE
-    path = test();
-    return path
-}
-
-export async function time_between_stations (path) {
-    let time = 0
-    // COOK HERE
-    return time
-}
+// let longest = Infinity;
+// let longestroute = [];
+// let startTime = performance.now();
+// for (let k=0; k<1; k++){
+//     let i1 = Math.floor(Math.random() * Object.keys(map).length);
+//     let i2 = Math.floor(Math.random() * Object.keys(map).length);
+//     if (i1 === i2) {continue;}
+//     let location1 = Object.keys(map)[i1];
+//     let location2 = Object.keys(map)[i2];
+//     console.log(Object.keys(map)[i1], "to", Object.keys(map)[i2]);
+//     let {time_taken, route, simple_route} = dijkstra(map, location1, location2, interchanges);
+//     if (time_taken < longest) {
+//         longest = time_taken;
+//         longestroute = route;
+//     }
+//     console.log(dijkstra(map, "Choa Chu Kang", "Marina Bay", interchanges));
+// } console.log(longest, longestroute);
+// let endTime = performance.now();
+// let timeTaken = endTime - startTime;
+// console.log("Total time taken : " + timeTaken + " milliseconds");
