@@ -47,8 +47,9 @@ function Register() {
           data.savedarrivaltimes = JSON.parse(savedarrivaltimes);
         await axios.post(`${process.env.REACT_APP_BACKEND_API_URL}/auth/register`, data);
         console.log('Registration successful');
-        await login(email, password, navigate);
+        //await login(email, password, navigate);
       } catch (error) {
+        console.log(error)
         const newErrors = { username: '', email: '', password: '', password2: '', misc: ''}
         if (error.response.status === 409) { // email already exists error
           document.getElementById("email").focus()
@@ -89,11 +90,11 @@ function Register() {
       newErrors.password = "Please enter a password."
       isValid = false
     }
-    /*else if (password.length < 8) {
+    else if (password.length < 8) {
       document.getElementById("password").focus()
       newErrors.password = "Passwords must be at least 8 characters."
       isValid = false
-    }*/
+    }
     else if (password !== password2) {
       document.getElementById("password2").focus()
       newErrors.password2 = "Passwords do not match."
