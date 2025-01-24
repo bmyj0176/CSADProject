@@ -2,15 +2,6 @@ import { getjson } from "./helper_functions"
 // import { getRoadDistance, getBusStopInfo} from "./helper_functions"
 
 
-//CLEAR VARIABLE -- TURN OFF WHEN DONE
-let clear = true;
-
-
-if (clear === true) {
-    console.clear();
-}
-
-
 export async function getMap() {
     let mrt_to_bus = await getjson('./datasets/mrt_to_bus.json');
     let bus_dist = await getjson('./datasets/busstops_map.json');
@@ -24,7 +15,8 @@ function buildAdjacencyList(time_between_busstops, connections) {
 
     const adjMap = {};
 
-    for (let bus_num in time_between_busstops) { //adding time between stations
+    // for (let bus_num in time_between_busstops) { //adding time between stations
+    let bus_num = "2";
         let direction = time_between_busstops[bus_num];
         let prev_stop = direction["1"][0][0];
         let prev_dist = 0;
@@ -57,7 +49,7 @@ function buildAdjacencyList(time_between_busstops, connections) {
                 prev_dist = busstop[1];
             }
         }
-    }
+    // }
     
     // for (const { p1, p2, time } of connections) { //adding cross platform transfers
     //     // Add connection from s1 to s2
@@ -65,11 +57,10 @@ function buildAdjacencyList(time_between_busstops, connections) {
     //     adjMap[p1][p2] = time;
     // }
 
-    console.log(Object.keys(adjMap).length);
     return adjMap;     
 }
 
-export function dijkstra(graph, start, end, interchanges) {
+export function dijkstra(graph, start, end) {
     // Create an object to store the shortest distance from the start node to every other node
     let distances = {};
     let predecessors = {}; // Map to store the predecessor of each node for route reconstruction
@@ -77,7 +68,6 @@ export function dijkstra(graph, start, end, interchanges) {
 
     // Get all the nodes of the graph
     let nodes = Object.keys(graph);
-    console.log(nodes);
     // Initially, set the shortest distance to every node as Infinity except starting node
     for (let node of nodes) {
         distances[node] = Infinity;
@@ -111,7 +101,7 @@ export function dijkstra(graph, start, end, interchanges) {
             }
         }
     }
-
+    console.log(distances);
     // If the end node is unreachable
     if (distances[end] === Infinity) {
         return `No route from ${start} to ${end}.`;
@@ -161,8 +151,9 @@ export function dijkstra(graph, start, end, interchanges) {
 console.clear();
 let [map, interchanges] = await getMap();
 let startTime = performance.now();
-console.log(typeof(Object.keys(map)[0]))
-console.log(dijkstra(map, "start", "end", interchanges));
+console.log(Object.keys(map)[0]);
+console.log(map);
+console.log(dijkstra(map, "01012", "end"));
 let endTime = performance.now();
 let timeTaken = endTime - startTime;
 console.log("Total time taken : " + timeTaken + " milliseconds");
