@@ -3,12 +3,12 @@ import React, { useEffect, useState, useContext } from 'react';
 import { ThemeContext } from './Components/ToggleThemeButton';
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./stylesheets/login_register.css";
-import { login } from './Login';
 
 function Register() {
 
-  const { isDarkTheme } = useContext(ThemeContext);
   const navigate = useNavigate();
+
+  const { isDarkTheme } = useContext(ThemeContext);
   const location = useLocation()
   const retainedData = location.state // from login page
 
@@ -34,20 +34,23 @@ function Register() {
   const handleRegister = async (e) => {
     e.preventDefault(); // prevents default submission, makes this function intercept 
     setUsername(username.trim())
-    setEmail(email.trim())
+    setEmail(email.trim().toLowerCase())
     if (validateInput()) {
       try {
-        const savedarrivaltimes = localStorage.getItem("savedarrivaltimes")
+        const savedarrivaltimesItem = localStorage.getItem("savedarrivaltimes")
+        const savedarrivaltimes = JSON.parse(savedarrivaltimesItem);
         const data = {
-          username: username.trim(), 
-          email: email.trim().toLowerCase(), 
+          username: username, 
+          email: email, 
           password: password,
+          savedarrivaltimes: savedarrivaltimes || []
         }
-        if (savedarrivaltimes)
-          data.savedarrivaltimes = JSON.parse(savedarrivaltimes);
-        await axios.post(`${process.env.REACT_APP_BACKEND_API_URL}/auth/register`, data);
+        const response = await axios.post(`${process.env.REACT_APP_BACKEND_API_URL}/auth/register`, data);
+        localStorage.setItem('token', response.data.token);
+        localStorage.setItem('username', username);
         console.log('Registration successful');
-        //await login(email, password, navigate);
+        navigate("/");
+        window.location.reload();
       } catch (error) {
         console.log(error)
         const newErrors = { username: '', email: '', password: '', password2: '', misc: ''}
@@ -55,10 +58,8 @@ function Register() {
           document.getElementById("email").focus()
           newErrors.email = "Email already exists, please login instead."
         } else if (error.response.status === 500) {
-          newErrors.misc = "Internal Server Error. Please try again later."
-        } else {
           console.error(error);
-          console.log('Registration failed for other reasons');
+          newErrors.misc = "Internal Server Error. Please try again later."
         }
         setErrors(newErrors)
       }
