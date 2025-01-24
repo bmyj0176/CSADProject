@@ -27,13 +27,11 @@ export const login = async (email, password, navigate, inputSetErrors = null) =>
         newErrors.email = "Email isn't registered."
       } else if (error.response.status === 401) {
         document.getElementById("password").focus()
-        newErrors.password = "Invalid credentials."
+        newErrors.password = "Wrong password."
       } else if (error.response.status === 500) {
-        newErrors.misc = "Internal Server Error. Please try again later."
-      } else {
         console.error(error);
-        console.log('Registration failed for other reasons');
-      }
+        newErrors.misc = "Internal Server Error. Please try again later."
+      } 
       inputSetErrors(newErrors)
     }
   }
