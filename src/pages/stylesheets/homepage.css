@@ -3,26 +3,114 @@
 .subhead{position:relative; left: 3%;
 font-size: 7.2vh;
 padding-top: 10vh;
-font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+/*font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+text-shadow: none;
+background: linear-gradient(15deg, #5288d9, #56fde4);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+/*-webkit-text-stroke: 2px rgb(19, 24, 43); */
 letter-spacing: none;
-
-
 }
+
+
 
 .subpar{position:relative;
   top: -1.25vh; 
   font-size: 6.2vh;
   color: white;
-  font-family: Arial;
+  font-family: Arial, sans-serif;
+  text-shadow: none;
+  letter-spacing:0px;
   left: 4%;}
 
 
+  .busSlide {
+    height: 75vh;
+    width: 75vh;
+    position: absolute;
+    top: 115vh;
+    right: 0vh;
+    opacity: 0; 
+    transform: translateX(20px); 
+  }
+  
+  .busSlide.visible {
+    animation: slide-and-fade 1.4s ease-out forwards; 
+  }
+  
+  @keyframes slide-and-fade {
+    0% {
+      transform: translateX(40px);
+      opacity: 0.4;
+    }
+    40% {
+      transform: translateX(-180px);
+      opacity: 1;
+    }
+
+    60% {
+      transform: translateX(-200px);
+      opacity: 0.5;
+      height: 75vh;
+      width: 75vh;
+      top: 115vh;
+    }
+
+    100% {
+      transform: translateX(-450px);
+      opacity: 0;
+      height: 60vh;
+      width: 60vh;
+      top: 120vh;
+    }
+
+  }
+  
+  .videoNyoom{
+    border-radius: 30px;
+    overflow: hidden;
+    height: 40vh;
+    width: 71.2vh;
+    position:absolute;
+    top: 135vh;
+    right: -10vh;
+    transform: translateX(20px); 
+  }
+
+  .videoNyoom.visible {
+    animation: slide-and-fade2 1.2s ease-out forwards; 
+  }
+
+  @keyframes slide-and-fade2 {
+    0% {
+      transform: translateX(-10px);
+      opacity: 1;
+    }
+  70% {
+      transform: translateX(-100px);
+      opacity: 1;
+      height: 40vh;
+      width: 71.2vh;
+      border-radius: 30px;
+    }
+    100%{
+      transform: translateX(-100px);
+      opacity: 1;
+      height: 40vh;
+      width: 80.1vh;
+      border-radius: 20px;
+    }
+  }
+  
+  
+
 .lineunderslides{
   align-items: center;
-  margin-top: 2.5vh;
+  margin-top: 3vh;
   margin-top: 2.5vh;
   width: 70%;  background-color: white;
-  opacity: .7;
+  opacity: .5;
   height: .1vh;
 }
 
@@ -558,3 +646,16 @@ text-decoration: underline;
 
   }
 }
+
+/*----------------------------------------------------------------------------------------------------
+                            FOR MIN-WIDTH: 1920px */
+
+@media(min-width:1920px){
+  .card2{
+    position:relative;
+    top:30vh;
+  }
+}
+
+/*-------------------------------------------------------------------------------------------------*/
+

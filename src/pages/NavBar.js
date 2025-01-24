@@ -32,7 +32,7 @@ const NavBar = () => {
   }
 
   async function test_function() {
-    console.log(await getBusTiming("46971", "901"))
+    console.log(process.env.REACT_APP_BACKEND_API_URL)
   }
 
 

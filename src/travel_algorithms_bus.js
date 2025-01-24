@@ -15,41 +15,47 @@ function buildAdjacencyList(time_between_busstops, connections) {
 
     const adjMap = {};
 
-    // for (let bus_num in time_between_busstops) { //adding time between stations
-    let bus_num = "2";
-        let direction = time_between_busstops[bus_num];
-        let prev_stop = direction["1"][0][0];
+    for (let bus_num in time_between_busstops) { //adding time between stations
+        //let bus_num = "2";
+        let directions = time_between_busstops[bus_num];
+        let prev_stop = directions["1"][0][0];
         let prev_dist = 0;
-        for (const busstop of direction["1"]) {
+        for (const busstop of directions["1"]) {
             let stop = busstop[0];
             let dist = busstop[1]-prev_dist;
             dist = dist.toFixed(1);
             if (dist === "0.0") {continue;}
-            let dist_and_bus_num = [dist, bus_num];
+            let dist_and_bus_num = {dist, bus_num};
             // Add connection from s1 to s2
             if (!adjMap[stop]) adjMap[stop] = {};
             adjMap[stop][prev_stop] = dist_and_bus_num;
+            // Add connection from s2 to s1
+            if (!adjMap[prev_stop]) adjMap[prev_stop] = {};
+            adjMap[prev_stop][stop] = dist_and_bus_num;
             prev_stop = stop;
             prev_dist = busstop[1];
         }
         
-        prev_stop = direction["1"][direction["1"].length-1][0];
+        prev_stop = directions["1"][directions["1"].length-1][0];
         prev_dist = 0;
-        if (direction["2"]) {
-            for (const busstop of direction["2"]) {
+        if (directions["2"]) {
+            for (const busstop of directions["2"]) {
                 let stop = busstop[0];
                 let dist = busstop[1]-prev_dist;
                 dist = dist.toFixed(1);
                 if (dist === "0.0") {continue;}
-                let dist_and_bus_num = [dist, bus_num];
+                let dist_and_bus_num = {dist, bus_num};
                 // Add connection from s1 to s2
                 if (!adjMap[stop]) adjMap[stop] = {};
                 adjMap[stop][prev_stop] = dist_and_bus_num;
+                // Add connection from s2 to s1
+                if (!adjMap[prev_stop]) adjMap[prev_stop] = {};
+                adjMap[prev_stop][stop] = dist_and_bus_num;
                 prev_stop = stop;
                 prev_dist = busstop[1];
             }
         }
-    // }
+    }
     
     // for (const { p1, p2, time } of connections) { //adding cross platform transfers
     //     // Add connection from s1 to s2
@@ -91,7 +97,9 @@ export function dijkstra(graph, start, end) {
         for (let neighbour in graph[currentNode]) {
             if (!visited.has(neighbour)) {
                 // Calculate tentative distance to the neighbouring node
-                let newDistance = distances[currentNode] + graph[currentNode][neighbour];
+                let neighbouringDistance = Number(graph[currentNode][neighbour]["dist"]);
+                let newDistance = distances[currentNode] + neighbouringDistance;
+                newDistance = Number(newDistance.toFixed(1));
 
                 // If the newly calculated distance is shorter than the previously known distance to this neighbour
                 if (newDistance < distances[neighbour]) {
@@ -101,7 +109,6 @@ export function dijkstra(graph, start, end) {
             }
         }
     }
-    console.log(distances);
     // If the end node is unreachable
     if (distances[end] === Infinity) {
         return `No route from ${start} to ${end}.`;
@@ -151,9 +158,7 @@ export function dijkstra(graph, start, end) {
 console.clear();
 let [map, interchanges] = await getMap();
 let startTime = performance.now();
-console.log(Object.keys(map)[0]);
-console.log(map);
-console.log(dijkstra(map, "01012", "end"));
+console.log(dijkstra(map, "99009", "67409"));
 let endTime = performance.now();
 let timeTaken = endTime - startTime;
 console.log("Total time taken : " + timeTaken + " milliseconds");
