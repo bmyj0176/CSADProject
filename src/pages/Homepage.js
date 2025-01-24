@@ -27,7 +27,7 @@ const Homepage = () => {
       )
   }
 
- // yooo look at this comment
+ 
   const Slide2=()=>{
     return (
     <div className="banner2"> 
