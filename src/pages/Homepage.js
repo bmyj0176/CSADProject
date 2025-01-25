@@ -1,9 +1,11 @@
 import './stylesheets/homepage.css';
+import './stylesheets/adjustSize.css';
 import React, { useState, useEffect, useContext } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { LoginContext } from './Components/LoginContext';
 import { LoginStatusContext } from '../index';
 import { ThemeContext } from './Components/ToggleThemeButton';
+import SavedRoutes from "./TravelRoutes/SavedRoutes";
 
 const Homepage = () => {
   const {userLoggedIn, setUserLoggedIn} = useContext(LoginStatusContext);
@@ -133,6 +135,36 @@ const Homepage = () => {
     };
   }, []);
 
+
+  const GetStartedElements = () =>{
+    return(
+      <>
+      <div className="centering">
+      <ul className="items">
+        <li>
+          <Link to="/arrivaltimes"><img className="widgets" src="./images/icons/searchIcon.png"></img></Link>
+          <br/>
+          <p className="widgetsText">Search For The Nearest <span className="widgetsTextt">Bus Timing</span> Arrival</p>
+          <p className="widgetsBody"> Easily find bus arrival times with our quick search feature. Simply enter your location or bus stop, and get real-time updates on when the next bus will arrive, helping you plan your journey with ease. </p>
+        </li>
+        <li><Link to="/travelroutes"><img className="widgets" src="./images/icons/saveIcon.png"></img></Link>
+        <br/>
+        <p className="widgetsText2">Save Your Favoured <span className="widgetsTextt2">Travel Preferences</span></p>
+        <p className="widgetsBody2"> Keep track of your preferred buses, routes, and travel details with our save feature. Store your favorites for easy access and quickly plan your trips whenever you need them." </p>
+        </li>
+        <li><Link to="/settings"><img className="widgets2" src="./images/icons/flagIcon.png"></img></Link>
+        <br/>
+        <p className="widgetsText3">Map Out Your <span>Nearest</span> Bus Stops</p>
+        
+        </li>
+      </ul>
+      </div>
+      </>
+
+    )
+  }
+
+  
   return (
 
     <div>
@@ -158,12 +190,14 @@ const Homepage = () => {
 
       Whether you're navigating the city for work or play, we’ll make sure you get there faster and smarter.</p>
       
-
       <img className="busSlide hidden" src={isDarkTheme ? "./images/bus.png": "./images/busLight.png"} alt="Bus Image" />
       <video className="videoNyoom hidden" controls><source src='./images/NyoomCOM.mp4' type='video/mp4'></source></video>
       <img className="blueGraphic hidden" src="./images/graphics/blueGraphic2.png" alt="Blue Graphic" />
       <img className="blueGraphic2 hidden" src="./images/graphics/blueGraphic3.png"></img>
+
       <hr className="lineunderslides2" />
+
+      <div className="instr"> <GetStartedElements /></div>
 
       <div className="endBanner">
         <img className="endBannerImg" src="./images/nyoom_stroke.png" alt="End Banner" />

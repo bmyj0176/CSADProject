@@ -1,4 +1,4 @@
-.headd {animation: slideDown 2s ease-out forwards; }
+
 
 .subhead{position:relative; left: 3%;
 font-size: 7.2vh;
@@ -6,7 +6,7 @@ padding-top: 10vh;
 /*font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
 font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 text-shadow: none;
-background: linear-gradient(15deg, #5288d9, #56fde4);
+background: linear-gradient(15deg, #649ef4, #75fbe7);
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;
 /*-webkit-text-stroke: 2px rgb(19, 24, 43); */
@@ -44,24 +44,27 @@ letter-spacing: none;
 }
 
 .blueGraphic.visible {
-  animation: slide-and-fade3 2.2s ease-out forwards; 
+  animation: slide-and-fade3 1.8s ease-out forwards; 
 }
 
   @keyframes slide-and-fade3 {
     0%{
       transform: rotate(0deg);
       transform: translateX(80px);
+      top: 90vh;
       opacity: 0;
     }
 
-    60%{
+    70%{
       transform: rotate(0deg);
       transform: translateX(80px);
+      top: 90vh;
       opacity: 0;
     }
 
     100%{
       transform: rotate(-30deg);
+      top: 90vh;
       opacity: 1;
     }
   } 
@@ -78,7 +81,7 @@ letter-spacing: none;
   }
 
   .blueGraphic2.visible {
-    animation: slide-and-fade4 3s ease-out forwards; 
+    animation: slide-and-fade4 2.0s ease-out forwards; 
   }
 
   @keyframes slide-and-fade4 {
@@ -86,17 +89,21 @@ letter-spacing: none;
       transform: rotate(120deg);
       transform: translateX(80px);
       opacity:0;
-      left: 130vh;
+      left: 120vh;
       top: 145vh;
       height: 40vh;
       width: 40vh;
     }
 
-    50%{
+    30%{
+      opacity: 0;
+    }
+
+    70%{
       transform: rotate(80deg);
       transform: translateX(80px);
       opacity: 1;
-      left: 130vh;
+      left: 120vh;
       top: 145vh;
       height: 40vh;
       width: 40vh;
@@ -105,7 +112,7 @@ letter-spacing: none;
     100%{
       transform: rotate(50deg);
       opacity: 0.6;
-      left: 159vh;
+      left: 149vh;
       top: 155vh;
     }
   } 
@@ -120,7 +127,7 @@ letter-spacing: none;
   }
   
   .busSlide.visible {
-    animation: slide-and-fade 1.4s ease-out forwards; 
+    animation: slide-and-fade 1.6s ease-out forwards; 
   }
   
   @keyframes slide-and-fade {
@@ -161,7 +168,7 @@ letter-spacing: none;
   }
 
   .videoNyoom.visible {
-    animation: slide-and-fade2 1.2s ease-out forwards; 
+    animation: slide-and-fade2 1.4s ease-out forwards; 
   }
 
   @keyframes slide-and-fade2 {
@@ -209,28 +216,114 @@ letter-spacing: none;
 }
 
 
-
-.subhead2{position:relative; left: 95px; top: 40px;}
-.subpar2{position:relative; top: 30px; left: 82px;}
-
-
-@keyframes slideDown {
-  0% {
-      transform: translateY(-20px);
-      opacity: 0;  
-  }
-  100% {
-      transform: translateY(0); 
-      opacity: 1; 
-  }
+.instr{
+  margin-left: auto;
+  margin-right: auto;
+  position:relative;
+  top: 10vh;
+  padding: 10vh;
+  padding-bottom: 65vh;
+  margin-bottom: 30vh;
+  max-width: 150vh;
+  background-color:rgb(26, 38, 44);
+  border-radius: 20px;
+  border: solid rgba(0, 0, 0, 0.411);
+ 
 }
 
-.headd {text-align:center; animation: slideDown 2s ease-out forwards; }
+.centering{
+  display: flex; /* Use flexbox */
+  justify-content: center; /* Center horizontally */
+}
 
+.items { 
+  list-style-type: none; /* Remove bullets */
+  padding: 0;            /* Remove padding */
+  margin: 0;             /* Remove margin */
+  display: flex; 
+  position:absolute;
+  }
 
-.favorite-list {
-  margin-top: 20px;
-  position:relative; left: 95px;
+  
+.widgets{
+  width: 14vh;
+  z-index: 10;
+  margin-right: 40vh;
+  transition: transform 0.2s ease-in-out;
+}
+
+.widgets2{
+  width: 12vh;
+  z-index: 10;
+  position:relative;
+  bottom: 2.5vh;
+  transition: transform 0.2s ease-in-out;
+}
+
+.widgets:hover{
+  transform: translateY(-10px);
+}
+
+.widgets2:hover{
+  transform: translateY(-10px);
+}
+
+.widgetsText{
+  margin-top: 3vh;
+  position:relative;
+  left: -8.4vh;
+  font-size: 18px;
+  max-width: 35vh;
+  text-align:center;
+  color: white;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  
+}
+
+.widgetsBody{
+  position:absolute;
+  text-align: center;
+  max-width: 37vh;
+  color:white;
+  left: -9vh;
+  bottom: -27vh;
+  line-height:3.5vh;
+}
+
+.widgetsText2{
+  margin-top: 3vh;
+  position:relative;
+  left: -10.5vh;
+  font-size: 18px;
+  max-width: 35vh;
+  text-align:center;
+  color: white;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+}
+
+.widgetsBody2{
+  position:absolute;
+  text-align: center;
+  max-width: 37vh;
+  color:white;
+  left: 42.5vh;
+  bottom: -23vh;
+  line-height:3.5vh;
+}
+
+.widgetsText3{
+  margin-top: 3vh;
+  position:absolute;
+  left: 90.0vh;
+  bottom: -3vh;
+  font-size: 18px;
+  max-width: 40vh;
+  text-align:center;
+  color: white;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
 }
 
 .busstopcard {
@@ -359,7 +452,6 @@ letter-spacing: none;
   top: 0.6vh;
   width: 100%;
   height: 90vh; 
-  box-shadow:0px 5px 0px rgba(166, 162, 227, 0.249);
 }
 
 .card2 {
@@ -615,189 +707,3 @@ text-decoration: underline;
 /* ---------------------------------------------------------------------------------------------- */
 
 
-
-@media (max-width: 1200px) {
-  .card2{
-    width: 60%;
-    height: 40%;
-    position:relative;
-    left:2.8rem;
-    
-    padding: 10px;
-    
-}
-.view-more-2{
-  padding: 0.8rem 1.2rem; 
-  font-size: 0.8rem; 
-}
-}
-@media (max-width: 968px) {
-  .card2 {
-      width: 50%; 
-      height: 40%;
-      position:relative;
-      left:2.4rem;
-      
-      padding: 7px; 
-  }
-
-  .card-content2 h1 {
-    font-size: 1.2rem;
-  }
-  
-  .card-content2 p {
-    font-size: 1.2rem; 
-    margin-bottom: 1.2rem; 
-    color: #555; 
-    line-height: 1.4; 
-  }
-  .view-more-2{
-
-    padding: 0.7rem 1rem; 
-    font-size: 0.7rem; 
-  }
-}
-
-@media (max-width: 850px) {
-  .card2 {
-    width: 30%; 
-    height: 30%;
-    position:relative;
-    left:2.0rem;
-    
-    padding: 4px; 
-}
-
-  .card-content2 h1 {
-    font-size: 1rem;
-  }
-  
-  .card-content2 p {
-    font-size: 1rem; 
-    margin-bottom: 1rem; 
-    color: #555; 
-    line-height: 1.2; 
-  }
-
-  .view-more-2{
-
-    padding: 0.5rem 0.8rem; 
-    font-size: 0.5rem; 
-  }
-}
-
-/*-------------------------------------------------------------*/
-
-
-@media (max-width: 980px) {
-  .card3{
-  max-width: 20rem; 
-  padding: 1.6rem;
-
-  }
-
-  .card-content3 p{
-    font-size: 3px;
-    margin-bottom: 16px;
-    color: #555; 
-    line-height: 1.1;
-  }
-
-  .card-content3 h2 {
-    margin-bottom: 10px;
-    font-size: 1.2rem;
-  }
-  
-  .view-more-3 {
-    padding: 15px 20px;
-    font-size: 12px;
-
-  }
-}
-
-@media (max-width: 780px) {
-  .card3{
-  max-width: 16rem; 
-  padding: 1.2rem;
-
-  }
-
-  .card-content3 p{
-    font-size: 2px;
-    margin-bottom: 12px;
-    color: #555; 
-    line-height: 1.0;
-  }
-
-  .card-content3 h2 {
-    margin-bottom: 8px;
-    font-size: 1.0rem;
-  }
-  
-  .view-more-3 {
-    padding: 12px 17px;
-    font-size: 8px;
-
-  }
-}
-
-/*----------------------------------------------------------------------------------------------------
-                            FOR MIN-WIDTH: 1920px */
-
-@media(min-width:1920px){
-  .card2{
-    position:relative;
-    top:30vh;
-  }
-
-
-  .busSlide{
-    position: absolute;
-    top: 120vh;
-    right: -10vh;
-    height: 82vh;
-    width: 82vh;
-    opacity: 0; 
-    transform: translateX(20px); 
-  }
-
-  @keyframes slide-and-fade {
-    0% {
-      transform: translateX(40px);
-      opacity: 0.4;
-    }
-    40% {
-      transform: translateX(-180px);
-      opacity: 1;
-    }
-
-    60% {
-      transform: translateX(-200px);
-      opacity: 0.5;
-      height: 82vh;
-      width: 82vh;
-      top: 120vh;
-    }
-
-    100% {
-      transform: translateX(-500px);
-      opacity: 0;
-      height: 65vh;
-      width: 65vh;
-      top: 126svh;
-    }
-}
-
-.videoNyoom{
-  top: 140vh;
-  right: -5vh;
-
-
-}
-
-.lineunderslides2{margin-bottom: 12px;
-}
-
-/*-------------------------------------------------------------------------------------------------*/
-
-}
