@@ -1,8 +1,11 @@
 import './stylesheets/homepage.css';
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from "react-router-dom";
+import { LoginContext } from './Components/LoginContext';
+import { LoginStatusContext } from '../index';
 
 const Homepage = () => {
+  const {userLoggedIn, setUserLoggedIn} = useContext(LoginStatusContext);
   const [favorites, setFavorites] = useState([]);
   const [slideIndex, setSlideIndex] = useState(0); // Toggle state
   const [fade, setFade] = useState(false);  // Controls fade animation
@@ -149,12 +152,14 @@ const Homepage = () => {
       <h1 className="subpar">
         Optimizing Bus & Train Travel for <br /> Time-Saving, Effortless Journey
       </h1>
+      <p className="subBody"> Plan your journeys effortlessly with our all-in-one travel companion! Our platform allows you to track real-time public bus arrival timings, find the shortest and fastest routes to your destination, and stay on top of MRT schedules. With our advanced route optimization algorithm, we combine bus, MRT, and walking options to provide you with the quickest and most efficient way to get where you need to go. Plus, save your favorite routes for easy access and a stress-free commute every time.
 
+      Whether you're navigating the city for work or play, we’ll make sure you get there faster and smarter.</p>
       
 
       <img className="busSlide hidden" src="./images/bus.png" alt="Bus Image" />
       <video className="videoNyoom hidden" controls><source src='./images/NyoomCOM.mp4' type='video/mp4'></source></video>
-      
+      <hr className="lineunderslides2" />
       <div className="endBanner">
         <img className="endBannerImg" src="./images/nyoom_stroke.png" alt="End Banner" />
         <ul className="no-bullets">
@@ -163,6 +168,7 @@ const Homepage = () => {
         </ul>
         <hr className="endBannerhr" />
         <h5 className="copyright"> © All rights reserved to nyoom 2025 </h5>
+        {userLoggedIn && <label>test</label>}
       </div>
     </div>
   );

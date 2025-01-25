@@ -4,24 +4,17 @@ import './stylesheets/navbar.css';
 import { getBusTiming } from '../helper_functions';
 import ToggleThemeButton from './Components/ToggleThemeButton';
 import '../travel_algorithms_bus';
+import { LoginStatusContext } from '../index';
 
 const NavBar = () => {
-  const [userLoggedIn, setUserLoggedIn] = useState(false);
+  const {userLoggedIn, setUserLoggedIn} = useContext(LoginStatusContext);
   const [path, setPath] = useState("/");
   const location = useLocation(); 
   const navigate = useNavigate();
-
   
   useEffect(() => {
     setPath(location.pathname); 
   }, [location]);
-
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      setUserLoggedIn(true);
-    }
-  }, []);
 
   function logout() {
     localStorage.removeItem('token');

@@ -13,8 +13,6 @@ background: linear-gradient(15deg, #5288d9, #56fde4);
 letter-spacing: none;
 }
 
-
-
 .subpar{position:relative;
   top: -1.25vh; 
   font-size: 6.2vh;
@@ -24,13 +22,22 @@ letter-spacing: none;
   letter-spacing:0px;
   left: 4%;}
 
+  .subBody{
+    max-width: 100vh; /* Limit the width for better readability */
+    color: white;
+    line-height: 1.6;
+    position:relative;
+    font-size: 3vh;
+    left: 4%;
+    
+  }
 
   .busSlide {
-    height: 75vh;
-    width: 75vh;
+    height: 78vh;
+    width: 78vh;
     position: absolute;
-    top: 115vh;
-    right: 0vh;
+    top: 132vh;
+    right: -10vh;
     opacity: 0; 
     transform: translateX(20px); 
   }
@@ -52,17 +59,17 @@ letter-spacing: none;
     60% {
       transform: translateX(-200px);
       opacity: 0.5;
-      height: 75vh;
-      width: 75vh;
-      top: 115vh;
+      height: 78vh;
+      width: 78vh;
+      top: 132vh;
     }
 
     100% {
       transform: translateX(-450px);
       opacity: 0;
-      height: 60vh;
-      width: 60vh;
-      top: 120vh;
+      height: 63vh;
+      width: 63vh;
+      top: 138svh;
     }
 
   }
@@ -73,7 +80,7 @@ letter-spacing: none;
     height: 40vh;
     width: 71.2vh;
     position:absolute;
-    top: 135vh;
+    top: 150vh;
     right: -10vh;
     transform: translateX(20px); 
   }
@@ -107,12 +114,25 @@ letter-spacing: none;
 
 .lineunderslides{
   align-items: center;
-  margin-top: 3vh;
   margin-top: 2.5vh;
+  margin-bottom: 2.5vh;
   width: 70%;  background-color: white;
   opacity: .5;
   height: .1vh;
 }
+
+.lineunderslides2{
+  align-items: center;
+  margin-bottom: 0;
+  margin-top: 2.5vh;
+  width: 70%;  background-color: white;
+  opacity: .5;
+  height: .1vh;
+  position:relative;
+  top:4vh;
+  margin-top: 10vh;
+}
+
 
 
 .subhead2{position:relative; left: 95px; top: 40px;}
@@ -655,6 +675,51 @@ text-decoration: underline;
     position:relative;
     top:30vh;
   }
+
+
+  .busSlide{
+    position: absolute;
+    top: 120vh;
+    right: -10vh;
+    height: 82vh;
+    width: 82vh;
+    opacity: 0; 
+    transform: translateX(20px); 
+  }
+
+  @keyframes slide-and-fade {
+    0% {
+      transform: translateX(40px);
+      opacity: 0.4;
+    }
+    40% {
+      transform: translateX(-180px);
+      opacity: 1;
+    }
+
+    60% {
+      transform: translateX(-200px);
+      opacity: 0.5;
+      height: 82vh;
+      width: 82vh;
+      top: 120vh;
+    }
+
+    100% {
+      transform: translateX(-500px);
+      opacity: 0;
+      height: 65vh;
+      width: 65vh;
+      top: 126svh;
+    }
+}
+
+.videoNyoom{
+  top: 140vh;
+  right: -5vh;
+
+
+}
 }
 
 /*-------------------------------------------------------------------------------------------------*/
