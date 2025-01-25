@@ -32,6 +32,51 @@ letter-spacing: none;
     
   }
 
+  /*.blueGraphic{
+    position:absolute;
+    height: 90vh;
+    width: 90vh;
+    left: 143vh;
+    top: 90vh;
+    z-index: -2;
+    transform: rotate(-30deg); 
+
+  }
+
+  .blueGraphic.visible {
+    animation: slide-and-fade3 2s ease-out forwards; 
+  }
+
+  @keyframes slide-and-fade3 {
+    0%{
+      transform: rotate(0deg);
+      transform: translateX(80px);
+      opacity: 0;
+    }
+
+    85%{
+      transform: rotate(0deg);
+      transform: translateX(80px);
+      opacity: 0;
+    }
+
+    100%{
+      transform: rotate(-30deg);
+      opacity: 1;
+    }
+  } */
+
+  .blueGraphic2{
+    position:absolute;
+    height: 90vh;
+    width: 90vh;
+    left: 159vh;
+    top: 155vh;
+    z-index: -2;
+    transform: rotate(50deg); 
+    opacity:1;
+  }
+
   .busSlide {
     height: 78vh;
     width: 78vh;
@@ -73,6 +118,21 @@ letter-spacing: none;
     }
 
   }
+
+  .blueGraphic {
+    height: 78vh;
+    width: 78vh;
+    position: absolute;
+    top: 132vh;
+    right: -10vh;
+    opacity: 0; 
+    transform: translateX(20px); 
+  }
+  
+  .blueGraphic.visible {
+    animation: slide-and-fade 1.4s ease-out forwards; 
+  }
+  
   
   .videoNyoom{
     border-radius: 30px;
@@ -437,7 +497,6 @@ letter-spacing: none;
   position:relative;
   top: 50px;
   left: 50px;
-  
 
 }
 
@@ -720,7 +779,10 @@ text-decoration: underline;
 
 
 }
+
+.lineunderslides2{margin-bottom: 12px;
 }
 
 /*-------------------------------------------------------------------------------------------------*/
 
+}

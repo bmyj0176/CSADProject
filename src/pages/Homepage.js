@@ -3,6 +3,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from "react-router-dom";
 import { LoginContext } from './Components/LoginContext';
 import { LoginStatusContext } from '../index';
+import { ThemeContext } from './Components/ToggleThemeButton';
 
 const Homepage = () => {
   const {userLoggedIn, setUserLoggedIn} = useContext(LoginStatusContext);
@@ -14,6 +15,8 @@ const Homepage = () => {
   const handleNavigation = () => {
     navigate('/about'); 
   };
+
+   const { isDarkTheme } = useContext(ThemeContext);
 
   const navigate2 = useNavigate();
   const handleNavigation2 = () => {
@@ -107,7 +110,7 @@ const Homepage = () => {
 
   // BUS WILL ONLY APPEAR IF UR THERE AT THE PART OF THE PAGE
   useEffect(() => {
-    const elementsToObserve = document.querySelectorAll(".busSlide, .videoNyoom");
+    const elementsToObserve = document.querySelectorAll(".busSlide, .blueGraphic, .videoNyoom")
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -120,6 +123,7 @@ const Homepage = () => {
 
     elementsToObserve.forEach((element) => {
       observer.observe(element);
+      console.log(element);
     });
 
     return () => {
@@ -128,8 +132,6 @@ const Homepage = () => {
       });
     };
   }, []);
-
-
 
   return (
 
@@ -157,9 +159,12 @@ const Homepage = () => {
       Whether you're navigating the city for work or play, we’ll make sure you get there faster and smarter.</p>
       
 
-      <img className="busSlide hidden" src="./images/bus.png" alt="Bus Image" />
+      <img className="busSlide hidden" src={isDarkTheme ? "./images/bus.png": "./images/busLight.png"} alt="Bus Image" />
       <video className="videoNyoom hidden" controls><source src='./images/NyoomCOM.mp4' type='video/mp4'></source></video>
+      <img className="blueGraphic hidden" src="./images/graphics/blueGraphic2.png" alt="Blue Graphic" />
+      <img className="blueGraphic2 hidden" src="./images/graphics/blueGraphic3.png"></img>
       <hr className="lineunderslides2" />
+
       <div className="endBanner">
         <img className="endBannerImg" src="./images/nyoom_stroke.png" alt="End Banner" />
         <ul className="no-bullets">
