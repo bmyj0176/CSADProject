@@ -104,7 +104,7 @@ export function dijkstra(graph, start, end) {
                 // If the newly calculated distance is shorter than the previously known distance to this neighbour
                 if (newDistance < distances[neighbour]) {
                     distances[neighbour] = newDistance;
-                    predecessors[neighbour] = currentNode; // Update predecessor
+                    predecessors[neighbour] = [currentNode, graph[currentNode][neighbour]["bus_num"]]; // Update predecessor
                 }
             }
         }
@@ -113,14 +113,17 @@ export function dijkstra(graph, start, end) {
     if (distances[end] === Infinity) {
         return `No route from ${start} to ${end}.`;
     }
+    console.log(predecessors);
 
     // Reconstruct the shortest route from start to end using the predecessors map
-    let route = [];
+    let route = {};
     let current = end;
     while (current) {
-        route.unshift(current);
-        current = predecessors[current];
+        if (predecessors[current] == null) {break;}
+        route[current] = predecessors[current][1];
+        current = predecessors[current][0];
     }
+    console.log(route);
 
     //showing the route as only transfers
     let simple_route = [route[0]];
