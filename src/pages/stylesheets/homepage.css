@@ -32,20 +32,20 @@ letter-spacing: none;
     
   }
 
-  /*.blueGraphic{
-    position:absolute;
-    height: 90vh;
-    width: 90vh;
-    left: 143vh;
-    top: 90vh;
-    z-index: -2;
-    transform: rotate(-30deg); 
 
-  }
+.blueGraphic {
+  height: 90vh;
+  width: 90vh;
+  position: absolute;
+  top: 100vh;
+  left: 143vh;
+  z-index: -2; 
+  transform: translateX(20px); 
+}
 
-  .blueGraphic.visible {
-    animation: slide-and-fade3 2s ease-out forwards; 
-  }
+.blueGraphic.visible {
+  animation: slide-and-fade3 2.2s ease-out forwards; 
+}
 
   @keyframes slide-and-fade3 {
     0%{
@@ -54,7 +54,7 @@ letter-spacing: none;
       opacity: 0;
     }
 
-    85%{
+    60%{
       transform: rotate(0deg);
       transform: translateX(80px);
       opacity: 0;
@@ -64,7 +64,7 @@ letter-spacing: none;
       transform: rotate(-30deg);
       opacity: 1;
     }
-  } */
+  } 
 
   .blueGraphic2{
     position:absolute;
@@ -73,10 +73,42 @@ letter-spacing: none;
     left: 159vh;
     top: 155vh;
     z-index: -2;
-    transform: rotate(50deg); 
+    
     opacity:1;
   }
 
+  .blueGraphic2.visible {
+    animation: slide-and-fade4 3s ease-out forwards; 
+  }
+
+  @keyframes slide-and-fade4 {
+    0%{
+      transform: rotate(120deg);
+      transform: translateX(80px);
+      opacity:0;
+      left: 130vh;
+      top: 145vh;
+      height: 40vh;
+      width: 40vh;
+    }
+
+    50%{
+      transform: rotate(80deg);
+      transform: translateX(80px);
+      opacity: 1;
+      left: 130vh;
+      top: 145vh;
+      height: 40vh;
+      width: 40vh;
+    }
+
+    100%{
+      transform: rotate(50deg);
+      opacity: 0.6;
+      left: 159vh;
+      top: 155vh;
+    }
+  } 
   .busSlide {
     height: 78vh;
     width: 78vh;
@@ -94,12 +126,9 @@ letter-spacing: none;
   @keyframes slide-and-fade {
     0% {
       transform: translateX(40px);
-      opacity: 0.4;
+      opacity: 0;
     }
-    40% {
-      transform: translateX(-180px);
-      opacity: 1;
-    }
+
 
     60% {
       transform: translateX(-200px);
@@ -119,20 +148,6 @@ letter-spacing: none;
 
   }
 
-  .blueGraphic {
-    height: 78vh;
-    width: 78vh;
-    position: absolute;
-    top: 132vh;
-    right: -10vh;
-    opacity: 0; 
-    transform: translateX(20px); 
-  }
-  
-  .blueGraphic.visible {
-    animation: slide-and-fade 1.4s ease-out forwards; 
-  }
-  
   
   .videoNyoom{
     border-radius: 30px;

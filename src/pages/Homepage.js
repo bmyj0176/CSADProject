@@ -110,7 +110,7 @@ const Homepage = () => {
 
   // BUS WILL ONLY APPEAR IF UR THERE AT THE PART OF THE PAGE
   useEffect(() => {
-    const elementsToObserve = document.querySelectorAll(".busSlide, .blueGraphic, .videoNyoom")
+    const elementsToObserve = document.querySelectorAll(".busSlide, .blueGraphic, .videoNyoom, .blueGraphic2")
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
