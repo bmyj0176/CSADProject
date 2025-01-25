@@ -79,14 +79,8 @@ export async function getAllBusStops(BusService, direction) {
 // INPUT BusStopCode - (string) bus stop code of the bus stop
 // OUTPUT busServicesList - (list of strings) all bus services available at said bus stop
 export async function getAllBusServices(BusStopCode) {
-    const busServicesList = []
-    const data = await BusArrival(BusStopCode)
-    const list = data.Services
-    for (const dict of list) {
-        if (!busServicesList.includes(dict.ServiceNo))
-            busServicesList.push(dict.ServiceNo)
-    }
-    return busServicesList
+    const data = await getjson('./datasets/bus_services_at_stop.json')
+    return data[BusStopCode];
 }
 
 // INPUT1 BusService - (string) bus service e.g. "185"

@@ -32,3 +32,26 @@ async function busstop_map() {
     console.log(database);
     downloadJSON(database);
 }
+
+async function bus_services_at_stop() {
+  const database = {};
+  const bsc_list = await getjson('./datasets/bus_stop_codes.json');
+
+  // Function to process in batches of 10
+  const batchSize = 10;
+  for (let i = 0; i < bsc_list.length; i += batchSize) {
+      // Create a batch of 10 items
+      const batch = bsc_list.slice(i, i + batchSize);
+
+      // Wait for all promises in the batch to resolve
+      await Promise.all(batch.map(async (bsc) => {
+          const data = await BusArrival(bsc);
+          const list = data.Services.map(svc => svc.ServiceNo);
+          database[bsc] = list;
+          console.log(bsc);
+      }));
+  }
+
+  console.log(database);
+  downloadJSON(database);
+}
