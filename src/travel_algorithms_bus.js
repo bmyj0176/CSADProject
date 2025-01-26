@@ -68,23 +68,29 @@ function buildAdjacencyList(time_between_busstops, connections) {
 
 export function dijkstra(graph, start, end) {
     // Create an object to store the shortest distance from the start node to every other node
-    let distances = {};
     let predecessors = {}; // Map to store the predecessor of each node for route reconstruction
     let visited = new Set();
 
     // Get all the nodes of the graph
     let nodes = Object.keys(graph);
+
+    let distances = {};
+    console.log(distances);
+    distances[start] = ["0"];
+    console.log(distances);
+
+
     // Initially, set the shortest distance to every node as Infinity except starting node
     for (let node of nodes) {
-        distances[node] = Infinity;
+        if (node === start) continue;
+        distances[node] = [999];
         predecessors[node] = null; // No predecessor initially
     }
-    distances[start] = 0;
-
+    
     // Loop until all nodes are visited
     while (nodes.length) {
         // Sort nodes by distance and pick the closest unvisited node
-        nodes.sort((a, b) => distances[a] - distances[b]);
+        nodes.sort((a, b) => distances[a][0] - distances[b][0]);
         let currentNode = nodes.shift();
 
         // If the shortest distance to the closest node is still Infinity, then remaining nodes are unreachable and we can break
@@ -92,28 +98,31 @@ export function dijkstra(graph, start, end) {
 
         // Mark the chosen node as visited
         visited.add(currentNode);
-
         // For each neighboring node of the current node
         for (let neighbour in graph[currentNode]) {
             if (!visited.has(neighbour)) {
                 // Calculate tentative distance to the neighbouring node
                 let neighbouringDistance = Number(graph[currentNode][neighbour]["dist"]);
-                let newDistance = distances[currentNode] + neighbouringDistance;
+                let busUsed = graph[currentNode][neighbour]["bus_num"];
+                let newDistance = distances[currentNode][0] + neighbouringDistance;
+                console.log(distances[currentNode][0]);
                 newDistance = Number(newDistance.toFixed(1));
 
                 // If the newly calculated distance is shorter than the previously known distance to this neighbour
-                if (newDistance < distances[neighbour]) {
-                    distances[neighbour] = newDistance;
+                if (newDistance < distances[neighbour][0]) {
+                    
+                    distances[neighbour][0] = [newDistance];
                     predecessors[neighbour] = [currentNode, graph[currentNode][neighbour]["bus_num"]]; // Update predecessor
                 }
             }
         }
     }
+    console.log(distances);
     // If the end node is unreachable
-    if (distances[end] === Infinity) {
+    if (distances[end][0] === Infinity) {
         return `No route from ${start} to ${end}.`;
     }
-    console.log(predecessors);
+    console.log(distances);
 
     // Reconstruct the shortest route from start to end using the predecessors map
     let route = {};
@@ -158,10 +167,14 @@ export function dijkstra(graph, start, end) {
 
 
 // running Dijkstra algorithm between the two stations
-console.clear();
-let [map, interchanges] = await getMap();
-let startTime = performance.now();
-console.log(dijkstra(map, "99009", "67409"));
-let endTime = performance.now();
-let timeTaken = endTime - startTime;
-console.log("Total time taken : " + timeTaken + " milliseconds");
+
+
+export async function runshit() {
+    console.clear();
+    let [map, interchanges] = await getMap();
+    let startTime = performance.now();
+    console.log(dijkstra(map, "99009", "67409"));
+    let endTime = performance.now();
+    let timeTaken = endTime - startTime;
+    console.log("Total time taken : " + timeTaken + " milliseconds");
+}
