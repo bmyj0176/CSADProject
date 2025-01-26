@@ -75,9 +75,8 @@ export function dijkstra(graph, start, end) {
     let nodes = Object.keys(graph);
 
     let distances = {};
-    console.log(distances);
-    distances[start] = ["0"];
-    console.log(distances);
+    console.log({ ...distances }); // Creates a shallow copy to capture current state
+    distances[start] = [0];
 
 
     // Initially, set the shortest distance to every node as Infinity except starting node
@@ -86,7 +85,7 @@ export function dijkstra(graph, start, end) {
         distances[node] = [999];
         predecessors[node] = null; // No predecessor initially
     }
-    
+
     // Loop until all nodes are visited
     while (nodes.length) {
         // Sort nodes by distance and pick the closest unvisited node
@@ -101,23 +100,23 @@ export function dijkstra(graph, start, end) {
         // For each neighboring node of the current node
         for (let neighbour in graph[currentNode]) {
             if (!visited.has(neighbour)) {
+                if (neighbour === currentNode) continue;
                 // Calculate tentative distance to the neighbouring node
                 let neighbouringDistance = Number(graph[currentNode][neighbour]["dist"]);
                 let busUsed = graph[currentNode][neighbour]["bus_num"];
                 let newDistance = distances[currentNode][0] + neighbouringDistance;
-                console.log(distances[currentNode][0]);
                 newDistance = Number(newDistance.toFixed(1));
 
                 // If the newly calculated distance is shorter than the previously known distance to this neighbour
                 if (newDistance < distances[neighbour][0]) {
                     
-                    distances[neighbour][0] = [newDistance];
+                    distances[neighbour][0] = newDistance;
                     predecessors[neighbour] = [currentNode, graph[currentNode][neighbour]["bus_num"]]; // Update predecessor
                 }
             }
         }
     }
-    console.log(distances);
+
     // If the end node is unreachable
     if (distances[end][0] === Infinity) {
         return `No route from ${start} to ${end}.`;
