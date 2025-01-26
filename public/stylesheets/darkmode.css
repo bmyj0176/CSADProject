@@ -57,6 +57,7 @@ button, .buton{
 }
 
 .popup {
+  border-color: grey;
 }
 
 
@@ -65,6 +66,10 @@ input {
   color: white;
   border: 1px solid white; /* Optional: Add a white border */
   padding: 5px;           /* Optional: Add some padding */
+}
+
+.busstopname {
+  color: #f28b00;
 }
 
 .element {
