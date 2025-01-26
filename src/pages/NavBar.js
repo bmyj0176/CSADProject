@@ -70,8 +70,8 @@ const NavBar = () => {
               )}
             </div>
           </li>
-          <li className="aboutt" style={{ float: 'right'}}>
-            <Link to="/about" className={location.pathname === "/about" ? "activee" : ""}>About</Link>
+          <li className="announcements" style={{ float: 'right'}}>
+            <Link to="/announcements" className={location.pathname === "/announcements" ? "activee" : ""}>Announcements</Link>
           </li>
       </ul>
       {/* (path !== "/") &&

@@ -2,7 +2,6 @@ import './stylesheets/homepage.css';
 import './stylesheets/adjustSize.css';
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate, Link } from "react-router-dom";
-import { LoginContext } from './Components/LoginContext';
 import { LoginStatusContext } from '../index';
 import { ThemeContext } from './Components/ToggleThemeButton';
 import SavedRoutes from "./TravelRoutes/SavedRoutes";
