@@ -52,7 +52,7 @@ const NavBar = () => {
           <li style={{ float: 'right'}} className="dropdown">
             <div className="dropbtn">
               { !userLoggedIn ? (
-                <Link className = "loginright" to="/login" >Login</Link> 
+                <Link id = "loginright" to="/login" className={location.pathname === "/login" ? "activee" : ""}>Login</Link> 
               ) : (
                 <>
                   <label className="loginuser"> {localStorage.getItem('username')} </label>
