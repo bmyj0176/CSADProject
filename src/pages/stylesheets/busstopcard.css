@@ -1,7 +1,6 @@
 
 #busstopdefault.busstopcard{ 
 
-
     width: 150px;
     padding:20px;
     border: solid 1px hsl(0, 0%, 80%);
@@ -84,7 +83,6 @@
 
     font-size: 18px;
     font-weight: bold;
-    color: #f28b00;
     position:relative;
     bottom:10px;
 }

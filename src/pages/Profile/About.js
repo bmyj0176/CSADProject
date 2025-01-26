@@ -1,4 +1,4 @@
-import BouncyBouncy from '../Components/LoadingIcon'
+import BouncyBouncy from '../Components/LoadingIcon.js';
 
 const About = () => {
     return <BouncyBouncy/>;

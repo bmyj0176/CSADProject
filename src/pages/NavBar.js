@@ -52,7 +52,7 @@ const NavBar = () => {
           <li style={{ float: 'right'}} className="dropdown">
             <div className="dropbtn">
               { !userLoggedIn ? (
-                <Link className = "loginright" to="/login" >Login</Link> 
+                <Link id = "loginright" to="/login" className={location.pathname === "/login" ? "activee" : ""}>Login</Link> 
               ) : (
                 <>
                   <label className="loginuser"> {localStorage.getItem('username')} </label>
@@ -70,8 +70,8 @@ const NavBar = () => {
               )}
             </div>
           </li>
-          <li className="aboutt" style={{ float: 'right'}}>
-            <Link to="/about" className={location.pathname === "/about" ? "activee" : ""}>About</Link>
+          <li className="announcements" style={{ float: 'right'}}>
+            <Link to="/announcements" className={location.pathname === "/announcements" ? "activee" : ""}>Announcements</Link>
           </li>
       </ul>
       {/* (path !== "/") &&

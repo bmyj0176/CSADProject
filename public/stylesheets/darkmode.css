@@ -56,10 +56,20 @@ button, .buton{
   animation: glow 1.5s infinite alternate;
 }
 
-.popup-overlay {
-  background: rgba(0, 0, 0, 0.5);
-  
-  background: rgb(23, 32, 37);
+.popup {
+  border-color: grey;
+}
+
+
+input {
+  background-color: rgb(23, 32, 37);
+  color: white;
+  border: 1px solid white; /* Optional: Add a white border */
+  padding: 5px;           /* Optional: Add some padding */
+}
+
+.busstopname {
+  color: #f28b00;
 }
 
 .element {
@@ -73,11 +83,4 @@ button, .buton{
   100% {
     text-shadow: 0 0 2px khaki, 0 0 4px khaki, 0 0 6px khaki, 0 0 8px khaki;
   }
-}
-
-input {
-  background-color: black;
-  color: white;
-  border: 1px solid white; /* Optional: Add a white border */
-  padding: 5px;           /* Optional: Add some padding */
 }
