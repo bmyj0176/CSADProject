@@ -1,11 +1,11 @@
 import { getjson } from "./helper_functions"
 
-export async function downloadJSON(obj) {
+export async function downloadJSON(obj, filename="data") {
     const jsonStr = JSON.stringify(obj, null, 2);  // pretty-print with 2 spaces for readability
     const blob = new Blob([jsonStr], { type: 'application/json' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = 'data.json';  // Name of the file to be downloaded
+    link.download = `${filename}.json`;  // Name of the file to be downloaded
     link.click();
 }
 

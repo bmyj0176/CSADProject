@@ -1,3 +1,8 @@
+import axios from 'axios';
+import { getjson, getBusStopInfo } from './helper_functions';
+import { downloadJSON, haversine } from './helper_functions2';
+import { BusArrival, BusRoutes, BusStops } from './api_caller';
+
 export async function busstop_map() {
     const database = {};
     for (let num = 0; num < 52; num++) {
@@ -30,12 +35,29 @@ export async function busstop_map() {
       }
     }
     console.log(database);
-    downloadJSON(database);
+    downloadJSON(database, "busstop_map");
+}
+
+export async function bus_stops_complete() {
+  const database = [];
+  for (let skip = 0; skip <= 5000; skip += 500) {
+    const rawdata = await axios.get(`${process.env.REACT_APP_BACKEND_API_URL}/api/bus-stops?skip=${skip}`);
+    const value = rawdata.data.value;
+    for (const dict of value) {
+      database.push(dict);
+    }
+  }
+  console.log(database);
+  downloadJSON(database, "bus_stops_complete");
 }
 
 export async function bus_services_at_stop() {
   const database = {};
-  const bsc_list = await getjson('./datasets/bus_stop_codes.json');
+  const bsc_list = [];
+  const data = await getjson('./datasets/bus_stops_complete.json');
+  for (const dict of data) {
+    bsc_list.push(dict.BusStopCode)
+  }
 
   // Function to process in batches of 10
   const batchSize = 10;
@@ -53,17 +75,47 @@ export async function bus_services_at_stop() {
   }
 
   console.log(database);
-  downloadJSON(database);
+  downloadJSON(database, "bus_services_at_stop");
 }
 
-export async function allbusstops() {
-  const database = [];
-  for (let skip = 0; num < 5000; num+=500) {
-    console.log("cycle", num);
-    const rawdata = await axios.get(`${process.env.REACT_APP_BACKEND_API_URL}/api/bus-stops?skip=${skip}`);
-    const value = rawdata.data.value;
-    console.log(database)
+export async function opposite_bus_stops() {
+  const database = {}
+  const data = await getjson('./datasets/bus_stops_complete.json');
+  for (const dict1 of data) {
+    database[dict1.BusStopCode] = []
+    for (const dict2 of data) {
+      if (dict1 !== dict2) {
+        const dist = haversine(dict1.Latitude, dict1.Longitude, dict2.Latitude, dict2.Longitude)
+        if (dist < 0.2) {
+          database[dict1.BusStopCode].push([dict2.BusStopCode, dist])
+        }
+      }
+    }
   }
   console.log(database);
-  downloadJSON(database);
+  downloadJSON(database, "opposite_bus_stops")
+}
+
+export async function bus_services() {
+  const database = {}
+  console.log(database);
+  downloadJSON(database, "bus_services")
+}
+
+export async function bus_stops_info() {
+  const database = {}
+  console.log(database);
+  downloadJSON(database, "bus_stops_info")
+}
+
+export async function busstops_near_mrt() {
+  const database = {}
+  console.log(database);
+  downloadJSON(database, "busstops_near_mrt")
+}
+
+export async function mrt_to_bus() {
+  const database = {}
+  console.log(database);
+  downloadJSON(database, "mrt_to_bus")
 }

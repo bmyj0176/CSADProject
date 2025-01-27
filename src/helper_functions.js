@@ -55,7 +55,7 @@ export async function getBusTiming(BusStopCode, BusNumber) {
 // INPUT2 key - (string) key of value you want to output, like "BusStopCode", "RoadName", "Description", "Latitude" or "Longitude"
 // OUTPUT BusStopInfo - (dict) consists of "BusStopCode", "RoadName", "Description", "Latitude" & "Longitude"
 export async function getBusStopInfo(BusStopCode, key) {
-    const complete_list = await getjson('./datasets/bus_stops_complete.txt');
+    const complete_list = await getjson('./datasets/bus_stops_complete.json');
     for (const dict of complete_list) {
         if (dict.BusStopCode === BusStopCode)
             return dict[key]

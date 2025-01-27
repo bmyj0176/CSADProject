@@ -15,7 +15,7 @@ const ATSearchBar = (props) => {
     // once at start of lifecycle
     useEffect(() => {
       const fetchNumbers = async () => {
-        bus_services_list.current = await getjson('./datasets/bus_services.txt');
+        bus_services_list.current = await getjson('./datasets/bus_services.json');
         bus_stops_info_list.current = await getjson('./datasets/bus_stops_info.json');
         };
       

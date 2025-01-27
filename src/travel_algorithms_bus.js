@@ -181,8 +181,10 @@ export async function runshit() {
     console.clear();
     let [map, interchanges] = await getMap();
     let startTime = performance.now();
-    console.log(dijkstra(map, "99009", "67409"));
+    console.log(dijkstra(map, "59091", "59299"));
     let endTime = performance.now();
     let timeTaken = endTime - startTime;
     console.log("Total time taken : " + timeTaken + " milliseconds");
 }
+
+runshit();
