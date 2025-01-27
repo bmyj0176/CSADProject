@@ -40,12 +40,16 @@ export async function busstop_map() {
 
 export async function bus_stops_complete() {
   const database = [];
-  for (let skip = 0; skip <= 5000; skip += 500) {
+  let skip = 0;
+  while (true) {
     const rawdata = await axios.get(`${process.env.REACT_APP_BACKEND_API_URL}/api/bus-stops?skip=${skip}`);
     const value = rawdata.data.value;
+    if (value.length === 0)
+      break;
     for (const dict of value) {
       database.push(dict);
     }
+    skip += 500;
   }
   console.log(database);
   downloadJSON(database, "bus_stops_complete");
@@ -97,13 +101,35 @@ export async function opposite_bus_stops() {
 }
 
 export async function bus_services() {
-  const database = {}
+  const database = []
+  let skip = 0;
+  while (true) {
+    const rawdata = await axios.get(`${process.env.REACT_APP_BACKEND_API_URL}/api/bus-routes?skip=${skip}`);
+    const value = rawdata.data.value
+    console.log(value)
+    if (value.length === 0)
+      break;
+    for (const dict of value) {
+      if (!database.includes(dict.ServiceNo)) {
+        database.push(dict.ServiceNo)
+      }
+    }
+    skip += 500;
+  }
   console.log(database);
   downloadJSON(database, "bus_services")
 }
 
-export async function bus_stops_info() {
+export async function mrt_to_bus() {
   const database = {}
+  console.log(database);
+  downloadJSON(database, "mrt_to_bus")
+}
+
+export async function bus_stops_info() {
+  const database = []
+  const rawdata = await getjson('./datasets/bus_stops_complete.json');
+
   console.log(database);
   downloadJSON(database, "bus_stops_info")
 }
@@ -114,8 +140,3 @@ export async function busstops_near_mrt() {
   downloadJSON(database, "busstops_near_mrt")
 }
 
-export async function mrt_to_bus() {
-  const database = {}
-  console.log(database);
-  downloadJSON(database, "mrt_to_bus")
-}
