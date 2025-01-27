@@ -1,4 +1,4 @@
-async function busstop_map() {
+export async function busstop_map() {
     const database = {};
     for (let num = 0; num < 52; num++) {
       console.log("cycle", num);
@@ -33,7 +33,7 @@ async function busstop_map() {
     downloadJSON(database);
 }
 
-async function bus_services_at_stop() {
+export async function bus_services_at_stop() {
   const database = {};
   const bsc_list = await getjson('./datasets/bus_stop_codes.json');
 
@@ -52,6 +52,18 @@ async function bus_services_at_stop() {
       }));
   }
 
+  console.log(database);
+  downloadJSON(database);
+}
+
+export async function allbusstops() {
+  const database = [];
+  for (let skip = 0; num < 5000; num+=500) {
+    console.log("cycle", num);
+    const rawdata = await axios.get(`${process.env.REACT_APP_BACKEND_API_URL}/api/bus-stops?skip=${skip}`);
+    const value = rawdata.data.value;
+    console.log(database)
+  }
   console.log(database);
   downloadJSON(database);
 }

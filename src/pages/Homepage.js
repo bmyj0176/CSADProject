@@ -166,7 +166,7 @@ const Homepage = () => {
   
   return (
 
-    <div>
+    <div className="bodyy">
       <div className={`fade ${fade ? "fade-out" : "fade-in"}`}>
         {slides[slideIndex]}
       </div>
@@ -191,8 +191,8 @@ const Homepage = () => {
       
       <img className="busSlide hidden" src={isDarkTheme ? "./images/bus.png": "./images/busLight.png"} alt="Bus Image" />
       <video className="videoNyoom hidden" controls><source src='./images/NyoomCOM.mp4' type='video/mp4'></source></video>
-      <img className="blueGraphic hidden" src="./images/graphics/blueGraphic2.png" alt="Blue Graphic" />
-      <img className="blueGraphic2 hidden" src="./images/graphics/blueGraphic3.png"></img>
+      <img className="blueGraphic hidden" src={isDarkTheme ? "./images/graphics/blueGraphic2.png" : "./images/graphics/blueLightGraphic2.png"} alt="Blue Graphic" />
+      <img className="blueGraphic2 hidden" src={isDarkTheme ? "./images/graphics/blueGraphic3.png" : "./images/graphics/blueLightGraphic3.png"} />
 
       <hr className="lineunderslides2" />
 

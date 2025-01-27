@@ -3,8 +3,9 @@ import { Outlet, Link, useLocation, useNavigate  } from "react-router-dom";
 import './stylesheets/navbar.css';
 import { getBusTiming } from '../helper_functions';
 import ToggleThemeButton from './Components/ToggleThemeButton';
-import {runshit} from '../travel_algorithms_bus';
+import { allbusstops } from '../api_extraction';
 import { LoginStatusContext } from '../index';
+import { BusStops } from '../api_caller';
 
 const NavBar = () => {
   const {userLoggedIn, setUserLoggedIn} = useContext(LoginStatusContext);
@@ -25,7 +26,15 @@ const NavBar = () => {
   }
 
   async function test_function() {
-    runshit();
+    const database = [];
+    for (let skip = 0; skip < 5000; skip += 500) {
+      console.log("cycle", skip);
+      const rawdata = await BusStops(skip)
+      const value = rawdata.data.value;
+      console.log(database)
+    }
+    console.log(database);
+    downloadJSON(database);
   }
 
 

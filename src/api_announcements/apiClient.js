@@ -21,9 +21,11 @@ apiClient.interceptors.response.use(
 );
 
 export async function TrainAlertsService() {
+  console.log("test2")
   try {
-    const response = await axios.get(`${process.env.REACT_APP_BACKEND_API_URL}/api/train-alerts?`);
-      return response.data;
+    const response = await axios.get(`https://datamall2.mytransport.sg/ltaodataservice/TrainServiceAlerts`);
+    console.log("test")
+    return response.data;
   } catch (error) {
     console.error('TrainAlertsService API Call Failed: ', error);
   }

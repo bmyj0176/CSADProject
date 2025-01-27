@@ -1,4 +1,9 @@
-
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
 
 .subhead{position:relative; left: 3%;
 font-size: 7.2vh;
@@ -693,6 +698,7 @@ text-decoration: underline;
   padding-right: 3px;
   position:relative;
   bottom: 540px;
+  max-width: 100%;
 }
 
 .endBannerHead2Content img:hover {
@@ -702,6 +708,7 @@ text-decoration: underline;
   padding-right: 3px;
   position:relative;
   bottom: 540px;
+  
 }
 
 /* ---------------------------------------------------------------------------------------------- */

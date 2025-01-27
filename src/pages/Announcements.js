@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import apiClient from "../api_announcements/apiClient";
 import BouncyBouncy from './Components/LoadingIcon.js';
+import { TrainAlertsService } from "../api_caller.js";
 
 const TrainAlerts = () => {
   const [alerts, setAlerts] = useState(null);
@@ -10,7 +11,8 @@ const TrainAlerts = () => {
   useEffect(() => {
     const fetchTrainAlerts = async () => {
       try {
-        const response = await fetch('/api/train-alerts');
+        const response = await TrainAlertsService();
+        console.log(response);
         setAlerts(response.data);
       } catch (error) {
         setError("Failed to fetch train alerts. Please try again later.");
