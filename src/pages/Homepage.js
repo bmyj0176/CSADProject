@@ -198,16 +198,7 @@ const Homepage = () => {
 
       <div className="instr"> <GetStartedElements /></div>
 
-      <div className="endBanner">
-        <img className="endBannerImg" src="./images/nyoom_stroke.png" alt="End Banner" />
-        <ul className="no-bullets">
-          <span className="endBannerHead"> Contact Us! </span>
-          {emails.map(em => <Emails key={em.id} email={em.email} lnkemail={em.lnkemail} />)}
-        </ul>
-        <hr className="endBannerhr" />
-        <h5 className="copyright"> © All rights reserved to nyoom 2025 </h5>
-        {userLoggedIn && <label>test</label>}
-      </div>
+
     </div>
   );
 };
