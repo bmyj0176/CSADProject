@@ -68,23 +68,19 @@ function buildAdjacencyList(time_between_busstops, connections) {
 
 export function dijkstra(graph, start, end) {
     // Create an object to store the shortest distance from the start node to every other node
+    let distances = {};
     let predecessors = {}; // Map to store the predecessor of each node for route reconstruction
     let visited = new Set();
 
     // Get all the nodes of the graph
     let nodes = Object.keys(graph);
-
-    let distances = {};
-    console.log({ ...distances }); // Creates a shallow copy to capture current state
-    distances[start] = [0];
-
-
     // Initially, set the shortest distance to every node as Infinity except starting node
     for (let node of nodes) {
         if (node === start) continue;
-        distances[node] = [999];
+        distances[node] = [Infinity];
         predecessors[node] = null; // No predecessor initially
     }
+    distances[start] = [0];
 
     // Loop until all nodes are visited
     while (nodes.length) {
@@ -105,6 +101,19 @@ export function dijkstra(graph, start, end) {
                 let neighbouringDistance = Number(graph[currentNode][neighbour]["dist"]);
                 let busUsed = graph[currentNode][neighbour]["bus_num"];
                 let newDistance = distances[currentNode][0] + neighbouringDistance;
+                if (true) {} //ADD CODE HERE
+
+
+
+                
+
+
+
+
+
+
+
+
                 newDistance = Number(newDistance.toFixed(1));
 
                 // If the newly calculated distance is shorter than the previously known distance to this neighbour
@@ -121,14 +130,14 @@ export function dijkstra(graph, start, end) {
     if (distances[end][0] === Infinity) {
         return `No route from ${start} to ${end}.`;
     }
-    console.log(distances);
+    console.log(predecessors);
 
     // Reconstruct the shortest route from start to end using the predecessors map
     let route = {};
     let current = end;
     while (current) {
         if (predecessors[current] == null) {break;}
-        route[current] = predecessors[current][1];
+        route[current] = predecessors[current][0];
         current = predecessors[current][0];
     }
     console.log(route);
