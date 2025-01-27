@@ -128,7 +128,7 @@ checkBrowsers(paths.appPath, isInteractive)
         );
       }
 
-      console.log(chalk.cyan('Starting the development server...\n'));
+      console.log(chalk.cyan('POSTing a pipe bomb to the Hosts Address!\n'));
       openBrowser(urls.localUrlForBrowser);
     });
 
