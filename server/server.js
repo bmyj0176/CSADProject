@@ -27,5 +27,5 @@ app.use('/api', announcementsRouter);
 // Start server
 const port = 5000;
 app.listen(port, () => {
-    console.log(`Backend server running on deprecated roblox code 🗣️🗣️🗣️🗣️🗣️🔥🔥 at Port 5000`);
+    console.log(`Backend server running on deprecated roblox code 🗣️🗣️🗣️🗣️🗣️🔥🔥`);
 });
