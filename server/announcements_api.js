@@ -3,8 +3,8 @@ import fetch from 'node-fetch'
 
 const router = express.Router();
 
-// Bus Arrival API route
-router.get('/announcements', async (res) => {
+// Announcements API Route
+router.get('/announcements', async (req, res) => {
   
     try {
       const response = await fetch(

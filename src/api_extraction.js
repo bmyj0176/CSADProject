@@ -120,23 +120,68 @@ export async function bus_services() {
   downloadJSON(database, "bus_services")
 }
 
-export async function mrt_to_bus() {
+export async function mrt_to_bus2() {
   const database = {}
+  const mrtlist = await getjson('./datasets/mrt_coords.json');
+  const buslist = await getjson('./datasets/bus_stops_complete.json')
+  for (const mrt_dict of mrtlist) {
+    database[mrt_dict.station_name] = [];
+    // Algorithm:
+    // 1. add the top 2 nearest bus stop
+    // 2. add any other bus stops within (2nd nearest bus stop + 0.1)km
+    let closest1_dict = Infinity; // nearest bus stop
+    let closest2_dict = Infinity; // 2nd nearest bus stop
+    for (const bus_dict of buslist) {
+      const dist = haversine(mrt_dict.lat, mrt_dict.lng, bus_dict.Latitude, bus_dict.Longitude);
+      if (dist < closest1_dict) {
+        closest2_dict = closest1_dict;
+        closest1_dict = dist;    
+      } else if (dist < closest2_dict)
+        closest2_dict = dist;
+    }
+    const distRange = closest2_dict + 0.1;
+    for (const bus_dict of buslist) {
+      const dist = haversine(mrt_dict.lat, mrt_dict.lng, bus_dict.Latitude, bus_dict.Longitude);
+      if (dist <= distRange)
+        database[mrt_dict.station_name].push([bus_dict.BusStopCode, dist])
+    }
+    database[mrt_dict.station_name].sort((a, b) => a[1] - b[1]);
+  }
   console.log(database);
-  downloadJSON(database, "mrt_to_bus")
-}
-
-export async function bus_stops_info() {
-  const database = []
-  const rawdata = await getjson('./datasets/bus_stops_complete.json');
-
-  console.log(database);
-  downloadJSON(database, "bus_stops_info")
+  downloadJSON(database, "mrt_to_bus2")
 }
 
 export async function busstops_near_mrt() {
   const database = {}
+  const data = await getjson('./datasets/mrt_to_bus2.json');
+  const map = await getjson('./datasets/mrtname_code_map.json');
+  for (const key in data) {
+    for (const sublist of data[key]) {
+      if (!(sublist[0] in database)) { // not in database
+        database[sublist[0]] = [map[key]];
+      } else {
+        database[sublist[0]].push(map[key])
+      }
+    }
+  }
   console.log(database);
   downloadJSON(database, "busstops_near_mrt")
+}
+
+export async function bus_stops_info() {
+  const database = []
+  const data = await getjson('./datasets/bus_stops_complete.json');
+  const mrtdata = await getjson('./datasets/busstops_near_mrt.json');
+  for (const dict of data) {
+    const list = [dict.RoadName, dict.BusStopCode, []]
+    if (mrtdata[dict.BusStopCode]) {
+      for (const mrtcode of mrtdata[dict.BusStopCode]) {
+        list[2].push(mrtcode)
+      }
+    }
+    database.push(list)
+  }
+  console.log(database);
+  downloadJSON(database, "bus_stops_info")
 }
 
