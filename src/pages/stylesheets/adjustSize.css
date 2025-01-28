@@ -441,5 +441,10 @@ top: 363vh;
   height:auto;
   top: 303.5vh;
 }
+
+.values-grid{
+  gap: 75px;
+}
+
 }
 
