@@ -444,8 +444,8 @@ top: 363vh;
 
 .values-grid{
   position:relative;
-  right: 100px;
-  gap: 20px;
+  right: 200px;
+  gap: 40px;
   max-width: 1000px;
 }
 
