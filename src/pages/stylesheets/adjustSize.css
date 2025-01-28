@@ -444,7 +444,7 @@ top: 363vh;
 
 .values-grid{
   position:relative;
-  right: 50px;
+  right: 100px;
   gap: 20px;
   max-width: 1000px;
 }
@@ -458,7 +458,7 @@ top: 363vh;
 }
 
 .Transparency img{
-  width: 120px;
+  width: 110px;
   height: auto;
 }
 
@@ -489,6 +489,19 @@ top: 363vh;
 }
 
 .Inclusivity p{
+  font-size: 30px;
+}
+
+.Empathy{
+  padding:80px;
+}
+
+.Empathy img{
+  width: 150px;
+  height: auto;
+}
+
+.Empathy p{
   font-size: 30px;
 }
 
