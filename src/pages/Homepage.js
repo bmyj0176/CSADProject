@@ -102,7 +102,7 @@ const Homepage = () => {
   
   // BUS WILL ONLY APPEAR IF UR THERE AT THE PART OF THE PAGE
   useEffect(() => {
-    const elementsToObserve = document.querySelectorAll(".busSlide, .blueGraphic, .videoNyoom, .blueGraphic2")
+    const elementsToObserve = document.querySelectorAll(".busSlide, .blueGraphic, .blueGraphic2, .videoNyoom, .Transparency, .Innovation, .Inclusivity, .Empathy")
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -156,10 +156,10 @@ const Homepage = () => {
   }
 
   const emails = [
-    { id: 1, email: 'sdmgo15@gmail.com', lnkemail: 'sdmgo15@gmail.com' },
-    { id: 2, email: 'bryuhh1234@rp.edu.sg', lnkemail: 'bryuh1234@gmail.com' },
-    { id: 3, email: 'agilbinla@yahoo.com', lnkemail: 'aquil@gmail.com' },
-    { id: 4, email: 'ca2short@hotmale.com', lnkemail: 'calong1234@gmail.com' }
+    { id: 1, class: "classText", class2: "classTextText", email: 'sdmgo15@gmail.com', lnkemail: 'sdmgo15@gmail.com' },
+    { id: 2, class: "classText2", class2: "classTextText2", email: 'bryuhh1234@rp.edu.sg', lnkemail: 'bryuh1234@gmail.com' },
+    { id: 3, class: "classText3", class2: "classTextText3",email: 'agilbinla@yahoo.com', lnkemail: 'aquil@gmail.com' },
+    { id: 4, class: "classText4", class2: "classTextText4", email: 'ca2short@hotmale.com', lnkemail: 'calong1234@gmail.com' }
   ];
 
   const socials = [
@@ -168,11 +168,31 @@ const Homepage = () => {
     { id: 3, social: 'https://www.roblox.com/users/686546843/profile', socialimg: './images/instagram.png' }
   ];
 
+const ClassSlide = (props) =>{
+  return(
+    <p className={props.class}> <a className={props.class2} href={"mailto: " + props.lnkemail}>{props.email}</a></p>
+  )
+}
+
   const AboutUs = (props) =>{
    return( <>
       <h1 className="abtHeader">About Us</h1>
       <p className="abtBody">At Nyoom, we are redefining the way Singapore travels. Our mission is to prioritize convenience, ensuring every journey is seamless, efficient, and hassle-free. Whether you're navigating the bustling streets of the city or planning your next adventure, Nyoom is here to make your travel experience as smooth as possible.</p>
       <p className="abtBody2">Rooted in innovation and customer-centric solutions, we believe in transforming everyday commutes into moments of ease and reliability. By leveraging advanced technology and a deep understanding of Singapore's vibrant landscape, Nyoom empowers you to move smarter, faster, and more conveniently than ever before.</p>
+      <h1 className="contactUsHeader">Contact Us!</h1>
+      <div className="contt">
+      <img src="./images/icons/checkList.png" className="classlist"/>
+     
+      {emails.map(email => <ClassSlide key={email.id} class ={email.class} class2={email.class2} lnkemail={email.lnkemail} email={email.email} />) }
+      
+     </div>
+
+     <img className="call" src="./images/icons/callIcon.png"></img>
+     <p className="callno">+91 98008 25424</p>
+     <img className="addr" src="./images/icons/Addr.png"></img>
+     <a className="addrno" href="https://www.google.com/maps/place/Afghanistan+Family+Restaurant/@1.3535609,103.951398,17z/data=!3m2!4b1!5s0x31da3d1b4343a59f:0x16e6fa8953f96f5a!4m6!3m5!1s0x31da3d1b6854ffb7:0xfea0f762f31c7422!8m2!3d1.3535555!4d103.9539729!16s%2Fg%2F1vs1pcwg?entry=ttu&g_ep=EgoyMDI1MDEyMi4wIKXMDSoASAFQAw%3D%3D">500 Dover Rd, Singapore 139651</a>
+     
+
     </>
    )
   }
@@ -215,8 +235,26 @@ const Homepage = () => {
       <img className="bgGetStarted" src="./images/graphics/graphicBg.png" />
 
       <div className="abtus"> <AboutUs /> </div>
+      <img className="AboutUsGrap" src="./images/graphics/blueGraphic4.png"></img>
+      <img className="AboutUsGrap2" src="./images/graphics/blueGraphic4.png"></img>
 
-      
+      <div class="values-section">
+        <h2>Our Values</h2>
+        <div className="values-grid">
+          <div className="Transparency hidden">
+          <p>Transparency</p>
+        </div>
+        <div className="Innovation">
+          <p>Innovation</p>
+        </div>
+        <div className="Inclusivity">
+          <p>Inclusivity</p>
+        </div>
+        <div className="Empathy">
+          <p>Empathy</p>
+        </div>
+      </div>
+      </div>
 
 
     </>

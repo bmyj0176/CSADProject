@@ -367,7 +367,17 @@
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   left: 18%;
   color:rgb(89, 205, 218);
-  top: 305vh;
+  top: 307vh;
+  font-size: 40px;
+}
+
+.contactUsHeader{
+  position:absolute;
+  text-shadow: none;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  left: 58%;
+  color:rgb(89, 205, 218);
+  top: 307vh;
   font-size: 40px;
 }
 
@@ -379,4 +389,57 @@
   top: 342vh;
 }
 
+.contt{
+  top: 323%;
 }
+
+.classText2 {
+  top: -30vh;
+  left: -85%;
+}
+
+.classText {
+  top: -23vh;
+  left: -80%;
+}
+.classText3 {
+  top: -27vh;
+  left: -75%;
+}
+.classText4 {
+  top: -27.5vh;
+  left: -70%;
+}
+
+.call{
+  width:37px;
+  height:auto;
+  top: 355vh;
+}
+.callno{
+  font-size: 17px;
+  top: 354vh;
+}
+
+.addr{
+top: 363vh;
+}
+
+.addrno{
+  top: 364vh;
+  font-size: 17px;
+}
+
+.AboutUsGrap{
+  width: 280px;
+  height:auto;
+  top: 345.5vh;
+  left: 85%;
+}
+.AboutUsGrap2{
+  width: 280px;
+  height:auto;
+  top: 303.5vh;
+}
+}
+

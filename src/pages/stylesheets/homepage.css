@@ -381,6 +381,16 @@ letter-spacing: none;
   top: 328vh;
 }
 
+.contactUsHeader{
+  position:absolute;
+  text-shadow: none;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  left: 58%;
+  color:rgb(89, 205, 218);
+  top: 328vh;
+}
+
+
 .abtBody{
   max-width: 70vh; /* Limit the width for better readability */
   color: white;
@@ -402,6 +412,374 @@ letter-spacing: none;
   font-size: 2.7vh;
 
 }
+
+
+
+
+
+.contt {
+  position: absolute;
+  height: 30%;
+  width: 10%;
+  top: 347%;
+  left: 75%;
+  overflow: visible;
+  
+
+ 
+}
+
+.classlist {
+  height: auto;
+  width: 100%;
+  object-fit: cover;
+  position: relative;
+  z-index:2;
+}
+
+.classText {
+  background-color: white;
+  position: relative; /* Ensure it's relative to the container */
+  width: 0; 
+  opacity: 0; 
+  z-index:1;
+  top: -23vh; /* Keep aligned with the container's top */
+  white-space: nowrap; /* Prevent text wrapping */
+  left: -120%; /* Start completely outside the container to the right */
+  transform: translateX(50px); /* Slide effect: start offset to the right */
+  transition: opacity 0.3s ease, transform 0.5s ease; /* Smooth appearance and sliding */
+}
+
+.classText2 {
+  background-color: white;
+  position: relative; /* Ensure it's relative to the container */
+  width: 0; 
+  opacity: 0; 
+  z-index:1;
+  top: -33vh; /* Keep aligned with the container's top */
+  white-space: nowrap; /* Prevent text wrapping */
+  left: -130%; /* Start completely outside the container to the right */
+  transform: translateX(50px); /* Slide effect: start offset to the right */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth appearance and sliding */
+}
+
+.classText3 {
+  background-color: white;
+  position: relative; /* Ensure it's relative to the container */
+  width: 0; 
+  opacity: 0; 
+  z-index:1;
+  top: -30.2vh; /* Keep aligned with the container's top */
+  white-space: nowrap; /* Prevent text wrapping */
+  left: -110%; /* Start completely outside the container to the right */
+  transform: translateX(50px); /* Slide effect: start offset to the right */
+  transition: opacity 0.3s ease, transform 0.6s ease; /* Smooth appearance and sliding */
+}
+
+.classText4 {
+  background-color: white;
+  position: relative; /* Ensure it's relative to the container */
+  width: 0; 
+  opacity: 0; 
+  z-index:1;
+  top: -31.5vh; /* Keep aligned with the container's top */
+  white-space: nowrap; /* Prevent text wrapping */
+  left: -100%; /* Start completely outside the container to the right */
+  transform: translateX(50px); /* Slide effect: start offset to the right */
+  transition: opacity 0.3s ease, transform 0.7s ease; /* Smooth appearance and sliding */
+}
+
+.classTextText{
+  background-color: rgba(26, 42, 52, 0.356);
+  padding-top:2px;
+  padding-bottom: 2px;
+  padding-right: 60px;
+  border-radius: 4px;
+  
+}
+.classTextText2{
+  background-color: rgba(26, 42, 52, 0.356);
+  padding-top:2px;
+  padding-bottom: 2px;
+  padding-right: 60px;
+  border-radius: 4px; 
+}
+
+.classTextText2:hover {
+  background-color: rgb(59, 67, 121);
+  text-decoration: underline;
+}
+.classTextText3:hover {
+  background-color: rgb(59, 67, 121);
+  text-decoration: underline;}
+ .classTextText4:hover {
+    background-color: rgb(59, 67, 121);
+    text-decoration: underline;}
+    .classTextText:hover {
+      background-color: rgb(59, 67, 121);
+      text-decoration: underline;}
+.classTextText3{
+  background-color: rgba(26, 42, 52, 0.356);
+  padding-top:2px;
+  padding-bottom: 2px;
+  padding-right: 60px;
+  border-radius: 4px;
+ 
+}
+.classTextText4{
+  background-color: rgba(26, 42, 52, 0.356);
+  padding-top:2px;
+  padding-bottom: 2px;
+  padding-right: 60px;
+  border-radius: 4px;
+}
+
+.contt:hover .classText {
+  opacity: 1; /* Make the text visible */
+  transform: translateX(0); /* Slide into place */
+}
+
+.contt:hover .classText2 {
+  opacity: 1; /* Make the text visible */
+  transform: translateX(0); /* Slide into place */
+}
+.contt:hover .classText3 {
+  opacity: 1; /* Make the text visible */
+  transform: translateX(0); /* Slide into place */
+}
+
+.contt:hover .classText4 {
+  opacity: 1; /* Make the text visible */
+  transform: translateX(0); /* Slide into place */
+}
+
+.contt:hover{
+  width: 10.5%;
+}
+
+.call{
+  position:absolute;
+  width: 35px;
+  height:auto;
+  left: 63%;
+  top: 375vh;
+}
+
+.callno{
+  position:absolute;
+  left: 66%;
+  top: 374vh;
+  font-family: none;
+  font-size: 15px;
+}
+
+.addr{
+  position:absolute;
+  height: auto;
+  width: 30px;
+  left: 63.2%;
+  top: 383vh;
+}
+
+.addrno{
+  position:absolute;
+  left: 66.3%;
+  top: 385vh;
+  font-family: none;
+  font-size: 15px;
+}
+
+.addrno:hover{
+  text-decoration: underline;
+}
+
+.AboutUsGrap{
+  position:absolute;
+  width: 200px;
+  height:auto;
+  top: 363vh;
+  opacity: 0.3;
+  left: 83.9%;
+}
+
+.AboutUsGrap2{
+  transform: rotate(180deg);
+  position:absolute;
+  width: 200px;
+  height:auto;
+  top: 325vh;
+  left:0vh;
+  opacity: 0.2;
+}
+
+.values-section{
+  margin-top: 20px;
+  text-align:center;
+  padding: 50px 20px;
+}
+
+.values-section h2{
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.values-grid{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width:900px;
+  margin: 0 auto;
+}
+
+.Transparency{
+  position:relative;
+  left:-200px;
+  opacity: 0;
+  background-color:rgb(23, 32, 37);
+  border-radius: 10px;
+  border:  medium double rgb(36, 182, 239);
+  padding:20px;
+
+}
+
+.Transparency.visible{
+  animation: slide-and-fade-Transparency 1.8s ease-out forwards; 
+}
+
+@keyframes slide-and-fade-Transparency{
+  0%{
+    position:relative;
+    left:-200px;
+    opacity: 0
+  }
+
+  50%{
+    position:relative;
+    left:-200px;
+    opacity: 0
+  }
+
+  100%{
+    position:relative;
+    left:0px;
+    opacity: 1
+  }
+}
+
+.Innovation{
+  position:relative;
+  left:-200px;
+  opacity: 0;
+  background-color:rgb(23, 32, 37);
+  border-radius: 10px;
+  border:  medium double rgb(36, 182, 239);
+  padding:20px;
+}
+
+.Innovation.visible{
+  animation: slide-and-fade-Innovation 1.6s ease-out forwards; 
+}
+
+@keyframes slide-and-fade-Innovation{
+  0%{
+    position:relative;
+    left:-200px;
+    opacity: 0
+  }
+
+  40%{
+    position:relative;
+    left:-200px;
+    opacity: 0
+  }
+
+  100%{
+    position:relative;
+    left:0px;
+    opacity: 1
+  }
+}
+
+.Inclusivity{
+  position:relative;
+  left:-200px;
+  opacity: 0;
+  background-color:rgb(23, 32, 37);
+  border-radius: 10px;
+  border:  medium double rgb(36, 182, 239);
+  padding:20px;
+}
+
+.Inclusivity.visible{
+  animation: slide-and-fade-Inclusivity 1.4s ease-out forwards; 
+}
+
+@keyframes slide-and-fade-Inclusivity{
+  0%{
+    position:relative;
+    left:-200px;
+    opacity: 0
+  }
+
+  30%{
+    position:relative;
+    left:-200px;
+    opacity: 0
+  }
+
+  100%{
+    position:relative;
+    left:0px;
+    opacity: 1
+  }
+}
+
+.Empathy{
+  position:relative;
+  left:-200px;
+  opacity: 0;
+  background-color:rgb(23, 32, 37);
+  border-radius: 10px;
+  border:  medium double rgb(36, 182, 239);
+  padding:20px;
+}
+
+.Empathy.visible{
+  animation: slide-and-fade-Empathy 1.2s ease-out forwards; 
+}
+
+@keyframes slide-and-fade-Empathy{
+  0%{
+    position:relative;
+    left:-200px;
+    opacity: 0
+  }
+
+  20%{
+    position:relative;
+    left:-200px;
+    opacity: 0
+  }
+
+  100%{
+    position:relative;
+    left:0px;
+    opacity: 1
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .busstopcard {
   border: 1px solid #ccc;
