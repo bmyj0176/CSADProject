@@ -1,4 +1,0 @@
-MONGO_URI=mongodb+srv://bryong0176:brybry0176@userdata.aeqpl.mongodb.net/?retryWrites=true&w=majority&appName=UserData
-JWT_SECRET=bb5cb3f1ee24e507b4620a36245c5f1f968495131e98d1607ce2c7a5da0e5588
-LTA_API_KEY=0x2W9VMATp6bX/9d3BdsyA==
-REACT_APP_BACKEND_API_URL= https://9hxmvd1v-5000.asse.devtunnels.ms

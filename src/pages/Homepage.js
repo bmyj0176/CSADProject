@@ -12,6 +12,8 @@ const Homepage = () => {
   const [slideIndex, setSlideIndex] = useState(0); // Toggle state
   const [fade, setFade] = useState(false);  // Controls fade animation
 
+
+
   const navigate = useNavigate();
   const handleNavigation = () => {
     navigate('/about'); 
@@ -21,7 +23,7 @@ const Homepage = () => {
 
   const navigate2 = useNavigate();
   const handleNavigation2 = () => {
-    navigate2('/getstarted'); 
+    document.getElementById("getstarted").scrollIntoView({behavior:"smooth"});
   };
 
   const Slide1 = () => (
@@ -48,7 +50,7 @@ const Homepage = () => {
         <div className="card-content3">
           <h2>FIND OUT HOW THIS WEBSITE WORKS!</h2>
           <button className="view-more-3" onClick={handleNavigation2}>
-            Open<span>→</span>
+            DIRECT<span>→</span>
           </button>
         </div>
       </div>
@@ -88,6 +90,7 @@ const Homepage = () => {
     </li>
   );
 
+  
   const Socials = (props) => (
     <li className="endBannerHead2Content">
       <a href={props.social}>
@@ -96,19 +99,7 @@ const Homepage = () => {
     </li>
   );
 
-  const emails = [
-    { id: 1, email: 'sdmgo15@gmail.com', lnkemail: 'sdmgo15@gmail.com' },
-    { id: 2, email: 'bryuhh1234@rp.edu.sg', lnkemail: 'bryuh1234@gmail.com' },
-    { id: 3, email: 'agilbinla@yahoo.com', lnkemail: 'aquil@gmail.com' },
-    { id: 4, email: 'ca2short@hotmale.com', lnkemail: 'calong1234@gmail.com' }
-  ];
-
-  const socials = [
-    { id: 1, social: 'https://x.com/SDomingoYT', socialimg: './images/x.png' },
-    { id: 2, social: 'https://www.youtube.com/c/SDomingo', socialimg: './images/youtube.png' },
-    { id: 3, social: 'https://www.roblox.com/users/686546843/profile', socialimg: './images/instagram.png' }
-  ];
-
+  
   // BUS WILL ONLY APPEAR IF UR THERE AT THE PART OF THE PAGE
   useEffect(() => {
     const elementsToObserve = document.querySelectorAll(".busSlide, .blueGraphic, .videoNyoom, .blueGraphic2")
@@ -138,7 +129,9 @@ const Homepage = () => {
   const GetStartedElements = () =>{
     return(
       <>
-      <div className="centering">
+
+      <div className="centering" id="getstarted">
+      
       <ul className="items">
         <li>
           <Link to="/arrivaltimes"><img className="widgets" src="./images/icons/searchIcon.png"></img></Link>
@@ -152,21 +145,43 @@ const Homepage = () => {
         <p className="widgetsBody2"> Keep track of your preferred buses, routes, and travel details with our save feature. Store your favorites for easy access and quickly plan your trips whenever you need them." </p>
         </li>
         <li><Link to="/settings"><img className="widgets2" src="./images/icons/flagIcon.png"></img></Link>
-        <br/>
-        <p className="widgetsText3">Map Out Your <span>Nearest</span> Bus Stops</p>
-        
         </li>
       </ul>
       </div>
+      <p className="widgetsText3">Map Out Your <span>Nearest</span> Bus Stops</p>
+      <p className="widgetsBody3"> Effortlessly find the nearest bus stop from your current location. Using real-time GPS tracking, the interactive map pinpoints the closest stops, provides walking directions, and even displays upcoming bus arrival times.</p>
       </>
 
     )
   }
 
+  const emails = [
+    { id: 1, email: 'sdmgo15@gmail.com', lnkemail: 'sdmgo15@gmail.com' },
+    { id: 2, email: 'bryuhh1234@rp.edu.sg', lnkemail: 'bryuh1234@gmail.com' },
+    { id: 3, email: 'agilbinla@yahoo.com', lnkemail: 'aquil@gmail.com' },
+    { id: 4, email: 'ca2short@hotmale.com', lnkemail: 'calong1234@gmail.com' }
+  ];
+
+  const socials = [
+    { id: 1, social: 'https://x.com/SDomingoYT', socialimg: './images/x.png' },
+    { id: 2, social: 'https://www.youtube.com/c/SDomingo', socialimg: './images/youtube.png' },
+    { id: 3, social: 'https://www.roblox.com/users/686546843/profile', socialimg: './images/instagram.png' }
+  ];
+
+  const AboutUs = (props) =>{
+   return( <>
+      <h1 className="abtHeader">About Us</h1>
+      <p className="abtBody">At Nyoom, we are redefining the way Singapore travels. Our mission is to prioritize convenience, ensuring every journey is seamless, efficient, and hassle-free. Whether you're navigating the bustling streets of the city or planning your next adventure, Nyoom is here to make your travel experience as smooth as possible.</p>
+      <p className="abtBody2">Rooted in innovation and customer-centric solutions, we believe in transforming everyday commutes into moments of ease and reliability. By leveraging advanced technology and a deep understanding of Singapore's vibrant landscape, Nyoom empowers you to move smarter, faster, and more conveniently than ever before.</p>
+    </>
+   )
+  }
+  
+
   
   return (
 
-    <div className="bodyy">
+    <>
       <div className={`fade ${fade ? "fade-out" : "fade-in"}`}>
         {slides[slideIndex]}
       </div>
@@ -197,9 +212,14 @@ const Homepage = () => {
       <hr className="lineunderslides2" />
 
       <div className="instr"> <GetStartedElements /></div>
+      <img className="bgGetStarted" src="./images/graphics/graphicBg.png" />
+
+      <div className="abtus"> <AboutUs /> </div>
+
+      
 
 
-    </div>
+    </>
   );
 };
 

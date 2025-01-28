@@ -1,4 +1,9 @@
 
+*{
+  margin-left: 0;
+  margin-right: 0;
+}
+
 .subhead{position:relative; left: 3%;
 font-size: 7.2vh;
 padding-top: 10vh;
@@ -33,11 +38,11 @@ letter-spacing: none;
 
 
 .blueGraphic {
-  height: 90vh;
-  width: 90vh;
+  height: auto;
+  width: 30vh;
   position: absolute;
   top: 100vh;
-  left: 143vh;
+  left: 156vh;
   z-index: -2; 
   transform: translateX(20px); 
 }
@@ -50,32 +55,31 @@ letter-spacing: none;
     0%{
       transform: rotate(0deg);
       transform: translateX(80px);
-      top: 90vh;
+      top: 100vh;
       opacity: 0;
     }
 
     70%{
       transform: rotate(0deg);
       transform: translateX(80px);
-      top: 90vh;
+      top: 100vh;
       opacity: 0;
     }
 
     100%{
       transform: rotate(-30deg);
-      top: 90vh;
+      top: 128vh;
       opacity: 1;
+      height: auto;
+      width: 60vh;
     }
   } 
 
   .blueGraphic2{
     position:absolute;
-    height: 90vh;
-    width: 90vh;
-    left: 159vh;
+    left: 0vh;
     top: 155vh;
     z-index: -2;
-    
     opacity:1;
   }
 
@@ -89,30 +93,34 @@ letter-spacing: none;
       transform: translateX(80px);
       opacity:0;
       left: 120vh;
-      top: 145vh;
-      height: 40vh;
-      width: 40vh;
+      top: 155vh;
+      height: auto;
+      width: 20vh;
     }
 
     30%{
       opacity: 0;
+      left: 120vh;
+      top: 155vh;
     }
 
-    70%{
+    65%{
       transform: rotate(80deg);
       transform: translateX(80px);
       opacity: 1;
       left: 120vh;
-      top: 145vh;
-      height: 40vh;
-      width: 40vh;
+      top: 155vh;
+      height: auto;
+      width: 20vh;
     }
 
     100%{
       transform: rotate(50deg);
       opacity: 0.6;
-      left: 149vh;
-      top: 155vh;
+      left: 154vh;
+      top: 175vh;
+      height: auto;
+      width: 60vh;
     }
   } 
   .busSlide {
@@ -195,6 +203,8 @@ letter-spacing: none;
 
 .lineunderslides{
   align-items: center;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 2.5vh;
   margin-bottom: 2.5vh;
   width: 70%;  background-color: white;
@@ -205,7 +215,9 @@ letter-spacing: none;
 .lineunderslides2{
   align-items: center;
   margin-bottom: 0;
-  margin-top: 2.5vh;
+  margin-right: auto;
+  margin-left: auto;
+
   width: 70%;  background-color: white;
   opacity: .5;
   height: .1vh;
@@ -222,6 +234,7 @@ letter-spacing: none;
   top: 10vh;
   padding: 10vh;
   padding-bottom: 65vh;
+  margin-top: auto;
   margin-bottom: 30vh;
   max-width: 150vh;
   background-color:rgb(26, 38, 44);
@@ -230,9 +243,20 @@ letter-spacing: none;
  
 }
 
+.bgGetStarted{
+  position:absolute;
+  z-index: -3;
+  opacity: 0.8;
+  top: 90rem;
+  left: 1rem;
+  width: 250px;
+  height: auto;
+}
+
 .centering{
   display: flex; /* Use flexbox */
-  justify-content: center; /* Center horizontally */
+  justify-content: center;
+   /* Center horizontally */
 }
 
 .items { 
@@ -253,6 +277,7 @@ letter-spacing: none;
 
 .widgets2{
   width: 12vh;
+  max-width: 30vh;
   z-index: 10;
   position:relative;
   bottom: 2.5vh;
@@ -315,14 +340,67 @@ letter-spacing: none;
 .widgetsText3{
   margin-top: 3vh;
   position:absolute;
-  left: 90.0vh;
-  bottom: -3vh;
+  left: 43.5rem;
+  top: 9.4rem;
   font-size: 18px;
-  max-width: 40vh;
+  max-width: 35vh;
   text-align:center;
   color: white;
   font-family:Verdana, Geneva, Tahoma, sans-serif;
   font-weight: bold;
+}
+
+.widgetsBody3{
+  position:absolute;
+  text-align: center;
+  max-width: 38vh;
+  color:white;
+  left:  43rem;
+  bottom: 7.5vh;
+  line-height:3.5vh;
+}
+
+
+.abtus{ 
+  padding-bottom: 75vh;
+  background-color:rgb(47, 73, 86);
+  max-width:100%;
+  margin:0;
+
+  box-shadow:
+  inset 0 10px 8px rgba(0, 0, 0, 0.6), /* Top shadow */
+  inset 0 -10px 8px rgba(0, 0, 0, 0.468); /* Bottom shadow */
+}
+
+.abtHeader{
+  position:absolute;
+  text-shadow: none;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  left: 18%;
+  color:rgb(89, 205, 218);
+  top: 328vh;
+}
+
+.abtBody{
+  max-width: 70vh; /* Limit the width for better readability */
+  color: white;
+  line-height: 1.6;
+  position:absolute;
+  left: 18%;
+  top: 338vh;
+  font-size: 2.7vh;
+
+}
+
+.abtBody2{
+  max-width: 70vh; /* Limit the width for better readability */
+  color: white;
+  line-height: 1.6;
+  position:absolute;
+  left: 18%;
+  top: 365vh;
+  font-size: 2.7vh;
+
 }
 
 .busstopcard {
