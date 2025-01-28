@@ -731,11 +731,20 @@ letter-spacing: none;
   border-radius: 10px;
   border:  medium double rgb(36, 182, 239);
   padding:20px;
+  box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.6);
 }
 
 .Inclusivity img{
-  width: 70px;
+  width: 65px;
   height: auto;
+  position:relative;
+}
+
+.Inclusivity p{
+  position:relative;
+  bottom: 6px;
+  font-size: 20px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 
@@ -771,6 +780,18 @@ letter-spacing: none;
   border-radius: 10px;
   border:  medium double rgb(36, 182, 239);
   padding:20px;
+  box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.6);
+}
+
+.Empathy img {
+  width: 87px;
+  height: auto;
+}
+
+.Empathy p{
+
+  font-size: 20px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .Empathy.visible{

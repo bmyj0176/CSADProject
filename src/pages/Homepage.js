@@ -254,6 +254,7 @@ const ClassSlide = (props) =>{
           <p>Inclusivity</p>
         </div>
         <div className="Empathy">
+          <img src="./images/icons/Empathy.png"></img>
           <p>Empathy</p>
         </div>
       </div>
