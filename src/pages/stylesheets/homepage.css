@@ -685,12 +685,19 @@ letter-spacing: none;
   border-radius: 10px;
   border:  medium double rgb(36, 182, 239);
   padding:20px;
+  box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.6);
 }
 
 .Innovation img {
-  width: 60px;
+  width: 80px;
   height: auto;
 }
+
+.Innovation p{
+  font-size: 20px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 
 .Innovation.visible{
   animation: slide-and-fade-Innovation 1.6s ease-out forwards; 
