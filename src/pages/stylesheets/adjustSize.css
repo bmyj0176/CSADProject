@@ -443,8 +443,54 @@ top: 363vh;
 }
 
 .values-grid{
-  gap: 75px;
+  position:relative;
+  right: 50px;
+  gap: 20px;
+  max-width: 1000px;
 }
 
+.values-section h2{
+  font-size:3rem;
 }
 
+.Transparency{
+  padding:80px;
+}
+
+.Transparency img{
+  width: 120px;
+  height: auto;
+}
+
+.Transparency p{
+  font-size: 30px;
+}
+
+.Innovation{
+  padding:80px;
+}
+
+.Innovation img{
+  width: 145px;
+  height: auto;
+}
+
+.Innovation p{
+  font-size: 30px;
+}
+
+.Inclusivity{
+  padding:80px;
+}
+
+.Inclusivity img{
+  width: 110px;
+  height: auto;
+}
+
+.Inclusivity p{
+  font-size: 30px;
+}
+
+
+}
