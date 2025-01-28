@@ -631,6 +631,7 @@ letter-spacing: none;
   margin: 0 auto;
 }
 
+
 .Transparency{
   position:relative;
   left:-200px;
@@ -639,7 +640,17 @@ letter-spacing: none;
   border-radius: 10px;
   border:  medium double rgb(36, 182, 239);
   padding:20px;
+  box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.6);
+}
 
+.Transparency p{
+  font-size: 20px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.Transparency img {
+  width: 60px;
+  height: auto;
 }
 
 .Transparency.visible{
@@ -674,6 +685,11 @@ letter-spacing: none;
   border-radius: 10px;
   border:  medium double rgb(36, 182, 239);
   padding:20px;
+}
+
+.Innovation img {
+  width: 60px;
+  height: auto;
 }
 
 .Innovation.visible{

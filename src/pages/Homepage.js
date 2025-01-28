@@ -242,9 +242,11 @@ const ClassSlide = (props) =>{
         <h2>Our Values</h2>
         <div className="values-grid">
           <div className="Transparency hidden">
+            <img src="./images/icons/Transparency.png"></img>
           <p>Transparency</p>
         </div>
         <div className="Innovation">
+        <img src="./images/icons/Innovation.png"></img>
           <p>Innovation</p>
         </div>
         <div className="Inclusivity">
