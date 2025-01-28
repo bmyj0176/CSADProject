@@ -733,6 +733,12 @@ letter-spacing: none;
   padding:20px;
 }
 
+.Inclusivity img{
+  width: 70px;
+  height: auto;
+}
+
+
 .Inclusivity.visible{
   animation: slide-and-fade-Inclusivity 1.4s ease-out forwards; 
 }
