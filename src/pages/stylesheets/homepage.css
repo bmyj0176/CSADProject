@@ -1,7 +1,8 @@
 
-*{
-  margin-left: 0;
-  margin-right: 0;
+body, html{
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 
 .subhead{position:relative; left: 3%;
@@ -228,6 +229,8 @@ letter-spacing: none;
 
 
 .instr{
+  display: flex;
+  justify-content: center; 
   margin-left: auto;
   margin-right: auto;
   position:relative;
@@ -249,14 +252,21 @@ letter-spacing: none;
   opacity: 0.8;
   top: 90rem;
   left: 1rem;
-  width: 250px;
+  width: 15.625rem;
   height: auto;
 }
 
 .centering{
-  display: flex; /* Use flexbox */
-  justify-content: center;
-   /* Center horizontally */
+  position:absolute;
+  margin-top: 20px;
+  text-align:center;
+  padding: 0px 60px;
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6rem;
+  max-width: 900px;
+  margin: 0 auto;
+
 }
 
 .items { 
@@ -271,7 +281,6 @@ letter-spacing: none;
 .widgets{
   width: 14vh;
   z-index: 10;
-  margin-right: 40vh;
   transition: transform 0.2s ease-in-out;
 }
 
@@ -293,9 +302,7 @@ letter-spacing: none;
 }
 
 .widgetsText{
-  margin-top: 3vh;
   position:relative;
-  left: -8.4vh;
   font-size: 18px;
   max-width: 35vh;
   text-align:center;
@@ -309,41 +316,40 @@ letter-spacing: none;
   position:absolute;
   text-align: center;
   max-width: 37vh;
+  bottom: -23vh;
   color:white;
-  left: -9vh;
-  bottom: -27vh;
   line-height:3.5vh;
 }
 
 .widgetsText2{
-  margin-top: 3vh;
   position:relative;
-  left: -10.5vh;
   font-size: 18px;
-  max-width: 35vh;
+  max-width: 32vh;
   text-align:center;
+  bottom: 1vh;
+  left: 1.6vh;
   color: white;
   font-family:Verdana, Geneva, Tahoma, sans-serif;
   font-weight: bold;
 }
 
+
 .widgetsBody2{
   position:absolute;
   text-align: center;
+  margin-top: 2vh;
   max-width: 37vh;
+  bottom: -20vh;
+  left: 61vh;
   color:white;
-  left: 42.5vh;
-  bottom: -23vh;
   line-height:3.5vh;
 }
 
 .widgetsText3{
-  margin-top: 3vh;
-  position:absolute;
-  left: 43.5rem;
-  top: 9.4rem;
+  position:relative;
   font-size: 18px;
-  max-width: 35vh;
+  bottom: 8%;
+  max-width: 30vh;
   text-align:center;
   color: white;
   font-family:Verdana, Geneva, Tahoma, sans-serif;
@@ -353,12 +359,13 @@ letter-spacing: none;
 .widgetsBody3{
   position:absolute;
   text-align: center;
-  max-width: 38vh;
+  max-width: 37vh;
   color:white;
-  left:  43rem;
-  bottom: 7.5vh;
   line-height:3.5vh;
+  left: 110vh;
+  bottom: -65%;
 }
+
 
 
 .abtus{ 
@@ -414,9 +421,6 @@ letter-spacing: none;
 }
 
 
-
-
-
 .contt {
   position: absolute;
   height: 30%;
@@ -424,9 +428,7 @@ letter-spacing: none;
   top: 347%;
   left: 75%;
   overflow: visible;
-  
 
- 
 }
 
 .classlist {
@@ -478,15 +480,15 @@ letter-spacing: none;
 
 .classText4 {
   background-color: white;
-  position: relative; /* Ensure it's relative to the container */
+  position: relative; 
   width: 0; 
   opacity: 0; 
   z-index:1;
-  top: -31.5vh; /* Keep aligned with the container's top */
-  white-space: nowrap; /* Prevent text wrapping */
-  left: -100%; /* Start completely outside the container to the right */
-  transform: translateX(50px); /* Slide effect: start offset to the right */
-  transition: opacity 0.3s ease, transform 0.7s ease; /* Smooth appearance and sliding */
+  top: -31.5vh; 
+  white-space: nowrap; 
+  left: -100%;
+  transform: translateX(50px);
+  transition: opacity 0.3s ease, transform 0.7s ease; 
 }
 
 .classTextText{
@@ -1100,3 +1102,75 @@ letter-spacing: none;
 /* ---------------------------------------------------------------------------------------------- */
 
 
+.credits{
+  margin-top: 20vh;
+  background-color: rgb(51, 169, 212);
+  padding-bottom: 300px;
+  max-width: 100%;
+  width: 100vw;
+}
+
+.copyrightLine{
+  align-items: center;
+  width: 80%;
+  background-color: white;
+  opacity: 0.6;
+  position:relative;
+  bottom: -47vh;
+}
+
+.copyright{
+  position:absolute;
+  top: 530vh;
+  font-size: 2.3vh;
+  color: white;
+  opacity: 0.6;
+  left: 158vh;
+  
+}
+
+.endLogo{
+  background-image: url('/public/images/nyoom.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  position:absolute;
+  padding: 15vh;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  top: 490vh;
+  left: 20vh;
+}
+
+.emailListing{
+  position:absolute;
+  left: 65%;
+  top: 507%;
+  list-style-type: none;
+ 
+  
+}
+
+.GetTouch{
+  position:absolute;
+  text-shadow: none;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  left: 66.4%;
+  color:rgb(0, 0, 0);
+  opacity: 0.7;
+  font-size: 4vh;
+  top: 499%;
+
+
+}
+.contactIcon{
+  position:absolute;
+  width: 20px;
+  height:auto;
+  right: 26vh;
+
+}
+.emailListing li:hover{
+  text-decoration:underline;
+  
+}

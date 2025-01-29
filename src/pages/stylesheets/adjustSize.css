@@ -282,80 +282,57 @@
    
   }
   
+  .centering{
+    gap: 12rem;
+    bottom: 26vh;
+    padding: 0px 100px;
+    max-width: 1200px;
+  }
+
   .widgetsText{
-    margin-top: 3vh;
-    position:relative;
-    font-size: 24px;
-    left: -6.6vh;
-    max-width: 30vh;
-    text-align:center;
-    color: white;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: bold;
-    
+    font-size: 20px;
+    max-width: 20vh;
+    left: 5.5vh;
+  }
+
+  .widgetsBody{
+    max-width:30vh;
+    left: 11vh;
+    font-size: 18px;
+    bottom: -22vh;
   }
 
   .widgetsText2{
-    margin-top: 3vh;
-    position:relative;
-    font-size: 24px;
-    left: -7.6vh;
-    max-width: 30vh;
-    text-align:center;
-    color: white;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: bold;
-    
-  }
-
-
-  .widgetsBody{
-    position:absolute;
-    text-align: center;
-    max-width: 26vh;
-    color:white;
-    left: -4.5vh;
-    bottom: -19vh;
     font-size: 20px;
-    line-height:2.5vh;
+    max-width: 20vh;
+    left: 5.0vh;
   }
-
+  
   .widgetsBody2{
-    position:absolute;
-    text-align: center;
-    max-width: 26vh;
-    color:white;
-    left: 48.5vh;
-    bottom: -18vh;
-    font-size: 20px;
-    line-height:2.5vh;
+    max-width:30vh;
+    left: 62vh;
+    font-size: 18px;
+    bottom: -19vh;
   }
 
   .widgetsText3{
-    margin-top: 3vh;
-    position:absolute;
-    left: 118.4vh;
-    top: 14.7rem;
-    font-size: 24px;
-    max-width: 35vh;
-    text-align:center;
-    color: white;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: bold;
-  }
-  .widgetsBody3{
-    position:absolute;
-    text-align: center;
-    max-width: 26vh;
-    color:white;
-    left: 123.5vh;
-    bottom: 1vh;
+    max-width:40vh;
     font-size: 20px;
-    line-height:2.5vh;
+    right: 3.3vh;
+    bottom: 3vh;
   }
 
+  .widgetsBody3{
+    max-width: 60vh;
+    font-size: 18px;
+    top: 23vh;
+    right: 16vh;
+  }
+
+
+  
 .bgGetStarted{
-  width: 300px;
+  width: 18.75rem;
   top: 140rem;
   left: 3rem;
   
@@ -505,5 +482,39 @@ top: 363vh;
   font-size: 30px;
 }
 
+.credits{
+  padding-bottom: 500px;
+}
 
+.copyrightLine{
+  bottom: -50vh;
+}
+
+.copyright{
+  top: 513.8vh;
+  left: 157vh;
+  font-size: 2.0vh;
+}
+
+.endLogo{
+  top: 475vh;
+}
+.emailListing li{
+  font-size: 2.5vh;
+}
+
+.emailListing{
+  top: 483%;
+}
+
+.contactIcon{
+  width: 30px;
+  height:auto;
+  right: 24.5vh;
+}
+.GetTouch{
+  top: 474%;
+  left: 65%;
+
+}
 }

@@ -12,11 +12,11 @@ const Homepage = () => {
   const [slideIndex, setSlideIndex] = useState(0); // Toggle state
   const [fade, setFade] = useState(false);  // Controls fade animation
 
-
+  //javascript:document.body.contentEditable='true'; document.designMode='on'; void 0
 
   const navigate = useNavigate();
   const handleNavigation = () => {
-    navigate('/about'); 
+    document.getElementById("abtus").scrollIntoView({behavior: "smooth"});
   };
 
    const { isDarkTheme } = useContext(ThemeContext);
@@ -131,25 +131,23 @@ const Homepage = () => {
       <>
 
       <div className="centering" id="getstarted">
-      
-      <ul className="items">
-        <li>
-          <Link to="/arrivaltimes"><img className="widgets" src="./images/icons/searchIcon.png"></img></Link>
-          <br/>
-          <p className="widgetsText">Search For The Nearest <span className="widgetsTextt">Bus Timing</span> Arrival</p>
-          <p className="widgetsBody"> Easily find bus arrival times with our quick search feature. Simply enter your location or bus stop, and get real-time updates on when the next bus will arrive, helping you plan your journey with ease. </p>
-        </li>
-        <li><Link to="/travelroutes"><img className="widgets" src="./images/icons/saveIcon.png"></img></Link>
-        <br/>
-        <p className="widgetsText2">Save Your Favoured <span className="widgetsTextt2">Travel Preferences</span></p>
+        <div className="SearchGS">
+        <Link to="/arrivaltimes"><img className="widgets" src="./images/icons/searchIcon.png"></img></Link>
+       <p className="widgetsText"> Search For The Nearest <span>Bus Timing</span> Arrival</p>
+       <p className="widgetsBody"> Easily find bus arrival times with our quick search feature. Simply enter your location or bus stop, and get real-time updates on when the next bus will arrive, helping you plan your journey with ease. </p>
+        </div>
+        <div className="SaveGS">
+        <Link to="/travelroutes"><img className="widgets" src="./images/icons/saveIcon.png"></img></Link>
+        <p className="widgetsText2">Save Your Favoured <span>Travel Preferences</span></p>
         <p className="widgetsBody2"> Keep track of your preferred buses, routes, and travel details with our save feature. Store your favorites for easy access and quickly plan your trips whenever you need them." </p>
-        </li>
-        <li><Link to="/settings"><img className="widgets2" src="./images/icons/flagIcon.png"></img></Link>
-        </li>
-      </ul>
-      </div>
-      <p className="widgetsText3">Map Out Your <span>Nearest</span> Bus Stops</p>
-      <p className="widgetsBody3"> Effortlessly find the nearest bus stop from your current location. Using real-time GPS tracking, the interactive map pinpoints the closest stops, provides walking directions, and even displays upcoming bus arrival times.</p>
+        </div>
+        <div className="MapGS">
+        <Link to="/arrivaltimes"><img className="widgets2" src="./images/icons/flagIcon.png"></img></Link>
+        <p className="widgetsText3">Map Out Your <span>Nearest</span> Bus Stops</p>
+        <p className="widgetsBody3"> Find the closest bus stop to your location with our 'Near Me' feature. Simply enable location services, and we’ll map out the nearest bus stops, making it easier for you to catch your ride without the hassle.</p>
+        </div>
+
+     </div>
       </>
 
     )
@@ -196,8 +194,30 @@ const ClassSlide = (props) =>{
     </>
    )
   }
-  
 
+  const EndDivContact = (props) =>{
+    return (
+      <li><img className="contactIcon" src="./images/icons/emailIcon.png" /><a href={"mailto:" + props.lnkemail}>{props.email}</a></li>
+    )
+  }
+  
+const EndDiv =() =>{
+  return(
+    <>
+    
+    <button type="button" className="endLogo"></button>
+
+    <hr className="copyrightLine"></hr>
+    <p className="copyright">© All rights reserved to nyoom 2025</p>
+    <p className="GetTouch">Get In Touch</p>
+    <ul className="emailListing">
+      {emails.map(emap => <EndDivContact key={emap.id} lnkemail={emap.lnkemail} email={emap.email}/>)}
+    </ul>
+
+    
+    </>
+  )
+}
   
   return (
 
@@ -234,7 +254,7 @@ const ClassSlide = (props) =>{
       <div className="instr"> <GetStartedElements /></div>
       <img className="bgGetStarted" src="./images/graphics/graphicBg.png" />
 
-      <div className="abtus"> <AboutUs /> </div>
+      <div className="abtus" id="abtus"> <AboutUs /> </div>
       <img className="AboutUsGrap" src="./images/graphics/blueGraphic4.png"></img>
       <img className="AboutUsGrap2" src="./images/graphics/blueGraphic4.png"></img>
 
@@ -260,6 +280,8 @@ const ClassSlide = (props) =>{
       </div>
       </div>
 
+
+      <div className="credits"><EndDiv/></div>
 
     </>
   );
