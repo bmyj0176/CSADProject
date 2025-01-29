@@ -4,6 +4,7 @@ import './stylesheets/navbar.css';
 import ToggleThemeButton from './Components/ToggleThemeButton';
 import { bus_stops_info } from '../api_extraction';
 import { LoginStatusContext } from '../index';
+import '../travel_algorithms_bus.js';
 
 const NavBar = () => {
   const {userLoggedIn, setUserLoggedIn} = useContext(LoginStatusContext);

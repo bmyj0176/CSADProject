@@ -101,15 +101,12 @@ export function dijkstra(graph, start, end) {
                 let neighbouringDistance = Number(graph[currentNode][neighbour]["dist"]);
                 let busUsed = graph[currentNode][neighbour]["bus_num"];
                 let newDistance = distances[currentNode][0] + neighbouringDistance;
-                if (true) {} //ADD CODE HERE
-
-
-
+                if (predecessors[currentNode] !== undefined) {
+                    if (busUsed !== predecessors[currentNode][1]) {
+                        newDistance += 50;
+                     } // 30/1/25 make dijkstra take multiple nodes if distance is the same
+                }
                 
-
-
-
-
 
 
 
@@ -131,13 +128,14 @@ export function dijkstra(graph, start, end) {
         return `No route from ${start} to ${end}.`;
     }
     console.log(predecessors);
+    console.log(distances);
 
     // Reconstruct the shortest route from start to end using the predecessors map
     let route = {};
     let current = end;
     while (current) {
         if (predecessors[current] == null) {break;}
-        route[current] = predecessors[current][0];
+        route[current] = predecessors[current][1];
         current = predecessors[current][0];
     }
     console.log(route);
@@ -181,10 +179,10 @@ export async function runshit() {
     console.clear();
     let [map, interchanges] = await getMap();
     let startTime = performance.now();
-    console.log(dijkstra(map, "59091", "59299"));
+    console.log(dijkstra(map, "44251", "08057"));
     let endTime = performance.now();
     let timeTaken = endTime - startTime;
     console.log("Total time taken : " + timeTaken + " milliseconds");
 }
 
-runshit();
+//runshit();
