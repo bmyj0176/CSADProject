@@ -5,6 +5,21 @@ body, html{
   width: 100%;
 }
 
+
+
+.wrapper{
+    padding-top: 0px;
+}
+
+
+*[position="absolute"] {
+  top: 100px;
+}
+
+*[position="relative"] {
+  top: 100px;
+}
+
 .subhead{position:relative; left: 3%;
 font-size: 7.2vh;
 padding-top: 10vh;
@@ -1173,4 +1188,8 @@ letter-spacing: none;
 .emailListing li:hover{
   text-decoration:underline;
   
+}
+
+.SavedContainer{
+  position:absolute;
 }

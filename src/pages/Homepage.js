@@ -153,6 +153,16 @@ const Homepage = () => {
     )
   }
 
+  const DisplaySaved = () =>{
+return(
+<div className="SavedContainer">
+  {userLoggedIn &&
+ <>DISPLAY SAVED ROUTES HERE </>
+  }
+</div>
+)
+  }
+
   const emails = [
     { id: 1, class: "classText", class2: "classTextText", email: 'sdmgo15@gmail.com', lnkemail: 'sdmgo15@gmail.com' },
     { id: 2, class: "classText2", class2: "classTextText2", email: 'bryuhh1234@rp.edu.sg', lnkemail: 'bryuh1234@gmail.com' },
@@ -220,8 +230,7 @@ const EndDiv =() =>{
 }
   
   return (
-
-    <>
+      <>
       <div className={`fade ${fade ? "fade-out" : "fade-in"}`}>
         {slides[slideIndex]}
       </div>
@@ -233,8 +242,10 @@ const EndDiv =() =>{
 
       <div style={{ display: "inline-block" }}>
       </div>
-
+     <div className="wrapper">
       <hr className="lineunderslides" />
+
+      <DisplaySaved />
       
       <h1 className="subhead"> Revolutionize Your <br />Travel Experience </h1>
       <h1 className="subpar">
@@ -244,10 +255,12 @@ const EndDiv =() =>{
 
       Whether you're navigating the city for work or play, we’ll make sure you get there faster and smarter.</p>
       
+      <div>
       <img className="busSlide hidden" src={isDarkTheme ? "./images/bus.png": "./images/busLight.png"} alt="Bus Image" />
       <video className="videoNyoom hidden" controls><source src='./images/NyoomCOM.mp4' type='video/mp4'></source></video>
       <img className="blueGraphic hidden" src={isDarkTheme ? "./images/graphics/blueGraphic2.png" : "./images/graphics/blueLightGraphic2.png"} alt="Blue Graphic" />
       <img className="blueGraphic2 hidden" src={isDarkTheme ? "./images/graphics/blueGraphic3.png" : "./images/graphics/blueLightGraphic3.png"} />
+      </div>
 
       <hr className="lineunderslides2" />
 
@@ -283,6 +296,7 @@ const EndDiv =() =>{
 
       <div className="credits"><EndDiv/></div>
 
+    </div>
     </>
   );
 };
