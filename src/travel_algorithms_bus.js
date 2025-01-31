@@ -15,8 +15,8 @@ function buildAdjacencyList(time_between_busstops, connections) {
 
     const adjMap = {};
 
-    for (let bus_num in time_between_busstops) { //adding time between stations
-        //let bus_num = "2";
+    //for (let bus_num in time_between_busstops) { //adding time between stations
+    let bus_num = 2;
         let directions = time_between_busstops[bus_num];
         let prev_stop = directions["1"][0][0];
         let prev_dist = 0;
@@ -25,36 +25,50 @@ function buildAdjacencyList(time_between_busstops, connections) {
             let dist = busstop[1]-prev_dist;
             dist = dist.toFixed(1);
             if (dist === "0.0") {continue;}
-            let dist_and_bus_num = {dist, bus_num};
-            // Add connection from s1 to s2
-            if (!adjMap[stop]) adjMap[stop] = {};
-            adjMap[stop][prev_stop] = dist_and_bus_num;
-            // Add connection from s2 to s1
+
+            if (!adjMap[stop]) adjMap[stop] = {}; //creating stop if it currently doesnt exist
             if (!adjMap[prev_stop]) adjMap[prev_stop] = {};
-            adjMap[prev_stop][stop] = dist_and_bus_num;
+
+             // if linkage doesnt exist, create it
+            if (adjMap[stop][prev_stop] === undefined) { // s1 to s2
+                adjMap[stop][prev_stop] = {dist, bus_num:[bus_num]};
+            } else { // 1/2/25 if linkage exists alr, add bus num to list.
+
+
+
+
+
+            }
+            if (adjMap[prev_stop][stop] === undefined) { // s2 to s1
+                adjMap[prev_stop][stop] = {dist, bus_num:[bus_num]};
+            } else {
+
+            }
+            
             prev_stop = stop;
             prev_dist = busstop[1];
-        }
+
+        //}
         
-        prev_stop = directions["1"][directions["1"].length-1][0];
-        prev_dist = 0;
-        if (directions["2"]) {
-            for (const busstop of directions["2"]) {
-                let stop = busstop[0];
-                let dist = busstop[1]-prev_dist;
-                dist = dist.toFixed(1);
-                if (dist === "0.0") {continue;}
-                let dist_and_bus_num = {dist, bus_num};
-                // Add connection from s1 to s2
-                if (!adjMap[stop]) adjMap[stop] = {};
-                adjMap[stop][prev_stop] = dist_and_bus_num;
-                // Add connection from s2 to s1
-                if (!adjMap[prev_stop]) adjMap[prev_stop] = {};
-                adjMap[prev_stop][stop] = dist_and_bus_num;
-                prev_stop = stop;
-                prev_dist = busstop[1];
-            }
-        }
+        // prev_stop = directions["1"][directions["1"].length-1][0];
+        // prev_dist = 0;
+        // if (directions["2"]) {
+        //     for (const busstop of directions["2"]) {
+        //         let stop = busstop[0];
+        //         let dist = busstop[1]-prev_dist;
+        //         dist = dist.toFixed(1);
+        //         if (dist === "0.0") {continue;}
+        //         let dist_and_bus_num = {dist, bus_num};
+        //         // Add connection from s1 to s2
+        //         if (!adjMap[stop]) adjMap[stop] = {};
+        //         adjMap[stop][prev_stop] = dist_and_bus_num;
+        //         // Add connection from s2 to s1
+        //         if (!adjMap[prev_stop]) adjMap[prev_stop] = {};
+        //         adjMap[prev_stop][stop] = dist_and_bus_num;
+        //         prev_stop = stop;
+        //         prev_dist = busstop[1];
+        //     }
+        // }
     }
     
     // for (const { p1, p2, time } of connections) { //adding cross platform transfers
@@ -127,8 +141,8 @@ export function dijkstra(graph, start, end) {
     if (distances[end][0] === Infinity) {
         return `No route from ${start} to ${end}.`;
     }
-    console.log(predecessors);
-    console.log(distances);
+    console.log("predecessors", predecessors);
+    console.log("distances", distances);
 
     // Reconstruct the shortest route from start to end using the predecessors map
     let route = {};
@@ -178,11 +192,12 @@ export function dijkstra(graph, start, end) {
 export async function runshit() {
     console.clear();
     let [map, interchanges] = await getMap();
+    console.log(map);
     let startTime = performance.now();
-    console.log(dijkstra(map, "44251", "08057"));
+    //console.log(dijkstra(map, "44251", "08057"));
     let endTime = performance.now();
     let timeTaken = endTime - startTime;
     console.log("Total time taken : " + timeTaken + " milliseconds");
 }
 
-//runshit();
+runshit();
