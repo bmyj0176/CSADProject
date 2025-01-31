@@ -56,6 +56,7 @@ export async function bus_stops_complete() {
 }
 
 export async function bus_services_at_stop() {
+  console.log("this one will take some time")
   const database = {};
   const bsc_list = [];
   const data = await getjson('./datasets/bus_stops_complete.json');
@@ -77,9 +78,28 @@ export async function bus_services_at_stop() {
           console.log(bsc);
       }));
   }
+  for (const key in database) {
+    database[key] = sortBusServices(database[key]);
+  }
 
   console.log(database);
   downloadJSON(database, "bus_services_at_stop");
+}
+
+function sortBusServices(list) {
+  return list.sort((a, b) => {
+    // Extract numeric part for comparison
+    const numA = parseInt(a, 10);
+    const numB = parseInt(b, 10);
+
+    // Handle cases where numeric part is equal (e.g., "243G" and "243W")
+    if (numA === numB) {
+      return a.localeCompare(b); // Compare full strings lexicographically
+    }
+
+    // Sort by numeric value
+    return numA - numB;
+  });
 }
 
 export async function opposite_bus_stops() {
