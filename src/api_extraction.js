@@ -3,10 +3,21 @@ import { getjson, getBusStopInfo } from './helper_functions';
 import { downloadJSON, haversine } from './helper_functions2';
 import { BusArrival, BusRoutes, BusStops } from './api_caller';
 
-export async function busstop_map() {
+export async function run_all_updates() {
+  await busstops_map();
+  await bus_stops_complete();
+  await bus_services_at_stop();
+  await opposite_bus_stops();
+  await bus_services();
+  await mrt_to_bus2();
+  await busstops_near_mrt();
+  await bus_stops_info();
+}
+
+export async function busstops_map() {
     const database = {};
     for (let num = 0; num < 52; num++) {
-      console.log("cycle", num);
+      console.log(`cycle ${num}/52`);
       const rawdata = await axios.get(`${process.env.REACT_APP_BACKEND_API_URL}/api/bus-routes?skip=${num * 500}`);
       const value = rawdata.data.value;
       for (const dict of value) {
@@ -35,7 +46,7 @@ export async function busstop_map() {
       }
     }
     console.log(database);
-    downloadJSON(database, "busstop_map");
+    downloadJSON(database, "busstops_map");
 }
 
 export async function bus_stops_complete() {
@@ -47,6 +58,7 @@ export async function bus_stops_complete() {
     if (value.length === 0)
       break;
     for (const dict of value) {
+      console.log(dict.BusStopCode);
       database.push(dict);
     }
     skip += 500;
@@ -56,27 +68,26 @@ export async function bus_stops_complete() {
 }
 
 export async function bus_services_at_stop() {
-  console.log("this one will take some time")
   const database = {};
-  const bsc_list = [];
   const data = await getjson('./datasets/bus_stops_complete.json');
   for (const dict of data) {
-    bsc_list.push(dict.BusStopCode)
+    database[dict.BusStopCode] = []; // filling up first
   }
-
-  // Function to process in batches of 10
-  const batchSize = 10;
-  for (let i = 0; i < bsc_list.length; i += batchSize) {
-      // Create a batch of 10 items
-      const batch = bsc_list.slice(i, i + batchSize);
-
-      // Wait for all promises in the batch to resolve
-      await Promise.all(batch.map(async (bsc) => {
-          const data = await BusArrival(bsc);
-          const list = data.Services.map(svc => svc.ServiceNo);
-          database[bsc] = list;
-          console.log(bsc);
-      }));
+  const map = await getjson('./datasets/busstops_map.json');
+  for (const busService in map) {
+    console.log(busService);
+    const inner_map = map[busService];
+    for (const busStopData of inner_map["1"]) {
+      database[busStopData[0]].push(busService);
+      console.log(`${busService} to ${busStopData[0]}`)
+    }
+    if ("2" in inner_map) {
+      for (const busStopData of inner_map["2"]) {
+        database[busStopData[0]].push(busService);
+        console.log(`${busService} to ${busStopData[0]}`)
+      }
+    }
+    
   }
   for (const key in database) {
     database[key] = sortBusServices(database[key]);
