@@ -6,6 +6,8 @@ import { LoginStatusContext } from '../index';
 import { ThemeContext } from './Components/ToggleThemeButton';
 import SavedRoutes from "./TravelRoutes/SavedRoutes";
 
+
+
 const Homepage = () => {
   const {userLoggedIn, setUserLoggedIn} = useContext(LoginStatusContext);
   const [favorites, setFavorites] = useState([]);
@@ -16,6 +18,7 @@ const Homepage = () => {
 
   const navigate = useNavigate();
   const handleNavigation = () => {
+    console.log(window.innerHeight);
     document.getElementById("abtus").scrollIntoView({behavior: "smooth"});
   };
 
@@ -153,16 +156,6 @@ const Homepage = () => {
     )
   }
 
-  const DisplaySaved = () =>{
-return(
-<div className="SavedContainer">
-  {userLoggedIn &&
- <>DISPLAY SAVED ROUTES HERE </>
-  }
-</div>
-)
-  }
-
   const emails = [
     { id: 1, class: "classText", class2: "classTextText", email: 'sdmgo15@gmail.com', lnkemail: 'sdmgo15@gmail.com' },
     { id: 2, class: "classText2", class2: "classTextText2", email: 'bryuhh1234@rp.edu.sg', lnkemail: 'bryuh1234@gmail.com' },
@@ -182,7 +175,10 @@ const ClassSlide = (props) =>{
   )
 }
 
-  const AboutUs = (props) =>{
+
+
+
+  const AboutUs = () =>{
    return( <>
       <h1 className="abtHeader">About Us</h1>
       <p className="abtBody">At Nyoom, we are redefining the way Singapore travels. Our mission is to prioritize convenience, ensuring every journey is seamless, efficient, and hassle-free. Whether you're navigating the bustling streets of the city or planning your next adventure, Nyoom is here to make your travel experience as smooth as possible.</p>
@@ -210,6 +206,14 @@ const ClassSlide = (props) =>{
       <li><img className="contactIcon" src="./images/icons/emailIcon.png" /><a href={"mailto:" + props.lnkemail}>{props.email}</a></li>
     )
   }
+
+  const EndDivSocial = (props) =>{
+    <li>
+    <a className="socialIcon" href={props.social}>
+    <img src={props.socialimg} alt="social icon" />
+  </a>
+  </li>
+  }
   
 const EndDiv =() =>{
   return(
@@ -223,7 +227,9 @@ const EndDiv =() =>{
     <ul className="emailListing">
       {emails.map(emap => <EndDivContact key={emap.id} lnkemail={emap.lnkemail} email={emap.email}/>)}
     </ul>
-
+    <ul className="socialListing">
+      {socials.map(smap => <EndDivSocial key={smap.id} social={smap.social} socialimg={smap.socialimg} />)}
+    </ul>
     
     </>
   )
@@ -245,7 +251,7 @@ const EndDiv =() =>{
      <div className="wrapper">
       <hr className="lineunderslides" />
 
-      <DisplaySaved />
+     
       
       <h1 className="subhead"> Revolutionize Your <br />Travel Experience </h1>
       <h1 className="subpar">
@@ -292,7 +298,6 @@ const EndDiv =() =>{
         </div>
       </div>
       </div>
-
 
       <div className="credits"><EndDiv/></div>
 

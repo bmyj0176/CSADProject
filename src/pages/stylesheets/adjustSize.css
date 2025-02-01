@@ -198,20 +198,20 @@
     0%{
       transform: rotate(0deg);
       transform: translateX(80px);
-      top: 100vh;
+      top: 96vh;
       opacity: 0;
     }
 
     70%{
       transform: rotate(0deg);
       transform: translateX(80px);
-      top: 100vh;
+      top: 96vh;
       opacity: 0;
     }
 
     100%{
       transform: rotate(-30deg);
-      top: 128vh;
+      top: 126vh;
       opacity: 1;
       height: auto;
       width: 60vh;
@@ -517,4 +517,5 @@ top: 363vh;
   left: 65%;
 
 }
+
 }
