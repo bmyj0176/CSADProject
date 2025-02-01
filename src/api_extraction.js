@@ -75,16 +75,15 @@ export async function bus_services_at_stop() {
   }
   const map = await getjson('./datasets/busstops_map.json');
   for (const busService in map) {
-    console.log(busService);
     const inner_map = map[busService];
     for (const busStopData of inner_map["1"]) {
-      database[busStopData[0]].push(busService);
-      console.log(`${busService} to ${busStopData[0]}`)
+      if (!database[busStopData[0]].includes(busService))
+        database[busStopData[0]].push(busService);
     }
     if ("2" in inner_map) {
       for (const busStopData of inner_map["2"]) {
-        database[busStopData[0]].push(busService);
-        console.log(`${busService} to ${busStopData[0]}`)
+        if (!database[busStopData[0]].includes(busService))
+          database[busStopData[0]].push(busService);
       }
     }
     
