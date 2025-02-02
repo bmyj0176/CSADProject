@@ -99,17 +99,27 @@ export function dijkstra(graph, start, end) {
                 // Calculate tentative distance to the neighbouring node
                 let neighbouringDistance = Number(graph[currentNode][neighbour]["dist"]);
                 let busUsed = graph[currentNode][neighbour]["bus_num"];
+                // 3/2/25 implement this
+                // 1. store the bus_num for first edge
+                // 2. compare those bus_num to second edge
+                // 3. remove those that are not the same
+                // 4. move to next edge
+                // 5. repeat 1-4 until list is null (that means transfer happened)
+
+                // all stops before the list is null is connected by one of the buses in the list
+                // repeat steps 1-5 until reach destination
+
+                if (currentNode === "44539") { // test area
+                    console.log(neighbour, busUsed, predecessors[currentNode][1]);
+                }
+                
                 let newDistance = distances[currentNode][0] + neighbouringDistance;
-                if (predecessors[currentNode] !== undefined) {
-                    if (busUsed !== predecessors[currentNode][1]) {
-                        newDistance += 50;
+                if (predecessors[currentNode] !== undefined) { //if not starting node
+                    if (predecessors[currentNode][1].includes(busUsed.toString())) {
+                        newDistance += 3000000;
                      } // 30/1/25 make dijkstra take multiple nodes if distance is the same
                 }
                 
-
-
-
-
                 newDistance = Number(newDistance.toFixed(1));
 
                 // If the newly calculated distance is shorter than the previously known distance to this neighbour
@@ -144,20 +154,20 @@ export function dijkstra(graph, start, end) {
     let past_station = "";
     let past_interchange = "";
 
-    for (let i in route) {
-        let current_station = route[i];
-        let thirdLastChar = current_station.charAt(current_station.length - 3);
+    // for (let i in route) {
+    //     let current_station = route[i];
+    //     let thirdLastChar = current_station.charAt(current_station.length - 3);
 
-        if (thirdLastChar === "_") { //if third last char is a "_", its an interchange
-            let current_interchange = current_station.length > 3 ? current_station.slice(0, -3) : "";
-            if (current_interchange === past_interchange) { //if 2 interchanges are the same, its a transfer
-                simple_route.push(past_station, current_station); 
-            } else {
-                past_interchange = current_interchange;
-            }
-        }
-        past_station = current_station;
-    }
+    //     if (thirdLastChar === "_") { //if third last char is a "_", its an interchange
+    //         let current_interchange = current_station.length > 3 ? current_station.slice(0, -3) : "";
+    //         if (current_interchange === past_interchange) { //if 2 interchanges are the same, its a transfer
+    //             simple_route.push(past_station, current_station); 
+    //         } else {
+    //             past_interchange = current_interchange;
+    //         }
+    //     }
+    //     past_station = current_station;
+    // }
 
     simple_route.push(route[route.length - 1]) //add destination to simple route
 
@@ -179,10 +189,10 @@ export async function runshit() {
     let [map, interchanges] = await getMap();
     console.log(map);
     let startTime = performance.now();
-    //console.log(dijkstra(map, "44251", "08057"));
+    console.log(dijkstra(map, "44399", "19031"));
     let endTime = performance.now();
     let timeTaken = endTime - startTime;
     console.log("Total time taken : " + timeTaken + " milliseconds");
 }
 
-runshit();
+//runshit();
