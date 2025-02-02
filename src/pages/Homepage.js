@@ -164,9 +164,9 @@ const Homepage = () => {
   ];
 
   const socials = [
-    { id: 1, social: 'https://x.com/SDomingoYT', socialimg: './images/x.png' },
-    { id: 2, social: 'https://www.youtube.com/c/SDomingo', socialimg: './images/youtube.png' },
-    { id: 3, social: 'https://www.roblox.com/users/686546843/profile', socialimg: './images/instagram.png' }
+    { id: 1, social: 'https://x.com/SDomingoYT', socialimg: './images/x.png', class: 'socialIcon1'},
+    { id: 2, social: 'https://www.youtube.com/c/SDomingo', socialimg: './images/youtube.png', class: 'socialIcon2' },
+    { id: 3, social: 'https://www.roblox.com/users/686546843/profile', socialimg: './images/instagram.png', class: 'socialIcon3' }
   ];
 
 const ClassSlide = (props) =>{
@@ -206,36 +206,50 @@ const ClassSlide = (props) =>{
   }
 
   const EndDivSocial = (props) =>{
-    <li>
-    <a className="socialIcon" href={props.social}>
-    <img src={props.socialimg} alt="social icon" />
+    return (<li>
+    <a className={props.class} href={props.social}> <img className={props.class} src={props.socialimg}/>
   </a>
   </li>
+    )
   }
   
 const EndDiv =() =>{
   return(
     <>
-    
+    <div className="endDiv">
     <button type="button" className="endLogo"></button>
-
     <hr className="copyrightLine"></hr>
     <p className="copyright">© All rights reserved to nyoom 2025</p>
-    <p className="GetTouch">Get In Touch</p>
+    <div className="emailListing-container">
     <ul className="emailListing">
+      <p className="GetTouch">Get In Touch</p>
       {emails.map(emap => <EndDivContact key={emap.id} lnkemail={emap.lnkemail} email={emap.email}/>)}
     </ul>
+    </div>
+    <div className="socialListing-container">
+    <p className="GetSocials">Follow Our Socials!</p>
     <ul className="socialListing">
-      {socials.map(smap => <EndDivSocial key={smap.id} social={smap.social} socialimg={smap.socialimg} />)}
+      {socials.map(smap => <EndDivSocial key={smap.id} social={smap.social} socialimg={smap.socialimg} class={smap.class}/>)}
     </ul>
-    
+    </div>
+    <div className="siteMap-container">
+      <ul className="siteList">
+      <p className="GetSite">Site Map</p>
+       <li> <button className="Site-Homepage"onClick={()=>{document.getElementById("slide").scrollIntoView({behavior: "smooth"});}}>Homepage</button> </li>
+       <li> <Link to='/arrivaltimes'>Arrival Times</Link> </li>
+       <li> <Link to='/travelroutes'>Travel Routes</Link> </li>
+       <li> <Link to='/announcements'>Announcements</Link> </li>
+      </ul>
+
+    </div>
+    </div>
     </>
   )
 }
   
   return (
       <>
-      <div className={`fade ${fade ? "fade-out" : "fade-in"}`}>
+      <div id = 'slide' className={`fade ${fade ? "fade-out" : "fade-in"}`}>
         {slides[slideIndex]}
       </div>
       
@@ -298,8 +312,10 @@ const EndDiv =() =>{
       </div>
       </div>
 
-      <div className="credits"><EndDiv/></div>
-
+      <div className="credits"><EndDiv/>
+      <button className="btnUp" onClick={()=>{document.getElementById("slide").scrollIntoView({behavior: "smooth"});}}><img src='./images/icons/arrowToUp.png' /></button>
+      
+    </div>
     </div>
     </>
   );
