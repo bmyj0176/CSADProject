@@ -176,8 +176,6 @@ const ClassSlide = (props) =>{
 }
 
 
-
-
   const AboutUs = () =>{
    return( <>
       <h1 className="abtHeader">About Us</h1>
@@ -190,12 +188,12 @@ const ClassSlide = (props) =>{
       {emails.map(email => <ClassSlide key={email.id} class ={email.class} class2={email.class2} lnkemail={email.lnkemail} email={email.email} />) }
       
      </div>
-
+      <div class="contacts">
      <img className="call" src="./images/icons/callIcon.png"></img>
      <p className="callno">+91 98008 25424</p>
      <img className="addr" src="./images/icons/Addr.png"></img>
      <a className="addrno" href="https://www.google.com/maps/place/Afghanistan+Family+Restaurant/@1.3535609,103.951398,17z/data=!3m2!4b1!5s0x31da3d1b4343a59f:0x16e6fa8953f96f5a!4m6!3m5!1s0x31da3d1b6854ffb7:0xfea0f762f31c7422!8m2!3d1.3535555!4d103.9539729!16s%2Fg%2F1vs1pcwg?entry=ttu&g_ep=EgoyMDI1MDEyMi4wIKXMDSoASAFQAw%3D%3D">500 Dover Rd, Singapore 139651</a>
-     
+     </div>
 
     </>
    )
@@ -248,11 +246,11 @@ const EndDiv =() =>{
 
       <div style={{ display: "inline-block" }}>
       </div>
+
+      <div className="space"></div>
      <div className="wrapper">
       <hr className="lineunderslides" />
 
-     
-      
       <h1 className="subhead"> Revolutionize Your <br />Travel Experience </h1>
       <h1 className="subpar">
         Optimizing Bus & Train Travel for <br /> Time-Saving, Effortless Journey
@@ -261,7 +259,7 @@ const EndDiv =() =>{
 
       Whether you're navigating the city for work or play, we’ll make sure you get there faster and smarter.</p>
       
-      <div>
+      <div className="Graphics-Video-Bus">
       <img className="busSlide hidden" src={isDarkTheme ? "./images/bus.png": "./images/busLight.png"} alt="Bus Image" />
       <video className="videoNyoom hidden" controls><source src='./images/NyoomCOM.mp4' type='video/mp4'></source></video>
       <img className="blueGraphic hidden" src={isDarkTheme ? "./images/graphics/blueGraphic2.png" : "./images/graphics/blueLightGraphic2.png"} alt="Blue Graphic" />
@@ -270,13 +268,14 @@ const EndDiv =() =>{
 
       <hr className="lineunderslides2" />
 
-      <div className="instr"> <GetStartedElements /></div>
-      <img className="bgGetStarted" src="./images/graphics/graphicBg.png" />
+      <div className="instr"> <GetStartedElements />
+      <img className="bgGetStarted" src="./images/graphics/graphicBg.png" /></div>
+
 
       <div className="abtus" id="abtus"> <AboutUs /> </div>
-      <img className="AboutUsGrap" src="./images/graphics/blueGraphic4.png"></img>
+      <div className="abtusGrap"><img className="AboutUsGrap" src="./images/graphics/blueGraphic4.png"></img>
       <img className="AboutUsGrap2" src="./images/graphics/blueGraphic4.png"></img>
-
+      </div>
       <div class="values-section">
         <h2>Our Values</h2>
         <div className="values-grid">
