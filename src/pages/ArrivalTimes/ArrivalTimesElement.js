@@ -3,6 +3,7 @@ import BouncyBouncy from '../Components/LoadingIcon';
 import { dict_in_list } from '../../helper_functions2';
 import "../stylesheets/ATpages/at_list.css";
 
+
 const ArrivalTimesElement = (props) => {
 
     const [data, setData] = useState({
@@ -60,7 +61,7 @@ const ArrivalTimesElement = (props) => {
     return (
     <>
         <div 
-        style={{ border: '1px solid black' }}
+        style={{ border: '2px solid rgba(13, 13, 34, 0.39)' }}
         className="atlist"
         onClick={onDivClick}>
             {(props.type) ?
@@ -78,7 +79,7 @@ const ArrivalTimesElement = (props) => {
                 :
                 <>
                     {/* CASE: A Hybrid Display for Bookmarked ArrivalTimes */}
-                    <h2>{"Bus " + props.busService}</h2>
+                    <h2 className="hello">{"Bus " + props.busService}</h2>
                     <h4>{"@ " + props.busStopName}</h4>
                 </>
             }
@@ -96,9 +97,10 @@ const ArrivalTimesElement = (props) => {
                     )) 
                 }
                 </button>
-                {props.busTimesList && " mins"}
+                {props.busTimesList && "mins"}
             </div>
             <StarButton
+            type={props.type}
             className='star'
             handleFav={handleFav}
             favItem={favItem}/>
@@ -108,18 +110,21 @@ const ArrivalTimesElement = (props) => {
 }
 
 const StarButton = (props) => {
+
     return (
       <button // STAR BUTTONNNNNNNNN
-          id="starbutton"
+          id={(props.type) ?
+            (props.type === "busNo") ? "starbutton" : "starbutton2": "starbutton3"}
+       
           className={props.favItem === 'selected' ? "btnfaved" : "btnunfaved"}
           onClick={props.handleFav}
           type="button"
         >   
-          <svg
+          <svg 
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
-            width="24"
-            height="24"
+            width="34"
+            height="34"
           >
             <path
               d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
@@ -127,13 +132,14 @@ const StarButton = (props) => {
             />
           </svg>
         </button>
+      
     )
   }
 
 const Unavailable = () => {
     return (
         <>
-            No Service
+             <span className="noService">No Service</span>
         </>
     )
 }

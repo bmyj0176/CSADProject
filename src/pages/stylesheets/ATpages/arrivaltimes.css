@@ -1,50 +1,74 @@
 /*AT bar properties*/
 .at {
-    list-style-type: none;
-    margin: 12px;
-    padding: 12px;
+  list-style-type: none;
+  margin: 12px;
+  padding: 12px;
 }
 
 /*each AT bar element properties*/
 .at li {
-    display: inline-block;
-    margin-right: 20px;
+  display: inline-block;
+  margin-right: 20px;
 }
-  
+
 /*no text underlines*/
 .at li button {
-    display: inline-block;
-    padding: 12px;
-    height: auto;
-    width: auto;
-    margin: auto;
+  display: inline-block;
+  padding: 12px;
+  height: auto;
+  width: auto;
+  margin: auto;
 }
-  
+
 .horizontal-list {
-    display: flex;
-    height: 100vh;
-    margin: 0;
-    padding: 0; /* Removes any default padding */
-    list-style-type: none; /* Removes default list styling */
+  display: flex;
+  height: 100vh;
+  margin: 0;
+  padding: 0; /* Removes any default padding */
+  list-style-type: none; /* Removes default list styling */
 }
-  
-  /* List items */
-  .horizontal-list li {
-    text-align: center; /* Centers the text inside each list item */
-    justify-content: center; /* Centers the contents horizontally within each li */
-    align-items: center; /* Centers the contents vertically within each li */
-    flex: 1; /* Optional: allows items to stretch and take up available space evenly */
-  }
+
+/* List items */
+.horizontal-list li {
+ text-align: center; /* Centers the text inside each list item */
+  justify-content: center; /* Centers the contents horizontally within each li */
+  align-items: center; /* Centers the contents vertically within each li */
+  flex: 1; /* Optional: allows items to stretch and take up available space evenly */
+
+}
+
+.horizontal-listHP li {
+  text-align: center; /* Centers the text inside each list item */
+   justify-content: center; /* Centers the contents horizontally within each li */
+   align-items: center; /* Centers the contents vertically within each li */
+   flex: 1; /* Optional: allows items to stretch and take up available space evenly */
+   
+ }
+ .horizontal-listHP{
+  list-style-type: none;
+
+
+ }
 
 .link-default {
-    text-shadow: 0px;
-    
-    background-color: rgb(57, 57, 57);
-  }
+  text-shadow: 0px;
   
-  .link-toggled {
-    text-shadow: 100px;
-    
-    background-color: rgb(120, 120, 120);
-  }
+  background-color: rgb(57, 57, 57);
+}
+
+.link-toggled {
+  text-shadow: 100px;
+  
+  background-color: rgb(120, 120, 120);
+}
+
+
+
+.savedHP .barr{
+  list-style-type: none;
+  display: grid;
+  grid-auto-flow: column;
+}
+
+
 

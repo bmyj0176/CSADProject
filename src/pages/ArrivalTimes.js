@@ -167,7 +167,7 @@ const ArrivalTimes = () => {
           onItemSelect={onItemSelect}
         />
       </li>
-      <li style={{backgroundColor:'#00000010'}}>
+      <li>
       <SavedArrivalTimes 
         favedItems={favedItems}
         onFavItem={onFavItem}

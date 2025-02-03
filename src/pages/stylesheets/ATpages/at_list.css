@@ -1,5 +1,9 @@
 .atlist button {
-    width: 120px;
+   width: 8vw;
+    border: none; /* Removes the border */
+    outline: none; /* Removes the focus outline when clicked */
+    background-color: transparent; /* Optional: If there's a background, make it transparent */
+    box-shadow: none; /* Removes any box-shadow that may resemble a border */
 }
 
 .listbutton :hover {
@@ -8,8 +12,69 @@
 
 .element {
     font-size: 30px;
+    animation: none;
+    text-transform: capitalize;
+    text-decoration: bold;
+    
 }
 
-.star{
+
+
+.hello{
+    color: yellow;
+    margin-left: auto;
     margin-right: auto;
+    justify-content:center; 
 }
+
+
+.noService{
+    text-align: center;
+    font-size: 1.3vw;
+    color: grey;
+}
+
+.listbutton button{
+   margin-bottom: 2vh;
+}
+
+.btnfaved{
+ width: 15vw;
+ height: auto;
+}
+
+.atlist{
+    position:relative;
+}
+
+.savedHP .atlist{
+    border: 2px solid rgb(21, 21, 59);
+    max-width: 18vw;
+    background-color: rgb(26, 38, 44);
+    border-radius: 15px;
+    margin: 0;
+
+}
+
+
+#starbutton2{
+    position:absolute;
+    right: -2vw;
+    bottom: 9vh;
+    top: 1vh;
+}
+
+#starbutton{
+    position:absolute;
+    right: -2vw;
+    bottom: 18vh;
+    top: 1vh;
+}
+
+#starbutton3{
+    position:absolute;
+    right: -2vw;
+    bottom: 22vh;
+    top: 1vh;
+}
+

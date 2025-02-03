@@ -8,6 +8,8 @@ body, html{
 
 
 
+
+
 .subhead{position:relative;
  left: 3vw; 
 font-size: 7.2vh;
@@ -50,7 +52,7 @@ letter-spacing: normal;
   width: 30vh;
   position: absolute;
   top: 100vh;
-  left: 168vh;
+  left: 157vh;
   z-index: -2; 
   transform: translateX(3.37vh); 
 }
@@ -125,7 +127,7 @@ letter-spacing: normal;
     100%{
       transform: rotate(50deg);
       opacity: 0.6;
-      left: 167vh;
+      left: 155vh;
       top: 175vh;
       height: auto;
       width: 60vh;
@@ -168,14 +170,13 @@ letter-spacing: normal;
     }
   }
 
-  
   .videoNyoom {
     border-radius: 5.05vh;
     overflow: hidden;
     height: 40vh;
     width: 71.2vh;
     position: absolute;
-    top: 150vh;
+    top: 149vh;
     right: -10vh;
     transform: translateX(3.37vh); 
 }
@@ -364,7 +365,7 @@ letter-spacing: normal;
   text-align: center;
   margin-top: 2vh;       
   max-width: 20vw;       
-  bottom: -19vh;        
+  bottom: -20.5vh;        
   left: 33vw;           
   color: white;
   line-height: 3.5vh;
@@ -1309,7 +1310,7 @@ letter-spacing: normal;
   outline: none;
   background-color: transparent; 
   box-shadow: none;
-  font-size: 2.85vh;
+  font-size: 2.9vh;
   font-family:'Times New Roman', Times, serif;
    
 }
@@ -1343,4 +1344,8 @@ letter-spacing: normal;
   width: 12vh;
   height: auto;
   
+}
+
+.ourValues{
+  color: aquamarine;
 }

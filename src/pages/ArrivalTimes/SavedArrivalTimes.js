@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { getBusTiming } from "../../helper_functions";
 import ArrivalTimesElement from './ArrivalTimesElement';
+import "../stylesheets/ATpages/arrivaltimes.css";
 
 const SavedArrivalTimes = (props) => {
   const [favedItems, setFavedItems] = useState(() => {
@@ -42,21 +43,28 @@ const SavedArrivalTimes = (props) => {
   return (  
     <>
       {favedItems.length !== 0 && <h2>Favourited List</h2>}
-      {Array.from({ length: favedItems.length }, (_, index) => (
-        <div key={index} className="bar">
-        {favedItems && ( 
-          <ArrivalTimesElement
-          type={favedItems[index].type}
-          busStopCode={favedItems[index].busStopCode}
-          busStopName={favedItems[index].busStopName}
-          busService={favedItems[index].busService}
-          busTimesList={timesListList[index]}
-          favedItems={props.favedItems}
-          onFavItem={props.onFavItem}/>)}
-        </div>
-      ))}
+      <ul className="barr">
+        {favedItems.map((item, index) => (
+          <li key={index}>
+            <div className="bar">
+              {favedItems && ( 
+                <ArrivalTimesElement
+                  type={item.type}
+                  busStopCode={item.busStopCode}
+                  busStopName={item.busStopName}
+                  busService={item.busService}
+                  busTimesList={timesListList[index]}
+                  favedItems={props.favedItems}
+                  onFavItem={props.onFavItem}
+                />
+              )}
+            </div>
+          </li>
+        ))}
+      </ul>
     </>
   );
+  
 };
 
 export default SavedArrivalTimes;

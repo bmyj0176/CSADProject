@@ -4,7 +4,11 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate, Link } from "react-router-dom";
 import { LoginStatusContext } from '../index';
 import { ThemeContext } from './Components/ToggleThemeButton';
-import SavedRoutes from "./TravelRoutes/SavedRoutes";
+import SavedArrivalTimes from "./ArrivalTimes/SavedArrivalTimes";
+import "./stylesheets/ATpages/arrivaltimes.css";
+import "./stylesheets/ATpages/at_list.css";
+
+
 
 
 
@@ -13,8 +17,32 @@ const Homepage = () => {
   const [favorites, setFavorites] = useState([]);
   const [slideIndex, setSlideIndex] = useState(0); // Toggle state
   const [fade, setFade] = useState(false);  // Controls fade animation
+  const [favedItems, setFavedItems] = useState(() => {
+   
+   // SAVED ITEMS // ------------------------------------------------------------
+    const storedFavedItems = localStorage.getItem("savedarrivaltimes")
+    if (!storedFavedItems) // no localstorage data
+      return []
+    return JSON.parse(storedFavedItems)
+  })
 
-  //javascript:document.body.contentEditable='true'; document.designMode='on'; void 0
+  const onFavItem = (dict, doAdd) => {
+    let favedItemsCopy = [...favedItems]
+    if (!doAdd) {
+      favedItemsCopy = favedItemsCopy.filter(item => JSON.stringify(item) !== JSON.stringify(dict))
+    }
+    else {
+      setThrowPopup(true)
+      favedItemsCopy.push(dict)
+    }
+    setFavedItems(favedItemsCopy)
+    const key = "savedarrivaltimes"
+    localStorage.setItem(key, JSON.stringify(favedItemsCopy))
+    window.dispatchEvent(new CustomEvent('localStorageUpdate', { detail: { key } }));
+  }
+
+  //--------------------------------------------------------------------------------------------
+ 
 
   const navigate = useNavigate();
   const handleNavigation = () => {
@@ -86,6 +114,9 @@ const Homepage = () => {
       ); 
     }, 50);
   };
+
+
+ 
 
   const Emails = (props) => (
     <li className="endBannerHeadContent">
@@ -260,8 +291,23 @@ const EndDiv =() =>{
 
       <div style={{ display: "inline-block" }}>
       </div>
+      
+      <div className="savedHP">
+      <ul className="horizontal-listHP">
+       <li>{userLoggedIn &&<SavedArrivalTimes 
+        favedItems={favedItems}
+        onFavItem={onFavItem}
+      />}
+      </li>
+      </ul>
+      </div>
 
-      <div className="space"></div>
+      {
+        favedItems.map((favedItems, index) => (
+          <div key={index}>{favedItems[index]}</div>
+        ))
+      }
+
      <div className="wrapper">
       <hr className="lineunderslides" />
 
@@ -291,7 +337,7 @@ const EndDiv =() =>{
       <img className="AboutUsGrap2" src="./images/graphics/blueGraphic4.png"></img>
       </div>
       <div class="values-section">
-        <h2>Our Values</h2>
+        <h2 className="ourValues">Our Values</h2>
         <div className="values-grid">
           <div className="Transparency hidden">
             <img src="./images/icons/Transparency.png"></img>
