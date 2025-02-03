@@ -109,6 +109,8 @@ export function dijkstra(graph, start, end) {
                 // all stops before the list is null is connected by one of the buses in the list
                 // repeat steps 1-5 until reach destination
 
+                // 1
+                
                 if (currentNode === "44539") { // test area
                     console.log(neighbour, busUsed, predecessors[currentNode][1]);
                 }
@@ -119,10 +121,9 @@ export function dijkstra(graph, start, end) {
                         newDistance += 3000000;
                      } // 30/1/25 make dijkstra take multiple nodes if distance is the same
                 }
-                
-                newDistance = Number(newDistance.toFixed(1));
 
                 // If the newly calculated distance is shorter than the previously known distance to this neighbour
+                newDistance = Number(newDistance.toFixed(1));
                 if (newDistance < distances[neighbour][0]) {
                     
                     distances[neighbour][0] = newDistance;
@@ -195,4 +196,4 @@ export async function runshit() {
     console.log("Total time taken : " + timeTaken + " milliseconds");
 }
 
-//runshit();
+runshit();
