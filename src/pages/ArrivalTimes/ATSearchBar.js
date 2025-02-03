@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef} from 'react';
 import { searchInList, searchInDualList, nearestBusStops, getBusStopInfo } from '../../helper_functions';
-import { checkForNearbyMRTs } from '../../helper_functions2';
 import { getjson } from '../../helper_functions'
 import ATSearchResult from './ATSearchResult';
 import '../stylesheets/busstopcard.css'
