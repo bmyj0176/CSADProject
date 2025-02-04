@@ -92,6 +92,7 @@ export function dijkstra(graph, start, end) {
 
         // Mark the chosen node as visited
         visited.add(currentNode);
+        let filteredBus = [];
         // For each neighboring node of the current node
         for (let neighbour in graph[currentNode]) {
             if (!visited.has(neighbour)) {
@@ -99,34 +100,33 @@ export function dijkstra(graph, start, end) {
                 // Calculate tentative distance to the neighbouring node
                 let neighbouringDistance = Number(graph[currentNode][neighbour]["dist"]);
                 let busUsed = graph[currentNode][neighbour]["bus_num"];
-                // 3/2/25 implement this
-                // 1. store the bus_num for prev edge (predecessors[currentNode][1])
-                // 2. compare those bus_num to current edge (busUsed)
-                // 3. remove those that are not the same ()
-                // 4. move to next edge
-                // 5. repeat 1-4 until list is null (that means transfer happened)
 
-                // all stops before the list is null is connected by one of the buses in the list
-                // repeat steps 1-5 until reach destination
-
-                // 1
-                let filteredBus = [0];
-                if (currentNode === "44539") { // test area
-                    console.log(neighbour, busUsed, predecessors[currentNode][1]);
-                    let x = predecessors[currentNode][1].filter(item => busUsed.includes(item));
-                    console.log(x);
-                }
-                let newDistance = distances[currentNode][0] + neighbouringDistance;
-                if (predecessors[currentNode] !== undefined) { //if not starting node
-                    filteredBus = predecessors[currentNode][1].filter(item => busUsed.includes(item));
+                //let time = neighbouringDistance / (0.283 * Math.pow(neighbouringDistance, 0.3))
+                let time = 0;
+                if (neighbouringDistance <= 1)
+                     {time = 60 * neighbouringDistance / 25;} 
+                else {time = 60 * neighbouringDistance / 60;}
+                let newDistance = distances[currentNode][0] + time + 0.4;
+                if (predecessors[currentNode]) { //if not starting node
+                    let prevBusUsed = predecessors[currentNode][1];
+                    // if (currentNode === "46549") { // test area
+                    //     console.log(neighbour, busUsed, prevBusUsed);
+                    //     console.log("time", neighbouringDistance, time)
+                    //     let x = predecessors[currentNode][1].filter(item => busUsed.includes(item));
+                    //     console.log(structuredClone(x));
+                    // }
+                    
+                    filteredBus = prevBusUsed.filter(item => busUsed.includes(item));
                     if (filteredBus.length === 0) {
-                        newDistance += 3000000;
+                        newDistance += 10000; // 5/2/25 HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
                         filteredBus = busUsed;
-                     } // 30/1/25 make dijkstra take multiple nodes if distance is the same
+                     }
+                } else { // if starting node
+                    filteredBus = busUsed;
                 }
 
                 // If the newly calculated distance is shorter than the previously known distance to this neighbour
-                newDistance = Number(newDistance.toFixed(1));
+                newDistance = Number(newDistance.toFixed(5));
                 if (newDistance < distances[neighbour][0]) {
                     
                     distances[neighbour][0] = newDistance;
@@ -147,11 +147,18 @@ export function dijkstra(graph, start, end) {
     let route = {};
     let current = end;
     while (current) {
-        if (predecessors[current] == null) {break;}
+        if (predecessors[current] == null) {route[current] = []; break;}
         route[current] = predecessors[current][1];
         current = predecessors[current][0];
     }
     console.log(route);
+
+    let transferCount = Math.round(distances[end] / 10000); // 5/2/25 find 2 routes, 1 least transfers, 1 fastest
+    let subTime = Number((distances[end] % 10000).toFixed(2));
+    console.log(transferCount, subTime);
+    let finalTimeTaken = subTime + 6 * transferCount;
+
+    //console.log(JSON.stringify(route, null, 2));
 
     //showing the route as only transfers
     let simple_route = [route[0]];
@@ -193,7 +200,9 @@ export async function runshit() {
     let [map, interchanges] = await getMap();
     console.log(map);
     let startTime = performance.now();
-    console.log(dijkstra(map, "44399", "19031"));
+    //console.log(dijkstra(map, "44399", "08057")); // opp blk 210 to douby ghaut
+    console.log(dijkstra(map, "44399", "12109")); // opp blk 210 to clementi mrt
+    //console.log(dijkstra(map, "44021", "46009")); // bukit panjang to woodlands int
     let endTime = performance.now();
     let timeTaken = endTime - startTime;
     console.log("Total time taken : " + timeTaken + " milliseconds");
