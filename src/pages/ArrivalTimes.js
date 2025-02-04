@@ -96,17 +96,15 @@ const ArrivalTimes = () => {
   };
 
   const defaultStyle = {
-    fontWeight: "normal",
+    opacity: 0,
   };
 
   const filteredOffStyle = {
-    fontWeight: "normal",
-    opacity: 0.2,
+     opacity: 0,
   };
 
   const filteredOnStyle = {
-    fontWeight: "bold",
-    backgroundColor: "#606060",
+    opacity: 1,
   };
 
   const chooseStyle = (buttonName) => {
@@ -117,18 +115,43 @@ const ArrivalTimes = () => {
       : defaultStyle;
   };
 
+  const CheckBox = () =>{
+  return(
+    <div className="Checkbox">
+      <div className="BusNo">
+        <button onClick={() => handleToggle("busNo")}>
+          <img className="BusNoBox" src="./images/icons/checkbox_box.png"></img>
+          <img className="BusNoTick" style={chooseStyle("busNo")} src="./images/icons/checkbox_tick.png"></img>
+        </button>
+        <p> 
+          Bus Service
+          </p>
+      </div>
+      <div className="BusStop">
+          <button onClick={() => handleToggle("busStop")}>
+          <img className="BusStopBox" src="./images/icons/checkbox_box.png"></img>
+          <img className="BusStopTick" style={chooseStyle("busStop")} src="./images/icons/checkbox_tick.png"></img>
+        </button>
+        <p> 
+          Bus Stops
+          </p>
+      </div>
+    </div>
+)
+  }
+
   return (
     <>
       <div>
         {throwPopup && <Popup/>}
       </div>
+      <div className="Checkbox-container">
+        <CheckBox />
+      </div>
 
 
-
-
-     {/* <ul className="horizontal-list">
-      <li style={{backgroundColor:'#00000010'}}>
-    <ul className="horizontal-list">
+      <ul className="horizontal-list">
+      
       <li className='scroll'>
         {searchResult && 
         <ArrivalTimesList 
@@ -139,7 +162,7 @@ const ArrivalTimes = () => {
       </li>
       <li>
         <ul className="at">
-          <li>
+           <li>
             <button
               style={chooseStyle("busNo")}
               onClick={() => handleToggle("busNo")}
@@ -154,7 +177,7 @@ const ArrivalTimes = () => {
             >
               <p>Bus Stops</p>
             </button>
-          </li>
+          </li> 
           <li>
             <button
               style={chooseStyle("nearMe")}
@@ -212,7 +235,7 @@ const ArrivalTimes = () => {
         ))
       }
       </li>
-    </ul> */}
+    </ul>  
     </>
   );
 };

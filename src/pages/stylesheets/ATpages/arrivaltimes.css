@@ -21,6 +21,7 @@
 }
 
 .horizontal-list {
+  position: relative;
   display: flex;
   height: 100vh;
   margin: 0;
@@ -85,4 +86,100 @@
 .savedHP .bookmarkedtext{
   text-decoration: underline;
   color: aquamarine;
+}
+
+/*----------------------------------------*/
+
+.Checkbox-container{
+  position:relative;
+  margin-bottom: 20vh;
+}
+.Checkbox{
+    position: absolute;
+    top: 4vh;
+    left: 1vw;
+    text-align: center;
+    padding: 0px 5vw;  
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4vw; 
+    max-width: 80vw;  
+    margin: 0 auto;
+}
+
+.BusNo{
+  position:relative;
+}
+
+.BusNo p{
+  font-size: 2.5vh;
+  position:relative;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.BusStop{
+  position:relative;
+}
+
+.BusStop p{
+  font-size: 2.5vh;
+  position:relative;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.BusNo button {
+  position: relative;
+  
+  width: 4vw;
+  height: auto;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+.BusNoTick {
+  position: absolute;
+  bottom: -1.5vh;
+  right: 0.2vw;
+  width: 3vw;
+  height: auto;
+  z-index: 2;
+
+}
+
+.BusNoBox {
+  position: absolute;
+  bottom: -2vh;
+  right: 0.6vw;
+  width: 3vw;
+  height: auto;
+  z-index: 1;
+
+}
+
+.BusStop button {
+  position: relative;
+  width: 4vw;
+  height: auto;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+.BusStopTick{
+  position: absolute;
+  bottom: -1.5vh;
+  right: 0.2vw;
+  width: 3vw;
+  height: auto;
+  z-index: 2;
+}
+
+.BusStopBox{
+  position: absolute;
+  bottom: -2vh;
+  right: 0.6vw;
+  width: 3vw;
+  height: auto;
+  z-index: 1;
 }
