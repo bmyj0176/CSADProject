@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext} from "react";
 import Popup from "./Components/Popup";
 import ATSearchBar from "./ArrivalTimes/ATSearchBar";
 import "./stylesheets/ATpages/arrivaltimes.css";
+import { ThemeContext } from './Components/ToggleThemeButton';
 import ArrivalTimesList from "./ArrivalTimes/ArrivalTimesList";
 import SavedArrivalTimes from "./ArrivalTimes/SavedArrivalTimes";
 import ArrivalTimesElement from "./ArrivalTimes/ArrivalTimesElement";
@@ -27,6 +28,8 @@ const ArrivalTimes = () => {
   const onItemSelect = (index) => {
     setSelectedItem(index)
   }
+
+  const { isDarkTheme } = useContext(ThemeContext);
 
   const onFavItem = (dict, doAdd) => {
     let favedItemsCopy = [...favedItems]
@@ -96,7 +99,7 @@ const ArrivalTimes = () => {
   };
 
   const defaultStyle = {
-    opacity: 0,
+    opacity: 0.1,
   };
 
   const filteredOffStyle = {
@@ -120,8 +123,8 @@ const ArrivalTimes = () => {
     <div className="Checkbox">
       <div className="BusNo">
         <button onClick={() => handleToggle("busNo")}>
-          <img className="BusNoBox" src="./images/icons/checkbox_box.png"></img>
-          <img className="BusNoTick" style={chooseStyle("busNo")} src="./images/icons/checkbox_tick.png"></img>
+          <img className="BusNoBox" src={isDarkTheme ? "./images/icons/checkbox_box.png" : "./images/icons/checkbox_box_light.png"}></img>
+          <img className="BusNoTick" style={chooseStyle("busNo")} src={isDarkTheme ? "./images/icons/checkbox_tick.png" : "./images/icons/checkbox_tick_light.png"}></img>
         </button>
         <p> 
           Bus Service
@@ -129,8 +132,8 @@ const ArrivalTimes = () => {
       </div>
       <div className="BusStop">
           <button onClick={() => handleToggle("busStop")}>
-          <img className="BusStopBox" src="./images/icons/checkbox_box.png"></img>
-          <img className="BusStopTick" style={chooseStyle("busStop")} src="./images/icons/checkbox_tick.png"></img>
+          <img className="BusStopBox" src={isDarkTheme ? "./images/icons/checkbox_box.png" : "./images/icons/checkbox_box_light.png"}></img>
+          <img className="BusStopTick" style={chooseStyle("busStop")} src={isDarkTheme ? "./images/icons/checkbox_tick.png" : "./images/icons/checkbox_tick_light.png"}></img>
         </button>
         <p> 
           Bus Stops
@@ -145,23 +148,22 @@ const ArrivalTimes = () => {
       <div>
         {throwPopup && <Popup/>}
       </div>
+      <ul className="horizontal-list">
+      
+      <li  className="searchCol">
       <div className="Checkbox-container">
         <CheckBox />
       </div>
 
-
-      <ul className="horizontal-list">
-      
-      <li className='scroll'>
-        {searchResult && 
-        <ArrivalTimesList 
-        data={searchResult}
-        receiveSearchResult={receiveSearchResult}
-        favedItems={favedItems}
-        onFavItem={onFavItem} />}
-      </li>
-      <li>
-        <ul className="at">
+      <ATSearchBar
+          selectedList={selectedList}
+          setSelectedList={setSelectedList}
+          toggleStates={toggles}
+          receiveSearchResult={receiveSearchResult}
+          selectedItem={selectedItem}
+          onItemSelect={onItemSelect}
+        />
+        {/* <ul className="at">
            <li>
             <button
               style={chooseStyle("busNo")}
@@ -194,7 +196,15 @@ const ArrivalTimes = () => {
           receiveSearchResult={receiveSearchResult}
           selectedItem={selectedItem}
           onItemSelect={onItemSelect}
-        />
+        /> */}
+      </li>
+      <li className='scroll'>
+        {searchResult && 
+        <ArrivalTimesList 
+        data={searchResult}
+        receiveSearchResult={receiveSearchResult}
+        favedItems={favedItems}
+        onFavItem={onFavItem} />}
       </li>
       <li>
       <SavedArrivalTimes 

@@ -155,4 +155,28 @@
 }
 
 
-  
+.search_bar{
+  border-radius: 20px;
+  background: transparent;
+  border: 2px solid rgb(255, 255, 255);
+   min-width: 18vw;
+   max-width: 18vw;
+   height: 4vh;
+   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
+  }
+
+
+.search_bar:focus{
+  border-radius: 2px;
+  min-width: 20vw;
+  border: none;
+  box-shadow: none;
+
+}
+
+.search_bar::placeholder {
+  color: rgba(250, 250, 255, 0.6); /* Softer placeholder color */
+  font-style: italic;
+  font-size: 2.3vh;
+}
+

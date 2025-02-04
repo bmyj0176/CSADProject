@@ -22,8 +22,10 @@
 
 .horizontal-list {
   position: relative;
-  display: flex;
+  display: grid;
   height: 100vh;
+  grid-template-columns: 32% 40% 28%;
+  max-width: 100%;
   margin: 0;
   padding: 0; /* Removes any default padding */
   list-style-type: none; /* Removes default list styling */
@@ -90,14 +92,16 @@
 
 /*----------------------------------------*/
 
+
+
 .Checkbox-container{
   position:relative;
   margin-bottom: 20vh;
 }
 .Checkbox{
     position: absolute;
-    top: 4vh;
-    left: 1vw;
+    top: 6vh;
+    left: 2.8vw;
     text-align: center;
     padding: 0px 5vw;  
     display: grid;
@@ -183,3 +187,4 @@
   height: auto;
   z-index: 1;
 }
+
