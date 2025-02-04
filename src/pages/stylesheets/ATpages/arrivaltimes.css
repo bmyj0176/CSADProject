@@ -62,13 +62,14 @@
   background-color: rgb(120, 120, 120);
 }
 
-
-
 .savedHP .barr{
   list-style-type: none;
   display: grid;
   grid-auto-flow: column;
 }
 
-
+.scroll {
+  background-color:#00000010;
+  overflow-y: scroll;
+}
 

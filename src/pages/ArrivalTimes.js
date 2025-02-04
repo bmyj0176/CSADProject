@@ -123,7 +123,7 @@ const ArrivalTimes = () => {
         {throwPopup && <Popup/>}
       </div>
     <ul className="horizontal-list">
-      <li style={{backgroundColor:'#00000010'}}>
+      <li className='scroll'>
         {searchResult && 
         <ArrivalTimesList 
         data={searchResult}
