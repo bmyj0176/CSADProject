@@ -128,6 +128,8 @@ const ArrivalTimes = () => {
 
      {/* <ul className="horizontal-list">
       <li style={{backgroundColor:'#00000010'}}>
+    <ul className="horizontal-list">
+      <li className='scroll'>
         {searchResult && 
         <ArrivalTimesList 
         data={searchResult}

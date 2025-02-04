@@ -203,7 +203,7 @@ export async function bus_stops_info() {
   const data = await getjson('./datasets/bus_stops_complete.json');
   const mrtdata = await getjson('./datasets/busstops_near_mrt.json');
   for (const dict of data) {
-    const list = [dict.RoadName, dict.BusStopCode, []]
+    const list = [dict.Description, dict.BusStopCode, []]
     if (mrtdata[dict.BusStopCode]) {
       for (const mrtcode of mrtdata[dict.BusStopCode]) {
         list[2].push(mrtcode)
