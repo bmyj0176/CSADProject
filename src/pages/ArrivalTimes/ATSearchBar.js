@@ -94,7 +94,7 @@ const ATSearchBar = (props) => {
       <div className="container">
         {/* searchbar disables if nearMe is off */}
         {!props.toggleStates['nearMe'] ?
-         <input type="text" maxlength='20' placeholder="Search Here..." className="search_bar" value={searchBarValue} onChange={onChangeSearchBar}/> : 
+         <input type="text" maxlength='20'  placeholder="Search Here..." className="search_bar" value={searchBarValue} onChange={onChangeSearchBar}/> : 
          <h4>Please note that this may not be 100% accurate</h4> }
         {/* stacked bars */}
         <div className="bars">

@@ -43,7 +43,7 @@ const ATSearchResult = (props) => {
     // BUTTON LAYOUT
       return (
         <div className = "cent">
-          <p style={{display:'block'}}>
+          <p className="result">
             <button 
             className={subheader1 ? "busstopcard" : "alternatecard"} 
             id={(props.selectedItem === props.index) ? "busstopclicked" : "busstopdefault"} 
