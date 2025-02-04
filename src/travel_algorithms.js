@@ -153,11 +153,17 @@ export function dijkstra(graph, start, end, interchanges) {
 
 
 // running Dijkstra algorithm between the two stations
+
+
+
+
+
 // console.clear();
-let [map, interchanges] = await getMap();
+// let [map, interchanges] = await getMap();
 
 // let longest = Infinity;
 // let longestroute = [];
+// let longestsimple = [];
 // let startTime = performance.now();
 // for (let k=0; k<1; k++){
 //     let i1 = Math.floor(Math.random() * Object.keys(map).length);
@@ -170,11 +176,12 @@ let [map, interchanges] = await getMap();
 //     if (time_taken < longest) {
 //         longest = time_taken;
 //         longestroute = route;
+//         longestsimple = simple_route;
 //     }
-//     console.log(dijkstra(map, "Choa Chu Kang", "Marina Bay", interchanges));
-// } console.log(longest, longestroute);
+// } console.log(longest, longestroute, longestsimple);
+// // console.log(dijkstra(map, "Choa Chu Kang", "Marina Bay", interchanges));
 // let endTime = performance.now();
 // let timeTaken = endTime - startTime;
 // console.log("Total time taken : " + timeTaken + " milliseconds");
 
-dijkstra(map, "Dover", "South View", interchanges);
+// dijkstra(map, "Dover", "South View", interchanges);

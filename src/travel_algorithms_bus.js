@@ -100,9 +100,9 @@ export function dijkstra(graph, start, end) {
                 let neighbouringDistance = Number(graph[currentNode][neighbour]["dist"]);
                 let busUsed = graph[currentNode][neighbour]["bus_num"];
                 // 3/2/25 implement this
-                // 1. store the bus_num for first edge
-                // 2. compare those bus_num to second edge
-                // 3. remove those that are not the same
+                // 1. store the bus_num for prev edge (predecessors[currentNode][1])
+                // 2. compare those bus_num to current edge (busUsed)
+                // 3. remove those that are not the same ()
                 // 4. move to next edge
                 // 5. repeat 1-4 until list is null (that means transfer happened)
 
@@ -110,15 +110,18 @@ export function dijkstra(graph, start, end) {
                 // repeat steps 1-5 until reach destination
 
                 // 1
-                
+                let filteredBus = [0];
                 if (currentNode === "44539") { // test area
                     console.log(neighbour, busUsed, predecessors[currentNode][1]);
+                    let x = predecessors[currentNode][1].filter(item => busUsed.includes(item));
+                    console.log(x);
                 }
-                
                 let newDistance = distances[currentNode][0] + neighbouringDistance;
                 if (predecessors[currentNode] !== undefined) { //if not starting node
-                    if (predecessors[currentNode][1].includes(busUsed.toString())) {
+                    filteredBus = predecessors[currentNode][1].filter(item => busUsed.includes(item));
+                    if (filteredBus.length === 0) {
                         newDistance += 3000000;
+                        filteredBus = busUsed;
                      } // 30/1/25 make dijkstra take multiple nodes if distance is the same
                 }
 
@@ -127,7 +130,7 @@ export function dijkstra(graph, start, end) {
                 if (newDistance < distances[neighbour][0]) {
                     
                     distances[neighbour][0] = newDistance;
-                    predecessors[neighbour] = [currentNode, graph[currentNode][neighbour]["bus_num"]]; // Update predecessor
+                    predecessors[neighbour] = [currentNode, filteredBus]; // Update predecessor
                 }
             }
         }
