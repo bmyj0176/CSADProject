@@ -121,8 +121,8 @@ const ArrivalTimes = () => {
   const CheckBox = () =>{
   return(
     <div className="Checkbox">
-      <div className="BusNo">
-        <button onClick={() => handleToggle("busNo")}>
+      <div className="BusNo"> 
+        <button onClick={() => handleToggle("busNo")}>     
           <img className="BusNoBox" src={isDarkTheme ? "./images/icons/checkbox_box.png" : "./images/icons/checkbox_box_light.png"}></img>
           <img className="BusNoTick" style={chooseStyle("busNo")} src={isDarkTheme ? "./images/icons/checkbox_tick.png" : "./images/icons/checkbox_tick_light.png"}></img>
         </button>
@@ -163,6 +163,15 @@ const ArrivalTimes = () => {
           selectedItem={selectedItem}
           onItemSelect={onItemSelect}
         />
+
+
+            <button
+              style={chooseStyle("nearMe")}
+              onClick={() => handleToggle("nearMe")}
+            >
+              <p>Near Me 🏳️</p>
+            </button>
+        
         {/* <ul className="at">
            <li>
             <button

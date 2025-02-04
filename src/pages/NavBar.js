@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Outlet, Link, useLocation, useNavigate  } from "react-router-dom";
 import './stylesheets/navbar.css';
 import ToggleThemeButton from './Components/ToggleThemeButton';
-import { bus_stops_info } from '../api_extraction';
+import { nearestBusStops } from '../helper_functions';
 import { LoginStatusContext } from '../index';
 
 const NavBar = () => {
@@ -24,7 +24,8 @@ const NavBar = () => {
   }
 
   async function test_function() {
-    await bus_stops_info();
+    const data = await nearestBusStops(2);
+    console.log(data);
   }
 
 

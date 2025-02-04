@@ -1,96 +1,296 @@
 
 #busstopdefault.busstopcard{ 
+  position:relative;
+  padding: 12.65vh; 
+  padding-bottom: 11.8vh;
+  max-height: 28vh;
+  max-width: 3vw;
+  border: solid 1px hsl(0, 0%, 80%);
+  border-radius: 8px; /* for the roundsssssss */
+  background-color: rgb(36, 36, 44);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 3);
+  text-align: center;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  .busstopname{
+    font-size: 1.4vw;
+    color: rgb(229, 194, 39);
+    font-weight: bold;
+    position:absolute;
+    bottom: 10vh;
+    right: 0vw;
+    left: 0.3vw; 
+    z-index:2;
+}
 
-    width: 150px;
-    padding:20px;
-    border: solid 1px hsl(0, 0%, 80%);
-    border-radius: 8px; /* for the roundsssssss */
-    background-color: #262836;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    font-family: Arial, sans-serif;
 
 }
 
 #busstopclicked.busstopcard{
-
-    width: 150px;
-    padding:20px;
-    border: solid 1px hsl(0, 0%, 80%);
-    border-radius: 8px; /* for the roundsssssss */
-    background-color: #7c7e8a;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.432);
-    text-align: center;
-    font-family: Arial, sans-serif;
+  position:relative;
+  padding: 12.65vh; 
+  padding-bottom: 11.8vh;
+  max-height: 28vh;
+  max-width: 3vw;
+  border: solid 1px hsl(0, 0%, 80%);
+  border-radius: 8px; /* for the roundsssssss */
+  background-color: rgb(68, 68, 86);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 3);
+  text-align: center;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  .busstopname{
+    font-size: 1.4vw;
+    color: rgb(229, 194, 39);
+    text-decoration: underline; 
+    font-weight: bold;
+    position:absolute;
+    bottom: 10vh;
+    right: 0vw;
+    left: 0.3vw; 
+    z-index:2;
+    
+    }
+    .dropdrop{
+     
+      animation: bounce 1.3s infinite;
+}
 
 }
 
-
 #busstopdefault.busstopcard:hover{
 
-    background-color: #5b5d68;
+  background-color: #5b5d68;
 
 }
 
 #busstopclicked.busstopcard:hover{
 
-    background-color: #5b5d68;
+  background-color: #5b5d68;
 
 }
 
 #busstopclicked.busstopcard:active{
 
-    background-color: #7c7e8a;
+  background-color: #7c7e8a;
 
 }
 
 #busstopdefault.busstopcard:active{
-    background-color: #7c7e8a;
+  background-color: #7c7e8a;
 
+}
+
+#busstopdefault.mrtCard {
+  position:relative;
+  padding: 12.65vh; 
+  padding-bottom: 11.8vh;
+  max-height: 28vh;
+  max-width: 3vw;
+  border: solid 1px hsl(0, 0%, 80%);
+  border-radius: 8px; /* for the roundsssssss */
+  background-color: rgb(36, 36, 44);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 3);
+  text-align: center;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  .busstopname{
+    font-size: 1.4vw;
+    color: rgb(229, 194, 39);
+    font-weight: bold;
+    position:absolute;
+    bottom: 10vh;
+    right: 0vw;
+    left: 0.3vw; 
+    z-index:2;
+}
+.arrowTrain{
+  position:absolute;
+  opacity: 0.6;
+  width: 1.5vw;
+  height: auto;
+  right: 9.3vw;
+  top: 23vh;
+  transform: rotate(-90deg);
 }
 
 
 
+}
+
+#busstopclicked.mrtCard{
+  position:relative;
+  padding: 12.65vh; 
+  padding-bottom: 11.8vh;
+  max-height: 34vh;
+  max-width: 3vw;
+  border: solid 1px hsl(0, 0%, 80%);
+  border-radius: 8px; /* for the roundsssssss */
+  background-color: rgb(68, 68, 86);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 3);
+  text-align: center;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  .busstopname{
+    font-size: 1.4vw;
+    color: rgb(229, 194, 39);
+    text-decoration: underline; 
+    font-weight: bold;
+    position:absolute;
+    bottom: 16vh;
+    right: 0vw;
+    left: 0.3vw; 
+    z-index:2;
+}
+
+.arrowTrain{
+  opacity: 0;
+}
+.mrticon{
+  position:relative;
+  opacity: 1;
+  width: 4vw;
+  right: 1.7vw;
+  top: 8vh;
+  height: auto;
+  z-index: 4;
+}
+.dropdrop{
+     
+  animation: bounce 1.3s infinite;
+}
+}
+
+#busstopdefault.mrtCard:hover{
+
+  background-color: #5b5d68;
+  max-height: 34vh;
+  .mrticon{
+    position:relative;
+    opacity: 1;
+    width: 4vw;
+    right: 1.7vw;
+    top: 8vh;
+    height: auto;
+    z-index:4;
+  }
+  .arrowTrain{
+    opacity: 0;
+  }
+
+  .busstopname{
+    font-size: 1.4vw;
+    color: rgb(229, 194, 39);
+    font-weight: bold;
+    position:absolute;
+    bottom: 16vh;
+    right: 0vw;
+    left: 0.3vw; 
+    z-index:2;
+}
+
+}
+
+#busstopclicked.mrtCard:hover{
+
+  background-color: #5b5d68;
+
+}
+
+#busstopclicked.mrtCard:active{
+
+  background-color: #7c7e8a;
+
+}
+
+#busstopdefault.mrtCard:active{
+  background-color: #7c7e8a;
+
+}
 
 #busstopdefault.alternatecard{
-    width: 150px;
-    padding:20px;
-    padding-bottom:2px;
+  position:relative;
+    padding: 12.65vh; 
+    padding-bottom: 11.8vh;
+    max-height: 28vh;
     border: solid 1px hsl(0, 0%, 80%);
     border-radius: 8px; /* for the roundsssssss */
-    background-color: rgb(60, 61, 74);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    background-color: rgb(36, 36, 44);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 3);
     text-align: center;
-    font-family: Arial, sans-serif;
-
+    font-family:'Courier New', Courier, monospace;
+    .busstopname{
+      text-align: center;
+      font-size: 1.7vw;
+      font-weight: bold;
+      position:absolute;
+      bottom: 6.3vh;
+      right: 4.3vw;
+      left: 4.3vw; 
+      z-index:2;
+  }
+  
 }
 
 #busstopclicked.alternatecard{
-    width: 150px;
-    padding:20px;
-    padding-bottom:2px;
+  position:relative;
+    padding: 12.65vh; 
+    padding-bottom: 11.8vh;
     border: solid 1px hsl(0, 0%, 80%);
     border-radius: 8px; /* for the roundsssssss */
-    background-color: #7c7e8a;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    background-color: rgb(63, 64, 77);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 3);
     text-align: center;
-    font-family: Arial, sans-serif;
+    font-family:'Courier New', Courier, monospace;
+    .busstopname{
+      text-decoration: underline;
+      text-align: center;
+      font-size: 1.7vw;
+      font-weight: bold;
+      position:absolute;
+      bottom: 6.3vh;
+      right: 4.3vw;
+      left: 4.3vw; 
+      z-index:2;
+  }
 
+    .busbus{
+      filter: brightness(0) saturate(100%) invert(50%);
+      animation: bounce 1.3s infinite;
+    }
+    
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(3px); }
+  50% { transform: translateY(-8px); }
+}
+
+.busbus{
+  position:absolute;
+  width: 20vh;
+  height: auto;
+  bottom: 2vw;
+  right: 1.15vw;
+  z-index: 1;
+  opacity: 0.2;
 }
 
 
-.busstopname{
-
-    font-size: 18px;
-    font-weight: bold;
-    position:relative;
-    bottom:10px;
+.dropdrop{
+  position:absolute;
+  right: -0.15vh;
+  width: 25vh;
+  bottom: 2vh;
+  height: auto;
+  opacity: 0.07;
+  z-index: 1;
 }
+
 
 .busstopnumber{
-
-        font-size:14px;
+        position:absolute;
+        top: 17vh;
+        right: 3.65vw;
+        font-size:2.2vh;
         color: rgb(238, 206, 161);
+        z-index: 3; 
 }
 
 
@@ -163,6 +363,9 @@
    max-width: 18vw;
    height: 4vh;
    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
+   font-size: 2.5vh; 
+   font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+   margin-bottom: 4vh;
   }
 
 
@@ -171,6 +374,8 @@
   min-width: 20vw;
   border: none;
   box-shadow: none;
+  font-size: 2.5vh; 
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 
 }
 

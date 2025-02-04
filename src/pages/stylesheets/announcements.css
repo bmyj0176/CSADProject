@@ -1,0 +1,11 @@
+.ANpanel {
+    border: solid whitesmoke 2px;
+    align-items: center;
+    text-align: center;
+    margin: 70px;
+    height: 500px;
+}
+
+#ANheader {
+    text-align: center;
+}

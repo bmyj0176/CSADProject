@@ -201,9 +201,9 @@ export async function nearestBusStops(cap = 50) {
         return null;
     }
 
-    const BSC_CoordsList = await getjson('./datasets/bsc_coords.txt')
+    const BSC_CoordsList = await getjson('./datasets/bus_stops_complete.json')
     for (let dict of BSC_CoordsList) {
-        const distance = haversine(hereLat, hereLon, dict.Lat, dict.Lon)
+        const distance = haversine(hereLat, hereLon, dict.Latitude, dict.Longitude)
         for (let i = 0; i < outputList.length; i++) {
             if (distance < outputList[i].Distance) {
                 outputList = insertAndShift(outputList, i, {"BusStopCode": dict.BusStopCode, "Distance": distance})

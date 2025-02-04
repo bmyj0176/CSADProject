@@ -1,4 +1,11 @@
-.mrticon {
-    height: 70%;
-    width: 70%;
-}
+.mrticon{
+    opacity: 0;
+    width: 8vw;
+    height: auto;
+  }
+
+  .arrowTrain{
+
+    position:absolute;
+    opacity: 0;
+  }

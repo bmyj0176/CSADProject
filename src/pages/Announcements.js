@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import apiClient from "../api_announcements/apiClient";
 import BouncyBouncy from './Components/LoadingIcon.js';
 import { TrainAlertsService } from "../api_caller.js";
+import "./stylesheets/announcements.css";
 
-const TrainAlerts = () => {
+const Announcements  = ({ isAdmin }) => {
   const [alerts, setAlerts] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -25,11 +26,38 @@ const TrainAlerts = () => {
     fetchTrainAlerts();
   }, []);
 
+
+
+
+
+
+  const [announcements, setAnnouncements] = useState([]);
+  const [newAnnouncement, setNewAnnouncement] = useState("");
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   if (loading) return <BouncyBouncy/>;
   if (error) return <p style={{ color: "red" }}>{error}</p>;
-
+  
   return (
-    <div>
+    <>
+      <h1 id="ANheader">NYOOM SITE ANNOUNCEMENTS</h1>
+      <div className="ANpanel">
+        test
+      </div>
       <h1>Train Service Alerts</h1>
       {alerts?.Status === 1 ? (
         <p style={{ color: "green" }}>All train services are running smoothly.</p>
@@ -62,8 +90,8 @@ const TrainAlerts = () => {
           )}
         </div>
       )}
-    </div>
+    </>
   );
 };
 
-export default TrainAlerts;
+export default Announcements;

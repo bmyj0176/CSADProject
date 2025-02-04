@@ -5,7 +5,7 @@ import ATSearchResult from './ATSearchResult';
 import '../stylesheets/busstopcard.css'
 
 const ATSearchBar = (props) => {
-    const MAX_BAR_SIZE = 20;
+    const MAX_BAR_SIZE = 15;
     const [bus_services_list, bus_stops_info_list] = [useRef([]), useRef([])];
     const [searchBarValue, setSearchBarInput] = useState(''); // search bar value
     const [barsCount, setBarsCount] = useState(0); // count of stacked bars
@@ -94,7 +94,7 @@ const ATSearchBar = (props) => {
       <div className="container">
         {/* searchbar disables if nearMe is off */}
         {!props.toggleStates['nearMe'] ?
-         <input type="text" maxlength='20'  placeholder="Search Here..." className="search_bar" value={searchBarValue} onChange={onChangeSearchBar}/> : 
+         <input type="text"   placeholder="Search Here..." className="search_bar" value={searchBarValue} onChange={onChangeSearchBar}/> : 
          <h4>Please note that this may not be 100% accurate</h4> }
         {/* stacked bars */}
         <div className="bars">
@@ -107,7 +107,7 @@ const ATSearchBar = (props) => {
                 receiver={"ATSearchBar"}
                 setSelectedList={props.setSelectedList}
                 receiveSearchResult={props.receiveSearchResult}
-                selectedItem={props.selectedItem === "ATSearchBar" ? props.selectedItem : null}
+                selectedItem={props.selectedItem === "ATSearchBar" ? null : props.selectedItem}
                 onItemSelect={props.onItemSelect}
                 favedItems={props.favedItems}
                 onFavItem={props.onFavItem}

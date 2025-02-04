@@ -6,11 +6,44 @@ const ATSearchResult = (props) => {
     const [header, setHeader] = useState("")
     const [subheader1, setSubheader1] = useState("")
     const [subheader2, setSubheader2] = useState("")
+    const [bgimage, setImage] = useState("")
+    const [bgimage2, setImage2] = useState("")
+    const [arrowimg, setImage3] = useState("")
+
+    const busHeader = (
+      <>
+     
+      Bus <br/> {props.dict.busService}
+        
+      </>
+    )
+
+    const cardImage = (
+      <>
+      <img className="busbus" src="../images/busbus.png"></img>
+      </>
+    )
+
+    const cardImage2 = (
+    <>
+    <img className="dropdrop" src="../images/locDrop.png"></img>
+    </>
+    )
+
+    const cardArrow = (
+      <>
+      <img className="arrowTrain" src="../images/slide_arrow_left.png"></img>
+      </>
+    )
 
     useEffect(() => {
+      setImage("")
+      setImage2("")
+      setImage3("")
       setHeader("")
       setSubheader1("") 
       setSubheader2("")
+
       switch (props.dict.type) {
         case "nearestBusStop":
           setHeader(props.dict.busStopName)
@@ -18,16 +51,19 @@ const ATSearchResult = (props) => {
           setSubheader2("  •  " + props.dict.distance + "m Away")
           break
         case "busNo":
-          setHeader("Bus " + props.dict.busService)
+          setHeader(busHeader)
+          setImage(cardImage)
           break
         case "busStop":
           setHeader(props.dict.busStopName)
           setSubheader1(props.dict.busStopCode)
           setSubheader2(
-            Array.from({ length: props.dict.nearbyMRTs.length }, (_, index) => (
+            Array.from({ length: props.dict.nearbyMRTs.length },(_, index) => (
               <img key={index} className='mrticon' src={codeToMRTImagePath(props.dict.nearbyMRTs[index])}/>
             ))
           )
+          setImage(cardImage2)
+          setImage3(cardArrow)
           break
         default:  
           break
@@ -40,18 +76,26 @@ const ATSearchResult = (props) => {
       props.receiveSearchResult(props.dict)
     };
   
+    useEffect(()=>{
+      console.log(subheader2);
+    }, [subheader2]);
+    
+
     // BUTTON LAYOUT
       return (
         <div className = "cent">
           <p className="result">
             <button 
-            className={subheader1 ? "busstopcard" : "alternatecard"} 
+            className={(subheader2.length === 0) ? subheader1 ? "busstopcard" : "alternatecard": "mrtCard"} 
             id={(props.selectedItem === props.index) ? "busstopclicked" : "busstopdefault"} 
             onClick={handleClick}>
               <h3 className="busstopname">{header}</h3>
+              {bgimage}
               <b className="busstopnumber">{subheader1}</b>
               <br/>
-              {subheader2 && (subheader2)}
+              {arrowimg}
+              {subheader2  && (subheader2)}
+              
             </button>
           </p>
         </div>
