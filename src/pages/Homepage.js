@@ -8,10 +8,6 @@ import SavedArrivalTimes from "./ArrivalTimes/SavedArrivalTimes";
 import "./stylesheets/ATpages/arrivaltimes.css";
 import "./stylesheets/ATpages/at_list.css";
 
-
-
-
-
 const Homepage = () => {
   const {userLoggedIn, setUserLoggedIn} = useContext(LoginStatusContext);
   const [favorites, setFavorites] = useState([]);
@@ -32,7 +28,7 @@ const Homepage = () => {
       favedItemsCopy = favedItemsCopy.filter(item => JSON.stringify(item) !== JSON.stringify(dict))
     }
     else {
-      setThrowPopup(true)
+      //setThrowPopup(true)
       favedItemsCopy.push(dict)
     }
     setFavedItems(favedItemsCopy)
