@@ -42,7 +42,7 @@ const SavedArrivalTimes = (props) => {
 
   return (  
     <>
-      {favedItems.length !== 0 && <h2>Favourited List</h2>}
+      {favedItems.length !== 0 && <h2 className="bookmarkedtext">{props.page}</h2>}
       <ul className="barr">
         {favedItems.map((item, index) => (
           <li key={index}>

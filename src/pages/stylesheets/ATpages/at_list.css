@@ -50,6 +50,7 @@
 .savedHP .atlist{
     border: 2px solid rgb(21, 21, 59);
     max-width: 18vw;
+    min-width: 16vw;
     background-color: rgb(26, 38, 44);
     border-radius: 15px;
     margin: 0;

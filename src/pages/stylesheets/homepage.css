@@ -7,7 +7,15 @@ body, html{
 }
 
 
+.savedList div {}
+.savedList{
+  position:relative;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
 
+  width: 20vw;
+}
 
 
 .subhead{position:relative;
@@ -353,7 +361,7 @@ letter-spacing: normal;
   max-width: 32vw;  
   text-align: center;
   bottom: 0vh;  
-  left: 0.5vw;  
+  left: 0vw;  
   color: white;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: bold;
@@ -366,7 +374,7 @@ letter-spacing: normal;
   margin-top: 2vh;       
   max-width: 20vw;       
   bottom: -20.5vh;        
-  left: 33vw;           
+  left: 32.5vw;           
   color: white;
   line-height: 3.5vh;
   font-size: 3vh;

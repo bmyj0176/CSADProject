@@ -47,7 +47,6 @@
  .horizontal-listHP{
   list-style-type: none;
 
-
  }
 
 .link-default {
@@ -70,5 +69,18 @@
   grid-auto-flow: column;
 }
 
+.savedHP ul.barr{
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.savedHP ul.barr li{
+  margin-right: 2vw;
+}
 
 
+.savedHP .bookmarkedtext{
+  text-decoration: underline;
+  color: aquamarine;
+}

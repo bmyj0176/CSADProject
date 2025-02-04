@@ -7,6 +7,7 @@ import { ThemeContext } from './Components/ToggleThemeButton';
 import SavedArrivalTimes from "./ArrivalTimes/SavedArrivalTimes";
 import "./stylesheets/ATpages/arrivaltimes.css";
 import "./stylesheets/ATpages/at_list.css";
+import Popup from "./Components/Popup";
 
 
 
@@ -17,6 +18,7 @@ const Homepage = () => {
   const [favorites, setFavorites] = useState([]);
   const [slideIndex, setSlideIndex] = useState(0); // Toggle state
   const [fade, setFade] = useState(false);  // Controls fade animation
+  const [throwPopup, setThrowPopup] = useState(false)
   const [favedItems, setFavedItems] = useState(() => {
    
    // SAVED ITEMS // ------------------------------------------------------------
@@ -280,6 +282,7 @@ const EndDiv =() =>{
   
   return (
       <>
+
       <div id = 'slide' className={`fade ${fade ? "fade-out" : "fade-in"}`}>
         {slides[slideIndex]}
       </div>
@@ -297,6 +300,7 @@ const EndDiv =() =>{
        <li>{userLoggedIn &&<SavedArrivalTimes 
         favedItems={favedItems}
         onFavItem={onFavItem}
+        page="Bookmarked"
       />}
       </li>
       </ul>

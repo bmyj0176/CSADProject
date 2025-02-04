@@ -122,7 +122,11 @@ const ArrivalTimes = () => {
       <div>
         {throwPopup && <Popup/>}
       </div>
-    <ul className="horizontal-list">
+
+
+
+
+     {/* <ul className="horizontal-list">
       <li style={{backgroundColor:'#00000010'}}>
         {searchResult && 
         <ArrivalTimesList 
@@ -171,6 +175,7 @@ const ArrivalTimes = () => {
       <SavedArrivalTimes 
         favedItems={favedItems}
         onFavItem={onFavItem}
+        page="Favourited List"
       />
       <h3 style={{color: "red"}}>EXAMPLE: A bus stop</h3>
         <ArrivalTimesElement
@@ -205,7 +210,7 @@ const ArrivalTimes = () => {
         ))
       }
       </li>
-    </ul>
+    </ul> */}
     </>
   );
 };
