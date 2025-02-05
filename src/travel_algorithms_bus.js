@@ -17,6 +17,7 @@ function buildAdjacencyList(time_between_busstops, connections) {
 
     for (let bus_num in time_between_busstops) { //adding time between stations
     // let bus_num = 2;
+        if (bus_num.toLowerCase().includes("e")) {continue;}
         let directions = time_between_busstops[bus_num];
         let prev_stop = directions["1"][0][0];
         let prev_dist = 0;
@@ -144,14 +145,19 @@ export function dijkstra(graph, start, end) {
     console.log("distances", distances);
 
     // Reconstruct the shortest route from start to end using the predecessors map
-    let route = {};
+    let route = new Map();
     let current = end;
     while (current) {
-        if (predecessors[current] == null) {route[current] = []; break;}
-        route[current] = predecessors[current][1];
+        if (predecessors[current] == null) {route.set(current, []); break;}
+        route.set(current, predecessors[current][1]);
         current = predecessors[current][0];
     }
-    console.log(route);
+
+    // to loop through entries for route
+    // for (let [key, value] of route) {
+    //     console.log(key, value);
+    // }
+    
 
     let transferCount = Math.round(distances[end] / 10000); // 5/2/25 find 2 routes, 1 least transfers, 1 fastest
     let subTime = Number((distances[end] % 10000).toFixed(2));
@@ -201,7 +207,7 @@ export async function runshit() {
     console.log(map);
     let startTime = performance.now();
     //console.log(dijkstra(map, "44399", "08057")); // opp blk 210 to douby ghaut
-    console.log(dijkstra(map, "44399", "19031")); // opp blk 210 to dover mrt
+    console.log(dijkstra(map, "44399", "19039")); // opp blk 210 to dover mrt
     //console.log(dijkstra(map, "44021", "46009")); // bukit panjang to woodlands int
     let endTime = performance.now();
     let timeTaken = endTime - startTime;
