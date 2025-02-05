@@ -201,7 +201,7 @@ export async function runshit() {
     console.log(map);
     let startTime = performance.now();
     //console.log(dijkstra(map, "44399", "08057")); // opp blk 210 to douby ghaut
-    console.log(dijkstra(map, "44399", "12109")); // opp blk 210 to clementi mrt
+    console.log(dijkstra(map, "44399", "19031")); // opp blk 210 to dover mrt
     //console.log(dijkstra(map, "44021", "46009")); // bukit panjang to woodlands int
     let endTime = performance.now();
     let timeTaken = endTime - startTime;
