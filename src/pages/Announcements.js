@@ -8,6 +8,9 @@ const Announcements  = ({ isAdmin }) => {
   const [alerts, setAlerts] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [announcements, setAnnouncements] = useState([]);
+  const [newAnnouncement, setNewAnnouncement] = useState("");
+  isAdmin = (true);
 
   useEffect(() => {
     const fetchTrainAlerts = async () => {
@@ -27,26 +30,38 @@ const Announcements  = ({ isAdmin }) => {
   }, []);
 
 
-
-
-
-
-  const [announcements, setAnnouncements] = useState([]);
-  const [newAnnouncement, setNewAnnouncement] = useState("");
-
   
+// Load announcements from localStorage on first render
+  useEffect(() => {
+    const savedAnnouncements = JSON.parse(localStorage.getItem("announcements")) || [];
+    setAnnouncements(savedAnnouncements);
+  }, []);
 
+  // Save to localStorage whenever announcements change
+  useEffect(() => {
+    localStorage.setItem("announcements", JSON.stringify(announcements));
+  }, [announcements]);
 
+  // Add a new announcement
+  const handleAdd = () => {
+    if (!newAnnouncement.trim()) return;
+    const updatedAnnouncements = [...announcements, newAnnouncement];
+    setAnnouncements(updatedAnnouncements);
+    setNewAnnouncement("");
+  };
 
+  // Edit an announcement
+  const handleEdit = (index, newText) => {
+    const updatedAnnouncements = [...announcements];
+    updatedAnnouncements[index] = newText;
+    setAnnouncements(updatedAnnouncements);
+  };
 
-
-
-
-
-
-
-
-
+  // Delete an announcement
+  const handleDelete = (index) => {
+    const updatedAnnouncements = announcements.filter((_, i) => i !== index);
+    setAnnouncements(updatedAnnouncements);
+  };
 
 
   if (loading) return <BouncyBouncy/>;
@@ -56,8 +71,35 @@ const Announcements  = ({ isAdmin }) => {
     <>
       <h1 id="ANheader">NYOOM SITE ANNOUNCEMENTS</h1>
       <div className="ANpanel">
-        test
+        <ul>
+          {announcements.map((text, index) => (
+            <li key={index}>
+              {isAdmin ? (
+                <input
+                  type="text"
+                  value={text}
+                  onChange={(e) => handleEdit(index, e.target.value)}
+                  style={{ marginRight: "10px" }}
+                />
+              ) : (
+                <span>{text}</span>
+              )}
+              {isAdmin && <button onClick={() => handleDelete(index)}>🗑️ Delete</button>}
+            </li>
+          ))}
+        </ul>
       </div>
+      {isAdmin && (
+        <div>
+          <input
+            type="text"
+            value={newAnnouncement}
+            onChange={(e) => setNewAnnouncement(e.target.value)}
+            placeholder="New Announcement"
+          />
+          <button onClick={handleAdd}>➕ Add</button>
+        </div>
+      )}
       <h1>Train Service Alerts</h1>
       {alerts?.Status === 1 ? (
         <p style={{ color: "green" }}>All train services are running smoothly.</p>
