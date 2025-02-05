@@ -36,6 +36,12 @@ const ATSearchResult = (props) => {
       </>
     )
 
+    const nearmeArrow = (
+      <>
+      <img className="nearmeArrow" src="../images/nearmeLine.png"></img>
+      </>
+    )
+
     useEffect(() => {
       setImage("")
       setImage2("")
@@ -49,6 +55,7 @@ const ATSearchResult = (props) => {
           setHeader(props.dict.busStopName)
           setSubheader1(props.dict.busStopCode)
           setSubheader2("  •  " + props.dict.distance + "m Away")
+          setImage(nearmeArrow)
           break
         case "busNo":
           setHeader(busHeader)
@@ -86,7 +93,7 @@ const ATSearchResult = (props) => {
         <div className = "cent">
           <p className="result">
             <button 
-            className={(subheader2.length === 0) ? subheader1 ? "busstopcard" : "alternatecard": "mrtCard"} 
+            className={!(subheader2.length > 4) ? (subheader2.length === 0) ? subheader1 ? "busstopcard" : "alternatecard": "mrtCard": "nearmeCard"} 
             id={(props.selectedItem === props.index) ? "busstopclicked" : "busstopdefault"} 
             onClick={handleClick}>
               <h3 className="busstopname">{header}</h3>
@@ -94,7 +101,9 @@ const ATSearchResult = (props) => {
               <b className="busstopnumber">{subheader1}</b>
               <br/>
               {arrowimg}
-              {subheader2  && (subheader2)}
+              {!(subheader2.length >4 ) && (subheader2)}
+              {(subheader2.length > 4) &&
+              <h4 className="distance">{subheader2}</h4>}
               
             </button>
           </p>

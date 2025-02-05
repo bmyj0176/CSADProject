@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useRef} from 'react';
+import React, { useState, useEffect, useRef, useContext} from 'react';
 import { searchInList, searchInDualList, nearestBusStops, getBusStopInfo } from '../../helper_functions';
 import { getjson } from '../../helper_functions'
 import ATSearchResult from './ATSearchResult';
 import '../stylesheets/busstopcard.css'
+import { ThemeContext } from '../Components/ToggleThemeButton';
 
 const ATSearchBar = (props) => {
     const MAX_BAR_SIZE = 15;
@@ -21,6 +22,8 @@ const ATSearchBar = (props) => {
       fetchNumbers();
     }, []);
     
+      const { isDarkTheme } = useContext(ThemeContext);
+
     // updates when props.toggleStates or searchBarValue changes
     useEffect(() => {
       updateSearchBar(searchBarValue);
@@ -94,7 +97,9 @@ const ATSearchBar = (props) => {
       <div className="container">
         {/* searchbar disables if nearMe is off */}
         {!props.toggleStates['nearMe'] ?
-         <input type="text"   placeholder="Search Here..." className="search_bar" value={searchBarValue} onChange={onChangeSearchBar}/> : 
+         <input 
+          style={{borderColor: isDarkTheme ? "rgb(255, 255, 255)": "rgb(0, 0, 0)"}}
+          type="text"   placeholder="Search Here..." className="search_bar" value={searchBarValue} onChange={onChangeSearchBar}/> : 
          <h4>Please note that this may not be 100% accurate</h4> }
         {/* stacked bars */}
         <div className="bars">

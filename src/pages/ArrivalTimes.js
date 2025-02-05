@@ -166,10 +166,14 @@ const ArrivalTimes = () => {
 
 
             <button
-              style={chooseStyle("nearMe")}
+              
+              className="NearMe"
+              
+              style={{borderColor: isDarkTheme ? " rgb(197, 197, 242)" :" rgb(252, 204, 14)"}}
               onClick={() => handleToggle("nearMe")}
             >
-              <p>Near Me 🏳️</p>
+              <img style={{filter: isDarkTheme ? "invert(0%)" : "invert(100%)"}} src="./images/NearMe.png"></img>
+              <p>Near Me</p>
             </button>
         
         {/* <ul className="at">
