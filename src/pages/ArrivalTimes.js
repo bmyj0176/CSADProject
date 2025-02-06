@@ -159,7 +159,7 @@ const ArrivalTimes = () => {
       </div>
       <ul className="horizontal-list">
       
-      <li  className="searchCol">
+      <li  className="searchCol" id='scroll'>
       <div className="Checkbox-container">
         <CheckBox />
       </div>

@@ -80,7 +80,7 @@
   margin-right: 2vw;
 }
 
-.scroll {
+.scroll, #scroll {
   background-color:#00000010;
   overflow-y: scroll;
 }
