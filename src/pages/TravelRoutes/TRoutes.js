@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { dijkstra, getMap } from "../../travel_algorithms"
+import { dijkstra, getTrainMap } from "../../travel_algorithms"
 import { cleanMRTStationName, suffixMRTStationName } from "../../helper_functions2"
 
 // {props.location1.type /* type can be "station" or "busStop" */}<br/>
@@ -23,7 +23,7 @@ const TRoutes = (props) => {
                 let best_time = Infinity
                 let best_station_code = null
                 for (const stationCode of props.location1.stationCodes) {
-                    let data = dijkstra(await getMap(), suffixMRTStationName(props.location1.stationName, stationCode), props.location2.stationName)
+                    let data = dijkstra(await getTrainMap(), suffixMRTStationName(props.location1.stationName, stationCode), props.location2.stationName)
                     if (data.time_taken < best_time) {
                         best_time = data.time_taken
                         best_station_code = stationCode
@@ -35,7 +35,7 @@ const TRoutes = (props) => {
                 let best_time = Infinity
                 let best_station_code = null
                 for (const stationCode of props.location2.stationCodes) {
-                    let data = dijkstra(await getMap(), props.location1.stationName, suffixMRTStationName(props.location2.stationName, stationCode))
+                    let data = dijkstra(await getTrainMap(), props.location1.stationName, suffixMRTStationName(props.location2.stationName, stationCode))
                     if (data.time_taken < best_time) {
                         best_time = data.time_taken
                         best_station_code = stationCode
@@ -51,7 +51,7 @@ const TRoutes = (props) => {
     useEffect(() => {
         if (startPoint && endPoint) {
             const calculate = async () => {
-                const data = await dijkstra(await getMap(), startPoint, endPoint);
+                const data = await dijkstra(await getTrainMap(), startPoint, endPoint);
                 setTimeTaken(data.time_taken);
             };
             calculate();

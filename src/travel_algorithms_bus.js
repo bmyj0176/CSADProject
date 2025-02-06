@@ -2,19 +2,17 @@ import { getjson } from "./helper_functions"
 // import { getRoadDistance, getBusStopInfo} from "./helper_functions"
 
 
-export async function getMap() {
-    let mrt_to_bus = await getjson('./datasets/mrt_to_bus.json');
+export async function getBusMap() {
     let bus_dist = await getjson('./datasets/busstops_map.json');
     let bus_stop_info = await getjson('./datasets/bus_stops_complete.json');
-    let interchanges = await getjson('./datasets/interchanges.json');
     let opp_bus_stops = await getjson('./datasets/opposite_bus_stops.json');
-    let map = await buildAdjacencyList(bus_dist, mrt_to_bus, opp_bus_stops);
+    let map = await buildAdjacencyList(bus_dist, opp_bus_stops);
     let code_to_name = await buildCodeToName(bus_stop_info);
-    return [map, interchanges, code_to_name]
+    return [map, code_to_name]
 }
 
 
-async function buildAdjacencyList(time_between_busstops, connections, opp_bus_stops) {
+async function buildAdjacencyList(time_between_busstops, opp_bus_stops) {
 
     const adjMap = {};
 
@@ -31,12 +29,6 @@ async function buildAdjacencyList(time_between_busstops, connections, opp_bus_st
             makebusmap("2",directions, prev_stop, prev_dist, bus_num, adjMap)
         }
     }
-    // for (const { p1, p2, time } of connections) { //adding cross platform transfers
-    //     // Add connection from s1 to s2
-    //     if (!adjMap[p1]) adjMap[p1] = {};
-    //     adjMap[p1][p2] = time;
-    // }
-
 
     // adding nearby bus stops through walking
     let stops = Object.keys(opp_bus_stops);
@@ -85,6 +77,8 @@ function makebusmap(direction, directions, prev_stop, prev_dist, bus_num, adjMap
         prev_stop = stop;
         prev_dist = busstop[1];
     }
+    
+    return true;
 }
 
 async function buildCodeToName(bus_stop_info) {
@@ -192,7 +186,7 @@ export function dijkstra(graph, start, end, codeToName) {
     let prev_stop = end;
     let prev_value = [];
     for (let [key, value] of route) {// add end to simple_route
-        if (value.every(item => !busUsed.includes(item))) {
+        if (busNotInList(value, busUsed)) {
             simple_route.set(key, [value, 0]);
             if (key !== end) {
                 prev_value = simple_route.get(prev_stop);
@@ -231,6 +225,10 @@ export function dijkstra(graph, start, end, codeToName) {
     };
 }
 
+function busNotInList(value, busUsed) {
+    return (value.every(item => !busUsed.includes(item)))
+}
+
 
 
 // running Dijkstra algorithm between the two stations
@@ -239,7 +237,7 @@ export function dijkstra(graph, start, end, codeToName) {
 export async function runshit() {
     console.clear();
     let startTime = performance.now();
-    let [map,interchanges, codeToName] = await getMap();
+    let [map, codeToName] = await getBusMap();
     console.log(map);
     //console.log(dijkstra(map, "44399", "08057")); // opp blk 210 to douby ghaut
     //console.log(dijkstra(map, "44399", "19039")); // opp blk 210 to dover mrt
@@ -250,4 +248,4 @@ export async function runshit() {
     console.log("Total time taken : " + timeTaken + " milliseconds");
 }
 
-runshit();
+//runshit();
