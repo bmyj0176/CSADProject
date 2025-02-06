@@ -7,19 +7,20 @@ export async function getMap() {
     let bus_dist = await getjson('./datasets/busstops_map.json');
     let bus_stop_info = await getjson('./datasets/bus_stops_complete.json');
     let interchanges = await getjson('./datasets/interchanges.json');
-    let map = await buildAdjacencyList(bus_dist, mrt_to_bus);
-    let codeToName = await buildCodeToName(bus_stop_info);
-    return [map, interchanges, codeToName]
+    let opp_bus_stops = await getjson('./datasets/opposite_bus_stops.json');
+    let map = await buildAdjacencyList(bus_dist, mrt_to_bus, opp_bus_stops);
+    let code_to_name = await buildCodeToName(bus_stop_info);
+    return [map, interchanges, code_to_name]
 }
 
 
-async function buildAdjacencyList(time_between_busstops, connections) {
+async function buildAdjacencyList(time_between_busstops, connections, opp_bus_stops) {
 
     const adjMap = {};
 
     for (let bus_num in time_between_busstops) { //adding time between stations
     // let bus_num = 2;
-        if (bus_num.toLowerCase().includes("e")) {continue;}
+        if (bus_num.toLowerCase().includes("e")) {continue;} // to remove all express services, no one uses this shit
         let directions = time_between_busstops[bus_num];
         let prev_stop = directions["1"][0][0];
         let prev_dist = 0;
@@ -36,6 +37,11 @@ async function buildAdjacencyList(time_between_busstops, connections) {
     //     adjMap[p1][p2] = time;
     // }
 
+    let stops = Object.keys(opp_bus_stops);
+    console.log(stops)
+    for (let bus_stop of stops) { // adding nearby bus stops through walking
+        
+    }
     return adjMap;     
 }
 
@@ -70,7 +76,6 @@ function makebusmap(direction, directions, prev_stop, prev_dist, bus_num, adjMap
 
 async function buildCodeToName(bus_stop_info) {
     let codeToName = {}
-    console.log(bus_stop_info);
     for (let busstop of bus_stop_info) {
         let code = busstop["BusStopCode"];
         let name = busstop["Description"];
@@ -123,12 +128,6 @@ export function dijkstra(graph, start, end, codeToName) {
                 let newDistance = distances[currentNode][0] + time + 0.4;
                 if (predecessors[currentNode]) { //if not starting node
                     let prevBusUsed = predecessors[currentNode][1];
-                    // if (currentNode === "46549") { // test area
-                    //     console.log(neighbour, busUsed, prevBusUsed);
-                    //     console.log("time", neighbouringDistance, time)
-                    //     let x = predecessors[currentNode][1].filter(item => busUsed.includes(item));
-                    //     console.log(structuredClone(x));
-                    // }
                     
                     filteredBus = prevBusUsed.filter(item => busUsed.includes(item));
                     if (filteredBus.length === 0) {
@@ -197,7 +196,11 @@ export function dijkstra(graph, start, end, codeToName) {
     for (let [key, value] of simple_route) {
         let stopName = codeToName[key];
         if (key !== start) {
+            if (value[0] === "walk") { // to implement walking between stops or stations
+                console.log("walk for", value[1]+ "km to", stopName + ", stop ID", key);
+            } else{
             console.log("take bus number", value[0].join(" or "), "to", stopName + ", stop ID", key + ", for", value[1], "stops");
+            }
         } else {console.log("start at", stopName)}
     }
 
@@ -219,10 +222,11 @@ export function dijkstra(graph, start, end, codeToName) {
 export async function runshit() {
     console.clear();
     let startTime = performance.now();
-    let [map, interchanges, codeToName] = await getMap();
+    let [map,interchanges, codeToName] = await getMap();
+    console.log(map);
     //console.log(dijkstra(map, "44399", "08057")); // opp blk 210 to douby ghaut
     //console.log(dijkstra(map, "44399", "19039")); // opp blk 210 to dover mrt
-    console.log(dijkstra(map, "17009", "95109", codeToName)); // clementi int to changi airport
+    console.log(dijkstra(map, "27099", "44229", codeToName)); // clementi int to changi airport
     //console.log(dijkstra(map, "44021", "46009")); // bukit panjang to woodlands int
     let endTime = performance.now();
     let timeTaken = endTime - startTime;
