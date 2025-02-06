@@ -39,8 +39,20 @@ async function buildAdjacencyList(time_between_busstops, connections, opp_bus_st
 
     let stops = Object.keys(opp_bus_stops);
     console.log(stops)
-    for (let bus_stop of stops) { // adding nearby bus stops through walking
-        
+    for (let stop_no of stops) { // adding nearby bus stops through walking
+        let stop_data = opp_bus_stops[stop_no]
+
+        //creating stop if it currently doesnt exist
+        if (!adjMap[stop_no]) adjMap[stop_no] = {};
+        for (let adj_stop of stop_data) { // adding the thing for real
+            let adj_stop_no = adj_stop[0];
+            if (!adjMap[adj_stop_no]) adjMap[adj_stop_no] = {};
+            let dist = adj_stop[1];
+            dist = dist.toFixed(3);
+            adjMap[stop_no][adj_stop_no] = {dist, bus_num:["walk"]};
+            adjMap[adj_stop_no][stop_no] = {dist, bus_num:["walk"]};
+        }
+
     }
     return adjMap;     
 }
@@ -152,10 +164,10 @@ export function dijkstra(graph, start, end, codeToName) {
     // If the end node is unreachable
     if (distances[end][0] === Infinity) {
         return `No route from ${start} to ${end}.`;
-    }
+    } 
     console.log("predecessors", predecessors);
     console.log("distances", distances);
-
+    
     // Reconstruct the shortest route from start to end using the predecessors map
     let route = new Map();
     let current = end;
@@ -169,7 +181,6 @@ export function dijkstra(graph, start, end, codeToName) {
     let subTime = Number((distances[end] % 10000).toFixed(2));
     console.log(transferCount, subTime);
     let finalTimeTaken = subTime + 6 * transferCount;
-
     //console.log(JSON.stringify(route, null, 2));
 
     //showing the route as only transfers
