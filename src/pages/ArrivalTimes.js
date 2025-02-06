@@ -221,7 +221,12 @@ const ArrivalTimes = () => {
       </li>
 
       <li className='scroll'>
+<<<<<<< Updated upstream
         {(searchResult) && 
+=======
+        Click to refresh
+        {searchResult && 
+>>>>>>> Stashed changes
         <ArrivalTimesList 
         data={searchResult}
         receiveSearchResult={receiveSearchResult}
