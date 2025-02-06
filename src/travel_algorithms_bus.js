@@ -37,9 +37,10 @@ async function buildAdjacencyList(time_between_busstops, connections, opp_bus_st
     //     adjMap[p1][p2] = time;
     // }
 
+
+    // adding nearby bus stops through walking
     let stops = Object.keys(opp_bus_stops);
-    console.log(stops)
-    for (let stop_no of stops) { // adding nearby bus stops through walking
+    for (let stop_no of stops) {
         let stop_data = opp_bus_stops[stop_no]
 
         //creating stop if it currently doesnt exist
@@ -188,14 +189,18 @@ export function dijkstra(graph, start, end, codeToName) {
     let simple_route = new Map();
     let busUsed = [];
     let noOfStops = 1;
-    let prev_stop = "";
+    let prev_stop = end;
     let prev_value = [];
     for (let [key, value] of route) {// add end to simple_route
         if (value.every(item => !busUsed.includes(item))) {
             simple_route.set(key, [value, 0]);
             if (key !== end) {
                 prev_value = simple_route.get(prev_stop);
-                prev_value[1] = noOfStops;
+                if (prev_value[0][0] === "walk"){
+                    prev_value[1] = graph[key][prev_stop]["dist"];
+                } else {
+                    prev_value[1] = noOfStops;
+                }
                 simple_route.set(prev_stop, prev_value)
             }
             busUsed = value;
@@ -207,8 +212,9 @@ export function dijkstra(graph, start, end, codeToName) {
     for (let [key, value] of simple_route) {
         let stopName = codeToName[key];
         if (key !== start) {
-            if (value[0] === "walk") { // to implement walking between stops or stations
-                console.log("walk for", value[1]+ "km to", stopName + ", stop ID", key);
+            if (value[0][0] === "walk") { // to implement walking between stops or stations
+                let dist = Number(value[1]) * 1000;
+                console.log("walk for", dist + "m to", stopName + ", stop ID", key);
             } else{
             console.log("take bus number", value[0].join(" or "), "to", stopName + ", stop ID", key + ", for", value[1], "stops");
             }

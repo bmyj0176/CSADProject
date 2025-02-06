@@ -179,9 +179,7 @@ export function dijkstra(graph, start, end, interchanges) {
 //         longestsimple = simple_route;
 //     }
 // } console.log(longest, longestroute, longestsimple);
-// // console.log(dijkstra(map, "Choa Chu Kang", "Marina Bay", interchanges));
+// console.log(dijkstra(map, "Novena", "Dover", interchanges));
 // let endTime = performance.now();
 // let timeTaken = endTime - startTime;
 // console.log("Total time taken : " + timeTaken + " milliseconds");
-
-// dijkstra(map, "Dover", "South View", interchanges);
