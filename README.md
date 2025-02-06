@@ -1,6 +1,6 @@
 # *nyoom* Travel Site
 
-![nyoom](./public/images/nyoom_icon.png)
+![nyoom](./public/images/nyoom_icon_small.png)
 
 ***Revolutionize Your Travel Experience***
 
