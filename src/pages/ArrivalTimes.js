@@ -17,6 +17,7 @@ const ArrivalTimes = () => {
   const [throwPopup, setThrowPopup] = useState(false)
   const [searchResult, setSearchResult] = useState(null)
   const [selectedItem, setSelectedItem] = useState(null)
+  const [showFav, setShowFav] = useState(false)
   const [selectedList, setSelectedList] = useState(-1) // "ATSearchBar" vs "SavedArrivalTimes"
   const [favedItems, setFavedItems] = useState(() => {
     const storedFavedItems = localStorage.getItem("savedarrivaltimes")
@@ -28,6 +29,14 @@ const ArrivalTimes = () => {
   const onItemSelect = (index) => {
     setSelectedItem(index)
   }
+
+  const toggleFaved =()=>{
+      console.log(showFav);
+      setShowFav((prev) => !prev); 
+      console.log(showFav);
+    };
+  
+  
 
   const { isDarkTheme } = useContext(ThemeContext);
 
@@ -163,8 +172,6 @@ const ArrivalTimes = () => {
           selectedItem={selectedItem}
           onItemSelect={onItemSelect}
         />
-
-
             <button
               
               className="NearMe"
@@ -209,17 +216,19 @@ const ArrivalTimes = () => {
           receiveSearchResult={receiveSearchResult}
           selectedItem={selectedItem}
           onItemSelect={onItemSelect}
-        /> */}
+        /> */
+        <button onClick={toggleFaved}>HELLO</button>}
       </li>
+
       <li className='scroll'>
-        {searchResult && 
+        {(searchResult) && 
         <ArrivalTimesList 
         data={searchResult}
         receiveSearchResult={receiveSearchResult}
         favedItems={favedItems}
         onFavItem={onFavItem} />}
       </li>
-      <li>
+     {(showFav) &&  <li>   
       <SavedArrivalTimes 
         favedItems={favedItems}
         onFavItem={onFavItem}
@@ -257,7 +266,7 @@ const ArrivalTimes = () => {
           <div key={index}>{favedItems[index]}</div>
         ))
       }
-      </li>
+      </li> }
     </ul>  
     </>
   );
