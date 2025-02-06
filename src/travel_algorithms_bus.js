@@ -5,68 +5,99 @@ import { getjson } from "./helper_functions"
 export async function getMap() {
     let mrt_to_bus = await getjson('./datasets/mrt_to_bus.json');
     let bus_dist = await getjson('./datasets/busstops_map.json');
+    let bus_stop_info = await getjson('./datasets/bus_stops_complete.json');
     let interchanges = await getjson('./datasets/interchanges.json');
-    let map = buildAdjacencyList(bus_dist, mrt_to_bus);
-    return [map, interchanges]
+    let opp_bus_stops = await getjson('./datasets/opposite_bus_stops.json');
+    let map = await buildAdjacencyList(bus_dist, mrt_to_bus, opp_bus_stops);
+    let code_to_name = await buildCodeToName(bus_stop_info);
+    return [map, interchanges, code_to_name]
 }
 
 
-function buildAdjacencyList(time_between_busstops, connections) {
+async function buildAdjacencyList(time_between_busstops, connections, opp_bus_stops) {
 
     const adjMap = {};
 
     for (let bus_num in time_between_busstops) { //adding time between stations
-        //let bus_num = "2";
+    // let bus_num = 2;
+        if (bus_num.toLowerCase().includes("e")) {continue;} // to remove all express services, no one uses this shit
         let directions = time_between_busstops[bus_num];
         let prev_stop = directions["1"][0][0];
         let prev_dist = 0;
-        for (const busstop of directions["1"]) {
-            let stop = busstop[0];
-            let dist = busstop[1]-prev_dist;
-            dist = dist.toFixed(1);
-            if (dist === "0.0") {continue;}
-            let dist_and_bus_num = {dist, bus_num};
-            // Add connection from s1 to s2
-            if (!adjMap[stop]) adjMap[stop] = {};
-            adjMap[stop][prev_stop] = dist_and_bus_num;
-            // Add connection from s2 to s1
-            if (!adjMap[prev_stop]) adjMap[prev_stop] = {};
-            adjMap[prev_stop][stop] = dist_and_bus_num;
-            prev_stop = stop;
-            prev_dist = busstop[1];
-        }
-        
-        prev_stop = directions["1"][directions["1"].length-1][0];
-        prev_dist = 0;
+        makebusmap("1", directions, prev_stop, prev_dist, bus_num, adjMap);
         if (directions["2"]) {
-            for (const busstop of directions["2"]) {
-                let stop = busstop[0];
-                let dist = busstop[1]-prev_dist;
-                dist = dist.toFixed(1);
-                if (dist === "0.0") {continue;}
-                let dist_and_bus_num = {dist, bus_num};
-                // Add connection from s1 to s2
-                if (!adjMap[stop]) adjMap[stop] = {};
-                adjMap[stop][prev_stop] = dist_and_bus_num;
-                // Add connection from s2 to s1
-                if (!adjMap[prev_stop]) adjMap[prev_stop] = {};
-                adjMap[prev_stop][stop] = dist_and_bus_num;
-                prev_stop = stop;
-                prev_dist = busstop[1];
-            }
+            prev_stop = directions["1"][directions["1"].length-1][0];
+            prev_dist = 0;
+            makebusmap("2",directions, prev_stop, prev_dist, bus_num, adjMap)
         }
     }
-    
     // for (const { p1, p2, time } of connections) { //adding cross platform transfers
     //     // Add connection from s1 to s2
     //     if (!adjMap[p1]) adjMap[p1] = {};
     //     adjMap[p1][p2] = time;
     // }
 
+
+    // adding nearby bus stops through walking
+    let stops = Object.keys(opp_bus_stops);
+    for (let stop_no of stops) {
+        let stop_data = opp_bus_stops[stop_no]
+
+        //creating stop if it currently doesnt exist
+        if (!adjMap[stop_no]) adjMap[stop_no] = {};
+        for (let adj_stop of stop_data) { // adding the thing for real
+            let adj_stop_no = adj_stop[0];
+            if (!adjMap[adj_stop_no]) adjMap[adj_stop_no] = {};
+            let dist = adj_stop[1];
+            dist = dist.toFixed(3);
+            adjMap[stop_no][adj_stop_no] = {dist, bus_num:["walk"]};
+            adjMap[adj_stop_no][stop_no] = {dist, bus_num:["walk"]};
+        }
+
+    }
     return adjMap;     
 }
 
-export function dijkstra(graph, start, end) {
+function makebusmap(direction, directions, prev_stop, prev_dist, bus_num, adjMap) {
+    for (const busstop of directions[direction]) {
+        let stop = busstop[0];
+        let dist = busstop[1]-prev_dist;
+        dist = dist.toFixed(1);
+        if (dist === "0.0") {continue;}
+
+         //creating stop if it currently doesnt exist
+        if (!adjMap[stop]) adjMap[stop] = {};
+        if (!adjMap[prev_stop]) adjMap[prev_stop] = {};
+
+         // if linkage doesnt exist, create it and make bus num list
+        if (adjMap[stop][prev_stop] === undefined) { // s1 to s2
+            adjMap[stop][prev_stop] = {dist, bus_num:[bus_num]};
+        } else { // if linkage exists already, add bus num to list.
+            adjMap[stop][prev_stop]["bus_num"].push(bus_num);
+        }
+
+        if (adjMap[prev_stop][stop] === undefined) { // s2 to s1
+            adjMap[prev_stop][stop] = {dist, bus_num:[bus_num]};
+        } else {
+            adjMap[prev_stop][stop]["bus_num"].push(bus_num);
+        }
+        
+        prev_stop = stop;
+        prev_dist = busstop[1];
+    }
+}
+
+async function buildCodeToName(bus_stop_info) {
+    let codeToName = {}
+    for (let busstop of bus_stop_info) {
+        let code = busstop["BusStopCode"];
+        let name = busstop["Description"];
+        codeToName[code] = name;
+    }
+    return codeToName;
+}
+
+export function dijkstra(graph, start, end, codeToName) {
     // Create an object to store the shortest distance from the start node to every other node
     let distances = {};
     let predecessors = {}; // Map to store the predecessor of each node for route reconstruction
@@ -93,6 +124,7 @@ export function dijkstra(graph, start, end) {
 
         // Mark the chosen node as visited
         visited.add(currentNode);
+        let filteredBus = [];
         // For each neighboring node of the current node
         for (let neighbour in graph[currentNode]) {
             if (!visited.has(neighbour)) {
@@ -100,27 +132,31 @@ export function dijkstra(graph, start, end) {
                 // Calculate tentative distance to the neighbouring node
                 let neighbouringDistance = Number(graph[currentNode][neighbour]["dist"]);
                 let busUsed = graph[currentNode][neighbour]["bus_num"];
-                let newDistance = distances[currentNode][0] + neighbouringDistance;
-                if (true) {} //ADD CODE HERE
 
-
-
-                
-
-
-
-
-
-
-
-
-                newDistance = Number(newDistance.toFixed(1));
+                //let time = neighbouringDistance / (0.283 * Math.pow(neighbouringDistance, 0.3))
+                let time = 0;
+                if (neighbouringDistance <= 1)
+                     {time = 60 * neighbouringDistance / 25;} 
+                else {time = 60 * neighbouringDistance / 60;}
+                let newDistance = distances[currentNode][0] + time + 0.4;
+                if (predecessors[currentNode]) { //if not starting node
+                    let prevBusUsed = predecessors[currentNode][1];
+                    
+                    filteredBus = prevBusUsed.filter(item => busUsed.includes(item));
+                    if (filteredBus.length === 0) {
+                        newDistance += 10; // 5/2/25 HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+                        filteredBus = busUsed;
+                     }
+                } else { // if starting node
+                    filteredBus = busUsed;
+                }
 
                 // If the newly calculated distance is shorter than the previously known distance to this neighbour
+                newDistance = Number(newDistance.toFixed(2));
                 if (newDistance < distances[neighbour][0]) {
                     
                     distances[neighbour][0] = newDistance;
-                    predecessors[neighbour] = [currentNode, graph[currentNode][neighbour]["bus_num"]]; // Update predecessor
+                    predecessors[neighbour] = [currentNode, filteredBus]; // Update predecessor
                 }
             }
         }
@@ -129,44 +165,67 @@ export function dijkstra(graph, start, end) {
     // If the end node is unreachable
     if (distances[end][0] === Infinity) {
         return `No route from ${start} to ${end}.`;
-    }
-    console.log(predecessors);
-
+    } 
+    console.log("predecessors", predecessors);
+    console.log("distances", distances);
+    
     // Reconstruct the shortest route from start to end using the predecessors map
-    let route = {};
+    let route = new Map();
     let current = end;
     while (current) {
-        if (predecessors[current] == null) {break;}
-        route[current] = predecessors[current][0];
+        if (predecessors[current] == null) {route.set(current, []); break;}
+        route.set(current, predecessors[current][1]);
         current = predecessors[current][0];
     }
-    console.log(route);
+
+    let transferCount = Math.round(distances[end] / 10000); // 5/2/25 find 2 routes, 1 least transfers, 1 fastest
+    let subTime = Number((distances[end] % 10000).toFixed(2));
+    console.log(transferCount, subTime);
+    let finalTimeTaken = subTime + 6 * transferCount;
+    //console.log(JSON.stringify(route, null, 2));
 
     //showing the route as only transfers
-    let simple_route = [route[0]];
-    let past_station = "";
-    let past_interchange = "";
 
-    for (let i in route) {
-        let current_station = route[i];
-        let thirdLastChar = current_station.charAt(current_station.length - 3);
-
-        if (thirdLastChar === "_") { //if third last char is a "_", its an interchange
-            let current_interchange = current_station.length > 3 ? current_station.slice(0, -3) : "";
-            if (current_interchange === past_interchange) { //if 2 interchanges are the same, its a transfer
-                simple_route.push(past_station, current_station); 
-            } else {
-                past_interchange = current_interchange;
+    let simple_route = new Map();
+    let busUsed = [];
+    let noOfStops = 1;
+    let prev_stop = end;
+    let prev_value = [];
+    for (let [key, value] of route) {// add end to simple_route
+        if (value.every(item => !busUsed.includes(item))) {
+            simple_route.set(key, [value, 0]);
+            if (key !== end) {
+                prev_value = simple_route.get(prev_stop);
+                if (prev_value[0][0] === "walk"){
+                    prev_value[1] = graph[key][prev_stop]["dist"];
+                } else {
+                    prev_value[1] = noOfStops;
+                }
+                simple_route.set(prev_stop, prev_value)
             }
-        }
-        past_station = current_station;
+            busUsed = value;
+            noOfStops = 1;
+            prev_stop = key;
+        } else {noOfStops += 1;}
+    }
+    console.log("end at", codeToName[end]); 
+    for (let [key, value] of simple_route) {
+        let stopName = codeToName[key];
+        if (key !== start) {
+            if (value[0][0] === "walk") { // to implement walking between stops or stations
+                let dist = Number(value[1]) * 1000;
+                console.log("walk for", dist + "m to", stopName + ", stop ID", key);
+            } else{
+            console.log("take bus number", value[0].join(" or "), "to", stopName + ", stop ID", key + ", for", value[1], "stops");
+            }
+        } else {console.log("start at", stopName)}
     }
 
-    simple_route.push(route[route.length - 1]) //add destination to simple route
+
 
     // Return both the shortest distance and the route
     return {
-        time_taken: distances[end],
+        time_taken: Math.round(distances[end][0]),
         route: route,
         simple_route: simple_route
     };
@@ -179,9 +238,13 @@ export function dijkstra(graph, start, end) {
 
 export async function runshit() {
     console.clear();
-    let [map, interchanges] = await getMap();
     let startTime = performance.now();
-    console.log(dijkstra(map, "59091", "59299"));
+    let [map,interchanges, codeToName] = await getMap();
+    console.log(map);
+    //console.log(dijkstra(map, "44399", "08057")); // opp blk 210 to douby ghaut
+    //console.log(dijkstra(map, "44399", "19039")); // opp blk 210 to dover mrt
+    console.log(dijkstra(map, "27099", "44229", codeToName)); // clementi int to changi airport
+    //console.log(dijkstra(map, "44021", "46009")); // bukit panjang to woodlands int
     let endTime = performance.now();
     let timeTaken = endTime - startTime;
     console.log("Total time taken : " + timeTaken + " milliseconds");
