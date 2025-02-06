@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { dict_in_list, codeToMRTImagePath } from '../../helper_functions2';
+import { dict_in_list, codeToMRTImagePath } from '../../utils/helper_functions2';
 import '../stylesheets/ATpages/at_searchresult.css';
 
 const ATSearchResult = (props) => {

@@ -2,9 +2,9 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Outlet, Link, useLocation, useNavigate  } from "react-router-dom";
 import './stylesheets/navbar.css';
 import ToggleThemeButton from './Components/ToggleThemeButton';
-import { nearestBusStops } from '../helper_functions';
+import { nearestBusStops } from '../utils/helper_functions';
 import { LoginStatusContext } from '../index';
-import '../travel_algorithms_bus.js';
+import '../utils/travel_algorithms_bus.js';
 
 const NavBar = () => {
   const {userLoggedIn, setUserLoggedIn} = useContext(LoginStatusContext);

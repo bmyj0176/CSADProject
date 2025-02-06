@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { codeToMRTImagePath } from '../../helper_functions2';
+import { codeToMRTImagePath } from '../../utils/helper_functions2';
 import "../stylesheets/travelroutes.css";
 
 const TRSearchResult = (props) => {

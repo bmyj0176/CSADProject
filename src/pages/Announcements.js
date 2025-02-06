@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import apiClient from "../api_announcements/apiClient";
 import BouncyBouncy from './Components/LoadingIcon.js';
-import { TrainAlertsService } from "../api_caller.js";
+import { TrainAlertsService } from "../utils/api_caller.js";
 import "./stylesheets/announcements.css";
 
 const Announcements  = ({ isAdmin }) => {

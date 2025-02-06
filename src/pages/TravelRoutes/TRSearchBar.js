@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useRef} from 'react';
-import { searchInDualList } from '../../helper_functions';
-import { cleanMRTStationName } from '../../helper_functions2';
-import { getjson } from "../../helper_functions"
+import { searchInDualList, getjson } from '../../utils/helper_functions';
+import { cleanMRTStationName } from '../../utils/helper_functions2';
 import TRSearchResult from './TRSearchResult';
 import '../stylesheets/busstopcard.css';
-import dijkstra from '../../travel_algorithms.js';
+import dijkstra from '../../utils/travel_algorithms.js';
 
 const TRSearchBar = (props) => {
     const MAX_BAR_SIZE = 20;

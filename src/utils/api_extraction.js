@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { getjson, getBusStopInfo } from './helper_functions';
 import { downloadJSON, haversine } from './helper_functions2';
-import { BusArrival, BusRoutes, BusStops } from './api_caller';
+import { BusArrival, BusRoutes, BusStops } from './utils/api_caller';
 
 export async function run_all_updates() {
   await busstops_map();

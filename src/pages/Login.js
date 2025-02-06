@@ -22,7 +22,7 @@ export const login = async (email, password, navigate, inputSetErrors = null) =>
     console.log('Login failed');  
     if (inputSetErrors) {
       const newErrors = { email: '', password: '', misc: '' }
-      if (error.response.status === 404) { // email already exists error
+      if (error.response.status === 404) { // email doesn't exist
         document.getElementById("email").focus()
         newErrors.email = "Email isn't registered."
       } else if (error.response.status === 401) {

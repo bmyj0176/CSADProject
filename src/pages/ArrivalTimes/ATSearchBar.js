@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useContext} from 'react';
-import { searchInList, searchInDualList, nearestBusStops, getBusStopInfo } from '../../helper_functions';
-import { getjson } from '../../helper_functions'
+import { searchInList, searchInDualList, nearestBusStops, getBusStopInfo } from '../../utils/helper_functions';
+import { getjson } from '../../utils/helper_functions'
 import ATSearchResult from './ATSearchResult';
 import '../stylesheets/busstopcard.css'
 import { ThemeContext } from '../Components/ToggleThemeButton';

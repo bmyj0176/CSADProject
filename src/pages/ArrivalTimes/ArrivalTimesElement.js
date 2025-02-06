@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import BouncyBouncy from '../Components/LoadingIcon';
-import { dict_in_list } from '../../helper_functions2';
+import { dict_in_list } from '../../utils/helper_functions2';
 import "../stylesheets/ATpages/at_list.css";
 
 

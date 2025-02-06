@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getBusTiming } from "../../helper_functions";
+import { getBusTiming } from "../../utils/helper_functions";
 import ArrivalTimesElement from './ArrivalTimesElement';
 import "../stylesheets/ATpages/arrivaltimes.css";
 

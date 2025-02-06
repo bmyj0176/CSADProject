@@ -1,70 +1,122 @@
-# Getting Started with Create React App
+# *nyoom* Travel Site
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![nyoom](https://imgur.com/QHMVLsB)
 
-## Available Scripts
+***Revolutionize Your Travel Experience***
 
-In the project directory, you can run:
+Plan your journeys effortlessly with our all-in-one travel companion! Our platform allows you to track real-time public bus arrival timings, find the shortest and fastest routes to your destination, and stay on top of MRT schedules. With our advanced route optimization algorithm, we combine bus, MRT, and walking options to provide you with the quickest and most efficient way to get where you need to go. Plus, save your favorite routes for easy access and a stress-free commute every time. Whether you're navigating the city for work or play, we’ll make sure you get there faster and smarter.
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 💡 Features
 
-### `npm test`
+### 🔎 Bus Arrival Times
+- Enter a bus stop or bus number to search.
+- We can also help you find bus stops near your you.
+- Get real-time updates on when the next bus will arrive.
+- Set bookmarks to easily access bus times.
+### 🗺️ Travel Routes
+- Enter a bus stop or MRT station to search.
+- Click "Find Routes" to find the shortest route and time taken to your destination.
+- Our algorithm is able to navigate through bus stops, MRT stations and calculate walking distance.
+- Set bookmarks to easily access your route information.
+- Compare with other routes to find the most optimal way to travel.
+### 📢 Announcements
+- Get live announcements on MRT breakdowns & delays.
+- Stay informed on other updates to the site.
+### ⚙️ Miscellaneous
+- Light and Dark mode support.
+- Account-based data saving.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 📦 Installation & Setup
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Install **Node.js** and **npm** [here](https://nodejs.org/en).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+# Clone the repository
+git clone https://github.com/bmyj0176/CSADProject.git
 
-### `npm run eject`
+# Navigate into the project directory
+cd CSADProject
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# Install dependencies
+npm install <package>
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Create a `.env` file in the root directory:
+```plaintext
+REACT_APP_BACKEND_API_URL=http://localhost:5000
+LTA_API_KEY=
+FIREBASE_API_KEY=
+FIREBASE_AUTH_DOMAIN=
+FIREBASE_PROJECT_ID=
+FIREBASE_STORAGE_BUCKET=
+FIREBASE_MESSAGING_SENDER_ID=
+FIREBASE_APP_ID=
+FIREBASE_MEASUREMENT_ID=
+```
+- Change the backend URL accordingly. For local usage, you can use Localhost at port 5000.
+- Request an API key from LTA [here](https://datamall.lta.gov.sg/content/datamall/en/request-for-api.html). 
+- Setup a Web App on [Firebase Console](https://console.firebase.google.com) and insert your credentials.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+## 🛠️ Usage
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+To run the development server:
+```bash
+npm start
+```
+The app will be available at `http://localhost:3000/`.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🏗️ Project Structure
 
-### Analyzing the Bundle Size
+```
+CSADProject/
+│── public/               
+│   ├── datasets/          # Static Data & JSON
+│   ├── images/            # Source Images & Icons
+│   ├── stylesheets/       # Main CSS for Light/Dark Themes
+│── server/
+│   ├── server.js          # Main Entry Point for Backend Functionalities
+│── src/
+│   ├── pages/             # React Components & Pages
+│   │   ├── Components/    # Reusable Components
+│   │   ├── stylesheets/   # CSS Stylesheets
+│   ├── utils/             # Helper Functions & Non-Component JS Code
+│   ├── index.js           # Main App component
+│── package.json           # Dependencies and scripts
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 📨 Get in Touch
 
-### Advanced Configuration
+Report bugs or request features here: [sdmgo15@gmail.com](mailto:sdmgo15@gmail.com)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## ⭐ Credits & Acknowledgements
 
-### `npm run build` fails to minify
+**Main Contributors:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Shaun (Main UI Designer)
+- Bryan (Bus Arrival Times Functionality & Authorisation)
+- Aqil (UI, Announcements & Database)
+- Caleb (Travel Routes Functionality)
+
+**Other Acknowledgements:**
+
+- [LTA DataMall API](https://datamall.lta.gov.sg/content/datamall/en.html)
+- [ourhound](https://ourhound.com/transportations-tips-travelling-around-Singapore) (Icons & Images) 
+- [cheeaun/sgraildata](https://github.com/cheeaun/sgraildata) (Datasets Used)
+
+
+
+---
+
+

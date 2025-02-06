@@ -1,16 +1,19 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc, updateDoc, deleteDoc, doc, onSnapshot } from "firebase/firestore";
 import { getAuth } from "firebase/auth"; // Import Firebase Auth
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 // Firebase configuration object from Firebase Console
 const firebaseConfig = {
-    apiKey: "AIzaSyBYPZemX_EUcIdNISn8qO-VIbXxtabW1Jc",
-    authDomain: "nyoomtravelsite.firebaseapp.com",
-    projectId: "nyoomtravelsite",
-    storageBucket: "nyoomtravelsite.firebasestorage.app",
-    messagingSenderId: "235644167418",
-    appId: "1:235644167418:web:a4b4ff1b45a43fa53fd543",
-    measurementId: "G-HTDRL2TRRW"
+    apiKey: process.env.FIREBASE_API_KEY,
+    authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.FIREBASE_PROJECT_ID,
+    storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.FIREBASE_APP_ID,
+    measurementId: process.env.FIREBASE_MEASUREMENT_ID
   };
   
 // Initialize Firebase

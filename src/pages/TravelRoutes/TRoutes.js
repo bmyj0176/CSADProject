@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
-import { dijkstra, getMap } from "../../travel_algorithms"
-import { cleanMRTStationName, suffixMRTStationName } from "../../helper_functions2"
+import { dijkstra, getMap } from "../../utils/travel_algorithms"
+import { cleanMRTStationName, suffixMRTStationName } from "../../utils/helper_functions2"
 
 // {props.location1.type /* type can be "station" or "busStop" */}<br/>
 // {props.location1.stationCodes}<br/>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getAllBusStops, getBusStopInfo, getAllBusServices, getBusTiming, getBusDirections } from '../../helper_functions'
+import { getAllBusStops, getBusStopInfo, getAllBusServices, getBusTiming, getBusDirections } from '../../utils/helper_functions'
 import BouncyBouncy from '../Components/LoadingIcon';
 import ArrivalTimesElement from './ArrivalTimesElement';
 import "../stylesheets/ATpages/at_list.css";

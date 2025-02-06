@@ -1,4 +1,4 @@
-import { getAllBusStops, getBusStopInfo, getBusTiming, getBusDirections } from '../../helper_functions'
+import { getAllBusStops, getBusStopInfo, getBusTiming, getBusDirections } from '../../utils/helper_functions'
 import React, { useState, useEffect } from 'react';
 import BouncyBouncy from '../Components/LoadingIcon';
 import { ArrivalTimesElement } from './ArrivalTimesList';
