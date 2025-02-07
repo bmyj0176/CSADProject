@@ -63,6 +63,7 @@ letter-spacing: normal;
   left: 157vh;
   z-index: -2; 
   transform: translateX(3.37vh); 
+  overflow-x: hidden;
 }
 
 .blueGraphic.visible {
@@ -99,6 +100,7 @@ letter-spacing: normal;
     top: 155vh;
     z-index: -2;
     opacity:1;
+    overflow-x: hidden;
   }
 
   .blueGraphic2.visible {
