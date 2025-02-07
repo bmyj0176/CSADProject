@@ -42,8 +42,8 @@ async function buildAdjacencyList(time_between_busstops, opp_bus_stops) {
             if (!adjMap[adj_stop_no]) adjMap[adj_stop_no] = {};
             let dist = adj_stop[1];
             dist = dist.toFixed(3);
-            adjMap[stop_no][adj_stop_no] = {dist, bus_num:["walk"]};
-            adjMap[adj_stop_no][stop_no] = {dist, bus_num:["walk"]};
+            adjMap[stop_no][adj_stop_no] = {dist, bus_num:["B2BTransfer"]};
+            adjMap[adj_stop_no][stop_no] = {dist, bus_num:["B2BTransfer"]};
         }
 
     }
@@ -77,7 +77,7 @@ function makebusmap(direction, directions, prev_stop, prev_dist, bus_num, adjMap
         prev_stop = stop;
         prev_dist = busstop[1];
     }
-    
+
     return true;
 }
 

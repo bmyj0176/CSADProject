@@ -14,11 +14,14 @@ console.clear();
 let [busMap, trainMap] = await getAllMaps();
 console.log(busMap[0]["01012"]);
 console.log(trainMap[0]["Choa Chu Kang_NS"]);
-console.log(trainMap);
 
 function mergeMaps(busMap, trainMap, mrtToBus) {
-
+    console.log(mrtToBus);
+    const merged = {...busMap, ...trainMap};
+    console.log(merged);
 }
+
+
 export async function dijkstra() {
     
 }
