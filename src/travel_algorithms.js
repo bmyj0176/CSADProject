@@ -26,6 +26,7 @@ function buildAdjacencyList(time_between_stations, connections) {
 }
 
 function makeTrainMap(stationList, train, adjMap) {
+    let method = [train];
     for (const { s1, s2, time } of stationList) {
         //creating stop if it currently doesnt exist
         if (!adjMap[s1]) adjMap[s1] = {};
@@ -33,11 +34,11 @@ function makeTrainMap(stationList, train, adjMap) {
         
         // if linkage doesnt exist, create it and make train num list
         if (adjMap[s1][s2] === undefined) { // s1 to s2
-            adjMap[s1][s2] = {time, train};
+            adjMap[s1][s2] = {time, method};
         }
 
         if (adjMap[s2][s1] === undefined) { // s2 to s1
-            adjMap[s2][s1] = {time, train};
+            adjMap[s2][s1] = {time, method};
         }
 
     }

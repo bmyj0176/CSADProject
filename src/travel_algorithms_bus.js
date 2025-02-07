@@ -21,12 +21,10 @@ async function buildAdjacencyList(time_between_busstops, opp_bus_stops) {
         if (bus_num.toLowerCase().includes("e")) {continue;} // to remove all express services, no one uses this shit
         let directions = time_between_busstops[bus_num];
         let prev_stop = directions["1"][0][0];
-        let prev_dist = 0;
-        makebusmap("1", directions, prev_stop, prev_dist, bus_num, adjMap);
+        makebusmap("1", directions, prev_stop, bus_num, adjMap);
         if (directions["2"]) {
             prev_stop = directions["1"][directions["1"].length-1][0];
-            prev_dist = 0;
-            makebusmap("2",directions, prev_stop, prev_dist, bus_num, adjMap)
+            makebusmap("2",directions, prev_stop, bus_num, adjMap)
         }
     }
 
@@ -41,37 +39,37 @@ async function buildAdjacencyList(time_between_busstops, opp_bus_stops) {
             let adj_stop_no = adj_stop[0];
             if (!adjMap[adj_stop_no]) adjMap[adj_stop_no] = {};
             let dist = adj_stop[1];
-            dist = dist.toFixed(3);
-            adjMap[stop_no][adj_stop_no] = {dist, bus_num:["B2BTransfer"]};
-            adjMap[adj_stop_no][stop_no] = {dist, bus_num:["B2BTransfer"]};
+            let time = 60 * dist / 4.5;
+            adjMap[stop_no][adj_stop_no] = {time, method:["B2Btransfer"]};
+            adjMap[adj_stop_no][stop_no] = {time, method:["B2Btransfer"]};
         }
 
     }
     return adjMap;     
 }
 
-function makebusmap(direction, directions, prev_stop, prev_dist, bus_num, adjMap) {
+function makebusmap(direction, directions, prev_stop, bus_num, adjMap) {
+    let prev_dist = 0;
     for (const busstop of directions[direction]) {
         let stop = busstop[0];
         let dist = busstop[1]-prev_dist;
-        dist = dist.toFixed(1);
         if (dist === "0.0") {continue;}
-
+        let time = dist/calculateSpeed(dist) * 60;
          //creating stop if it currently doesnt exist
         if (!adjMap[stop]) adjMap[stop] = {};
         if (!adjMap[prev_stop]) adjMap[prev_stop] = {};
 
          // if linkage doesnt exist, create it and make bus num list
         if (adjMap[stop][prev_stop] === undefined) { // s1 to s2
-            adjMap[stop][prev_stop] = {dist, bus_num:[bus_num]};
+            adjMap[stop][prev_stop] = {time, method:[bus_num]};
         } else { // if linkage exists already, add bus num to list.
-            adjMap[stop][prev_stop]["bus_num"].push(bus_num);
+            adjMap[stop][prev_stop]["method"].push(bus_num);
         }
 
         if (adjMap[prev_stop][stop] === undefined) { // s2 to s1
-            adjMap[prev_stop][stop] = {dist, bus_num:[bus_num]};
+            adjMap[prev_stop][stop] = {time, method:[bus_num]};
         } else {
-            adjMap[prev_stop][stop]["bus_num"].push(bus_num);
+            adjMap[prev_stop][stop]["method"].push(bus_num);
         }
         
         prev_stop = stop;
@@ -89,6 +87,11 @@ async function buildCodeToName(bus_stop_info) {
         codeToName[code] = name;
     }
     return codeToName;
+}
+
+function calculateSpeed(distance) {
+    let spd = 20 + 40 * (1 - Math.exp(-0.462 * distance));
+    return spd;
 }
 
 export function dijkstra(graph, start, end, codeToName) {

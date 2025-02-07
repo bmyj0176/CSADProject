@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Outlet, Link, useLocation, useNavigate  } from "react-router-dom";
 import './stylesheets/navbar.css';
 import ToggleThemeButton from './Components/ToggleThemeButton';
-import { bus_stops_info } from '../api_extraction';
+import {  mrt_to_bus2 } from '../api_extraction';
 import { LoginStatusContext } from '../index';
 import '../travel_algorithms_final.js';
 
@@ -25,7 +25,7 @@ const NavBar = () => {
   }
 
   async function test_function() {
-    await bus_stops_info();
+    await  mrt_to_bus2();
   }
 
 
