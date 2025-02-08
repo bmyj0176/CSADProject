@@ -4,6 +4,7 @@ import './stylesheets/navbar.css';
 import ToggleThemeButton from './Components/ToggleThemeButton';
 import { nearestBusStops } from '../utils/helper_functions';
 import { LoginStatusContext } from '../index';
+import { stationToCode } from '../utils/helper_functions';
 import '../utils/travel_algorithms_bus.js';
 
 const NavBar = () => {
@@ -17,21 +18,21 @@ const NavBar = () => {
   }, [location]);
 
   function logout() {
-    localStorage.removeItem('token');
     localStorage.removeItem('username');
+    localStorage.removeItem('email');
+    localStorage.removeItem('token');
     localStorage.removeItem('savedarrivaltimes');
     navigate('/');
     window.location.reload();
   }
 
   async function test_function() {
-    const data = await nearestBusStops(2);
-    console.log(data);
+    console.log(await stationToCode("Woodlands_TE"))
   }
 
 
   return (
-    <>
+    <div id="main-body">
       <ul className="nv">
           <li>
             <Link to="/" className={location.pathname === "/" ? "activee" : ""}><img alt="Homepage" className="nyoom" src="./images/nyoom_icon.png"/*nyoom_icon.png*//></Link>
@@ -75,18 +76,8 @@ const NavBar = () => {
             <Link to="/announcements" className={location.pathname === "/announcements" ? "activee" : ""}>Announcements</Link>
           </li>
       </ul>
-      {/* (path !== "/") &&
-      <div style={{ display: 'flex', height: '100vh' }}>
-        <div style={{ width: '80%', padding: '0 10%' }}>
-          <Outlet />
-        </div>
-      </div>
-      */}
-      {
-        /*(path === "/") && */<Outlet />
-      }
-
-    </>
+      <Outlet />
+    </div>
   )
 };
 

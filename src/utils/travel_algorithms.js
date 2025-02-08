@@ -151,11 +151,9 @@ export function dijkstra(graph, start, end, interchanges) {
     };
     }
 
+    
 
 // running Dijkstra algorithm between the two stations
-
-
-
 
 
 // console.clear();

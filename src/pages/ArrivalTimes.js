@@ -7,6 +7,7 @@ import ArrivalTimesList from "./ArrivalTimes/ArrivalTimesList";
 import SavedArrivalTimes from "./ArrivalTimes/SavedArrivalTimes";
 import ArrivalTimesElement from "./ArrivalTimes/ArrivalTimesElement";
 
+
 const ArrivalTimes = () => {
   const [toggles, setToggles] = useState({
     busNo: null,
@@ -228,6 +229,7 @@ const ArrivalTimes = () => {
         receiveSearchResult={receiveSearchResult}
         favedItems={favedItems}
         onFavItem={onFavItem} />}
+
       </li>
      {(showFav) &&  <li>   
       <SavedArrivalTimes 

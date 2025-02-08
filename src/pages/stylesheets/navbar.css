@@ -1,3 +1,7 @@
+#main-body {
+  overflow-x: hidden;
+}
+
 /*navbar properties*/
 .nv {
   display: 'flex';

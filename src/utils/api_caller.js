@@ -40,3 +40,12 @@ export async function TrainAlertsService() {
   }
   return null
 }
+
+export async function OnemapSearch(searchVal) {
+  try {
+    const response = await axios.get(`${process.env.REACT_APP_BACKEND_API_URL}/api/onemap-search?searchVal=${searchVal}`);
+    return response.data;
+  } catch (error) {
+    console.error('Onemap Search API Call Failed: ', error);
+  }
+}

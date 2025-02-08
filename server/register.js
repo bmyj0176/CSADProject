@@ -20,6 +20,7 @@ router.post('/register', async (req, res) => {
     const userRef = doc(db, 'users', user.uid);
     await setDoc(userRef, {
       username,
+      email,
       savedarrivaltimes: savedarrivaltimes
     });
 

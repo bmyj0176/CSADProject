@@ -46,8 +46,9 @@ function Register() {
           savedarrivaltimes: savedarrivaltimes || []
         }
         const response = await axios.post(`${process.env.REACT_APP_BACKEND_API_URL}/auth/register`, data);
-        localStorage.setItem('token', response.data.token);
+        localStorage.setItem('email', email);
         localStorage.setItem('username', username);
+        localStorage.setItem('token', response.data.token);
         console.log('Registration successful');
         navigate("/");
         window.location.reload();

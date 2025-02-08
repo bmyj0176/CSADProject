@@ -12,6 +12,7 @@ const ArrivalTimesList = (props) => {
     const [stopNamesList, setStopNamesList] = useState([])
     const [servicesList, setServicesList] = useState([])
     const [timesListList, setTimesListList] = useState([])
+    
 
     // updates list when props updates
     useEffect(() => {
@@ -22,6 +23,7 @@ const ArrivalTimesList = (props) => {
             setServicesList([]);
             setTimesListList([]);
         }
+        
         const updateLists = async () => {
             if (props.data.type === "busNo") {
                 const busService = props.data.busService
@@ -73,8 +75,59 @@ const ArrivalTimesList = (props) => {
             setTimesListList(newBusTimes)
         }
 
+
+        
+        // const List2 = () =>{
+        //     return (
+        //         <>
+        
+        //         <h2>{
+        //             (props.data.type === "busNo") 
+        //             ?
+        //             "Bus " + props.data.busService
+        //             :
+        //             props.data.busStopName
+        //         }</h2>
+        //         {
+        //             (stopNamesList.length === stopCodesList.length && stopCodesList.length === servicesList.length) ? // finished loading
+        //             (
+        //                 <>
+        //                 <BusDirectionToggleButton 
+        //                 direction={direction}
+        //                 directionalData={directionalData} 
+        //                 toggleDirection={toggleDirection}/>
+        //                 <div className="list">
+        //                 {Array.from({ length: stopCodesList.length }, (_, index) => (
+        //                   <div key={index} className="bar">
+        //                     <ul><li>
+        //                         <ArrivalTimesElement 
+        //                         type={props.data.type === "busNo" ? "busStop" : "busNo"}
+        //                         busStopCode={stopCodesList[index]} 
+        //                         busStopName={stopNamesList[index]}
+        //                         busService={servicesList[index]}
+        //                         busTimesList={timesListList[index]}
+        //                         updateBusTimes={() => updateBusTimes(index)}
+        //                         receiveSearchResult={props.receiveSearchResult}
+        //                         favedItems={props.favedItems}
+        //                         onFavItem={props.onFavItem} />
+        //                     </li></ul>
+        //                   </div>
+        //                 ))}
+        //               </div>
+        //               </>
+        //             ) :
+        //             (
+        //                 <BouncyBouncy/>
+        //             )
+        //         }
+           
+        //         </>
+        //     )
+        // }
+
     return (
         <>
+
         <h2>{
             (props.data.type === "busNo") 
             ?
@@ -114,6 +167,7 @@ const ArrivalTimesList = (props) => {
                 <BouncyBouncy/>
             )
         }
+
         </>
     )
 };

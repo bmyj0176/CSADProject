@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import BouncyBouncy from '../Components/LoadingIcon';
 import { dict_in_list } from '../../utils/helper_functions2';
 import "../stylesheets/ATpages/at_list.css";
+import  ArrivalTimesList  from './ArrivalTimesList';
 
 
 const ArrivalTimesElement = (props) => {
@@ -16,6 +17,8 @@ const ArrivalTimesElement = (props) => {
         'selected' :
         'unselected'
       });
+
+    const [popupState, setPopupState] = useState(false)
     
     useEffect(() => {
         setData(
@@ -43,9 +46,15 @@ const ArrivalTimesElement = (props) => {
                     busStopName: props.busStopName,
                     busStopCode: props.busStopCode
                 }
+               
             )
+            
         }
+        
     }
+
+    
+
 
     const onTimesClick = (e) => {
         e.stopPropagation();
@@ -58,6 +67,8 @@ const ArrivalTimesElement = (props) => {
         setFavItem((prevState) => (prevState === 'selected' ? 'unselected' : 'selected')); // toggle
       };
 
+    
+
     return (
     <>
         <div 
@@ -69,7 +80,8 @@ const ArrivalTimesElement = (props) => {
                 <>
                     {/* CASE: A Bus Stop on a Buses' Route */}
                     <h2>{props.busStopName}</h2>
-                    <h4>{props.busStopCode}</h4>
+                    <h4>{props.busStopCode}</h4>    
+
                 </>
                 :
                 <>
@@ -81,6 +93,7 @@ const ArrivalTimesElement = (props) => {
                     {/* CASE: A Hybrid Display for Bookmarked ArrivalTimes */}
                     <h2 className="hello">{"Bus " + props.busService}</h2>
                     <h4>{"@ " + props.busStopName}</h4>
+
                 </>
             }
             <div className='listbutton'>
@@ -99,7 +112,7 @@ const ArrivalTimesElement = (props) => {
                 </button>
                 {props.busTimesList && "mins"}
             </div>
-            <StarButton
+            <StarButton 
             type={props.type}
             className='star'
             handleFav={handleFav}

@@ -11,7 +11,6 @@ import Popup from "./Components/Popup";
 
 const Homepage = () => {
   const {userLoggedIn, setUserLoggedIn} = useContext(LoginStatusContext);
-  const [favorites, setFavorites] = useState([]);
   const [slideIndex, setSlideIndex] = useState(0); // Toggle state
   const [fade, setFade] = useState(false);  // Controls fade animation
   const [throwPopup, setThrowPopup] = useState(false)
@@ -185,7 +184,7 @@ const Homepage = () => {
     )
   }
 
-  const emails = [
+  const emails = [ 
     { id: 1, class: "classText", class2: "classTextText", email: 'sdmgo15@gmail.com', lnkemail: 'sdmgo15@gmail.com' },
     { id: 2, class: "classText2", class2: "classTextText2", email: 'bryuhh1234@rp.edu.sg', lnkemail: 'bryuh1234@gmail.com' },
     { id: 3, class: "classText3", class2: "classTextText3",email: 'agilbinla@yahoo.com', lnkemail: 'aquil@gmail.com' },
@@ -267,7 +266,21 @@ const EndDiv =() =>{
        <li> <button className="Site-Homepage"onClick={()=>{document.getElementById("slide").scrollIntoView({behavior: "smooth"});}}>Homepage</button> </li>
        <li> <Link to='/arrivaltimes'>Arrival Times</Link> </li>
        <li> <Link to='/travelroutes'>Travel Routes</Link> </li>
-       <li> <Link to='/announcements'>Announcements</Link> </li>
+       <li> <Link to='/announcements'>&nbsp;Announcements</Link> 
+       <Link><span
+        style={{
+          width: "100px",
+          height: "50px",
+          background: "transparent",
+          border: "none",
+          cursor: "pointer",
+        }}
+        onClick={() => {
+          const audio = new Audio("./audio/bad_piggies_drip.mp3"); // Replace with actual path
+          audio.play();
+        }}
+        >&nbsp;
+        </span></Link></li>
       </ul>
 
     </div>
@@ -277,8 +290,7 @@ const EndDiv =() =>{
 }
   
   return (
-      <>
-
+      <>  
       <div id = 'slide' className={`fade ${fade ? "fade-out" : "fade-in"}`}>
         {slides[slideIndex]}
       </div>
