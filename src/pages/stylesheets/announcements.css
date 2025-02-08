@@ -1,5 +1,4 @@
 .ANpanel {
-    border: solid whitesmoke 2px;
     border-radius: 5px;
     align-items: center;
     text-align: center;
@@ -14,4 +13,8 @@
 .msg {
     border-radius: 5px;
     margin-bottom: 5px;
+}
+
+.add {
+    margin-left: 40%;
 }

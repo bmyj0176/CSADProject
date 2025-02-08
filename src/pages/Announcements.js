@@ -110,7 +110,7 @@ const Announcements = () => {
         </ul>
       </div>
       {isAdmin && (
-        <div>
+        <div className="add">
           <input
             type="text"
             value={newAnnouncement}
