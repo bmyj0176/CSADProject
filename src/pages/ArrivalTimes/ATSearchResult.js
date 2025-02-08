@@ -88,10 +88,12 @@ const ATSearchResult = (props) => {
   }, []);
 
     const handleClick = () => {
+      
+
       props.setSelectedList(props.receiver)
       props.onItemSelect(props.index)
       props.receiveSearchResult(props.dict)
-      localStorage.setItem("newKey", props.receiveSearchResult(props.dict)); // Save new key-value pair
+     
     };
   
     useEffect(()=>{
