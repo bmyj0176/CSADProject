@@ -33,7 +33,7 @@ async function mergeMaps(busMap, trainMap, mrtToBus) {
 }
 
 
-export function dijkstra(graph, start, end, codeToName, interchanges, options) {
+export async function dijkstra(graph, start, end, codeToName, interchanges, options) {
     // Create an object to store the shortest distance from the start node to every other node
     let distances = {};
     let predecessors = {}; // Map to store the predecessor of each node for route reconstruction
@@ -75,20 +75,14 @@ export function dijkstra(graph, start, end, codeToName, interchanges, options) {
                 if (method.some(item => /\d/.test(item))) { // check if method is bus
                     if (predecessors[currentNode]) { //if not starting node
                         let prevBusUsed = predecessors[currentNode][1];
-                        
-                        if (currentNode === "93149") { // test area
-                            console.log(neighbour, method, prevBusUsed);
-                            console.log("time", neighbouringDistance, totalDistance)
-                            let x = predecessors[currentNode][1].filter(item => method.includes(item));
-                            console.log(structuredClone(x));
-                        }
-                        
-
                         filteredBus = prevBusUsed.filter(item => method.includes(item));
                         if (filteredBus.length === 0) {
-                            totalDistance += 8; // 5/2/25 HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+                            if (!prevBusUsed.includes("TBtransfer") && !prevBusUsed.includes("BBtransfer")) {
+                                totalDistance += 8; // 5/2/25 HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+                                neighbouringDistance += 8;
+                            }
                             filteredBus = method;
-                         }
+                        }
                     } else { // if starting node
                         filteredBus = method;
                     }
@@ -101,6 +95,7 @@ export function dijkstra(graph, start, end, codeToName, interchanges, options) {
                 //checking if method is transfers
                 else if (method[0].includes("BBtransfer") || method[0].includes("TBtransfer") || method[0].includes("BTtransfer")) {
                     totalDistance += 8;
+                    neighbouringDistance += 8;
                     filteredBus = method;
                 } else if (method[0].includes("TTtransfer")) {
                     filteredBus = method;
@@ -109,85 +104,93 @@ export function dijkstra(graph, start, end, codeToName, interchanges, options) {
                 // If the newly calculated distance is shorter than the previously known distance to this neighbour
                 if (totalDistance < distances[neighbour]) {
                     distances[neighbour] = totalDistance;
-                    predecessors[neighbour] = [currentNode, filteredBus]; // Update predecessor
+                    predecessors[neighbour] = [currentNode, filteredBus, neighbouringDistance]; // Update predecessor
                 }
             }
         }
     }
 
-    console.log("predecessors", predecessors);
-    console.log(graph[44141]);
-    console.log("distances", distances);
+    // console.log("predecessors", predecessors);
+    // console.log("distances", distances);
     // If the end node is unreachable
     if (distances[end] === Infinity) {
         return `No route from ${start} to ${end}.`;
     } 
     
-    // Reconstruct the shortest route from start to end using the predecessors map
+    // Reconstruct the shortest route from end to start using the predecessors map
     let route = new Map();
     let current = end;
     while (current) {
         if (predecessors[current] == null) {route.set(current, []); break;}
-        route.set(current, predecessors[current][1]);
+        route.set(current, [predecessors[current][1], distances[current], predecessors[current][2]]);
         current = predecessors[current][0];
     }
+    let flippedRoute = new Map([...route].reverse());
 
     let transferCount = Math.round(distances[end] / 10000); // 5/2/25 find 2 routes, 1 least transfers, 1 fastest
     let subTime = Number((distances[end] % 10000).toFixed(2));
-    console.log(transferCount, subTime);
+    // console.log(transferCount, subTime);
     let finalTimeTaken = subTime + 6 * transferCount;
     //console.log(JSON.stringify(route, null, 2));
 
     //showing the route as only transfers
 
     let simple_route = new Map();
-    let busUsed = [];
+    let busUsed = route.get(end)[0];
     let noOfStops = 1;
     let prev_stop = end;
-    let prev_value = [];
+    let prev_value = [busUsed];
+    let prev_dist = distances[end];
+    simple_route.set(prev_stop, prev_value);
     for (let [key, value] of route) {// add end to simple_route
-        if (busNotInList(value, busUsed)) {
-            simple_route.set(key, [value, 0]);
-            if (key !== end) {
-                prev_value = simple_route.get(prev_stop);
-                if (prev_value[0][0] === "walk"){
-                    prev_value[1] = graph[key][prev_stop]["dist"];
-                } else {
-                    prev_value[1] = noOfStops;
-                }
-                simple_route.set(prev_stop, prev_value)
-            }
-            busUsed = value;
-            noOfStops = 1;
-            prev_stop = key;
-        } else {noOfStops += 1;}
-    }
-    console.log("end at", codeToName[end]); 
-    for (let [key, value] of simple_route) {
-        let stopName = codeToName[key];
         if (key !== start) {
-            if (value[0][0] === "walk") { // to implement walking between stops or stations
-                let dist = Number(value[1]) * 1000;
-                console.log("walk for", dist + "m to", stopName + ", stop ID", key);
-            } else{
-            console.log("take bus number", value[0].join(" or "), "to", stopName + ", stop ID", key + ", for", value[1], "stops");
-            }
-        } else {console.log("start at", stopName)}
-    }
+            console.log(value);
+            if (busNotInList(value[0], busUsed)) {
+                simple_route.set(key, [value[0]]);
+                prev_value = simple_route.get(prev_stop);
+                prev_dist = route.get(prev_stop)[1];
+                prev_value[1] = prev_dist - distances[key];
+                prev_value[2] = noOfStops;
+                simple_route.set(prev_stop, prev_value);
 
+                prev_stop = key; // reset all counters
+                busUsed = value[0];
+                noOfStops = 1;
+            } else {noOfStops += 1;}
+        } else if (key === start ) {
+            prev_value = simple_route.get(prev_stop);
+            prev_dist = route.get(prev_stop)[1];
+            prev_value[1] = prev_dist - distances[key];
+            prev_value[2] = noOfStops;
+            simple_route.set(prev_stop, prev_value);
+        }
+    } simple_route.set(start, []);
 
-
+    let flippedSimpleRoute = new Map([...simple_route].reverse());
     // Return both the shortest distance and the route
     return {
         time_taken: distances[end],
-        route: route,
-        simple_route: simple_route
+        route: flippedRoute,
+        simple_route: flippedSimpleRoute,
     };
 }
 
 function busNotInList(value, busUsed) {
     return (value.every(item => !busUsed.includes(item)))
 }
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// ⬛⬛🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟩🟩
+// ⬛⬛🟩⬛⬛⬛🟩⬛🟨🟨🟨🟩🟩
+// ⬛⬛⬛🟨⬛⬛⬛🟨🟧🟨🟧
+// 🟨🟨🟨🟨🟨🟥🟨🟨🟨🟧🟨🟩🟩
+// 🟨🟥🟥🟥🟥🟨🟨🟨🟧🟨🟧🟩🟩
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ⬛️⬛️⬛🟨⬜️⬜️⬜️⬜️⬜️🟨🟨
+// 🟨🟨⬛️🟨⬜️⬜️⬜️⬜️⬜️🟨🟨⬛🟨🟨
+// 🟨🟨⬛️🟨⬜️⬜️⬜️⬜️⬜️🟨🟨⬛🟨🟨
+
 
 async function run() {
     console.clear();
@@ -202,5 +205,3 @@ async function run() {
     let timeTaken = endTime - startTime;
     console.log("Total time taken : " + timeTaken + " milliseconds");
 }
-
-run();

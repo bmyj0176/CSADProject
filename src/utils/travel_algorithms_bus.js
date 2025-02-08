@@ -70,19 +70,12 @@ function makebusmap(direction, directions, prev_stop, bus_num, adjMap) {
 
 
          //creating stop if it currently doesnt exist
-        if (!adjMap[stop]) adjMap[stop] = {};
         if (!adjMap[prev_stop]) adjMap[prev_stop] = {};
 
          // if linkage doesnt exist, create it and make bus num list
-        if (!adjMap[stop][prev_stop]) { // s1 to s2
-            adjMap[stop][prev_stop] = {time, method:[bus_num]};
-        } else { // if linkage exists already, add bus num to list.
-            adjMap[stop][prev_stop]["method"].push(bus_num);
-        }
-
-        if (!adjMap[prev_stop][stop]) { // s2 to s1
+        if (!adjMap[prev_stop][stop]) { // s1 to s2
             adjMap[prev_stop][stop] = {time, method:[bus_num]};
-        } else {
+        } else { // if linkage exists already, add bus num to list.
             adjMap[prev_stop][stop]["method"].push(bus_num);
         }
         
@@ -251,7 +244,7 @@ function busNotInList(value, busUsed) {
 // running Dijkstra algorithm between the two stations
 
 
-export async function runshit() {
+export async function run() {
     console.clear();
     let startTime = performance.now();
     let [map, codeToName] = await getBusMap();
@@ -265,4 +258,4 @@ export async function runshit() {
     console.log("Total time taken : " + timeTaken + " milliseconds");
 }
 
-// runshit();
+// run();

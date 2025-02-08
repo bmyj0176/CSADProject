@@ -37,6 +37,7 @@ const ArrivalTimes = () => {
   };
 
   useEffect(() => {
+
     const storedSearches = JSON.parse(localStorage.getItem("recentSearches")) || [];
     setRecentSearches(storedSearches); // Safely load data from localStorage
   }, []);

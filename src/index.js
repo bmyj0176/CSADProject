@@ -10,7 +10,6 @@ import Login from "./pages/Login"
 import Register from "./pages/Register"
 import NoPage from "./pages/Page404.js";
 import Announcements from "./pages/Announcements.js";
-import GetStarted from './pages/GetStarted.js';
 import React, { useState, useEffect, createContext } from "react";
 
 export const LoginStatusContext = createContext();
@@ -50,7 +49,6 @@ export default function App() {
               <Route path="register" element={<Register />} />
               <Route path="*" element={<NoPage />} />
               <Route path="announcements" element={<Announcements />} />
-              <Route path="getstarted" element={<GetStarted />} />
               </Route> {/*End of branch of NavBar*/}
           </Routes> 
         </BrowserRouter>
