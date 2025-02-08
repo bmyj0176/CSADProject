@@ -76,7 +76,7 @@ const ArrivalTimesElement = (props) => {
         className="atlist"
         onClick={onDivClick}>
             {(props.type) ?
-                (props.type === "busNo") ?
+                (props.type === "busStop") ?
                 <>
                     {/* CASE: A Bus Stop on a Buses' Route */}
                     <h2>{props.busStopName}</h2>
