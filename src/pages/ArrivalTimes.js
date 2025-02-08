@@ -18,6 +18,7 @@ const ArrivalTimes = () => {
   const [throwPopup, setThrowPopup] = useState(false)
   const [searchResult, setSearchResult] = useState(null)
   const [selectedItem, setSelectedItem] = useState(null)
+  const [recentSearches, setRecentSearches] = useState([])
   const [showFav, setShowFav] = useState(false)
   const [selectedList, setSelectedList] = useState(-1) // "ATSearchBar" vs "SavedArrivalTimes"
   const [favedItems, setFavedItems] = useState(() => {
@@ -26,6 +27,17 @@ const ArrivalTimes = () => {
       return []
     return JSON.parse(storedFavedItems)
   })
+
+  const addSearchResult = (searchResult) => {
+    const updatedList = [...recentSearches, searchResult];
+    localStorage.setItem("recentSearches", JSON.stringify(updatedList));
+    setRecentSearches(updatedList);
+  };
+
+  useEffect(() => {
+    const storedSearches = JSON.parse(localStorage.getItem("recentSearches")) || [];
+    setRecentSearches(storedSearches);
+  }, []);
 
   const onItemSelect = (index) => {
     setSelectedItem(index)
@@ -37,8 +49,6 @@ const ArrivalTimes = () => {
       console.log(showFav);
     };
   
-  
-
   const { isDarkTheme } = useContext(ThemeContext);
 
   const onFavItem = (dict, doAdd) => {
@@ -106,6 +116,7 @@ const ArrivalTimes = () => {
 
   const receiveSearchResult = (value) => {
     setSearchResult(value);
+    
   };
 
   const defaultStyle = {
@@ -153,8 +164,11 @@ const ArrivalTimes = () => {
 )
   }
 
+
+
   return (
     <>
+     
       <div>
         {throwPopup && <Popup/>}
       </div>
@@ -162,9 +176,11 @@ const ArrivalTimes = () => {
       
       <li  className="searchCol" id='scroll'>
       <div className="Checkbox-container">
+      {searchResult &&
+        <button onClick={() => addSearchResult(searchResult)}>hi</button> }
         <CheckBox />
       </div>
-
+    
       <ATSearchBar
           selectedList={selectedList}
           setSelectedList={setSelectedList}
@@ -218,17 +234,28 @@ const ArrivalTimes = () => {
           selectedItem={selectedItem}
           onItemSelect={onItemSelect}
         /> */
+        
         <button onClick={toggleFaved}>HELLO</button>}
       </li>
 
+    
+      {/*(searchResult) console log it first its a dict/object not a value so its causing error :3:3*/}
+
       <li className='scroll'>
-        Click to refresh
-        {searchResult && 
-        <ArrivalTimesList 
-        data={searchResult}
-        receiveSearchResult={receiveSearchResult}
-        favedItems={favedItems}
-        onFavItem={onFavItem} />}
+        {searchResult ?
+        <>
+          Click to refresh
+          <ArrivalTimesList 
+          data={searchResult}
+          receiveSearchResult={receiveSearchResult}
+          favedItems={favedItems}
+          onFavItem={onFavItem} />
+        </>
+        :
+        <>
+          Search for a Bus Stop or Service to get Started!
+        </>
+      }
 
       </li>
      {(showFav) &&  <li>   
@@ -237,33 +264,6 @@ const ArrivalTimes = () => {
         onFavItem={onFavItem}
         page="Favourited List"
       />
-      <h3 style={{color: "red"}}>EXAMPLE: A bus stop</h3>
-        <ArrivalTimesElement
-        type={"busNo"}
-        busStopCode={"69420"}
-        busStopName={"Domingo Compound"}
-        busTimesList={["Now", "7", "13"]}
-        receiveSearchResult={()=>{}}
-        favedItems={favedItems}
-        onFavItem={()=>{}}/>
-        <h3 style={{color: "red"}}>EXAMPLE: A bus arriving @ bus stop</h3>
-        <ArrivalTimesElement
-        type={"busStop"}
-        busService={"911"}
-        busTimesList={null}
-        receiveSearchResult={()=>{}}
-        favedItems={favedItems}
-        onFavItem={()=>{}}/>
-        <h3 style={{color: "red"}}>EXAMPLE: Bookmarked ArrivalTime (hybrid)</h3>
-        <ArrivalTimesElement
-        type={null}
-        busStopCode={"69420"}
-        busStopName={"Domingo Compound"}
-        busService={"911"}
-        busTimesList={["2", "11", "-"]}
-        receiveSearchResult={()=>{}}
-        favedItems={favedItems}
-        onFavItem={()=>{}}/>
       {
         favedItems.map((favedItems, index) => (
           <div key={index}>{favedItems[index]}</div>

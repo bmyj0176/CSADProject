@@ -1,32 +1,52 @@
-import { db, collection, addDoc, getDocs } from "./firebase";
+import express from 'express';
+import { db } from "./firebase";
+import { collection, addDoc, getDocs } from 'firebase/firestore';  // Firestore functions
 
+const router = express.Router();
 const ANNOUNCEMENTS_KEY = "announcements";
 
-// Save announcements to localStorage
-const saveToLocalStorage = (announcements) => {
-  localStorage.setItem(ANNOUNCEMENTS_KEY, JSON.stringify(announcements));
-};
+router.post('/announcements', async (req, res) => {
+  const { announcements, newAnnouncement } = req.body;
 
-// Fetch announcements from Firebase & store in localStorage
-export const fetchAnnouncements = async () => {
-  const querySnapshot = await getDocs(collection(db, "announcements"));
-  const announcements = querySnapshot.docs.map((doc) => ({
-    id: doc.id,
-    ...doc.data(),
-  }));
+    // Save to localStorage
+    const saveToLocalStorage = (announcements) => {
+      localStorage.setItem(ANNOUNCEMENTS_KEY, JSON.stringify(announcements));
+    };
 
-  saveToLocalStorage(announcements);
-  return announcements;
-};
+    // Fetch announcements from Firebase & store in localStorage
+    const fetchAnnouncementsFromFirebase = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "announcements"));
+        const announcements = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
 
-// Add announcement to Firebase & sync with localStorage
-export const addAnnouncement = async (text) => {
-  const newAnnouncement = { text, timestamp: Date.now() };
-  await addDoc(collection(db, "announcements"), newAnnouncement);
-  fetchAnnouncements(); // Refresh localStorage
-};
+        saveToLocalStorage(announcements);
+        return announcements;
+      } catch (error) {
+        console.error("Error fetching announcements:", error);
+        return JSON.parse(localStorage.getItem(ANNOUNCEMENTS_KEY)) || [];
+      }
+    };
 
-// Get announcements from localStorage
-export const getLocalAnnouncements = () => {
-  return JSON.parse(localStorage.getItem(ANNOUNCEMENTS_KEY)) || [];
-};
+    // Add an announcement to Firebase & update localStorage
+    const addAnnouncementToFirebase = async (text) => {
+      try {
+        const newAnnouncement = { text, timestamp: Date.now() };
+        await addDoc(collection(db, "announcements"), newAnnouncement);
+        return fetchAnnouncementsFromFirebase(); // Refresh localStorage
+      } catch (error) {
+        console.error("Error adding announcement:", error);
+        return JSON.parse(localStorage.getItem(ANNOUNCEMENTS_KEY)) || [];
+      }
+    };
+
+    // Get announcements from localStorage
+    const getLocalAnnouncements = () => {
+      return JSON.parse(localStorage.getItem(ANNOUNCEMENTS_KEY)) || [];
+    };
+  
+});
+
+export default router;

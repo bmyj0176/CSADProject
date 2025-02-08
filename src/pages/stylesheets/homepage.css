@@ -1170,7 +1170,6 @@ letter-spacing: normal;
 
 .credits{
   position: relative;
-  margin-top: 20vh; /* Adjusted for better responsiveness */
   background-color: rgb(51, 169, 212);
   padding-bottom: 54vh; /* Adjusted for better responsiveness */
   max-width: 100%;

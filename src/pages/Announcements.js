@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import BouncyBouncy from './Components/LoadingIcon.js';
 import { TrainAlertsService } from "../utils/api_caller.js";
 import "./stylesheets/announcements.css";
+import axios from "axios";
 
 const Announcements = () => {
   const [messages, setMessages] = useState([]);
@@ -16,6 +17,25 @@ const Announcements = () => {
     return (email === "nyoom123@gmail.com")
   }
   )
+
+  useEffect(() => {
+    const fetchTrainAlerts = async () => {
+      try {
+        const response = await axios.post(`${process.env.REACT_APP_BACKEND_API_URL}/announcements`, { 
+          announcements: announcements,
+          newAnnouncement: newAnnouncement,
+         });
+        localStorage.setItem('announcements', response.data.announcements);
+        console.log('Announcements successful');
+        window.location.reload();
+      } catch (error) {
+        console.error(error);
+        console.log('Announcements failed'); 
+      }
+    };
+
+    fetchTrainAlerts();
+  }, []);
 
   useEffect(() => {
     const fetchTrainAlerts = async () => {

@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, updateDoc, deleteDoc, doc, onSnapshot } from "firebase/firestore";
+import { getFirestore, collection, addDoc, getDocs, updateDoc, deleteDoc, doc, onSnapshot } from "firebase/firestore";
 import { getAuth } from "firebase/auth"; // Import Firebase Auth
 import dotenv from 'dotenv';
 
@@ -25,4 +25,4 @@ const auth = getAuth(app);
 // Initialize Firestore
 const db = getFirestore(app);
 
-export { db, auth, collection, addDoc, updateDoc, deleteDoc, doc, onSnapshot }; // Export both Firestore and Auth
+export { db, auth }; // Export both Firestore and Auth

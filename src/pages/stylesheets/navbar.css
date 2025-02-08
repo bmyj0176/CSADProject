@@ -121,8 +121,13 @@
 }
 
 .nv a .activee, .nv a #activee {
+  height: 100%;
   font-weight: bold;
   text-decoration: underline;
+}
+
+.nv-item {
+  height: 100%
 }
 
 .nv .nyoom{  

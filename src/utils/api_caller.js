@@ -33,7 +33,7 @@ export async function BusStops(skipIndex) {
 
 export async function TrainAlertsService() {
   try {
-    const response = await axios.get(`${process.env.REACT_APP_BACKEND_API_URL}/api/announcements`);
+    const response = await axios.get(`${process.env.REACT_APP_BACKEND_API_URL}/api/train_alerts`);
     return response.data;
   } catch (error) {
     console.error('TrainAlertsService API Call Failed: ', error);

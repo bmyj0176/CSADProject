@@ -38,19 +38,17 @@ const ArrivalTimesElement = (props) => {
     }, [props.favedItems])
 
     const onDivClick = () => {
+        setPopupState((prevState) => !(prevState))
         if (props.type) {
-            props.receiveSearchResult(
+            props.passSearchResult(
                 {
                     type: (props.type === "busNo") ? "busStop" : "busNo", // invert type
                     busService: props.busService,
                     busStopName: props.busStopName,
-                    busStopCode: props.busStopCode
-                }
-               
+                    busStopCode: props.busStopCode,
+                }  
             )
-            
         }
-        
     }
 
     
@@ -76,7 +74,7 @@ const ArrivalTimesElement = (props) => {
         className="atlist"
         onClick={onDivClick}>
             {(props.type) ?
-                (props.type === "busStop") ?
+                (props.type === "busNo") ?
                 <>
                     {/* CASE: A Bus Stop on a Buses' Route */}
                     <h2>{props.busStopName}</h2>
