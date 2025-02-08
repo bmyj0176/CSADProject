@@ -2,7 +2,7 @@ import { getjson } from "./helper_functions"
 
 
 
-export async function getMap() {
+export async function getTrainMap() {
     let train_transfer = await getjson('./datasets/platform.json');
     let train_paths = await getjson('./datasets/station.json');
     let interchanges = await getjson('./datasets/interchanges.json');
@@ -15,29 +15,35 @@ function buildAdjacencyList(time_between_stations, connections) {
     const adjMap = {};
 
     for (let i in time_between_stations){ //adding time between stations
-        let x = time_between_stations[i]["stations"]
-        for (const { s1, s2, time } of x) {
-            // Add connection from s1 to s2
-            if (!adjMap[s1]) adjMap[s1] = {};
-            adjMap[s1][s2] = time;
-    
-            // Add connection from s2 to s1
-            if (!adjMap[s2]) adjMap[s2] = {};
-            adjMap[s2][s1] = time;
-        }
+        let stationList = time_between_stations[i]["stations"];
+        let trainLine = time_between_stations[i]["line"];
+        makeTrainMap(stationList, trainLine, adjMap);
     }
     
-    for (const { p1, p2, time } of connections) { //adding cross platform transfers
-        // Add connection from s1 to s2
-        if (!adjMap[p1]) adjMap[p1] = {};
-        adjMap[p1][p2] = time;
-
-        // Add connection from s2 to s1
-        if (!adjMap[p2]) adjMap[p2] = {};
-        adjMap[p2][p1] = time;
-    }
+    makeTrainMap(connections, "TTtransfer", adjMap); //adding cross platform transfers
 
     return adjMap;
+}
+
+function makeTrainMap(stationList, train, adjMap) {
+    let method = [train];
+    for (const { s1, s2, time } of stationList) {
+        //creating stop if it currently doesnt exist
+        if (!adjMap[s1]) adjMap[s1] = {};
+        if (!adjMap[s2]) adjMap[s2] = {};
+        
+        // if linkage doesnt exist, create it and make train num list
+        if (adjMap[s1][s2] === undefined) { // s1 to s2
+            adjMap[s1][s2] = {time, method};
+        }
+
+        if (adjMap[s2][s1] === undefined) { // s2 to s1
+            adjMap[s2][s1] = {time, method};
+        }
+
+    }
+
+    return true;
 }
 
 export function dijkstra(graph, start, end, interchanges) {
@@ -157,7 +163,7 @@ export function dijkstra(graph, start, end, interchanges) {
 
 
 // console.clear();
-// let [map, interchanges] = await getMap();
+// let [map, interchanges] = await getTrainMap();
 
 // let longest = Infinity;
 // let longestroute = [];
