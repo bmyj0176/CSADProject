@@ -57,7 +57,7 @@ FIREBASE_MESSAGING_SENDER_ID=
 FIREBASE_APP_ID=
 FIREBASE_MEASUREMENT_ID=
 ```
-- Change the backend URL accordingly. For local usage, you can use Localhost at port 5000.
+- You can change the backend API URL but you have to expose port 5000 or manually reconfigure to other ports.
 - Request an API key from LTA [here](https://datamall.lta.gov.sg/content/datamall/en/request-for-api.html). 
 - Setup a Web App on [Firebase Console](https://console.firebase.google.com) and insert your credentials.
 
