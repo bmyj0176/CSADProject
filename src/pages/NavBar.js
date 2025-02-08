@@ -6,7 +6,6 @@ import { nearestBusStops } from '../utils/helper_functions';
 import { LoginStatusContext } from '../index';
 import { stationToCode } from '../utils/helper_functions';
 import { EndDiv } from './Homepage.js';
-import '../utils/travel_algorithms_bus.js';
 
 const NavBar = () => {
   const {userLoggedIn, setUserLoggedIn} = useContext(LoginStatusContext);
