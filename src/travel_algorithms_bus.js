@@ -38,10 +38,15 @@ async function buildAdjacencyList(time_between_busstops, opp_bus_stops) {
         for (let adj_stop of stop_data) { // adding the thing for real
             let adj_stop_no = adj_stop[0];
             if (!adjMap[adj_stop_no]) adjMap[adj_stop_no] = {};
+            if (!adjMap[stop_no]) adjMap[stop_no] = {};
             let dist = adj_stop[1];
             let time = 60 * dist / 4.5;
-            adjMap[stop_no][adj_stop_no] = {time, method:["B2Btransfer"]};
-            adjMap[adj_stop_no][stop_no] = {time, method:["B2Btransfer"]};
+            if (!adjMap[stop_no][adj_stop_no]) {
+                adjMap[stop_no][adj_stop_no] = {time, method:["BBtransfer"]};
+            }
+            if (!adjMap[adj_stop_no][stop_no]) {
+            adjMap[adj_stop_no][stop_no] = {time, method:["BBtransfer"]};
+            }
         }
 
     }
@@ -54,19 +59,28 @@ function makebusmap(direction, directions, prev_stop, bus_num, adjMap) {
         let stop = busstop[0];
         let dist = busstop[1]-prev_dist;
         if (dist === "0.0") {continue;}
-        let time = dist/calculateSpeed(dist) * 60;
+
+
+    //     let time = 0;
+    //     if (dist <= 1)
+    //         {time = 60 * dist / 25;} 
+    //    else {time = 60 * dist / 60;}
+    //    time = time + 0.4;
+        let time = dist/calculateSpeed(dist) * 60 + 0.7;
+
+
          //creating stop if it currently doesnt exist
         if (!adjMap[stop]) adjMap[stop] = {};
         if (!adjMap[prev_stop]) adjMap[prev_stop] = {};
 
          // if linkage doesnt exist, create it and make bus num list
-        if (adjMap[stop][prev_stop] === undefined) { // s1 to s2
+        if (!adjMap[stop][prev_stop]) { // s1 to s2
             adjMap[stop][prev_stop] = {time, method:[bus_num]};
         } else { // if linkage exists already, add bus num to list.
             adjMap[stop][prev_stop]["method"].push(bus_num);
         }
 
-        if (adjMap[prev_stop][stop] === undefined) { // s2 to s1
+        if (!adjMap[prev_stop][stop]) { // s2 to s1
             adjMap[prev_stop][stop] = {time, method:[bus_num]};
         } else {
             adjMap[prev_stop][stop]["method"].push(bus_num);

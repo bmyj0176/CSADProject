@@ -18,15 +18,13 @@ async function mergeMaps(busMap, trainMap, mrtToBus) {
             let busNum = busStop[0];
             let dist = busStop[1];
             let time = 60 * dist / 4.5;
-            if (busNum in merged) {
-                merged[busNum][trainStation] = {time, method: ["B2Ttransfer"]};
-            } else {
-                merged[busNum] = {[trainStation]: {time, method: ["B2Ttransfer"]}};
-            }
-            if (trainStation in merged) {
-                merged[trainStation][busNum] = {time, method: ["T2Btransfer"]};
-            } else {
-                merged[trainStation] = {[busNum]: {time, method: ["T2Btransfer"]}};
+            if (!merged[busNum]) merged[busNum] = {};
+            if (!merged[trainStation]) merged[trainStation] = {};
+            if (!merged[busNum][trainStation]) {
+                merged[busNum][trainStation] = {time, method: ["BTtransfer"]};
+            } // dont need add BTtransfer if bus route alr exists
+            if (!merged[trainStation][busNum]) {
+                merged[trainStation][busNum] = {time, method: ["TBtransfer"]};
             }
         }
     }
@@ -46,67 +44,84 @@ export function dijkstra(graph, start, end, codeToName, interchanges, options) {
     // Initially, set the shortest distance to every node as Infinity except starting node
     for (let node of nodes) {
         if (node === start) continue;
-        distances[node] = [Infinity];
+        distances[node] = Infinity;
         predecessors[node] = null; // No predecessor initially
     }
-    distances[start] = [0];
+    distances[start] = 0;
 
     // Loop until all nodes are visited
     while (nodes.length) {
         // Sort nodes by distance and pick the closest unvisited node
-        nodes.sort((a, b) => distances[a][0] - distances[b][0]);
+        nodes.sort((a, b) => distances[a] - distances[b]);
         let currentNode = nodes.shift();
 
         // If the shortest distance to the closest node is still Infinity, then remaining nodes are unreachable and we can break
-        if (distances[currentNode] === Infinity) break;
+        if (distances[currentNode] === Infinity) break; // 8/2/25 HERE
 
         // Mark the chosen node as visited
         visited.add(currentNode);
         let filteredBus = [];
+
         // For each neighboring node of the current node
         for (let neighbour in graph[currentNode]) {
             if (!visited.has(neighbour)) {
                 if (neighbour === currentNode) continue;
                 // Calculate tentative distance to the neighbouring node
-                let neighbouringDistance = Number(graph[currentNode][neighbour]["dist"]);
-                let busUsed = graph[currentNode][neighbour]["bus_num"];
-                //console.log("busUsed", busUsed); // aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                let neighbouringDistance = Number(graph[currentNode][neighbour]["time"]);
+                let totalDistance = distances[currentNode] + neighbouringDistance;
+                let method = graph[currentNode][neighbour]["method"];
+                
+                //checking if method is bus
+                if (method.some(item => /\d/.test(item))) { // check if method is bus
+                    if (predecessors[currentNode]) { //if not starting node
+                        let prevBusUsed = predecessors[currentNode][1];
+                        
+                        if (currentNode === "93149") { // test area
+                            console.log(neighbour, method, prevBusUsed);
+                            console.log("time", neighbouringDistance, totalDistance)
+                            let x = predecessors[currentNode][1].filter(item => method.includes(item));
+                            console.log(structuredClone(x));
+                        }
+                        
 
-                //let time = neighbouringDistance / (0.283 * Math.pow(neighbouringDistance, 0.3))
-                let time = 0;
-                if (neighbouringDistance <= 1)
-                     {time = 60 * neighbouringDistance / 25;} 
-                else {time = 60 * neighbouringDistance / 60;}
-                let newDistance = distances[currentNode][0] + time + 0.4;
-                if (predecessors[currentNode]) { //if not starting node
-                    let prevBusUsed = predecessors[currentNode][1];
-                    
-                    filteredBus = prevBusUsed.filter(item => busUsed.includes(item));
-                    if (filteredBus.length === 0) {
-                        newDistance += 10; // 5/2/25 HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
-                        filteredBus = busUsed;
-                     }
-                } else { // if starting node
-                    filteredBus = busUsed;
+                        filteredBus = prevBusUsed.filter(item => method.includes(item));
+                        if (filteredBus.length === 0) {
+                            totalDistance += 8; // 5/2/25 HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+                            filteredBus = method;
+                         }
+                    } else { // if starting node
+                        filteredBus = method;
+                    }
                 }
+                
+                //checking if method is train
+                else if (method.length === 1 && !method[0].includes("transfer") && !/\d/.test(method[0])) {
+                    filteredBus = method;
+                }
+                //checking if method is transfers
+                else if (method[0].includes("BBtransfer") || method[0].includes("TBtransfer") || method[0].includes("BTtransfer")) {
+                    totalDistance += 8;
+                    filteredBus = method;
+                } else if (method[0].includes("TTtransfer")) {
+                    filteredBus = method;
+                } else {console.error("unidentified method detected.", method);}
 
                 // If the newly calculated distance is shorter than the previously known distance to this neighbour
-                newDistance = Number(newDistance.toFixed(2));
-                if (newDistance < distances[neighbour][0]) {
-                    
-                    distances[neighbour][0] = newDistance;
+                if (totalDistance < distances[neighbour]) {
+                    distances[neighbour] = totalDistance;
                     predecessors[neighbour] = [currentNode, filteredBus]; // Update predecessor
                 }
             }
         }
     }
 
+    console.log("predecessors", predecessors);
+    console.log(graph[44141]);
+    console.log("distances", distances);
     // If the end node is unreachable
-    if (distances[end][0] === Infinity) {
+    if (distances[end] === Infinity) {
         return `No route from ${start} to ${end}.`;
     } 
-    console.log("predecessors", predecessors);
-    console.log("distances", distances);
     
     // Reconstruct the shortest route from start to end using the predecessors map
     let route = new Map();
@@ -164,7 +179,7 @@ export function dijkstra(graph, start, end, codeToName, interchanges, options) {
 
     // Return both the shortest distance and the route
     return {
-        time_taken: Math.round(distances[end][0]),
+        time_taken: distances[end],
         route: route,
         simple_route: simple_route
     };
@@ -179,10 +194,10 @@ async function run() {
     let startTime = performance.now();
     let [map, codeToName, interchanges] = await getAllMaps();
     console.log("map", map);
-    console.log("bus", map[44399]);
+    console.log("bus", map["44399"]);
     console.log("train", map["Choa Chu Kang_NS"]);
 
-    console.log(dijkstra(map, "44399", "Choa Chu Kang_NS", codeToName, interchanges, {bus: true, train: true})); // opp blk 210 to douby ghaut
+    console.log(dijkstra(map, "Dover", "27449", codeToName, interchanges, {bus: true, train: true})); // opp blk 210 to douby ghaut
     let endTime = performance.now();
     let timeTaken = endTime - startTime;
     console.log("Total time taken : " + timeTaken + " milliseconds");

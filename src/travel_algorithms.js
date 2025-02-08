@@ -20,7 +20,7 @@ function buildAdjacencyList(time_between_stations, connections) {
         makeTrainMap(stationList, trainLine, adjMap);
     }
     
-    makeTrainMap(connections, "T2Ttransfer", adjMap); //adding cross platform transfers
+    makeTrainMap(connections, "TTtransfer", adjMap); //adding cross platform transfers
 
     return adjMap;
 }
