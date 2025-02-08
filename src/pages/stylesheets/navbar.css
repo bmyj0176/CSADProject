@@ -157,3 +157,8 @@
   top: 22px;
   left: 30px;
 }
+
+.enddiveness{
+  position:absolute;
+  top: 500vh;
+}

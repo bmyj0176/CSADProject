@@ -148,7 +148,7 @@ const ArrivalTimesList = (props) => {
                 <div className="list">
                 {Array.from({ length: stopCodesList.length }, (_, index) => (
                   <div key={index} className="bar">
-                    <ul><li>
+                    <ul className={props.data.type === "busNo" ? "busNoUL" : "busStopUL"} ><li className={props.data.type === "busNo" ? "busNoLi" : "busStopLi"}>
                         <ArrivalTimesElement 
                         type={props.data.type}
                         busStopCode={stopCodesList[index]} 

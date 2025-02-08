@@ -1,5 +1,6 @@
 .atlist button {
-   width: 8vw;
+width: 8vw;
+
     border: none; /* Removes the border */
     outline: none; /* Removes the focus outline when clicked */
     background-color: transparent; /* Optional: If there's a background, make it transparent */
@@ -84,3 +85,44 @@
     position:absolute;
     top: 1vh;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.busNoLi{
+    position:relative;
+    margin-bottom: 5vh;
+    
+}
+
+
+
+.busNoLi::before{
+    content: "";
+    position: absolute;
+    left: -1vw;
+    right: auto; /* Align with the dots */
+    top: 6vh; /* Extend the line above the container */
+    bottom: -20px; /* Extend the line below the container */
+    width: 3px;
+    height: 15vw;
+    background-color: #e91e63;
+    z-index: -1;
+    opacity: .4;
+    
+
+}
+
+

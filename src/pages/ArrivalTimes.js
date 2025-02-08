@@ -174,7 +174,7 @@ const ArrivalTimes = () => {
       </div>
       <ul className="horizontal-list">
       
-      <li  className="searchCol" id='scroll'>
+      <li className="searchCol" id='scroll'>
 
       <button onClick={() => addSearchResult(searchResult)}>
         Add Search Result
@@ -240,7 +240,7 @@ const ArrivalTimes = () => {
           onItemSelect={onItemSelect}
         /> */
         
-        <button onClick={toggleFaved}>HELLO</button>}
+        }
       </li>
 
     
@@ -249,7 +249,6 @@ const ArrivalTimes = () => {
       <li className='scroll'>
         {searchResult ?
         <>
-          Click to refresh
           <ArrivalTimesList 
           data={searchResult}
           receiveSearchResult={receiveSearchResult}
@@ -258,16 +257,45 @@ const ArrivalTimes = () => {
         </>
         :
         <>
-          <div>Search for a Bus Stop or Service to get Started!</div>
+          <div className="recS">RECENT SEARCHES</div>
+         
+          <div className="vert">
+          
           {recentSearches.map((search, index) => (
-          <p key={index}>{search.busService} - {search.busStopName}</p>
+          search.type === "busStop" ? 
+          
+          <>
+         <button className="cont-recent" onClick={()=>receiveSearchResult(search)}> 
+         <p key={index}>
+          <img src="./images/recentBS.png"></img>
+          <h1 className="recentBusName">{search.busStopName}</h1> <br />
+          <h3>{search.busStopCode}</h3>
+          </p>
+         </button>
+          </>
+        
+          :
+          <>
+         <button className="cont-recent2" onClick={()=>receiveSearchResult(search)}> 
+         <p key={index}>
+          <img src="./images/recentBUS.png"></img>
+          <h1 className="recentBusNo">{"Bus " + search.busService}</h1> <br />
+         
+          </p>
+         </button>
+          </>
+          
           ))}
-
+        
+          </div>
         </>
       }
 
       </li>
-     {(showFav) &&  <li>   
+       <li>   
+       <button onClick={toggleFaved}>HELLO</button>
+      {showFav && 
+        <>
       <SavedArrivalTimes 
         favedItems={favedItems}
         onFavItem={onFavItem}
@@ -278,7 +306,8 @@ const ArrivalTimes = () => {
           <div key={index}>{favedItems[index]}</div>
         ))
       }
-      </li> }
+    </>}
+    </li>
     </ul>  
     </>
   );

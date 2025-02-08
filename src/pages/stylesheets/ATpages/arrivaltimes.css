@@ -31,6 +31,9 @@
   list-style-type: none; /* Removes default list styling */
 }
 
+
+
+
 /* List items */
 .horizontal-list li {
  text-align: center; /* Centers the text inside each list item */
@@ -220,3 +223,114 @@
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+.recS{
+  margin-top: 4vh;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 5vh;
+  text-decoration: underline;
+ 
+}
+
+.vert{
+  margin-top: 8vh;
+  position:relative;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  max-width: 20vw;
+  max-height: 10vh;
+}
+
+
+.cont-recent{
+  margin-bottom: 2vh;
+  position:relative;
+  max-width: 30vw;
+  max-height: 40vh;
+  min-width: 10vw;
+  min-height: 14vh;
+  border-radius: 5vh;
+  background-color:rgba(26, 26, 41, 0.386);
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 10px);
+
+  border-color:rgb(35, 35, 41);
+}
+
+.cont-recent h3{
+  position:absolute;
+  font-size: 2vh;
+  top: 6vh;
+  left: 0vw;
+  right: 0vw;
+  bottom: 0vh;
+}
+
+.cont-recent img {
+  position:absolute;
+  width: 5vw;
+  top: 4vh;
+  bottom: auto;
+  left: 13vw;
+  height: auto;
+  filter: grayscale(100%); 
+  z-index: -1;
+  opacity: .5
+}
+
+.recentBusName{
+  position: absolute;
+  font-size: 4vh;
+  color: rgb(213, 220, 189);
+  top: 0vh;
+  left: 0vw;
+  right: 0vw;
+  bottom: 0vh;
+  text-shadow: none;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+}
+
+
+.cont-recent2{
+  margin-bottom: 2vh;
+  position:relative;
+  max-width: 30vw;
+  max-height: 40vh;
+  min-width: 10vw;
+  min-height: 14vh;
+  border-radius: 5vh;
+  background-color:rgba(51, 51, 78, 0.386);
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 10px);
+  border-color:rgb(35, 35, 41);
+}
+
+.cont-recent2 img{
+  position:absolute;
+  width: 7vw;
+  top: 1.5vh;
+  bottom: auto;
+  left: 11.5vw;
+  height: auto;
+  filter: grayscale(100%); 
+  z-index: -1;
+  opacity: .5;
+  transform: scaleX(-1);
+}
+
+.recentBusNo{
+  position: absolute;
+  font-size: 4vh;
+  color: rgb(215, 196, 134);
+  top: 1vh;
+  left: 0vw;
+  right: 0vw;
+  bottom: 0vh;
+  text-shadow: none;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+}
+
+.searchCol{
+  margin-top: 3vh;
+}

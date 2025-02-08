@@ -178,7 +178,20 @@ const Homepage = () => {
         <p className="widgetsBody3"> Find the closest bus stop to your location with our 'Near Me' feature. Simply enable location services, and we’ll map out the nearest bus stops, making it easier for you to catch your ride without the hassle.</p>
         </div>
 
+
      </div>
+     <div className="centering2">
+     <div className="TravelGS">
+        <Link to="/travelroutes"><img className="widgets3" src="./images/paperplane.png"></img></Link>
+        <p className="widgetsText4">Avoid the hassle, and <span>get moving</span></p>
+        <p className="widgetsBody4">Say goodbye to long waits and unnecessary detours! With Travel Routes, our algorithm analyze public transport schedules, and route efficiency to get you to your destination as quickly as possible</p>
+        </div>
+        <div className="AnnGS">
+          <Link to="/announcements"><img className="widgets4" src="./images/bell.png"></img></Link>
+          <p className="widgetsText5">Get <span>real-time updates </span> on disruptions & delays in public transport.</p>
+          <p className="widgetsBody5"> We bring you instant notifications on public transport disruptions, delays, and detours—straight from LTA. Whether it’s a train breakdown, or unexpected congestion, you’ll know before it affects your journey.</p>
+        </div>
+        </div>
       </>
 
     )
@@ -301,6 +314,7 @@ const ClassSlide = (props) =>{
         </div>
       </div>
       </div>
+      <EndDiv />
     </div>
     </>
   );
@@ -393,9 +407,11 @@ export const EndDiv = () => {
           <li> <Link to='/announcements'>Announcements</Link> </li>
           </ul>
         </div>
+        
       </div>
       <ButtonUp/>
     </div>
+
   )
 }
 

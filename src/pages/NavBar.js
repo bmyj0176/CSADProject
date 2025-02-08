@@ -78,7 +78,7 @@ const NavBar = () => {
           </li>
       </ul>
       <Outlet />
-      <EndDiv />
+
     </div>
   )
 };
