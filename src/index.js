@@ -42,16 +42,16 @@ export default function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<NavBar />} >
-                  {/*End of branch of NavBar*/}
-                  <Route index element={<Homepage />} />
-                  <Route path="arrivaltimes" element={<ArrivalTimes />} />
-                  <Route path="travelroutes" element={<TravelRoutes />} />
-                  <Route path="login" element={<Login />} />
-                  <Route path="register" element={<Register />} />
-                  <Route path="*" element={<NoPage />} />
-                  <Route path="announcements" element={<Announcements />} />
-                  <Route path="getstarted" element={<GetStarted />} />
-                  </Route> {/*End of branch of NavBar*/}
+              {/*End of branch of NavBar*/}
+              <Route index element={<Homepage />} />
+              <Route path="arrivaltimes" element={<ArrivalTimes />} />
+              <Route path="travelroutes" element={<TravelRoutes />} />
+              <Route path="login" element={<Login />} />
+              <Route path="register" element={<Register />} />
+              <Route path="*" element={<NoPage />} />
+              <Route path="announcements" element={<Announcements />} />
+              <Route path="getstarted" element={<GetStarted />} />
+              </Route> {/*End of branch of NavBar*/}
           </Routes> 
         </BrowserRouter>
       </ThemeProvider>

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { getjson, getBusStopInfo } from './helper_functions';
 import { downloadJSON, haversine } from './helper_functions2';
-import { BusArrival, BusRoutes, BusStops } from './utils/api_caller';
+import { BusArrival, BusRoutes, BusStops, OnemapSearch } from './api_caller';
 
 export async function run_all_updates() {
   await busstops_map();
@@ -14,39 +14,70 @@ export async function run_all_updates() {
   await bus_stops_info();
 }
 
+export async function mrt_coords() {
+  const database = []
+  const mrt_coords = await getjson('./datasets/mrt_coords.json');
+  for (const dict of mrt_coords) {
+    const rawdata = await OnemapSearch(dict.code);
+    const results = rawdata.results
+    if (results.length > 0) {
+      console.log(results[0].SEARCHVAL)
+      database.push(
+        {
+          "station_name": dict.station_name,
+          "code": dict.code,
+          "lat": parseFloat(results[0].LATITUDE),
+          "lng": parseFloat(results[0].LONGITUDE)
+        }
+      )
+    } else {
+      console.log(`ERROR: ${results[0].SEARCHVAL}`)
+      database.push(
+        {
+          "station_name": dict.station_name,
+          "code": dict.code,
+          "lat": "ERROR",
+          "lng": "ERROR"
+        }
+      )
+    }
+  }
+  console.log(database);
+  downloadJSON(database, "mrt_coords");
+}
 export async function busstops_map() {
-    const database = {};
-    for (let num = 0; num < 52; num++) {
-      console.log(`cycle ${num}/52`);
-      const rawdata = await axios.get(`${process.env.REACT_APP_BACKEND_API_URL}/api/bus-routes?skip=${num * 500}`);
-      const value = rawdata.data.value;
-      for (const dict of value) {
-        // creating 
-        if (!database[dict.ServiceNo]) {  
-            database[dict.ServiceNo] = {};  
+  const database = {};
+  for (let num = 0; num < 52; num++) {
+    console.log(`cycle ${num}/52`);
+    const rawdata = await axios.get(`${process.env.REACT_APP_BACKEND_API_URL}/api/bus-routes?skip=${num * 500}`);
+    const value = rawdata.data.value;
+    for (const dict of value) {
+      // creating 
+      if (!database[dict.ServiceNo]) {  
+          database[dict.ServiceNo] = {};  
+      }
+      const innerMap = database[dict.ServiceNo];
+      if (!innerMap[dict.Direction]) {  
+          innerMap[dict.Direction] = []; 
+      }
+      const innestMap = innerMap[dict.Direction];
+      innestMap.push([dict.BusStopCode, dict.Distance]);
+      // storing start & end busstops
+      if (dict.Direction === 1) {
+        if (!innerMap["startend1"]) {
+          innerMap["startend1"] = [dict.BusStopCode, dict.BusStopCode];
         }
-        const innerMap = database[dict.ServiceNo];
-        if (!innerMap[dict.Direction]) {  
-            innerMap[dict.Direction] = []; 
+        innerMap["startend1"][1] = dict.BusStopCode ;
+      } else { // === 2
+        if (!innerMap["startend2"]) {
+          innerMap["startend2"] = [dict.BusStopCode, dict.BusStopCode];
         }
-        const innestMap = innerMap[dict.Direction];
-        innestMap.push([dict.BusStopCode, dict.Distance]);
-        // storing start & end busstops
-        if (dict.Direction === 1) {
-          if (!innerMap["startend1"]) {
-            innerMap["startend1"] = [dict.BusStopCode, dict.BusStopCode];
-          }
-          innerMap["startend1"][1] = dict.BusStopCode ;
-        } else { // === 2
-          if (!innerMap["startend2"]) {
-            innerMap["startend2"] = [dict.BusStopCode, dict.BusStopCode];
-          }
-          innerMap["startend2"][1] = dict.BusStopCode;
-        }
+        innerMap["startend2"][1] = dict.BusStopCode;
       }
     }
-    console.log(database);
-    downloadJSON(database, "busstops_map");
+  }
+  console.log(database);
+  downloadJSON(database, "busstops_map");
 }
 
 export async function bus_stops_complete() {

@@ -11,8 +11,9 @@ export const login = async (email, password, navigate, inputSetErrors = null) =>
       email: email.trim().toLowerCase(),
       password: password.trim(),
      });
-    localStorage.setItem('token', response.data.token);
     localStorage.setItem('username', response.data.username);
+    localStorage.setItem('email', response.data.email);
+    localStorage.setItem('token', response.data.token);
     localStorage.setItem('savedarrivaltimes', JSON.stringify(response.data.savedarrivaltimes));
     console.log('Login successful');
     navigate("/");

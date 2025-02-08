@@ -1,7 +1,7 @@
 import './stylesheets/homepage.css';
 import './stylesheets/adjustSize.css';
 import React, { useState, useEffect, useContext } from 'react';
-import { useNavigate, Link } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import { LoginStatusContext } from '../index';
 import { ThemeContext } from './Components/ToggleThemeButton';
 import SavedArrivalTimes from "./ArrivalTimes/SavedArrivalTimes";
@@ -11,7 +11,6 @@ import Popup from "./Components/Popup";
 
 const Homepage = () => {
   const {userLoggedIn, setUserLoggedIn} = useContext(LoginStatusContext);
-  const [favorites, setFavorites] = useState([]);
   const [slideIndex, setSlideIndex] = useState(0); // Toggle state
   const [fade, setFade] = useState(false);  // Controls fade animation
   const [throwPopup, setThrowPopup] = useState(false)
@@ -185,17 +184,11 @@ const Homepage = () => {
     )
   }
 
-  const emails = [
+  const emails = [ 
     { id: 1, class: "classText", class2: "classTextText", email: 'sdmgo15@gmail.com', lnkemail: 'sdmgo15@gmail.com' },
-    { id: 2, class: "classText2", class2: "classTextText2", email: 'bryuhh1234@rp.edu.sg', lnkemail: 'bryuh1234@gmail.com' },
-    { id: 3, class: "classText3", class2: "classTextText3",email: 'agilbinla@yahoo.com', lnkemail: 'aquil@gmail.com' },
-    { id: 4, class: "classText4", class2: "classTextText4", email: 'ca2short@hotmale.com', lnkemail: 'calong1234@gmail.com' }
-  ];
-
-  const socials = [
-    { id: 1, social: 'https://x.com/SDomingoYT', socialimg: './images/x.png', class: 'socialIcon1'},
-    { id: 2, social: 'https://www.youtube.com/c/SDomingo', socialimg: './images/youtube.png', class: 'socialIcon2' },
-    { id: 3, social: 'https://www.roblox.com/users/686546843/profile', socialimg: './images/instagram.png', class: 'socialIcon3' }
+    { id: 2, class: "classText2", class2: "classTextText2", email: 'bryong0176@gmail.com', lnkemail: 'bryong0176@gmail.com' },
+    { id: 3, class: "classText3", class2: "classTextText3",email: 'ahmadaqilyusop@gmail.com', lnkemail: 'ahmadaqilyusop@yahoo.com' },
+    { id: 4, class: "classText4", class2: "classTextText4", email: 'calong4048@gmail.com', lnkemail: 'calong4048@gmail.com' }
   ];
 
 const ClassSlide = (props) =>{
@@ -227,58 +220,9 @@ const ClassSlide = (props) =>{
     </>
    )
   }
-
-  const EndDivContact = (props) =>{
-    return (
-      <li><img className="contactIcon" src="./images/icons/emailIcon.png" /><a href={"mailto:" + props.lnkemail}>{props.email}</a></li>
-    )
-  }
-
-  const EndDivSocial = (props) =>{
-    return (<li>
-    <a className={props.class} href={props.social}> <img className={props.class} src={props.socialimg}/>
-  </a>
-  </li>
-    )
-  }
-  
-const EndDiv =() =>{
-  return(
-    <>
-    <div className="endDiv">
-    <button type="button" className="endLogo"></button>
-    <hr className="copyrightLine"></hr>
-    <p className="copyright">© All rights reserved to nyoom 2025</p>
-    <div className="emailListing-container">
-    <ul className="emailListing">
-      <p className="GetTouch">Get In Touch</p>
-      {emails.map(emap => <EndDivContact key={emap.id} lnkemail={emap.lnkemail} email={emap.email}/>)}
-    </ul>
-    </div>
-    <div className="socialListing-container">
-    <p className="GetSocials">Follow Our Socials!</p>
-    <ul className="socialListing">
-      {socials.map(smap => <EndDivSocial key={smap.id} social={smap.social} socialimg={smap.socialimg} class={smap.class}/>)}
-    </ul>
-    </div>
-    <div className="siteMap-container">
-      <ul className="siteList">
-      <p className="GetSite">Site Map</p>
-       <li> <button className="Site-Homepage"onClick={()=>{document.getElementById("slide").scrollIntoView({behavior: "smooth"});}}>Homepage</button> </li>
-       <li> <Link to='/arrivaltimes'>Arrival Times</Link> </li>
-       <li> <Link to='/travelroutes'>Travel Routes</Link> </li>
-       <li> <Link to='/announcements'>Announcements</Link> </li>
-      </ul>
-
-    </div>
-    </div>
-    </>
-  )
-}
   
   return (
-      <>
-
+      <>  
       <div id = 'slide' className={`fade ${fade ? "fade-out" : "fade-in"}`}>
         {slides[slideIndex]}
       </div>
@@ -357,14 +301,102 @@ const EndDiv =() =>{
         </div>
       </div>
       </div>
-
-      <div className="credits"><EndDiv/>
-      <button className="btnUp" onClick={()=>{document.getElementById("slide").scrollIntoView({behavior: "smooth"});}}><img src='./images/icons/arrowToUp.png' /></button>
-      
-    </div>
     </div>
     </>
   );
 };
+
+export const EndDiv = () => {
+
+  const emails = [ 
+    { id: 1, class: "classText", class2: "classTextText", email: 'sdmgo15@gmail.com', lnkemail: 'sdmgo15@gmail.com' },
+    { id: 2, class: "classText2", class2: "classTextText2", email: 'bryong0176@gmail.com', lnkemail: 'bryong0176@gmail.com' },
+    { id: 3, class: "classText3", class2: "classTextText3",email: 'ahmadaqilyusop@gmail.com', lnkemail: 'ahmadaqilyusop@yahoo.com' },
+    { id: 4, class: "classText4", class2: "classTextText4", email: 'calong4048@gmail.com', lnkemail: 'calong4048@gmail.com' }
+  ];
+
+  const socials = [
+    { id: 1, social: 'https://x.com/SDomingoYT', socialimg: './images/x.png', class: 'socialIcon1'},
+    { id: 2, social: 'https://www.youtube.com/c/SDomingo', socialimg: './images/youtube.png', class: 'socialIcon2' },
+    { id: 3, social: 'https://www.roblox.com/users/686546843/profile', socialimg: './images/instagram.png', class: 'socialIcon3' }
+  ];
+
+  const EndDivContact = (props) => {
+    return (
+      <li className="contactItem">
+        <img className="contactIcon" style={{marginRight: '3vw'}} src="./images/icons/emailIcon.png" />
+        {props.email === 'ahmadaqilyusop@gmail.com' ? (
+          <>
+            <a onClick={() => {
+                const audio = new Audio("./audio/bad_piggies_drip.mp3"); // Replace with actual path
+                audio.play();
+              }}>
+              {props.email}
+            </a>
+          </>
+        ) : (
+          <>
+            <a href={"mailto:" + props.lnkemail}>
+              {props.email}
+            </a>
+          </>
+        )}
+      </li>
+    );
+}
+
+  const EndDivSocial = (props) =>{
+    return (<li>
+    <a className={props.class} href={props.social}> <img className={props.class} src={props.socialimg}/>
+  </a>
+  </li>
+    )
+  }
+
+  const ButtonUp = () => {
+    const location = useLocation();  // Access current location object
+    const currentPage = location.pathname;  // Get the current path
+    if (currentPage !== "/") {
+      return null // hide if no hahve (non homepage)
+    }
+    return (
+      <button className="btnUp" onClick={() => document.getElementById('slide').scrollIntoView({ behavior: "smooth" })}>
+        <img src='./images/icons/arrowToUp.png' />
+      </button>
+    );
+  };
+
+  return (
+    <div className="credits">
+      <div className="endDiv">
+        <button type="button" className="endLogo"></button>
+        <hr className="copyrightLine"></hr>
+        <p className="copyright">© All rights reserved to nyoom 2025</p>
+        <div className="emailListing-container">
+        <ul className="emailListing">
+          <p className="GetTouch" style={{marginRight:'3vw'}}>Get In Touch</p>
+          {emails.map(emap => <EndDivContact key={emap.id} lnkemail={emap.lnkemail} email={emap.email}/>)}
+        </ul>
+        </div>
+        <div className="socialListing-container">
+        <p className="GetSocials">Follow Our Socials!</p>
+        <ul className="socialListing">
+          {socials.map(smap => <EndDivSocial key={smap.id} social={smap.social} socialimg={smap.socialimg} class={smap.class}/>)}
+        </ul>
+        </div>
+        <div className="siteMap-container">
+          <ul className="siteList">
+          <p className="GetSite">Site Map</p>
+          <li> <button className="Site-Homepage"onClick={()=>{document.getElementById("slide").scrollIntoView({behavior: "smooth"});}}>Homepage</button> </li>
+          <li> <Link to='/arrivaltimes'>Arrival Times</Link> </li>
+          <li> <Link to='/travelroutes'>Travel Routes</Link> </li>
+          <li> <Link to='/announcements'>Announcements</Link> </li>
+          </ul>
+        </div>
+      </div>
+      <ButtonUp/>
+    </div>
+  )
+}
 
 export default Homepage;

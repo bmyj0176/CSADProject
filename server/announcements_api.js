@@ -4,7 +4,7 @@ import fetch from 'node-fetch'
 const router = express.Router();
 
 // Announcements API Route
-router.get('/announcements', async (req, res) => {
+router.get('/train_alerts', async (req, res) => {
   
     try {
       const response = await fetch(

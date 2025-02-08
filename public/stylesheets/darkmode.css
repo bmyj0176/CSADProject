@@ -72,6 +72,10 @@ input {
   color: #f28b00;
 }
 
+.ANpanel {
+  border: solid whitesmoke 2px;
+}
+
 .element {
   animation: glow2 1.5s infinite alternate;
 }

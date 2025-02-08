@@ -213,3 +213,9 @@ export async function nearestBusStops(cap = 50) {
     }
     return outputList
 }
+
+// converts full mrt stn name to code like "Woodlands_TE" -> "TE2"
+export async function stationToCode(station_name) {
+    const data = await getjson('./datasets/mrtname_code_map.json');
+    return data[station_name]
+}

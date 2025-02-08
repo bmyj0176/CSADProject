@@ -9,7 +9,9 @@ const ATSearchResult = (props) => {
     const [bgimage, setImage] = useState("")
     const [bgimage2, setImage2] = useState("")
     const [arrowimg, setImage3] = useState("")
+    const [recent, setRecent] = useState([])
 
+    
     const busHeader = (
       <>
      
@@ -76,21 +78,35 @@ const ATSearchResult = (props) => {
           break
         }
     }, [props.dict]);
-  
+
+    useEffect(() => {
+      const savedRecent = localStorage.getItem("savedarrivaltimes"); // Ensure variable names match
+      if (savedRecent) {
+          setRecent(savedRecent); // Restore from local storage
+      }
+      console.log(localStorage);
+  }, []);
+
     const handleClick = () => {
+      
+
       props.setSelectedList(props.receiver)
       props.onItemSelect(props.index)
       props.receiveSearchResult(props.dict)
+     
     };
   
     useEffect(()=>{
       console.log(subheader2);
     }, [subheader2]);
+
     
 
     // BUTTON LAYOUT
       return (
+        
         <div className = "cent">
+
           <p className="result">
             <button 
             className={!(subheader2.length > 4) ? (subheader2.length === 0) ? subheader1 ? "busstopcard" : "alternatecard": "mrtCard": "nearmeCard"} 

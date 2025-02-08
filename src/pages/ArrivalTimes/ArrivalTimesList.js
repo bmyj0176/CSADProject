@@ -12,6 +12,7 @@ const ArrivalTimesList = (props) => {
     const [stopNamesList, setStopNamesList] = useState([])
     const [servicesList, setServicesList] = useState([])
     const [timesListList, setTimesListList] = useState([])
+    const [lastSearchHistory, setLastSearchHistory] = useState(null)
 
     // updates list when props updates
     useEffect(() => {
@@ -22,6 +23,14 @@ const ArrivalTimesList = (props) => {
             setServicesList([]);
             setTimesListList([]);
         }
+        
+        const updateSearchHistory = () => {
+            if (props.data.searchHistory) {
+                const lastSearchHistoryItem = props.data.searchHistory[props.data.searchHistory.length-1] // last one
+                setLastSearchHistory(lastSearchHistoryItem)
+            }
+        }
+
         const updateLists = async () => {
             if (props.data.type === "busNo") {
                 const busService = props.data.busService
@@ -55,6 +64,7 @@ const ArrivalTimesList = (props) => {
             }
         }
         resetLists();
+        updateSearchHistory();
         updateLists();
         
     }, [props.data, direction]); 
@@ -67,14 +77,59 @@ const ArrivalTimesList = (props) => {
     }
 
     const updateBusTimes = async (index) => {
-            const newBusTimes = [...timesListList]
-            const busTiming = await getBusTiming(stopCodesList[index], servicesList[index])
-            newBusTimes[index] = busTiming
-            setTimesListList(newBusTimes)
+        const newBusTimes = [...timesListList]
+        const busTiming = await getBusTiming(stopCodesList[index], servicesList[index])
+        newBusTimes[index] = busTiming
+        setTimesListList(newBusTimes)
+    }
+
+    const passSearchResult = (value) => {
+        let searchHistory;
+        if (props.data.searchHistory) { // search history found, use old list
+            searchHistory = props.data.searchHistory
+        } else { // search history not found, add new list
+            searchHistory = []
         }
+        searchHistory.push(
+            {
+                type: props.data.type,
+                busService: props.data.busService,
+                busStopName: props.data.busStopName,
+                busStopCode: props.data.busStopCode,
+            }
+        )
+        value.searchHistory = searchHistory
+        props.receiveSearchResult(value) // pass it back to ArrivalTimes
+    };
+
+    const onGoBackHistory = () => {
+        let newSearchHistory = props.data.searchHistory
+        newSearchHistory.pop(); // remove last one
+        let value = {
+            type: lastSearchHistory.type,
+            busService: lastSearchHistory.busService,
+            busStopName: lastSearchHistory.busStopName,
+            busStopCode: lastSearchHistory.busStopCode,
+        }
+        value.searchHistory = newSearchHistory
+        props.receiveSearchResult(value) // pass it back to ArrivalTimes
+    }
 
     return (
         <>
+        <h4>
+            {(lastSearchHistory) &&
+            <button
+            onClick={onGoBackHistory}>
+                &lt;
+                {
+                    (lastSearchHistory.type === "busNo") ? 
+                    <> Bus {lastSearchHistory.busService} </> :
+                    <> {lastSearchHistory.busStopName} </>
+                }
+                </button>
+            }
+        </h4>
         <h2>{
             (props.data.type === "busNo") 
             ?
@@ -101,7 +156,7 @@ const ArrivalTimesList = (props) => {
                         busService={servicesList[index]}
                         busTimesList={timesListList[index]}
                         updateBusTimes={() => updateBusTimes(index)}
-                        receiveSearchResult={props.receiveSearchResult}
+                        passSearchResult={passSearchResult}
                         favedItems={props.favedItems}
                         onFavItem={props.onFavItem} />
                     </li></ul>
@@ -114,6 +169,7 @@ const ArrivalTimesList = (props) => {
                 <BouncyBouncy/>
             )
         }
+
         </>
     )
 };

@@ -2,27 +2,64 @@ import React, { useEffect, useState } from "react";
 import BouncyBouncy from './Components/LoadingIcon.js';
 import { TrainAlertsService } from "../utils/api_caller.js";
 import "./stylesheets/announcements.css";
+import axios from "axios";
 
-const Announcements  = ({ isAdmin }) => {
-  const [alerts, setAlerts] = useState(null);
+const Announcements = () => {
+  const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(null); 
   const [announcements, setAnnouncements] = useState([]);
   const [newAnnouncement, setNewAnnouncement] = useState("");
-  isAdmin = (true);
+  const [isAdmin, setIsAdmin] = useState(() => {
+    const email = localStorage.getItem('email')
+    if (!email) 
+      return false
+    return (email === "nyoom123@gmail.com")
+  }
+  )
 
   useEffect(() => {
     const fetchTrainAlerts = async () => {
       try {
-        const data = await TrainAlertsService();
-        const messages = data.value.Message
-        let message = "";
-        for (const announcement of messages)
-        {
-          message += announcement.Content;
+        const response = await axios.post(`${process.env.REACT_APP_BACKEND_API_URL}/announcements`, { 
+          announcements: announcements,
+          newAnnouncement: newAnnouncement,
+         });
+        localStorage.setItem('announcements', response.data.announcements);
+        console.log('Announcements successful');
+        window.location.reload();
+      } catch (error) {
+        console.error(error);
+        console.log('Announcements failed'); 
+      }
+    };
+
+    fetchTrainAlerts();
+  }, []);
+
+  useEffect(() => {
+    const fetchTrainAlerts = async () => {
+      try {
+        // EXPECTED STRUCTURE (from real case):
+        // "value":
+        // {
+        //   "Status": 1,
+        //   "AffectedSegments": [],
+        //   "Message": [
+        //     {
+        //     "Content": "9:00am: NSL - Please expect longer waiting time of up to 5 min on NSEWL train service due to an engineering vehicle fault. Free regular bus and bridging bus services are available between Bishan and Woodlands. Passengers are advised to use TEL and CCL.",
+        //     "CreatedDate": "2025-02-07 09:01:48"
+        //     }
+        //   ]
+        // }
+        const response = await TrainAlertsService();
+        if (response.value) {
+          const value = response.value
+          if (value.Message) {
+            const messages = value.Message
+            setMessages(messages);
+          }
         }
-        console.log(message);
-        setAlerts(data.value);
       } catch (error) {
         setError("Failed to fetch train alerts. Please try again later.");
         console.error("API error:", error);
@@ -34,8 +71,6 @@ const Announcements  = ({ isAdmin }) => {
     fetchTrainAlerts();
   }, []);
 
-
-  
 // Load announcements from localStorage on first render
   useEffect(() => {
     const savedAnnouncements = JSON.parse(localStorage.getItem("announcements")) || [];
@@ -70,7 +105,7 @@ const Announcements  = ({ isAdmin }) => {
 
 
   if (loading) return <BouncyBouncy/>;
-  if (error) return <p style={{ color: "red" }}>{error}</p>;
+  // if (error) return <p style={{ color: "red" }}>{error}</p>;
   
   return (
     <>
@@ -80,7 +115,7 @@ const Announcements  = ({ isAdmin }) => {
           {announcements.map((text, index) => (
             <li key={index}>
               {isAdmin ? (
-                <input
+                <input className="msg"
                   type="text"
                   value={text}
                   onChange={(e) => handleEdit(index, e.target.value)}
@@ -95,7 +130,7 @@ const Announcements  = ({ isAdmin }) => {
         </ul>
       </div>
       {isAdmin && (
-        <div>
+        <div className="add">
           <input
             type="text"
             value={newAnnouncement}
@@ -106,35 +141,19 @@ const Announcements  = ({ isAdmin }) => {
         </div>
       )}
       <h1>Train Service Alerts</h1>
-      {console.log(alerts?.Message.length)}
-      {alerts?.Message.length === 0 ? (
+      {messages.length === 0 ? (
         <p style={{ color: "green" }}>All train services are running smoothly.</p>
       ) : (
         <div>
           <h2>Alerts:</h2>
-          {alerts?.Message.length > 0 ? (
-            <ul>
-              {alerts.Message.map((msg, index) => (
-                <li key={index}>
-                  <strong>Message:</strong> {msg.Content} <br />
-                  <strong>Date:</strong> {msg.CreatedDate}
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p>No specific affected segments.</p>
-          )}
-
-          {alerts?.Message.length > 0 && (
-            <div>
-              <h3>Messages:</h3>
-              <ul>
-                {alerts.Message.map((msg, index) => (
-                  <li key={index}>{msg}</li>
-                ))}
-              </ul>
-            </div>
-          )}
+          <ul>
+            {messages.map((message, index) => (
+              <li key={index}>
+                <strong>Message:</strong> {message.Content} <br />
+                <strong>Date Posted:</strong> {message.CreatedDate} <br />
+              </li>
+            ))}
+          </ul>
         </div>
       )}
     </>
