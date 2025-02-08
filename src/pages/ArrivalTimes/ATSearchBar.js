@@ -27,6 +27,7 @@ const ATSearchBar = (props) => {
     // updates when props.toggleStates or searchBarValue changes
     useEffect(() => {
       updateSearchBar(searchBarValue);
+      console.log(searchBarValue);
     }, [props.toggleStates, searchBarValue]);
       
       const onChangeSearchBar = (event) => {

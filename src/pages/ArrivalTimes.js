@@ -6,7 +6,7 @@ import { ThemeContext } from './Components/ToggleThemeButton';
 import ArrivalTimesList from "./ArrivalTimes/ArrivalTimesList";
 import SavedArrivalTimes from "./ArrivalTimes/SavedArrivalTimes";
 import ArrivalTimesElement from "./ArrivalTimes/ArrivalTimesElement";
-
+import ATSearchResult from "./ArrivalTimes/ATSearchResult";
 
 const ArrivalTimes = () => {
   const [toggles, setToggles] = useState({
@@ -29,14 +29,16 @@ const ArrivalTimes = () => {
   })
 
   const addSearchResult = (searchResult) => {
-    const updatedList = [...recentSearches, searchResult];
+    const currentHistory = JSON.parse(localStorage.getItem("recentSearches")) || [];
+
+    const updatedList = [searchResult, ...currentHistory].slice(0,8);
     localStorage.setItem("recentSearches", JSON.stringify(updatedList));
     setRecentSearches(updatedList);
   };
 
   useEffect(() => {
     const storedSearches = JSON.parse(localStorage.getItem("recentSearches")) || [];
-    setRecentSearches(storedSearches);
+    setRecentSearches(storedSearches); // Safely load data from localStorage
   }, []);
 
   const onItemSelect = (index) => {
@@ -164,8 +166,6 @@ const ArrivalTimes = () => {
 )
   }
 
-
-
   return (
     <>
      
@@ -175,13 +175,18 @@ const ArrivalTimes = () => {
       <ul className="horizontal-list">
       
       <li  className="searchCol" id='scroll'>
+
+      <button onClick={() => addSearchResult(searchResult)}>
+        Add Search Result
+      </button>
+    
       <div className="Checkbox-container">
-      {searchResult &&
-        <button onClick={() => addSearchResult(searchResult)}>hi</button> }
+      
         <CheckBox />
       </div>
     
       <ATSearchBar
+          
           selectedList={selectedList}
           setSelectedList={setSelectedList}
           toggleStates={toggles}
@@ -253,7 +258,11 @@ const ArrivalTimes = () => {
         </>
         :
         <>
-          Search for a Bus Stop or Service to get Started!
+          <div>Search for a Bus Stop or Service to get Started!</div>
+          {recentSearches.map((search, index) => (
+          <p key={index}>{search.busService} - {search.busStopName}</p>
+          ))}
+
         </>
       }
 

@@ -88,7 +88,6 @@ const ATSearchResult = (props) => {
   }, []);
 
     const handleClick = () => {
-      
 
       props.setSelectedList(props.receiver)
       props.onItemSelect(props.index)
