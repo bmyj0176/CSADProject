@@ -1,20 +1,24 @@
-import { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import { dijkstra, getAllMaps } from "../../utils/travel_algorithms_final"
 import { stationToCode } from "../../utils/helper_functions"
-import { cleanMRTStationName, downloadJSON, suffixMRTStationName } from "../../utils/helper_functions2"
-import { codeToMRTImagePath } from "../../utils/helper_functions2"
+import { cleanMRTStationName, downloadJSON } from "../../utils/helper_functions2"
+import { getBusStopInfo } from "../../utils/helper_functions"
+import { codeToMRTImagePath, suffixMRTStationName } from "../../utils/helper_functions2"
+import BouncyBouncy from "../Components/LoadingIcon"
 // {props.location1.type /* type can be "station" or "busStop" */}<br/>
 // {props.location1.stationCodes}<br/>
 // {props.location1.stationName}<br/>
 
 const TRoutes = (props) => {
     const [totalTimeTaken, setTotalTimeTaken] = useState(null);
-    const [routeData, setRouteData] = useState([]);
     const [start, setStart] = useState(null);
     const [end, setEnd] = useState(null);
     const [startLabel, setStartLabel] = useState("");
     const [endLabel, setEndLabel] = useState("");
     const [simpleRoute, setSimpleRoute] = useState(null);
+    const [simpleRouteList, setSimpleRouteList] = useState(null);
+    const [fullRoute, setFullRoute] = useState([])
+    const [error, setError] = useState(null)
 
     useEffect(() => {
         const setup = async () => {
@@ -33,137 +37,112 @@ const TRoutes = (props) => {
             const [inputMap, inputCodeToName, inputInterchanges] = await getAllMaps();
             const startData = (props.location1.type === "busStop") ? props.location1.busStopCode : props.location1.stationName
             const endData = (props.location2.type === "busStop") ? props.location2.busStopCode : props.location2.stationName
-            const {flippedSimpleRoute, route, simple_route, time_taken} = await dijkstra(inputMap, startData, endData, inputCodeToName, inputInterchanges);
-            console.log("route", route);
-            console.log("flippedSimpleRoute", flippedSimpleRoute)
+            const {route, simple_route, time_taken} = await dijkstra(inputMap, startData, endData, inputCodeToName, inputInterchanges);
+            if (!route) { setError("Oh no! We couldn't find a route.") }
             setSimpleRoute(simple_route)
             setTotalTimeTaken(time_taken)
-            console.log("finished data")
         }
         setup();
     }, [])
 
     useEffect(() => {
+        if (!simpleRoute) return; // skip if simpleRoute is null
         const make_list = () => {
-            console.log("simpleRoute", simpleRoute)
+            const list = [];
             for (const [key, value] of simpleRoute) {
-                // key is bus stop no or train station
-                // value[0][0] is array of method (bus: ["190, 991"], train: ["NSL"], transfer: ["TTtransfer"])
-                // value[0][0] is always an array even if there is only one item inside
-                // value[0][1] is time 
-                // value[1] is no of stops, can ignore for transfers
+                let locationInfo = key;
                 let method;
                 let time;
                 let numberOfStops;
-                let method_value = value[0]
+                let method_value = value[0];
+    
                 if (method_value) {
                     if (isBusNumber(method_value)) {
                         method = "bus";
                     } else if (isMRTLine(method_value)) {
                         method = "train";
-                        method_value = method_value[0] 
-                    } else if (method_value.includes("transfer")) {
-                        method = "transfer"
-                        method_value = method_value[0]
+                        method_value = method_value[0];
+                    } else if (method_value[0].includes("transfer")) {
+                        method = method_value[0];
+                        method_value = method_value[0];
                     }
-                time = value[0][1]
-                numberOfStops = value[1]
+                    time = value[1];
+                    numberOfStops = value[2];
                 } else {
-                    method = "start"
-                } 
-            }  
-        }
-        if (simpleRoute)
-            make_list();
-    }, [simpleRoute])
+                    method = "start";
+                }
+    
+                list.push({
+                    locationInfo,
+                    time,
+                    numberOfStops,
+                    method,
+                    method_value,
+                });
+            }
+            console.log("setSimpleRouteList", list);
+            setSimpleRouteList(list);
+        };
+    
+        make_list();
+    }, [simpleRoute]);
+    
+    useEffect(() => {
+        if (!simpleRouteList) return; // skip if simpleRouteList is null
+        const make_route_info = async () => {
+            const route = [];
+            const routePromises = simpleRouteList.map(async (dict) => {
+                let time_taken = dict.time || null;
+                let transport_mode = dict.method !== "start" ? dict.method : null;
+                let transport_names = dict.method.includes("transfer") ? [] : dict.method_value || [];
+                let location_name = isBusStopCode(dict.locationInfo)
+                    ? await getBusStopInfo(dict.locationInfo, "Description")
+                    : await cleanMRTStationName(dict.locationInfo); // Ensure this is awaited as well
+                let location_type = isBusStopCode(dict.locationInfo)
+                    ? "bus_stop"
+                    : "mrt_stn";
+                let location_info = dict.locationInfo;
+                
+                return {
+                    time_taken,
+                    transport_mode,
+                    transport_names,
+                    location_name,
+                    location_type,
+                    location_info,
+                };
+            });
+    
+            // Wait for all async operations to complete
+            const fullRouteData = await Promise.all(routePromises);
+            console.log("setFullRoute", fullRouteData);
+            setFullRoute(fullRouteData);
+        };
+    
+        make_route_info();
+    }, [simpleRouteList]); 
 
     // ["901A"] = true
-    const isBusNumber = (list) => {
-        return list.some(item => /\d/.test(item))
+    const isBusNumber = (input_list) => {
+        return input_list.some(item => /\d/.test(item))
     }
 
     // ["NSL"] = true
-    const isMRTLine = (list) => {
-        return list.length === 1 && !list[0].includes("transfer") && !/\d/.test(list[0])
+    const isMRTLine = (input_list) => {
+        return input_list.length === 1 && !input_list[0].includes("transfer") && !/\d/.test(input_list[0])
     }
 
-    const temporary_data = {
-        "time_taken": 58,
-        "transfers": 3,
-        "route": [
-            {
-                "time_taken" : null,
-                "transport_mode" : null,
-                "transport_name" : null,
-                "location_name" : "Woodgrove Pr Sch",
-                "location_type" : "bus_stop",
-                "location_info" : "46971",
-            },
-            {
-                "time_taken" : "3",
-                "transport_mode" : "bus",
-                "transport_name" : "901",
-                "location_name" : "W'lands Sth Stn Exit 2",
-                "location_type" : "bus_stop",
-                "location_info" : "46981",
-            },
-            {
-                "time_taken" : "3",
-                "transport_mode" : "bus_mrt_transfer",
-                "transport_name" : null,
-                "location_name" : "Woodlands South",
-                "location_type" : "mrt_stn",
-                "location_info" : "Woodlands South",
-            },
-            {
-                "time_taken" : "21",
-                "transport_mode" : "mrt",
-                "transport_name" : "TEL",
-                "location_name" : "Caldecott",
-                "location_type" : "mrt_stn",
-                "location_info" : "Caldecott_TE",
-            },
-            {
-                "time_taken" : "4",
-                "transport_mode" : "mrt_transfer",
-                "transport_name" : null,
-                "location_name" : "Caldecott",
-                "location_type" : "mrt_stn",
-                "location_info" : "Caldecott_CC",
-            },
-            {
-                "time_taken" : "17",
-                "transport_mode" : "mrt",
-                "transport_name" : "CCL",
-                "location_name" : "Buona Vista",
-                "location_type" : "mrt_stn",
-                "location_info" : "Buona Vista_CC",
-            },
-            {
-                "time_taken" : "4",
-                "transport_mode" : "mrt_transfer",
-                "transport_name" : null,
-                "location_name" : "Buona Vista",
-                "location_type" : "mrt_stn",
-                "location_info" : "Buona Vista_EW",
-            },
-            {
-                "time_taken" : "6",
-                "transport_mode" : "mrt",
-                "transport_name" : "EWL",
-                "location_name" : "Dover",
-                "location_type" : "mrt_stn",
-                "location_info" : "Dover",
-            }
-        ]
-    }
+    // "90123" = true
+    const isBusStopCode = (str) => /^\d+$/.test(str);
 
     return (
         <div>
+            <h1>{Math.round(totalTimeTaken) + " Minutes"}</h1>
             <h2>{startLabel} → {endLabel}</h2>
-            { routeData.length > 0 &&
+            { error ? error :
+            (fullRoute.length > 0 && simpleRouteList.length === fullRoute.length) ?
             <ul>
-                {routeData.map((data, index) => (
+                {fullRoute.map((data, index) => (
                 <>
                     <li key={index}>
                         {(index % 2 == 0) 
@@ -178,7 +157,7 @@ const TRoutes = (props) => {
                         <div style={{fontSize:'1.5rem'}}>
                             &nbsp;&nbsp;&nbsp;<TransportLabel
                             transport_mode={data.transport_mode}
-                            transport_name={data.transport_name}
+                            transport_names={data.transport_names}
                             location_name={data.location_name}
                             location_info={data.location_info}/>
                         </div>
@@ -187,15 +166,9 @@ const TRoutes = (props) => {
                     <br/>
                 </>
                 ))}
-                <li>
-                    <div style={{fontSize:'2rem', color:'white'}}>
-                        <LocationLabel
-                        location_name={routeData[routeData.length-1].location_name}
-                        location_type={routeData[routeData.length-1].location_type}
-                        location_info={routeData[routeData.length-1].location_info}/>
-                    </div>
-                </li>
             </ul>
+            :
+            <BouncyBouncy/>
             }
         </div>
     )
@@ -218,7 +191,7 @@ const LocationLabel = (props) => { // props: location_name, location_type, locat
         return (
             <>
                 {props.location_name}
-                &nbsp;•&nbsp;
+                &nbsp;•
                 Bus Stop
             </>
         )
@@ -228,7 +201,7 @@ const LocationLabel = (props) => { // props: location_name, location_type, locat
         return (
             <>
                 {`${props.location_name} (${stnCode})`}
-                &nbsp;•&nbsp;
+                &nbsp;•
                 MRT Station
             </>
         )
@@ -237,21 +210,19 @@ const LocationLabel = (props) => { // props: location_name, location_type, locat
     return null
 }
 
-const TransportLabel = (props) => { // props: transport_mode, transport_name, location_name, location_info
+const TransportLabel = (props) => { // props: transport_mode, transport_names, location_name, location_info
     const [stnCode, setStnCode] = useState(null)
     const [src, setSrc] = useState(null)
 
     useEffect(() => {
         const fetchTransportData = async () => {
             if (
-                props.transport_mode === "mrt"
-                || props.transport_mode === "mrt_transfer"
-                || props.transport_mode === "bus_mrt_transfer"
+                props.transport_mode === "train"
+                || props.transport_mode === "TTtransfer"
+                || props.transport_mode === "BTtransfer"
             ) {
-                console.log(props.transport_mode)
                 const code = await stationToCode(props.location_info)
                 setStnCode(code)
-                console.log(code)
                 const imageSrc = codeToMRTImagePath(code)
                 setSrc(imageSrc)
             }
@@ -259,23 +230,33 @@ const TransportLabel = (props) => { // props: transport_mode, transport_name, lo
         fetchTransportData()
     }, [props.location_info, props.transport_mode])
 
-    if (props.transport_mode === "mrt") {
+    if (props.transport_mode === "train") {
         return (
             <>
-                Take {props.transport_name} to {props.location_name} <img className='mrticon' src={src} alt={stnCode}/>
+                Take {props.transport_names} to {props.location_name} <img className='mrticon' src={src} alt={stnCode}/>
             </>
         )
     }
 
     if (props.transport_mode === "bus") {
         return (
+            props.transport_names.length < 2 ?
+            <> Change to Bus {props.transport_names[0]} at {props.location_name} </>
+            :
             <>
-                Take Bus {props.transport_name} to {props.location_name}
+                Take any Buses&nbsp;
+                 {props.transport_names.map((item, index) => (
+                    <React.Fragment key={index}>
+                        {index > 0 && "/"}
+                        <span>{item}</span>
+                    </React.Fragment>
+                ))} 
+                &nbsp;to {props.location_name}
             </>
         )
     }
 
-    if (props.transport_mode === "mrt_transfer") {
+    if (props.transport_mode === "TTtransfer") {
         return (
             <>
                 Transfer MRT to {stnCode} <img className='mrticon' src={src} alt={stnCode}/>
@@ -283,7 +264,7 @@ const TransportLabel = (props) => { // props: transport_mode, transport_name, lo
         )
     }
 
-    if (props.transport_mode === "bus_mrt_transfer") {
+    if (props.transport_mode === "BTtransfer") {
         return (
             <>
                 Go to MRT Platform {stnCode} <img className='mrticon' src={src}/>
@@ -291,7 +272,7 @@ const TransportLabel = (props) => { // props: transport_mode, transport_name, lo
         )
     }
 
-    if (props.transport_mode === "mrt_bus_transfer") {
+    if (props.transport_mode === "TBtransfer") {
         return (
             <>
                 Go to Bus Stop {props.location_name}
@@ -299,10 +280,24 @@ const TransportLabel = (props) => { // props: transport_mode, transport_name, lo
         )
     }
 
-    if (props.transport_mode === "bus_transfer") {
+    if (props.transport_mode === "BBtransfer") {
         return (
             <>
-                Change to Bus {props.transport_name} at {props.location_name}
+                {
+                    props.transport_names.length < 2 ?
+                    <> Change to Bus {props.transport_names[0]} at {props.location_name} </>
+                    :
+                    <>
+                        Change to any Buses&nbsp;
+                        {props.transport_names.map((item, index) => (
+                            <React.Fragment key={index}>
+                                {index > 0 && "/"}
+                                <span>{item}</span>
+                            </React.Fragment>
+                        ))}
+                        &nbsp;at {props.location_name} 
+                    </>
+                }
             </>
         )
     }

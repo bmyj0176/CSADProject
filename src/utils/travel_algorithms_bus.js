@@ -244,7 +244,7 @@ function busNotInList(value, busUsed) {
 // running Dijkstra algorithm between the two stations
 
 
-export async function runshit() {
+export async function run() {
     console.clear();
     let startTime = performance.now();
     let [map, codeToName] = await getBusMap();
@@ -258,4 +258,4 @@ export async function runshit() {
     console.log("Total time taken : " + timeTaken + " milliseconds");
 }
 
-// runshit();
+// run();

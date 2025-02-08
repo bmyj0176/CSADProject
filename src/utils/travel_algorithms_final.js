@@ -117,12 +117,12 @@ export async function dijkstra(graph, start, end, codeToName, interchanges, opti
         return `No route from ${start} to ${end}.`;
     } 
     
-    // Reconstruct the shortest route from start to end using the predecessors map
+    // Reconstruct the shortest route from end to start using the predecessors map
     let route = new Map();
     let current = end;
     while (current) {
         if (predecessors[current] == null) {route.set(current, []); break;}
-        route.set(current, [predecessors[current][1], predecessors[current][2]]);
+        route.set(current, [predecessors[current][1], distances[current], predecessors[current][2]]);
         current = predecessors[current][0];
     }
     let flippedRoute = new Map([...route].reverse());
@@ -136,41 +136,61 @@ export async function dijkstra(graph, start, end, codeToName, interchanges, opti
     //showing the route as only transfers
 
     let simple_route = new Map();
-    let busUsed = [];
+    let busUsed = route.get(end)[0];
     let noOfStops = 1;
     let prev_stop = end;
-    let prev_value = [];
+    let prev_value = [busUsed];
+    let prev_dist = distances[end];
+    simple_route.set(prev_stop, prev_value);
     for (let [key, value] of route) {// add end to simple_route
-        if (busNotInList(value, busUsed)) {
-            simple_route.set(key, [value[0], 0]);
-            if (key !== end) {
+        if (key !== start) {
+            console.log(value);
+            if (busNotInList(value[0], busUsed)) {
+                simple_route.set(key, [value[0]]);
                 prev_value = simple_route.get(prev_stop);
-                if (prev_value[0][0] === "walk"){
-                    prev_value[1] = graph[key][prev_stop]["dist"];
-                } else {
-                    prev_value[1] = noOfStops;
-                }
-                simple_route.set(prev_stop, prev_value)
-            }
-            busUsed = value;
-            noOfStops = 1;
-            prev_stop = key;
-        } else {noOfStops += 1;}
-    }
-    let flippedSimpleRoute = new Map([...simple_route].reverse());
+                prev_dist = route.get(prev_stop)[1];
+                prev_value[1] = prev_dist - distances[key];
+                prev_value[2] = noOfStops;
+                simple_route.set(prev_stop, prev_value);
 
+                prev_stop = key; // reset all counters
+                busUsed = value[0];
+                noOfStops = 1;
+            } else {noOfStops += 1;}
+        } else if (key === start ) {
+            prev_value = simple_route.get(prev_stop);
+            prev_dist = route.get(prev_stop)[1];
+            prev_value[1] = prev_dist - distances[key];
+            prev_value[2] = noOfStops;
+            simple_route.set(prev_stop, prev_value);
+        }
+    } simple_route.set(start, []);
+
+    let flippedSimpleRoute = new Map([...simple_route].reverse());
     // Return both the shortest distance and the route
     return {
         time_taken: distances[end],
-        route: route,
-        simple_route: simple_route,
-        flippedSimpleRoute: flippedSimpleRoute
+        route: flippedRoute,
+        simple_route: flippedSimpleRoute,
     };
 }
 
 function busNotInList(value, busUsed) {
     return (value.every(item => !busUsed.includes(item)))
 }
+
+// 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// ⬛⬛🟩🟩🟩🟩🟩🟩🟩🟩🟩
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟩🟩
+// ⬛⬛🟩⬛⬛⬛🟩⬛🟨🟨🟨🟩🟩
+// ⬛⬛⬛🟨⬛⬛⬛🟨🟧🟨🟧
+// 🟨🟨🟨🟨🟨🟥🟨🟨🟨🟧🟨🟩🟩
+// 🟨🟥🟥🟥🟥🟨🟨🟨🟧🟨🟧🟩🟩
+// 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+// ⬛️⬛️⬛🟨⬜️⬜️⬜️⬜️⬜️🟨🟨
+// 🟨🟨⬛️🟨⬜️⬜️⬜️⬜️⬜️🟨🟨⬛🟨🟨
+// 🟨🟨⬛️🟨⬜️⬜️⬜️⬜️⬜️🟨🟨⬛🟨🟨
+
 
 async function run() {
     console.clear();
