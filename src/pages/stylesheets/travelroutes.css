@@ -19,10 +19,21 @@ width: 8vh;
 height: auto;
 }
 
+.containerTR{
+    position:relative;
+}
+
 .trbutton button{
 position: relative;
-width: 40vw;
+width: 20vw;
 height: auto;
+}
+
+.busstopnumber{
+    position: absolute;
+    left: 5vw;
+    bottom:5vh;
+    z-index:4;
 }
 
 

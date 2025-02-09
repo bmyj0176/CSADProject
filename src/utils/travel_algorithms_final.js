@@ -136,7 +136,8 @@ export async function dijkstra(graph, start, end, codeToName, interchanges, opti
                 final_distances = distances;
                 final_predecessors = predecessors;
                 final_end = realend;
-                final_start = realstart
+                final_start = realstart 
+                final_time_taken = distances[realend];
             }
         }
     }
