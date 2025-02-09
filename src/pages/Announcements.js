@@ -12,22 +12,11 @@ const Announcements = () => {
   const [newAnnouncement, setNewAnnouncement] = useState("");
   const [isAdmin, setIsAdmin] = useState(() => {
     const email = localStorage.getItem('email')
-    if (!email) 
-      return false
-    return (email === "nyoom123@gmail.com")
-  }
+      if (!email) 
+        return false
+      return (email === "nyoom123@gmail.com")
+    }
   )
-  // 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-  // ⬛⬛🟩🟩🟩🟩🟩🟩🟩🟩🟩
-  // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟩🟩
-  // ⬛⬛🟩⬛⬛⬛🟩⬛🟨🟨🟨🟩🟩
-  // ⬛⬛⬛🟨⬛⬛⬛🟨🟧🟨🟧
-  // 🟨🟨🟨🟨🟨🟥🟨🟨🟨🟧🟨🟩🟩
-  // 🟨🟥🟥🟥🟥🟨🟨🟨🟧🟨🟧🟩🟩
-  // 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
-  // ⬛️⬛️⬛🟨⬜️⬜️⬜️⬜️⬜️🟨🟨
-  // 🟨🟨⬛️🟨⬜️⬜️⬜️⬜️⬜️🟨🟨⬛🟨🟨
-  // 🟨🟨⬛️🟨⬜️⬜️⬜️⬜️⬜️🟨🟨⬛🟨🟨
 
   useEffect(() => {
     const fetchTrainAlerts = async () => {
@@ -149,6 +138,19 @@ const Announcements = () => {
             placeholder="New Announcement"
           />
           <button onClick={handleAdd}>➕ Add</button>
+          <pre>
+          🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩<br/>
+          ⬛⬛🟩🟩🟩🟩🟩🟩🟩🟩🟩<br/>
+          🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟩🟩<br/>
+          ⬛⬛🟩⬛⬛⬛🟩⬛🟨🟨🟨🟩🟩<br/>
+          ⬛⬛⬛🟨⬛⬛⬛🟨🟧🟨🟧<br/>
+          🟨🟨🟨🟨🟨🟥🟨🟨🟨🟧🟨🟩🟩<br/>
+          🟨🟥🟥🟥🟥🟨🟨🟨🟧🟨🟧🟩🟩<br/>
+          🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨<br/>
+          ⬛️⬛️⬛🟨⬜️⬜️⬜️⬜️⬜️🟨🟨<br/>
+          🟨🟨⬛️🟨⬜️⬜️⬜️⬜️⬜️🟨🟨⬛🟨🟨<br/>
+          🟨🟨⬛️🟨⬜️⬜️⬜️⬜️⬜️🟨🟨⬛🟨🟨
+          </pre>
         </div>
       )}
       <h1>Train Service Alerts</h1>

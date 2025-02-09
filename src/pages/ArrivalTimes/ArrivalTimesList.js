@@ -117,7 +117,7 @@ const ArrivalTimesList = (props) => {
 
     return (
         <>
-        <h4>
+        <h4 className="historyBtn">
             {(lastSearchHistory) &&
             <button 
             onClick={onGoBackHistory}>
@@ -130,7 +130,7 @@ const ArrivalTimesList = (props) => {
                 </button>
             }
         </h4>
-        <h2>{
+        <h2 className="ATListHeader">{
             (props.data.type === "busNo") 
             ?
             "Bus " + props.data.busService
@@ -140,7 +140,7 @@ const ArrivalTimesList = (props) => {
         {
             (stopNamesList.length === stopCodesList.length && stopCodesList.length === servicesList.length) ? // finished loading
             (
-                <>
+                <div className="atlistwow">
                 <BusDirectionToggleButton 
                 direction={direction}
                 directionalData={directionalData} 
@@ -163,7 +163,7 @@ const ArrivalTimesList = (props) => {
                   </div>
                 ))}
               </div>
-              </>
+              </div>
             ) :
             (
                 <BouncyBouncy/>

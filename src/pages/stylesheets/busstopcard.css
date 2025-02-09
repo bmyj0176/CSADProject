@@ -238,6 +238,9 @@
   transform: rotate(-90deg);
 }
 
+.mrticon{
+  opacity: 0;
+}
 
 
 }

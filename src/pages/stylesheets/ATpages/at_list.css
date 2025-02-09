@@ -9,10 +9,14 @@ width: 8vw;
 
 .atlist:hover{
 background-color:rgb(26, 38, 44);
+border: 1px solid;
+border-color: white;
+
 }
 
 .listbutton :hover {
     background-color: grey;
+
 }
 
 .element {
@@ -26,10 +30,19 @@ background-color:rgb(26, 38, 44);
 
 
 .hello{
-    color: yellow;
+    color: rgb(81, 214, 255);
     margin-left: auto;
     margin-right: auto;
     justify-content:center; 
+    font-size: 4vh;
+}
+
+.hello2{
+    color: rgb(255, 255, 255);
+    margin-left: auto;
+    margin-right: auto;
+
+    font-size: 3vh;
 }
 
 
@@ -38,6 +51,11 @@ background-color:rgb(26, 38, 44);
     font-size: 1.3vw;
     color: grey;
 }
+
+.listbutton{ 
+    position:relative;
+}
+
 
 .listbutton button{
    margin-bottom: 2vh;
@@ -145,3 +163,52 @@ background-color:rgb(26, 38, 44);
     list-style-type: square;
 }
 
+.historyBtn{
+    position: relative;
+    overflow: visible;
+
+}
+.historyBtn button{
+    position: absolute;
+    top: 0.4vh;
+    left: auto;
+    bottom: auto;
+    background: none;
+    right: 45vw;
+    border: none;
+    padding: none;
+    margin: none;
+    font-size: 2.8vh;
+    opacity: 1;
+    z-index: 10;
+    overflow: visible;
+}
+
+.ATListHeader{
+    position: relative;
+    font-family:'Courier New', Courier, monospace;
+    font-size: 4vh;
+    right: 1.5vh;
+    
+}
+
+.topOfList{
+    position:relative;
+    margin-bottom: 20vh;
+    list-style: none; 
+    display:inline-flex;
+    gap: 2vw;  
+    padding: 0;
+}
+
+.atlistwow{
+    position:relative;
+    right: 2vh;
+    margin-top: 5vh;
+}
+
+
+.atlist{
+    border-radius: 20px;
+    padding: none;
+}

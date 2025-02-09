@@ -4,6 +4,7 @@ import ArrivalTimesElement from './ArrivalTimesElement';
 import { ThemeContext } from '../Components/ToggleThemeButton';
 import "../stylesheets/ATpages/arrivaltimes.css";
 
+
 const SavedArrivalTimes = (props) => {
   const [favedItems, setFavedItems] = useState(() => {
     const storedFavedItems = localStorage.getItem("savedarrivaltimes");
@@ -50,6 +51,7 @@ const SavedArrivalTimes = (props) => {
         {favedItems.map((item, index) => (
           <li key={index}>
             <div className="bar">
+             
               {favedItems && ( 
                 <ArrivalTimesElement
                   type={item.type}

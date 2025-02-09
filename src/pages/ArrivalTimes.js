@@ -327,8 +327,8 @@ const ArrivalTimes = () => {
       :
       <>
       <div className="noBookmark">
-      <img className="sadbook" src="./images/idkanymore.png"></img>
-      <p>No Favourites at the moment!</p>
+      <img style={{filter: isDarkTheme ? "invert(0%)" : "invert(100%)"}} className="sadbook" src="./images/idkanymore.png"></img>
+      <p style={{color: isDarkTheme ? "white" : "black"}}>No Favourites at the moment!</p>
       </div>
       </>
        } </>}

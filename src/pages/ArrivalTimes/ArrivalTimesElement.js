@@ -1,7 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import BouncyBouncy from '../Components/LoadingIcon';
+import { ThemeContext } from '../Components/ToggleThemeButton';
 import { dict_in_list } from '../../utils/helper_functions2';
 import "../stylesheets/ATpages/at_list.css";
+
 import  ArrivalTimesList  from './ArrivalTimesList';
 
 
@@ -17,6 +19,8 @@ const ArrivalTimesElement = (props) => {
         'selected' :
         'unselected'
       });
+
+       const { isDarkTheme } = useContext(ThemeContext);
 
     const [popupState, setPopupState] = useState(false)
     
@@ -78,7 +82,8 @@ const ArrivalTimesElement = (props) => {
                 <>
                     {/* CASE: A Bus Stop on a Buses' Route */}
                     <h2>{props.busStopName}</h2>
-                    <h4>{props.busStopCode}</h4>    
+                    <h4>{props.busStopCode}</h4>  
+                      
 
                 </>
                 :
@@ -90,12 +95,14 @@ const ArrivalTimesElement = (props) => {
                 <>
                     {/* CASE: A Hybrid Display for Bookmarked ArrivalTimes */}
                     <h2 className="hello">{"Bus " + props.busService}</h2>
-                    <h4>{"@ " + props.busStopName}</h4>
+                    <h4 className="hello2">{"@ " + props.busStopName}</h4>
+                   
 
                 </>
             }
             <div className='listbutton'>
                 <button onClick={onTimesClick} >
+                    
                 { // list of arrivaltimes (x3)
                     typeof props.busTimesList === "undefined" ? 
                     <BouncyBouncy/> : 
