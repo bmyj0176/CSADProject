@@ -25,7 +25,7 @@ app.use('/api', busArrivalAPIRouter);
 app.use('/api', busRoutesAPIRouter);
 app.use('/api', busStopsAPIRouter);
 app.use('/api', announcementsAPIRouter);
-app.use('/announcements', announcementsRouter);
+app.use('/api', announcementsRouter);
 app.use('/api', onemapSearchAPIRouter);
 
 // Start server

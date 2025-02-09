@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import BouncyBouncy from './Components/LoadingIcon.js';
 import { TrainAlertsService } from "../utils/api_caller.js";
+import { ReadAnnouncements, AddAnnouncement, DeleteAnnouncement, EditAnnouncement } from "../utils/api_caller.js";
 import "./stylesheets/announcements.css";
 import axios from "axios";
 
@@ -8,7 +9,7 @@ const Announcements = () => {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null); 
-  const [announcements, setAnnouncements] = useState([]);
+  const [data, setData] = useState([])
   const [newAnnouncement, setNewAnnouncement] = useState("");
   const [isAdmin, setIsAdmin] = useState(() => {
     const email = localStorage.getItem('email')
@@ -21,13 +22,8 @@ const Announcements = () => {
   useEffect(() => {
     const fetchTrainAlerts = async () => {
       try {
-        const response = await axios.post(`${process.env.REACT_APP_BACKEND_API_URL}/announcements`, { 
-          announcements: announcements,
-          newAnnouncement: newAnnouncement,
-         });
-        localStorage.setItem('announcements', response.data.announcements);
+        const response = await TrainAlertsService()
         console.log('Announcements successful');
-        window.location.reload();
       } catch (error) {
         console.error(error);
         console.log('Announcements failed'); 
@@ -36,6 +32,36 @@ const Announcements = () => {
 
     fetchTrainAlerts();
   }, []);
+
+  useEffect(() => {
+    updateAnnouncements();
+  }, []);
+
+  const updateAnnouncements = async () => {
+    const data = await ReadAnnouncements();
+    setData(data);
+  };
+
+  // Add a new announcement
+  const handleAdd = async () => {
+    if (!newAnnouncement.trim()) return;
+    await AddAnnouncement({
+      message: newAnnouncement
+    })
+    await updateAnnouncements();
+    setNewAnnouncement("")
+  };
+
+  // Delete an announcement
+  const handleDelete = async (index) => {
+    await DeleteAnnouncement(data[index].id);
+    await updateAnnouncements();
+  };
+
+  const handleEdit = async (index, new_message) => {
+    await EditAnnouncement(data[index].id, new_message);
+    await updateAnnouncements();
+  }
 
   useEffect(() => {
     const fetchTrainAlerts = async () => {
@@ -72,37 +98,15 @@ const Announcements = () => {
   }, []);
 
 // Load announcements from localStorage on first render
-  useEffect(() => {
-    const savedAnnouncements = JSON.parse(localStorage.getItem("announcements")) || [];
-    setAnnouncements(savedAnnouncements);
-  }, []);
+  // useEffect(() => {
+  //   const savedAnnouncements = JSON.parse(localStorage.getItem("announcements")) || [];
+  //   setAnnouncements(savedAnnouncements);
+  // }, []);
 
-  // Save to localStorage whenever announcements change
-  useEffect(() => {
-    localStorage.setItem("announcements", JSON.stringify(announcements));
-  }, [announcements]);
-
-  // Add a new announcement
-  const handleAdd = () => {
-    if (!newAnnouncement.trim()) return;
-    const updatedAnnouncements = [...announcements, newAnnouncement];
-    setAnnouncements(updatedAnnouncements);
-    setNewAnnouncement("");
-  };
-
-  // Edit an announcement
-  const handleEdit = (index, newText) => {
-    const updatedAnnouncements = [...announcements];
-    updatedAnnouncements[index] = newText;
-    setAnnouncements(updatedAnnouncements);
-  };
-
-  // Delete an announcement
-  const handleDelete = (index) => {
-    const updatedAnnouncements = announcements.filter((_, i) => i !== index);
-    setAnnouncements(updatedAnnouncements);
-  };
-
+  // // Save to localStorage whenever announcements change
+  // useEffect(() => {
+  //   localStorage.setItem("announcements", JSON.stringify(announcements));
+  // }, [announcements]);
 
   if (loading) return <BouncyBouncy/>;
   // if (error) return <p style={{ color: "red" }}>{error}</p>;
@@ -112,17 +116,17 @@ const Announcements = () => {
       <h1 id="ANheader">NYOOM SITE ANNOUNCEMENTS</h1>
       <div className="ANpanel">
         <ul>
-          {announcements.map((text, index) => (
+          {data.map((dict, index) => (
             <li key={index}>
               {isAdmin ? (
                 <input className="msg"
                   type="text"
-                  value={text}
-                  onChange={(e) => handleEdit(index, e.target.value)}
+                  value={dict.message}
+                  onChange={(e) => handleEdit(index, e.target.value)} 
                   style={{ marginRight: "10px" }}
                 />
               ) : (
-                <span>{text}</span>
+                <span>{dict.message}</span>
               )}
               {isAdmin && <button onClick={() => handleDelete(index)}>🗑️ Delete</button>}
             </li>
@@ -133,9 +137,9 @@ const Announcements = () => {
         <div className="add">
           <input
             type="text"
-            value={newAnnouncement}
-            onChange={(e) => setNewAnnouncement(e.target.value)}
             placeholder="New Announcement"
+            value={newAnnouncement}  // Bind the input value to the state
+            onChange={(e) => setNewAnnouncement(e.target.value)}  // Update the state as the user types
           />
           <button onClick={handleAdd}>➕ Add</button>
           <pre>

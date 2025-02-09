@@ -1,52 +1,75 @@
 import express from 'express';
 import { db } from "./firebase.js";
-import { collection, addDoc, getDocs } from 'firebase/firestore';  // Firestore functions
+import { collection, addDoc, getDocs, doc, deleteDoc, updateDoc } from 'firebase/firestore';  // Firestore functions
 
 const router = express.Router();
-const ANNOUNCEMENTS_KEY = "announcements";
 
-router.post('/announcements', async (req, res) => {
-  const { announcements, newAnnouncement } = req.body;
+router.post('/announcements/add', async (req, res) => { 
+  try {
+    const { message } = req.body; // Get data from request body
 
-    // Save to localStorage
-    const saveToLocalStorage = (announcements) => {
-      localStorage.setItem(ANNOUNCEMENTS_KEY, JSON.stringify(announcements));
-    };
+    const announcementsRef = collection(db, "announcements");
 
-    // Fetch announcements from Firebase & store in localStorage
-    const fetchAnnouncementsFromFirebase = async () => {
-      try {
-        const querySnapshot = await getDocs(collection(db, "announcements"));
-        const announcements = querySnapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
+    // Add new document
+    const docRef = await addDoc(announcementsRef, { message });
 
-        saveToLocalStorage(announcements);
-        return announcements;
-      } catch (error) {
-        console.error("Error fetching announcements:", error);
-        return JSON.parse(localStorage.getItem(ANNOUNCEMENTS_KEY)) || [];
-      }
-    };
+    return res.status(201).json({ id: docRef.id, message });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: 'Internal server error. Please try again later.' });
+  }
+});
 
-    // Add an announcement to Firebase & update localStorage
-    const addAnnouncementToFirebase = async (text) => {
-      try {
-        const newAnnouncement = { text, timestamp: Date.now() };
-        await addDoc(collection(db, "announcements"), newAnnouncement);
-        return fetchAnnouncementsFromFirebase(); // Refresh localStorage
-      } catch (error) {
-        console.error("Error adding announcement:", error);
-        return JSON.parse(localStorage.getItem(ANNOUNCEMENTS_KEY)) || [];
-      }
-    };
+router.post('/announcements/delete', async (req, res) => { 
+  try {
+    const { id } = req.body; // Get document ID from request body
 
-    // Get announcements from localStorage
-    const getLocalAnnouncements = () => {
-      return JSON.parse(localStorage.getItem(ANNOUNCEMENTS_KEY)) || [];
-    };
-  
+    const docRef = doc(db, "announcements", id);
+
+    // Delete the document
+    await deleteDoc(docRef);
+
+    return res.status(200).json({ message: "Document deleted successfully." });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: "Internal server error. Please try again later." });
+  }
+});
+
+router.get('/announcements/read', async (req, res) => {
+  try {
+    const announcementsRef = collection(db, "announcements");
+    const querySnapshot = await getDocs(announcementsRef);
+
+    // Extract data from each document
+    const announcements = querySnapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data()
+    }));
+
+    return res.status(200).json({
+      announcements
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: 'Internal server error. Please try again later.' });
+  }
+});
+
+router.post('/announcements/edit', async (req, res) => {
+  try {
+    const { id, new_message } = req.body; // Get document ID and updated data from request body
+
+    const docRef = doc(db, "announcements", id);
+
+    // Update the document fields
+    await updateDoc(docRef, { message: new_message });
+
+    return res.status(200).json({ message: "Document updated successfully." });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: "Internal server error. Please try again later." });
+  }
 });
 
 export default router;

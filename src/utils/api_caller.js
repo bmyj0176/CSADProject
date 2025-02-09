@@ -49,3 +49,49 @@ export async function OnemapSearch(searchVal) {
     console.error('Onemap Search API Call Failed: ', error);
   }
 }
+
+export async function AddAnnouncement(doc) {
+  try {
+    const response = await axios.post(
+      `${process.env.REACT_APP_BACKEND_API_URL}/api/announcements/add`, 
+      { message: doc.message || "" } // Send in request body
+    );  
+    console.log("added")  
+  } catch (error) {
+    console.error('AddAnnouncement API Call Failed: ', error);
+  }
+}
+
+export async function DeleteAnnouncement(id) {
+  try {
+    const response = await axios.post(
+      `${process.env.REACT_APP_BACKEND_API_URL}/api/announcements/delete`, 
+      { id } // Send in request body
+    );  
+    console.log("deleted")  
+  } catch (error) {
+    console.error('DeleteAnnouncement API Call Failed: ', error);
+  }
+}
+
+export async function ReadAnnouncements() {
+  try {
+    const response = await axios.get(`${process.env.REACT_APP_BACKEND_API_URL}/api/announcements/read`);
+    return response.data.announcements;
+    console.log("readed")  
+  } catch (error) {
+    console.error('ReadAnnouncements API Call Failed: ', error);
+  }
+}
+
+export async function EditAnnouncement(id, new_message) {
+  try {
+    const response = await axios.post(
+      `${process.env.REACT_APP_BACKEND_API_URL}/api/announcements/edit`, 
+      { id, new_message: new_message || "" } // Send in request body
+    );
+    console.log("edited")  
+  } catch (error) {
+    console.error('EditAnnouncement API Call Failed: ', error);
+  }
+}
