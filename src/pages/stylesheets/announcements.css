@@ -3,18 +3,30 @@
     align-items: center;
     text-align: center;
     margin: 70px;
-    height: 500px;
+    height: fit-content;
 }
 
 #ANheader {
     text-align: center;
 }
 
-.msg {
+.inputmsg {
     border-radius: 5px;
     margin-bottom: 5px;
+    min-width: fit-content;
+    min-height: fit-content;
+    color: black;
 }
 
 .add {
     margin-left: 40%;
+}
+
+.ANapihead {
+    text-align: center;
+}
+
+.ANapimsg {
+    color: "green";
+    text-align: center;
 }

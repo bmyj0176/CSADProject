@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { busRouteAPIQuerySkip } from './helper_functions2';
 
+// INPUT: busStopCode etc. "46971"
+// OUTPUT: json
 export async function BusArrival(busStopCode) {
   try {
     const response = await axios.get(`${process.env.REACT_APP_BACKEND_API_URL}/api/bus-arrival?busStopCode=${busStopCode}`);
@@ -11,6 +13,8 @@ export async function BusArrival(busStopCode) {
   return null
 }
 
+// INPUT: busService etc. "901M"
+// OUTPUT: json
 export async function BusRoutes(busService) {
   try {
     const response = await axios.get(`${process.env.REACT_APP_BACKEND_API_URL}/api/bus-routes?skip=${busRouteAPIQuerySkip(busService)}`);
@@ -21,6 +25,8 @@ export async function BusRoutes(busService) {
   return null
 }
 
+// INPUT: skipIndex because it limits to 500 entries by default, loop with skipIndex starting 0
+// OUTPUT: json
 export async function BusStops(skipIndex) {
   try {
     const response = await axios.get(`${process.env.REACT_APP_BACKEND_API_URL}/api/bus-stops?skip=${skipIndex}`)
@@ -31,6 +37,7 @@ export async function BusStops(skipIndex) {
   return null
 }
 
+// OUTPUT: json
 export async function TrainAlertsService() {
   try {
     const response = await axios.get(`${process.env.REACT_APP_BACKEND_API_URL}/api/train_alerts`);
@@ -41,6 +48,8 @@ export async function TrainAlertsService() {
   return null
 }
 
+// INPUT: string like "dover"
+// OUTPUT: json
 export async function OnemapSearch(searchVal) {
   try {
     const response = await axios.get(`${process.env.REACT_APP_BACKEND_API_URL}/api/onemap-search?searchVal=${searchVal}`);

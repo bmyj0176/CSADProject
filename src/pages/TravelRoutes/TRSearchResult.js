@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext  } from 'react';
 import { codeToMRTImagePath } from '../../utils/helper_functions2';
 import "../stylesheets/travelroutes.css";
+import { ThemeContext } from '../Components/ToggleThemeButton';
 
 const TRSearchResult = (props) => {
     const [header, setHeader] = useState("")
     const [subheader1, setSubheader1] = useState("")
     const [subheader2, setSubheader2] = useState("")
-    
+    const { isDarkTheme } = useContext(ThemeContext);
     useEffect(() => {
         setHeader("")
         setSubheader1("") 
@@ -37,14 +38,14 @@ const TRSearchResult = (props) => {
     // BUTTON LAYOUT
       return (
         <div className="containerTR">
-          <p className='trbutton' >
-            <button onClick={handleClick}>
+            <button className='trbutton' onClick={handleClick}>
+              <img style={{filter: isDarkTheme ? "invert(0%)" : "invert(100%)"}} className="img1"src="../images/icons/Addr.png"></img>
               <h3 className="busstopname">{header}</h3>
-              <b className="busstopnumber">{subheader1}</b>
+              <p className="busstopnumber">{/*subheader1*/}</p>
               <br/>
               {subheader2 && (subheader2)}
             </button>
-          </p>
+     
         </div>
       )
   }

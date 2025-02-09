@@ -152,6 +152,11 @@ const TRoutes = (props) => {
                             location_name={data.location_name}
                             location_type={data.location_type}
                             location_info={data.location_info}/>
+                            {data.time_taken === 0 && 
+                                <span style={{color: '#00FFFF'}}>
+                                    <TimeLabel time_taken={data.time_taken}/>
+                                </span>
+                            }
                         </div>
                         :
                         <div style={{fontSize:'1.5rem'}}>
@@ -160,6 +165,9 @@ const TRoutes = (props) => {
                             transport_names={data.transport_names}
                             location_name={data.location_name}
                             location_info={data.location_info}/>
+                            <span style={{color: '#00FFFF'}}>
+                                <TimeLabel time_taken={data.time_taken}/>
+                            </span>
                         </div>
                         }
                     </li>
@@ -310,7 +318,7 @@ const TransportLabel = (props) => { // props: transport_mode, transport_names, l
 const TimeLabel = (props) => { // props: time_taken
     return (
         <>
-            {props.time_taken} mins
+            &nbsp;- {Math.round(props.time_taken)} mins
         </>
     )
 }

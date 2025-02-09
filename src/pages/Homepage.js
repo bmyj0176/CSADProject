@@ -314,7 +314,7 @@ const ClassSlide = (props) =>{
         </div>
       </div>
       </div>
-      <EndDiv />
+    
     </div>
     </>
   );

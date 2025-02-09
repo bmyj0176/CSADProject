@@ -7,6 +7,7 @@ import ArrivalTimesList from "./ArrivalTimes/ArrivalTimesList";
 import SavedArrivalTimes from "./ArrivalTimes/SavedArrivalTimes";
 import ArrivalTimesElement from "./ArrivalTimes/ArrivalTimesElement";
 import ATSearchResult from "./ArrivalTimes/ATSearchResult";
+import { EndDiv } from './Homepage.js';
 
 const ArrivalTimes = () => {
   const [toggles, setToggles] = useState({
@@ -30,11 +31,23 @@ const ArrivalTimes = () => {
 
   const addSearchResult = (searchResult) => {
     const currentHistory = JSON.parse(localStorage.getItem("recentSearches")) || [];
+    const filteredHistory = currentHistory.filter(history => !deepEqual(history, searchResult));
 
-    const updatedList = [searchResult, ...currentHistory].slice(0,8);
+    const updatedList = [searchResult, ...filteredHistory].slice(0, 8);
+
     localStorage.setItem("recentSearches", JSON.stringify(updatedList));
     setRecentSearches(updatedList);
   };
+
+  function deepEqual(obj1, obj2) {
+    if (typeof obj1 !== "object" || typeof obj2 !== "object" || obj1 === null || obj2 === null) {
+        return obj1 === obj2;
+    }
+    const keys1 = Object.keys(obj1);
+    const keys2 = Object.keys(obj2);
+    if (keys1.length !== keys2.length) return false;
+    return keys1.every(key => deepEqual(obj1[key], obj2[key]));
+  }
 
   useEffect(() => {
 
@@ -124,7 +137,7 @@ const ArrivalTimes = () => {
 
   const receiveSearchResult = (value) => {
     setSearchResult(value);
-    
+    addSearchResult(value)
   };
 
   const defaultStyle = {
@@ -181,10 +194,6 @@ const ArrivalTimes = () => {
       <ul className={showFav ? "horizontal-list" : "horizontal-list2"}>
       
       <li className="searchCol" id='scroll'>
-
-      <button onClick={() => addSearchResult(searchResult)}>
-        Add Search Result
-      </button>
     
       <div className="Checkbox-container">
 
@@ -273,31 +282,25 @@ const ArrivalTimes = () => {
          
           <div className="vert">
           
-          {recentSearches.map((search, index) => (
-          search.type === "busStop" ? 
-          
-          <>
-         <button className="cont-recent" onClick={()=>receiveSearchResult(search)}> 
-         <p key={index}>
-          <img src="./images/recentBS.png"></img>
-          <h1 className="recentBusName">{search.busStopName}</h1> <br />
-          <h3>{search.busStopCode}</h3>
-          </p>
-         </button>
-          </>
-        
-          :
-          <>
-         <button className="cont-recent2" onClick={()=>receiveSearchResult(search)}> 
-         <p key={index}>
-          <img src="./images/recentBUS.png"></img>
-          <h1 className="recentBusNo">{"Bus " + search.busService}</h1> <br />
-         
-          </p>
-         </button>
-          </>
-          
+          {recentSearches.map((search) => (
+            search.type === "busStop" ? (
+              <button key={search.busStopCode} className="cont-recent" onClick={() => receiveSearchResult(search)}> 
+                <div>
+                  <img src="./images/recentBS.png" alt="Bus Stop" />
+                  <h1 className="recentBusName">{search.busStopName}</h1> <br />
+                  <h3>{search.busStopCode}</h3>
+                </div>
+              </button>
+            ) : (
+              <button key={search.busService} className="cont-recent2" onClick={() => receiveSearchResult(search)}> 
+                <div>
+                  <img src="./images/recentBUS.png" alt="Bus" />
+                  <h1 className="recentBusNo">{"Bus " + search.busService}</h1> <br />
+                </div>
+              </button>
+            )
           ))}
+
         
           </div>
         </>
@@ -334,6 +337,8 @@ const ArrivalTimes = () => {
        } </>}
     </li>
     </ul>  
+   
+    <EndDiv/>
     </>
   );
 };

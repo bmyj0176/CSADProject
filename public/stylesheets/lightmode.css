@@ -58,6 +58,10 @@ form {
   background-color: #FAF3E0; 
 } 
 
+.displaymsg {
+  color: black;
+}
+
 button, .buton{
   background-color: rgb(60, 60, 60);
   border-radius: 20px;
@@ -110,4 +114,21 @@ input {
 
 .ANpanel {
   border: solid goldenrod 2px;
+  background-color: #00000010;
+}
+
+.recS2{
+  color: black;
+}
+
+.displaymsg {
+  color: black;
+}
+
+.busstopname{
+  color: green;
+}
+
+.trbutton {
+  background-color: rgb(23, 32, 37);
 }

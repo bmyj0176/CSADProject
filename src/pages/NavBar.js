@@ -45,7 +45,7 @@ const NavBar = () => {
           </li>
           
           <li>
-          <button id="test_button" onClick={test_function}> Test Button </button><span id="test_text"></span>
+          <button style={{opacity:"0"}} id="test_button" onClick={test_function}> Test Button </button><span id="test_text"></span>
           </li>
         {/*------ ABOVE IS FLOATED LEFT, BELOW IS FLOATED RIGHT -----------------------------*/}
           <li style={{ float: 'right' }}>
@@ -76,8 +76,15 @@ const NavBar = () => {
             <Link to="/announcements" className={location.pathname === "/announcements" ? "activee" : "unactivee"}>Announcements</Link>
           </li>
       </ul>
-      <Outlet />
-
+      {path === "/" ?
+      <>
+        <Outlet />
+        <EndDiv/>
+      </> : <>
+        <Outlet />
+      </>
+      }
+      
     </div>
   )
 };

@@ -119,14 +119,14 @@ const Announcements = () => {
           {data.map((dict, index) => (
             <li key={index}>
               {isAdmin ? (
-                <input className="msg"
+                <input className="inputmsg"
                   type="text"
                   value={dict.message}
                   onChange={(e) => handleEdit(index, e.target.value)} 
                   style={{ marginRight: "10px" }}
                 />
               ) : (
-                <span>{dict.message}</span>
+                <span className="displaymsg">{dict.message}</span>
               )}
               {isAdmin && <button onClick={() => handleDelete(index)}>🗑️ Delete</button>}
             </li>
@@ -157,9 +157,9 @@ const Announcements = () => {
           </pre>
         </div>
       )}
-      <h1>Train Service Alerts</h1>
+      <h1 className="ANapihead">Train Service Alerts</h1>
       {messages.length === 0 ? (
-        <p style={{ color: "green" }}>All train services are running smoothly.</p>
+        <p className="ANapimsg">All train services are running smoothly.</p>
       ) : (
         <div>
           <h2>Alerts:</h2>

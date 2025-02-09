@@ -161,8 +161,8 @@
 }
 .busstopnumber{
   position:absolute;
-  top: 15vh;
-  right: 4vw;
+  top: 12vh;
+  right: 8vw;
   font-size:2.2vh;
   color: rgb(222, 199, 168);
   z-index: 3; 

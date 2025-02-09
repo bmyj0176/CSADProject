@@ -114,10 +114,12 @@ export async function dijkstra(graph, start, end, codeToName, interchanges, opti
                             filteredBus = method;
                         }
                         //checking if method is transfers
-                        else if (method[0].includes("BBtransfer") || method[0].includes("TBtransfer") || method[0].includes("BTtransfer")) {
-                            totalDistance += 10;
-                            neighbouringDistance += 10;
-                            filteredBus = method;
+                        else if (method[0].includes("BBtransfer") || method[0].includes("TBtransfer") || method[0].includes("BTtransfer") ) {
+                            if (currentNode !== realend){
+                                totalDistance += 10;
+                                neighbouringDistance += 10;
+                                filteredBus = method;
+                            }
                         } else if (method[0].includes("TTtransfer")) {
                             filteredBus = method;
                         } else {console.error("unidentified method detected.", method);}
@@ -131,12 +133,13 @@ export async function dijkstra(graph, start, end, codeToName, interchanges, opti
                 }
             }
 
+
             // add time taken for each interchange at start into a list
             if (distances[realend] < final_time_taken) {
                 final_distances = distances;
                 final_predecessors = predecessors;
                 final_end = realend;
-                final_start = realstart 
+                final_start = realstart;
                 final_time_taken = distances[realend];
             }
         }
@@ -168,7 +171,7 @@ export async function dijkstra(graph, start, end, codeToName, interchanges, opti
     let finalTimeTaken = subTime + 6 * transferCount;
     //console.log(JSON.stringify(route, null, 2));
 
-
+    console.log(route);
     //showing the route as only transfers
 
     let simple_route = new Map();
@@ -199,15 +202,13 @@ export async function dijkstra(graph, start, end, codeToName, interchanges, opti
             if (prev_stop === end) {
                 prev_dist = route.get(final_end)[1];
             } else {prev_dist = route.get(prev_stop)[1];}
-            console.log(prev_value, prev_dist);
             prev_value[1] = prev_dist - distances[key];
             prev_value[2] = noOfStops;
             simple_route.set(prev_stop, prev_value);
         }
-    } simple_route.set(start, []);
+    } simple_route.set(final_start, []);
 
     let flippedSimpleRoute = new Map([...simple_route].reverse());
-    console.log(simple_route)
     // Return both the shortest distance and the route
     return {
         time_taken: distances[final_end],
