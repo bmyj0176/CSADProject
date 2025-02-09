@@ -42,6 +42,11 @@ const ArrivalTimes = () => {
     setRecentSearches(storedSearches); // Safely load data from localStorage
   }, []);
 
+
+  useEffect(() => {
+    setShowFav(favedItems.length !== 0 ?  true : false)
+  }, [favedItems]);
+
   const onItemSelect = (index) => {
     setSelectedItem(index)
   }
@@ -182,9 +187,12 @@ const ArrivalTimes = () => {
       </button>
     
       <div className="Checkbox-container">
-      
+
         <CheckBox />
       </div>
+
+      {recentSearches.length===0 &&
+      <img className="whitearrow" src="./images/whitearrow.png"></img>}
     
       <ATSearchBar
           
@@ -260,7 +268,7 @@ const ArrivalTimes = () => {
         <>
           {recentSearches.length !==0 ? 
             <div className="recS">RECENT SEARCHES</div> :
-            <div className="recS2">Search for busses!</div>
+            <div className="recS2">Search For Bus Services or Bus Stops!</div>
 }
          
           <div className="vert">
@@ -296,15 +304,15 @@ const ArrivalTimes = () => {
       }
 
       </li>
-       <li>   
+       <li className="thirdCol">   
        <button className="showFav" onClick={toggleFaved}>
-        <img style={{filter: isDarkTheme ? "invert(0%)" : "invert(100%)"}}src="./images/slide_arrow_left.png"></img>
-        <img className="booky" style={{filter: isDarkTheme ? "invert(100%)" : "invert(0%)",
-                     opacity: showFav ? "0" : "1",
-                     width: "3vw"}} src="./images/bookymark.png"></img></button>
+        <img style={{filter: isDarkTheme ? "invert(0%)" : "invert(100%)"}}src="./images/bookarrow.png"></img>
+                                                          </button>
 
       {showFav && 
         <>
+      {favedItems.length !== 0 ? 
+      <>
       <SavedArrivalTimes 
         favedItems={favedItems}
         onFavItem={onFavItem}
@@ -315,7 +323,15 @@ const ArrivalTimes = () => {
           <div key={index}>{favedItems[index]}</div>
         ))
       }
-    </>}
+      </>
+      :
+      <>
+      <div className="noBookmark">
+      <img className="sadbook" src="./images/idkanymore.png"></img>
+      <p>No Favourites at the moment!</p>
+      </div>
+      </>
+       } </>}
     </li>
     </ul>  
     </>

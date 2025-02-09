@@ -23,7 +23,7 @@ body, html{
 font-size: 7.2vh;
 padding-top: 10vh;
 /*font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
-font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 text-shadow: none;
 background: linear-gradient(15deg, #649ef4, #75fbe7);
 -webkit-background-clip: text;
@@ -44,6 +44,7 @@ letter-spacing: normal;
   .subBody {
     max-width: 47vw;  /* Use viewport width to limit the maximum width, ensuring better readability */
     color: white;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     line-height: 1.6;
     position: relative;
     font-size: 3vh;  /* Font size scales with viewport height */
@@ -243,7 +244,7 @@ letter-spacing: normal;
   height: 0.1vh;
   position:relative;
   top:4vh;
-  margin-top: 10vh;
+  margin-top: 13vh;
 }
 
 
@@ -256,7 +257,7 @@ letter-spacing: normal;
     position: relative;
     top: 10vh;  
     padding: 10vh;
-    padding-bottom: 110vh;  
+    padding-bottom: 115vh;  
     margin-top: auto; 
     margin-bottom: 30vh;  
     max-width: 75vw; 
@@ -363,7 +364,7 @@ letter-spacing: normal;
 .widgets4{
   position:relative;
   left: -0.8vw;
-  top: 11vh;
+  top: 10vh;
   width: 14vh;
   z-index: 10;
   transition: transform 0.2s ease-in-out;
@@ -410,6 +411,7 @@ letter-spacing: normal;
 .widgetsBody {
   position: absolute;
   text-align: center;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   max-width: 20vw;       
   bottom: -22vh;    
   left: 6.5vw;    
@@ -441,6 +443,7 @@ letter-spacing: normal;
   position: absolute;
   text-align: center;
   margin-top: 2vh;       
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   max-width: 20vw;       
   bottom: -22vh;        
   left: 32.5vw;    
@@ -472,11 +475,12 @@ letter-spacing: normal;
   text-align: center;
   max-width: 120vw;
   color: white;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   line-height: 3.5vh; 
   right: 2vw;  
   left: auto;
   top: auto;
-  bottom: -24.2vh;  
+  bottom: -25.2vh;  
   font-size: 3vh;
 
 }
@@ -484,7 +488,7 @@ letter-spacing: normal;
 .widgetsText4{
   position: relative;
   font-size: 3vh;
-  bottom: -12vh;  
+  bottom: -13vh;  
   top: auto;
   max-width: 15vw; 
   right: 5vw;
@@ -499,9 +503,10 @@ letter-spacing: normal;
   position: absolute;
   text-align: center;
   max-width: 20vw;       
-  bottom: -30vh;    
+  bottom: -33vh;    
   left: -7vw;    
   right: auto;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   top: auto; 
   color: white;
   line-height: 3.5vh;   
@@ -527,8 +532,9 @@ letter-spacing: normal;
   text-align: center;
   margin-top: 2vh;       
   max-width: 30vw;       
-  bottom: -32vh;        
-  left: -1vw;    
+  bottom: -33vh;        
+  left: -0.5vw;    
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   right: auto;
   top: auto;       
   color: white;
@@ -575,6 +581,7 @@ letter-spacing: normal;
   color: white;
   line-height: 1.6;
   position: absolute;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   left: 18vw; 
   top: 15vh;
   font-size: 2.8vh;
@@ -585,6 +592,7 @@ letter-spacing: normal;
   color: white;
   line-height: 1.6;
   position: absolute;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   left: 18vw; 
   top: 44vh;
   font-size: 2.8vh;
@@ -1323,15 +1331,16 @@ letter-spacing: normal;
 
 .endLogo{
   position:absolute;
-  background-image: url('/public/images/nyoom.png');
+  background-image: url('/public/images/nyoom_banner.png');
   background-size: contain;
   background-repeat: no-repeat;
   padding: 15vh;
+  width: 25vw;;
   background-color: transparent;
   border: none;
   border-radius: 0;
-  top: 10vh;
-  left: 10vw;
+  top: 14vh;
+  left: 5vw;
 }
 .emailListing-container{
   position:relative;
@@ -1488,3 +1497,4 @@ letter-spacing: normal;
 ::-webkit-scrollbar {
   display: none;
 }
+

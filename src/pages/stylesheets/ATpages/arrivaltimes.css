@@ -32,16 +32,16 @@
   .showFav{
     position:absolute;
     top: 44vh;
-    right: 25.3vw;
+    right: 25vw;
     background: none;
     border: none;
     z-index: 4;
-    transform:rotate(180deg);
+    transform: scaleX(-1)
   
   }
 
   .showFav img{
-    width: 2vw;
+    width: 3vw;
     height: auto;
   }
 
@@ -54,7 +54,7 @@
   position: relative;
   display: grid;
   height: 100vh;
-  grid-template-columns: 32% 62% 3%;
+  grid-template-columns: 32% 62% 20%;
   max-width: 100%;
   margin: 0;
   padding: 0; /* Removes any default padding */
@@ -70,18 +70,14 @@
   
   }
 
-  .showFav img:first-of-type{
+  .showFav img{
     position:absolute;
-    right: 3vw;
-    width: 2vw;
+    right: 1.8vw;
+    width: 3vw;
     height: auto;
   }
 
-  .showFav img:nth-of-type(2){
-    position:absolute;
-    top:-0.9vh;
-    right: 1vh;
-  }
+
 }
 
 
@@ -148,7 +144,7 @@
 .scroll, #scroll {
   background-color:#00000010;
   overflow-y: scroll;
-  overflow:visible;
+  
 }
 
 .savedHP .bookmarkedtext{
@@ -399,8 +395,96 @@
 }
 
 .recS2{
+  position: absolute;
   margin-top: 4vh;
+  top: 11vh;
+  right: 30vw;
+  color: white;
+  overflow: visible;
   font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-size: 5vh;
+  animation: slideIn2 1s ease-out; 
 
+}
+
+@keyframes slideIn2 {
+  from {
+      /* Start off-screen to the right */
+    opacity: 0; 
+    top: 35vh;
+    left: auto;
+    right: 20vw;
+    bottom: auto;/* Start invisible */
+  }
+  to {
+      /* End at its original position */
+    opacity: 1; 
+    top: 11vh;
+    right: 30vw;
+    bottom: auto;
+    left: auto;
+  }
+}
+
+.bookmarkedtext{
+
+  font-family:Georgia, 'Times New Roman', Times, serif;
+
+}
+
+.thirdCol{
+  border-left: 1px solid rgb(41, 65, 79);
+  box-shadow:-4px 5px 10px rgba(0, 0, 0, 0.3)
+}
+
+.whitearrow{
+  position:absolute;
+  width: 15vw;
+  left: 27vw;
+  top: 20vh;
+  height: auto;
+  overflow: visible;
+  transform:scaleX(-1) ;
+  z-index: 4;
+  animation: slideIn 1s ease-out; 
+}
+
+@keyframes slideIn {
+  from {
+      /* Start off-screen to the right */
+    opacity: 0; 
+    top: 40vh;
+    right: auto;
+    left: 35vw;
+    bottom: auto;/* Start invisible */
+  }
+  to {
+      /* End at its original position */
+    opacity: 1; 
+    top: 20vh;
+    right: auto;
+    bottom: auto;
+    left: 27vw;/* Fully visible */
+  }
+}
+
+
+.noBookmark img{
+  position:relative;
+  width: 15vw;
+  height:auto;
+  bottom: auto;
+  left: auto;
+  right: auto;
+  top: 22vh;
+}
+
+.noBookmark p{
+  position:relative;
+  top: 20vh;
+  bottom: auto;
+  left: auto;
+  right: auto;
+  color: white;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }

@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { getBusTiming } from "../../utils/helper_functions";
 import ArrivalTimesElement from './ArrivalTimesElement';
+import { ThemeContext } from '../Components/ToggleThemeButton';
 import "../stylesheets/ATpages/arrivaltimes.css";
 
 const SavedArrivalTimes = (props) => {
@@ -9,6 +10,8 @@ const SavedArrivalTimes = (props) => {
     return storedFavedItems ? JSON.parse(storedFavedItems) : [];
   });
   const [timesListList, setTimesListList] = useState([])
+
+  const { isDarkTheme } = useContext(ThemeContext);
 
   useEffect(() => {
     const updateTimesList = async () => {
@@ -42,7 +45,7 @@ const SavedArrivalTimes = (props) => {
 
   return (  
     <>
-      {favedItems.length !== 0 && <h2 className="bookmarkedtext">{props.page}</h2>}
+      {favedItems.length !== 0 && <h2 style={{color: isDarkTheme ? "rgb(109, 231, 255)" : "rgb(43, 28, 9)"}} className="bookmarkedtext">{props.page}</h2>}
       <ul className="barr">
         {favedItems.map((item, index) => (
           <li key={index}>

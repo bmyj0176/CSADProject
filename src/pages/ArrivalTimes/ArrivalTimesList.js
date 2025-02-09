@@ -119,7 +119,7 @@ const ArrivalTimesList = (props) => {
         <>
         <h4>
             {(lastSearchHistory) &&
-            <button
+            <button 
             onClick={onGoBackHistory}>
                 &lt;
                 {
