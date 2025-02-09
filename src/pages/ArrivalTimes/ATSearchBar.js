@@ -99,7 +99,10 @@ const ATSearchBar = (props) => {
         {/* searchbar disables if nearMe is off */}
         {!props.toggleStates['nearMe'] ?
          <input 
-          style={{borderColor: isDarkTheme ? "rgb(255, 255, 255)": "rgb(0, 0, 0)"}}
+          style={{borderColor: isDarkTheme ? "rgb(255, 255, 255)": "black",
+                  color: isDarkTheme ? "rgb(255, 255, 255)": "black",
+                  backgroundColor: !isDarkTheme && "#00000070"
+          }}
           type="text"   placeholder="Search Here..." className="search_bar" value={searchBarValue} onChange={onChangeSearchBar}/> : 
          <h4>Please note that this may not be 100% accurate</h4> }
         {/* stacked bars */}

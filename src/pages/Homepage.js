@@ -250,11 +250,11 @@ const ClassSlide = (props) =>{
       
       <div className="savedHP">
       <ul className="horizontal-listHP">
-       <li>{userLoggedIn &&<SavedArrivalTimes 
+       <li><SavedArrivalTimes 
         favedItems={favedItems}
         onFavItem={onFavItem}
         page="Bookmarked"
-      />}
+      />
       </li>
       </ul>
       </div>

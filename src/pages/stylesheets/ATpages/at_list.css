@@ -14,16 +14,13 @@ border-color: white;
 
 }
 
-.listbutton :hover {
-    background-color: grey;
-
-}
 
 .element {
-    font-size: 30px;
+    font-size: 7vh;
+
     animation: none;
     text-transform: capitalize;
-    text-decoration: bold;
+    text-decoration: underline;
     
 }
 
@@ -38,15 +35,17 @@ border-color: white;
 }
 
 .hello2{
-    color: rgb(255, 255, 255);
+    color: rgba(62, 245, 255, 0.733);
     margin-left: auto;
     margin-right: auto;
-
+    justify-content:center; 
     font-size: 3vh;
 }
 
 
 .noService{
+    position: relative;
+    top: 5vh;
     text-align: center;
     font-size: 1.3vw;
     color: grey;
@@ -56,11 +55,51 @@ border-color: white;
     position:relative;
 }
 
+.listbutton img{
+    position:absolute;
+    width: 2vw;
+    height: auto;
+    bottom: -2.3vh;
+    right: 7vw;
+    filter: invert(100%);
+    transition: transform 0.5s ease-in-out;
+    opacity: 0.2;
 
-.listbutton button{
-   margin-bottom: 2vh;
 }
 
+.listbutton img:hover {
+    opacity: 1;
+    transform: rotate(-360deg);
+  }
+
+  .timesStop{ position:relative;
+    top: 2vh;
+    right: 0.5vh;
+    font-size: 2.7vh;
+
+  }
+
+  .timesNo{
+    position:relative;
+    right: 0.5vh;
+    font-size: 2.7vh;
+  }
+
+  .timesHyb{
+    position:relative;
+    right: 0.5vh;
+    font-size: 2.7vh;
+  }
+
+  
+.listbutton button{
+    position:absolute;
+    padding: none;
+    margin: none;
+    z-index: 2;
+
+}
+.list
 .btnfaved{
  width: 15vw;
  height: auto;
@@ -68,15 +107,20 @@ border-color: white;
 
 .atlist{
     position:relative;
+    min-height: 28vh;
 }
 
 .savedHP .atlist{
+    position:relative;
+    left: 4vh;
     border: 2px solid rgb(21, 21, 59);
+    max-height: 18vw;
+    min-height: 14vw;
     max-width: 18vw;
-    min-width: 16vw;
+    min-width: 18vw;
     background-color: rgb(26, 38, 44);
     border-radius: 15px;
-    margin: 0;
+    
 
 }
 

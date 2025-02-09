@@ -97,7 +97,7 @@ async function buildCodeToName(bus_stop_info) {
 }
 
 function calculateSpeed(distance) {
-    let spd = 20 + 40 * (1 - Math.exp(-0.462 * distance));
+    let spd = 15 + 40 * (1 - Math.exp(-0.52 * distance));
     return spd;
 }
 

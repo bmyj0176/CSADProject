@@ -223,6 +223,7 @@ const TransportLabel = (props) => { // props: transport_mode, transport_names, l
             ) {
                 const code = await stationToCode(props.location_info)
                 setStnCode(code)
+                console.log('sending code' + code)
                 const imageSrc = codeToMRTImagePath(code)
                 setSrc(imageSrc)
             }

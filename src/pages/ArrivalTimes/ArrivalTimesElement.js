@@ -24,6 +24,12 @@ const ArrivalTimesElement = (props) => {
 
     const [popupState, setPopupState] = useState(false)
     
+    const [busTimesList, setBusTimesList] = useState([])
+    
+    useEffect(() => {
+        setBusTimesList(props.busTimesList || [])
+    }, [props.busTimesList])
+    
     useEffect(() => {
         setData(
             {
@@ -55,10 +61,7 @@ const ArrivalTimesElement = (props) => {
         }
     }
 
-    
-
-
-    const onTimesClick = (e) => {
+  const onTimesClick = (e) => {
         e.stopPropagation();
         props.updateBusTimes();
     }
@@ -94,28 +97,29 @@ const ArrivalTimesElement = (props) => {
                 :
                 <>
                     {/* CASE: A Hybrid Display for Bookmarked ArrivalTimes */}
-                    <h2 className="hello">{"Bus " + props.busService}</h2>
-                    <h4 className="hello2">{"@ " + props.busStopName}</h4>
+                    <h2 style={{color: isDarkTheme ? "rgb(81, 214, 255)" : "green"}} className="hello" >{"Bus " + props.busService}</h2>
+                    <h4 style={{color: isDarkTheme ? "rgba(62, 245, 255, 0.532)" : "goldenrod"}} className="hello2">{"@ " + props.busStopName}</h4>
                    
 
                 </>
             }
             <div className='listbutton'>
                 <button onClick={onTimesClick} >
-                    
-                { // list of arrivaltimes (x3)
-                    typeof props.busTimesList === "undefined" ? 
+                    <img src="../images/reload.png"></img> </button>
+               <div className={(props.type) ? (props.type==="busNo") ? "timesNo" : "timesStop" : "timesHyb"}> { // list of arrivaltimes (x3)
+                    busTimesList.length === 0 ? 
                     <BouncyBouncy/> : 
-                    props.busTimesList === null ?
+                    busTimesList === null ?
                     <Unavailable/> :
-                    props.busTimesList.map((busTime, index) => (
+                    busTimesList.map((busTime, index) => (
                         <span key={index}>
                             {index === 0 ? <span className="element">{busTime}</span> : busTime},&nbsp;&nbsp;
                         </span> // each arrivaltime in mins
                     )) 
                 }
-                </button>
-                {props.busTimesList && "mins"}
+               
+                {busTimesList && "mins"}
+                </div>
             </div>
             <StarButton 
             type={props.type}

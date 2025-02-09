@@ -144,8 +144,7 @@
 .scroll, #scroll {
   background-color:#00000010;
   overflow-y: scroll;
-
-  
+  margin-top: 0;
 }
 
 .savedHP .bookmarkedtext{

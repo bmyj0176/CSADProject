@@ -15,13 +15,13 @@ const SavedArrivalTimes = (props) => {
   const { isDarkTheme } = useContext(ThemeContext);
 
   useEffect(() => {
-    const updateTimesList = async () => {
+    const updateAllTimesList = async () => {
       const timesList = await Promise.all(
         props.favedItems.map((dict) => getBusTiming(dict.busStopCode, dict.busService))
       );
       setTimesListList(timesList)
     }
-    updateTimesList();
+    updateAllTimesList();
   }, [props.favedItems])
 
   useEffect(() => {
@@ -40,9 +40,12 @@ const SavedArrivalTimes = (props) => {
     };
   }, []);
 
-  useEffect(() => {
+  const updateBusTimes = async (index) => {
+    const updatedTimesList = [...timesListList];
+    updatedTimesList[index] = await getBusTiming(favedItems[index].busStopCode, favedItems[index].busService);
+    setTimesListList(updatedTimesList);
+}
 
-  }, [])
 
   return (  
     <>
@@ -61,6 +64,7 @@ const SavedArrivalTimes = (props) => {
                   busTimesList={timesListList[index]}
                   favedItems={props.favedItems}
                   onFavItem={props.onFavItem}
+                  updateBusTimes={() => updateBusTimes(index)}
                 />
               )}
             </div>

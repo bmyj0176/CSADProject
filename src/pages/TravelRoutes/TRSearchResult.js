@@ -37,7 +37,7 @@ const TRSearchResult = (props) => {
     // BUTTON LAYOUT
       return (
         <div>
-          <p className='trbutton' style={{display:'block'}}>
+          <p className='trbutton' >
             <button onClick={handleClick}>
               <h3 className="busstopname">{header}</h3>
               <b className="busstopnumber">{subheader1}</b>

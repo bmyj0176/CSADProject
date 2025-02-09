@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useRef} from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import { searchInDualList, getjson } from '../../utils/helper_functions';
 import { cleanMRTStationName } from '../../utils/helper_functions2';
 import TRSearchResult from './TRSearchResult';
 import '../stylesheets/busstopcard.css';
 import dijkstra from '../../utils/travel_algorithms.js';
+import { ThemeContext } from '../Components/ToggleThemeButton';
 
 const TRSearchBar = (props) => {
     const MAX_BAR_SIZE = 20;
@@ -20,6 +21,8 @@ const TRSearchBar = (props) => {
     const [location1, setLocation1] = useState(null);
     const [location2, setLocation2] = useState(null);
     const [lock, setLock] = useState(false);
+
+    const { isDarkTheme } = useContext(ThemeContext);
 
     // once at start of lifecycle
     useEffect(() => {
@@ -155,6 +158,10 @@ const TRSearchBar = (props) => {
       <div className="container">
         {/* searchbar disables if nearMe is off */}
             <input 
+                style={{borderColor: isDarkTheme ? "rgb(255, 255, 255)": "black",
+                        color: isDarkTheme ? "rgb(255, 255, 255)": "black",
+                        backgroundColor: !isDarkTheme && "#00000070"
+                }}
                 type="text" 
                 placeholder="Starting location..." 
                 className="search_bar" 
@@ -165,6 +172,10 @@ const TRSearchBar = (props) => {
                 disabled={lock}
             />
             <input 
+                style={{borderColor: isDarkTheme ? "rgb(255, 255, 255)": "black",
+                        color: isDarkTheme ? "rgb(255, 255, 255)": "black",
+                        backgroundColor: !isDarkTheme && "#00000070"
+            }}
                 type="text" 
                 placeholder="Your Destination..." 
                 className="search_bar" 
