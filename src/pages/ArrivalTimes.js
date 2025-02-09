@@ -173,7 +173,7 @@ const ArrivalTimes = () => {
       <div>
         {throwPopup && <Popup/>}
       </div>
-      <ul className="horizontal-list">
+      <ul className={showFav ? "horizontal-list" : "horizontal-list2"}>
       
       <li className="searchCol" id='scroll'>
 
@@ -258,7 +258,10 @@ const ArrivalTimes = () => {
         </>
         :
         <>
-          <div className="recS">RECENT SEARCHES</div>
+          {recentSearches.length !==0 ? 
+            <div className="recS">RECENT SEARCHES</div> :
+            <div className="recS2">Search for busses!</div>
+}
          
           <div className="vert">
           
@@ -294,7 +297,12 @@ const ArrivalTimes = () => {
 
       </li>
        <li>   
-       <button onClick={toggleFaved}>HELLO</button>
+       <button className="showFav" onClick={toggleFaved}>
+        <img style={{filter: isDarkTheme ? "invert(0%)" : "invert(100%)"}}src="./images/slide_arrow_left.png"></img>
+        <img className="booky" style={{filter: isDarkTheme ? "invert(100%)" : "invert(0%)",
+                     opacity: showFav ? "0" : "1",
+                     width: "3vw"}} src="./images/bookymark.png"></img></button>
+
       {showFav && 
         <>
       <SavedArrivalTimes 

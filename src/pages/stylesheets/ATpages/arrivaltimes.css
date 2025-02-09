@@ -29,7 +29,61 @@
   margin: 0;
   padding: 0; /* Removes any default padding */
   list-style-type: none; /* Removes default list styling */
+  .showFav{
+    position:absolute;
+    top: 44vh;
+    right: 25.3vw;
+    background: none;
+    border: none;
+    z-index: 4;
+    transform:rotate(180deg);
+  
+  }
+
+  .showFav img{
+    width: 2vw;
+    height: auto;
+  }
+
+
 }
+
+
+
+.horizontal-list2{
+  position: relative;
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 32% 62% 3%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0; /* Removes any default padding */
+  list-style-type: none; /* Removes default list styling */
+
+  .showFav{
+    position:absolute;
+    top: 44vh;
+    right: 0.5vw;
+    background: none;
+    border: none;
+    z-index: 4;
+  
+  }
+
+  .showFav img:first-of-type{
+    position:absolute;
+    right: 3vw;
+    width: 2vw;
+    height: auto;
+  }
+
+  .showFav img:nth-of-type(2){
+    position:absolute;
+    top:-0.9vh;
+    right: 1vh;
+  }
+}
+
 
 
 
@@ -42,6 +96,14 @@
   flex: 1; /* Optional: allows items to stretch and take up available space evenly */
 
 }
+
+.horizontal-list2 li {
+  text-align: center; /* Centers the text inside each list item */
+   justify-content: center; /* Centers the contents horizontally within each li */
+   align-items: center; /* Centers the contents vertically within each li */
+   flex: 1; /* Optional: allows items to stretch and take up available space evenly */
+ 
+ }
 
 .horizontal-listHP li {
   text-align: center; /* Centers the text inside each list item */
@@ -86,6 +148,7 @@
 .scroll, #scroll {
   background-color:#00000010;
   overflow-y: scroll;
+  overflow:visible;
 }
 
 .savedHP .bookmarkedtext{
@@ -333,4 +396,11 @@
 
 .searchCol{
   margin-top: 3vh;
+}
+
+.recS2{
+  margin-top: 4vh;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 5vh;
+
 }
