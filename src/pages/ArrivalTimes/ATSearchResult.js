@@ -118,7 +118,7 @@ const ATSearchResult = (props) => {
               {arrowimg}
               {!(subheader2.length >4 ) && (subheader2)}
               {(subheader2.length > 4) &&
-              <h4 className="distance">{subheader2}</h4>}
+              <h4 className="distance"><span style={{backgroundColor: 'khaki'}}>{subheader2}</span></h4>}
               
             </button>
           </p>
