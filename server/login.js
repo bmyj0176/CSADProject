@@ -15,7 +15,6 @@ router.post('/login', async (req, res) => {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
 
-    // login session token
     const token = await user.getIdToken(true);
 
     // get from firestore db
