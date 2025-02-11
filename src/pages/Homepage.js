@@ -16,7 +16,7 @@ const Homepage = () => {
   const [throwPopup, setThrowPopup] = useState(false)
   const [favedItems, setFavedItems] = useState(() => {
    
-   
+  
     const storedFavedItems = localStorage.getItem("savedarrivaltimes")
     if (!storedFavedItems) 
       return []
@@ -29,7 +29,6 @@ const Homepage = () => {
       favedItemsCopy = favedItemsCopy.filter(item => JSON.stringify(item) !== JSON.stringify(dict))
     }
     else {
-      
       favedItemsCopy.push(dict)
     }
     setFavedItems(favedItemsCopy)
@@ -38,7 +37,7 @@ const Homepage = () => {
     window.dispatchEvent(new CustomEvent('localStorageUpdate', { detail: { key } }));
   }
 
-  
+  //--------------------------------------------------------------------------------------------
  
 
   const navigate = useNavigate();
@@ -130,7 +129,6 @@ const Homepage = () => {
     </li>
   );
 
-  
   
   useEffect(() => {
     const elementsToObserve = document.querySelectorAll(".busSlide, .blueGraphic, .blueGraphic2, .videoNyoom, .Transparency, .Innovation, .Inclusivity, .Empathy")
@@ -227,7 +225,7 @@ const ClassSlide = (props) =>{
      <img className="call" src="./images/icons/callIcon.png"></img>
      <p className="callno">+91 98008 25424</p>
      <img className="addr" src="./images/icons/Addr.png"></img>
-     <a className="addrno" href="https:
+     <a className="addrno" href="https://www.google.com/maps/place/Afghanistan+Family+Restaurant/@1.3535609,103.951398,17z/data=!3m2!4b1!5s0x31da3d1b4343a59f:0x16e6fa8953f96f5a!4m6!3m5!1s0x31da3d1b6854ffb7:0xfea0f762f31c7422!8m2!3d1.3535555!4d103.9539729!16s%2Fg%2F1vs1pcwg?entry=ttu&g_ep=EgoyMDI1MDEyMi4wIKXMDSoASAFQAw%3D%3D">500 Dover Rd, Singapore 139651</a>
      </div>
 
     </>
@@ -330,9 +328,9 @@ export const EndDiv = () => {
   ];
 
   const socials = [
-    { id: 1, social: 'https:
-    { id: 2, social: 'https:
-    { id: 3, social: 'https:
+    { id: 1, social: 'https://x.com/SDomingoYT', socialimg: './images/x.png', class: 'socialIcon1'},
+    { id: 2, social: 'https://www.youtube.com/c/SDomingo', socialimg: './images/youtube.png', class: 'socialIcon2' },
+    { id: 3, social: 'https://www.roblox.com/users/686546843/profile', socialimg: './images/instagram.png', class: 'socialIcon3' }
   ];
 
   const EndDivContact = (props) => {
@@ -368,8 +366,8 @@ export const EndDiv = () => {
   }
 
   const ButtonUp = () => {
-    const location = useLocation();  
-    const currentPage = location.pathname;  
+    const location = useLocation(); 
+    const currentPage = location.pathname; 
     if (currentPage !== "/") {
       return null 
     }
