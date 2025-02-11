@@ -1,4 +1,4 @@
-// BouncingDotsLoader.js
+
 import React from 'react';
 import '../stylesheets/loadingpage.css';
 

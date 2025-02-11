@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { busRouteAPIQuerySkip } from './helper_functions2';
 
-// INPUT: busStopCode etc. "46971"
-// OUTPUT: json
+
+
 export async function BusArrival(busStopCode) {
   try {
     const response = await axios.get(`${process.env.REACT_APP_BACKEND_API_URL}/api/bus-arrival?busStopCode=${busStopCode}`);
@@ -13,8 +13,8 @@ export async function BusArrival(busStopCode) {
   return null
 }
 
-// INPUT: busService etc. "901M"
-// OUTPUT: json
+
+
 export async function BusRoutes(busService) {
   try {
     const response = await axios.get(`${process.env.REACT_APP_BACKEND_API_URL}/api/bus-routes?skip=${busRouteAPIQuerySkip(busService)}`);
@@ -25,8 +25,8 @@ export async function BusRoutes(busService) {
   return null
 }
 
-// INPUT: skipIndex because it limits to 500 entries by default, loop with skipIndex starting 0
-// OUTPUT: json
+
+
 export async function BusStops(skipIndex) {
   try {
     const response = await axios.get(`${process.env.REACT_APP_BACKEND_API_URL}/api/bus-stops?skip=${skipIndex}`)
@@ -37,7 +37,7 @@ export async function BusStops(skipIndex) {
   return null
 }
 
-// OUTPUT: json
+
 export async function TrainAlertsService() {
   try {
     const response = await axios.get(`${process.env.REACT_APP_BACKEND_API_URL}/api/train_alerts`);
@@ -48,8 +48,8 @@ export async function TrainAlertsService() {
   return null
 }
 
-// INPUT: string like "dover"
-// OUTPUT: json
+
+
 export async function OnemapSearch(searchVal) {
   try {
     const response = await axios.get(`${process.env.REACT_APP_BACKEND_API_URL}/api/onemap-search?searchVal=${searchVal}`);
@@ -63,7 +63,7 @@ export async function AddAnnouncement(doc) {
   try {
     const response = await axios.post(
       `${process.env.REACT_APP_BACKEND_API_URL}/api/announcements/add`, 
-      { message: doc.message || "" } // Send in request body
+      { message: doc.message || "" } 
     );  
     console.log("added")  
   } catch (error) {
@@ -75,7 +75,7 @@ export async function DeleteAnnouncement(id) {
   try {
     const response = await axios.post(
       `${process.env.REACT_APP_BACKEND_API_URL}/api/announcements/delete`, 
-      { id } // Send in request body
+      { id } 
     );  
     console.log("deleted")  
   } catch (error) {
@@ -97,7 +97,7 @@ export async function EditAnnouncement(id, new_message) {
   try {
     const response = await axios.post(
       `${process.env.REACT_APP_BACKEND_API_URL}/api/announcements/edit`, 
-      { id, new_message: new_message || "" } // Send in request body
+      { id, new_message: new_message || "" } 
     );
     console.log("edited")  
   } catch (error) {

@@ -5,9 +5,9 @@ import { cleanMRTStationName, downloadJSON } from "../../utils/helper_functions2
 import { getBusStopInfo } from "../../utils/helper_functions"
 import { codeToMRTImagePath, suffixMRTStationName } from "../../utils/helper_functions2"
 import BouncyBouncy from "../Components/LoadingIcon"
-// {props.location1.type /* type can be "station" or "busStop" */}<br/>
-// {props.location1.stationCodes}<br/>
-// {props.location1.stationName}<br/>
+
+
+
 
 const TRoutes = (props) => {
     const [totalTimeTaken, setTotalTimeTaken] = useState(null);
@@ -46,7 +46,7 @@ const TRoutes = (props) => {
     }, [])
 
     useEffect(() => {
-        if (!simpleRoute) return; // skip if simpleRoute is null
+        if (!simpleRoute) return; 
         const make_list = () => {
             const list = [];
             for (const [key, value] of simpleRoute) {
@@ -88,7 +88,7 @@ const TRoutes = (props) => {
     }, [simpleRoute]);
     
     useEffect(() => {
-        if (!simpleRouteList) return; // skip if simpleRouteList is null
+        if (!simpleRouteList) return; 
         const make_route_info = async () => {
             const route = [];
             const routePromises = simpleRouteList.map(async (dict) => {
@@ -97,7 +97,7 @@ const TRoutes = (props) => {
                 let transport_names = dict.method.includes("transfer") ? [] : dict.method_value || [];
                 let location_name = isBusStopCode(dict.locationInfo)
                     ? await getBusStopInfo(dict.locationInfo, "Description")
-                    : await cleanMRTStationName(dict.locationInfo); // Ensure this is awaited as well
+                    : await cleanMRTStationName(dict.locationInfo); 
                 let location_type = isBusStopCode(dict.locationInfo)
                     ? "bus_stop"
                     : "mrt_stn";
@@ -113,7 +113,7 @@ const TRoutes = (props) => {
                 };
             });
     
-            // Wait for all async operations to complete
+            
             const fullRouteData = await Promise.all(routePromises);
             console.log("setFullRoute", fullRouteData);
             setFullRoute(fullRouteData);
@@ -122,17 +122,17 @@ const TRoutes = (props) => {
         make_route_info();
     }, [simpleRouteList]); 
 
-    // ["901A"] = true
+    
     const isBusNumber = (input_list) => {
         return input_list.some(item => /\d/.test(item))
     }
 
-    // ["NSL"] = true
+    
     const isMRTLine = (input_list) => {
         return input_list.length === 1 && !input_list[0].includes("transfer") && !/\d/.test(input_list[0])
     }
 
-    // "90123" = true
+    
     const isBusStopCode = (str) => /^\d+$/.test(str);
 
     return (
@@ -182,7 +182,7 @@ const TRoutes = (props) => {
     )
 }
 
-const LocationLabel = (props) => { // props: location_name, location_type, location_info
+const LocationLabel = (props) => { 
     const [stnCode, setStnCode] = useState(null)
 
     useEffect(() => {
@@ -218,7 +218,7 @@ const LocationLabel = (props) => { // props: location_name, location_type, locat
     return null
 }
 
-const TransportLabel = (props) => { // props: transport_mode, transport_names, location_name, location_info
+const TransportLabel = (props) => { 
     const [stnCode, setStnCode] = useState(null)
     const [src, setSrc] = useState(null)
 
@@ -315,7 +315,7 @@ const TransportLabel = (props) => { // props: transport_mode, transport_names, l
 }
 
 
-const TimeLabel = (props) => { // props: time_taken
+const TimeLabel = (props) => { 
     return (
         <>
             &nbsp;- {Math.round(props.time_taken)} mins

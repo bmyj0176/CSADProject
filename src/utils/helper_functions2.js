@@ -1,16 +1,16 @@
 import { getjson } from "./helper_functions"
 
 export async function downloadJSON(obj, filename="data") {
-    const jsonStr = JSON.stringify(obj, null, 2);  // pretty-print with 2 spaces for readability
+    const jsonStr = JSON.stringify(obj, null, 2);  
     const blob = new Blob([jsonStr], { type: 'application/json' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = `${filename}.json`;  // Name of the file to be downloaded
+    link.download = `${filename}.json`;  
     link.click();
 }
 
-// input is a bus number/service
-// output is the index for $skip bus route API parameter for finding the bus service data
+
+
 export function busRouteAPIQuerySkip(busNumber) {
     const firstBusPer500 = [
         "10", "105", "10e", "117M", "123", "13", "135", "14", "145", "151", 
@@ -20,13 +20,13 @@ export function busRouteAPIQuerySkip(busNumber) {
         "851", "854", "858B", "87", "89e", "913M", "95", "961M", "966A", "974", 
         "980", "990"];
         for (let n = 0; n < firstBusPer500.length; n++) {
-            if (busNumber === firstBusPer500[n]) { // if bus selection hits the mark
+            if (busNumber === firstBusPer500[n]) { 
                 if (n === 0)
                     return 0;
                 else
                     return (n*500-250);
             } 
-            if (n === (firstBusPer500.length-1)) { // if already final page
+            if (n === (firstBusPer500.length-1)) { 
                 return n*500;
             }
             let testList = null
@@ -35,14 +35,14 @@ export function busRouteAPIQuerySkip(busNumber) {
             else
                 testList = [firstBusPer500[n-1], firstBusPer500[n], busNumber];
             testList.sort();
-            if (busNumber === testList[1]) // bus index is squished between these two pages is true
+            if (busNumber === testList[1]) 
                 return (n-1)*500
         }
 }
 
-// INPUT1 dict - (dict)
-// INPUT2 list - (list of dicts)
-// OUTPUT isFound - (bool) false: NOT FOUND, true: FOUND
+
+
+
 export function dict_in_list(dict, list) {
     return list.some(item =>
         Object.entries(dict).every(([key, value]) => 
@@ -59,29 +59,29 @@ export async function doxx() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
               (position) => {
-                resolve([position.coords.latitude, position.coords.longitude]);  // Resolve with coordinates
+                resolve([position.coords.latitude, position.coords.longitude]);  
               },
               (error) => {
-                console.error("Geolocation error:", error.message);  // Log the error instead of rejecting
-                resolve([null, null]);  // Resolve with null values instead of rejecting the promise
+                console.error("Geolocation error:", error.message);  
+                resolve([null, null]);  
               }
             );
         } else {
-            console.error("Geolocation is not supported by this browser.");  // Log a message if geolocation is not available
-            resolve([null, null]);  // Resolve with null values
+            console.error("Geolocation is not supported by this browser.");  
+            resolve([null, null]);  
         }
     });
 }
 
-export function haversine(lat1, lon1, lat2, lon2) { // pythagoras but for geographical coords
-    const R = 6371; // Earth's radius in km
+export function haversine(lat1, lon1, lat2, lon2) { 
+    const R = 6371; 
     const dLat = toRadians(lat2 - lat1);
     const dLon = toRadians(lon2 - lon1);
     const a = Math.sin(dLat / 2) ** 2 +
               Math.cos(toRadians(lat1)) * Math.cos(toRadians(lat2)) *
               Math.sin(dLon / 2) ** 2;
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    return R * c; // Distance in km
+    return R * c; 
 }
 
 function toRadians(degrees) {
@@ -89,16 +89,16 @@ function toRadians(degrees) {
 }
 
 export function insertAndShift(list, index, newValue) {
-    list.splice(index, 0, newValue); // adds newValue at index
+    list.splice(index, 0, newValue); 
     
-    // remove the last element
+    
     list.pop(); 
     
     return list;
 }
 
-// INPUT bsc_list - (list of strings) bus stop codes
-// OUTPUT filtered_list (list of lists) mapped lists of nearby mrts, no nearby is empty
+
+
 export async function checkForNearbyMRTs (bsc_list) {
     const filtered_list = []
     const data = await getjson('./datasets/busstops_near_mrt.json')
@@ -108,8 +108,8 @@ export async function checkForNearbyMRTs (bsc_list) {
     return filtered_list
 }
 
-// INPUT - (string) code of MRT station
-// OUTPUT - (string) path to image
+
+
 export function codeToMRTImagePath(code) {
     let station_code = code.replace(/[0-9]/g, "")
     let path = './images/MRTIcons/'
@@ -150,7 +150,7 @@ export function codeToMRTImagePath(code) {
     return path
 }
 
-// cleans some mrt names like "Woodlands_TE" -> "Woodlands"
+
 export function cleanMRTStationName(string) {
     const index = string.indexOf('_')
     if (index === -1)
@@ -158,8 +158,8 @@ export function cleanMRTStationName(string) {
     return string.slice(0, index)
 }
 
-// uncleans some mrt names like "Woodlands" -> "Woodlands_TE"
+
 export function suffixMRTStationName(string, code) {
-    code = code.replace(/\d+/g, '');  // removes all numbers
+    code = code.replace(/\d+/g, '');  
     return string + "_" + code
 }

@@ -6,7 +6,7 @@
   max-height: 28vh;
   max-width: 3vw;
   border: solid 1px hsl(0, 0%, 80%);
-  border-radius: 8px; /* for the roundsssssss */
+  border-radius: 8px; 
   background-color: rgb(36, 36, 44);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 3);
   text-align: center;
@@ -32,7 +32,7 @@
   max-height: 28vh;
   max-width: 3vw;
   border: solid 1px hsl(0, 0%, 80%);
-  border-radius: 8px; /* for the roundsssssss */
+  border-radius: 8px; 
   background-color: rgb(68, 68, 86);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 3);
   text-align: center;
@@ -213,7 +213,7 @@
   max-height: 28vh;
   max-width: 3vw;
   border: solid 1px hsl(0, 0%, 80%);
-  border-radius: 8px; /* for the roundsssssss */
+  border-radius: 8px; 
   background-color: rgb(36, 36, 44);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 3);
   text-align: center;
@@ -252,7 +252,7 @@
   max-height: 34vh;
   max-width: 3vw;
   border: solid 1px hsl(0, 0%, 80%);
-  border-radius: 8px; /* for the roundsssssss */
+  border-radius: 8px; 
   background-color: rgb(68, 68, 86);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 3);
   text-align: center;
@@ -341,7 +341,7 @@
     padding-bottom: 11.8vh;
     max-height: 28vh;
     border: solid 1px hsl(0, 0%, 80%);
-    border-radius: 8px; /* for the roundsssssss */
+    border-radius: 8px; 
     background-color: rgb(36, 36, 44);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 3);
     text-align: center;
@@ -364,7 +364,7 @@
     padding: 12.65vh; 
     padding-bottom: 11.8vh;
     border: solid 1px hsl(0, 0%, 80%);
-    border-radius: 8px; /* for the roundsssssss */
+    border-radius: 8px; 
     background-color: rgb(63, 64, 77);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 3);
     text-align: center;

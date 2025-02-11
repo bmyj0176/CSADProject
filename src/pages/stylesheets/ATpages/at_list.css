@@ -1,10 +1,10 @@
 .atlist button {
 width: 8vw;
 
-    border: none; /* Removes the border */
-    outline: none; /* Removes the focus outline when clicked */
-    background-color: transparent; /* Optional: If there's a background, make it transparent */
-    box-shadow: none; /* Removes any box-shadow that may resemble a border */
+    border: none; 
+    outline: none; 
+    background-color: transparent; 
+    box-shadow: none; 
 }
 
 .atlist:hover{
@@ -190,9 +190,9 @@ border-color: white;
     content: "";
     position: absolute;
     left: -1vw;
-    right: auto; /* Align with the dots */
-    top: 6vh; /* Extend the line above the container */
-    bottom: -20px; /* Extend the line below the container */
+    right: auto; 
+    top: 6vh; 
+    bottom: -20px; 
     width: 3px;
     height: 15vw;
     background-color: #e91e63;

@@ -14,11 +14,11 @@ import announcementsAPIRouter from './announcements_api.js'
 import announcementsRouter from './announcements.js'
 import onemapSearchAPIRouter from './onemap_search_api.js'
 
-// Middleware
+
 app.use(cors());
 app.use(express.json());
 
-// Routes
+
 app.use('/auth', registerRouter);
 app.use('/auth', loginRouter);
 app.use('/api', busArrivalAPIRouter);
@@ -28,7 +28,7 @@ app.use('/api', announcementsAPIRouter);
 app.use('/api', announcementsRouter);
 app.use('/api', onemapSearchAPIRouter);
 
-// Start server
+
 const port = 5000;
 app.listen(port, () => {
     console.log(`Backend server running on deprecated roblox code 🗣️🗣️🗣️🗣️🗣️🔥🔥`);

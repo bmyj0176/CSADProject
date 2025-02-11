@@ -80,9 +80,9 @@ const ATSearchResult = (props) => {
     }, [props.dict]);
 
     useEffect(() => {
-      const savedRecent = localStorage.getItem("savedarrivaltimes"); // Ensure variable names match
+      const savedRecent = localStorage.getItem("savedarrivaltimes"); 
       if (savedRecent) {
-          setRecent(savedRecent); // Restore from local storage
+          setRecent(savedRecent); 
       }
       console.log(localStorage);
   }, []);
@@ -101,7 +101,7 @@ const ATSearchResult = (props) => {
 
     
 
-    // BUTTON LAYOUT
+    
       return (
         
         <div className = "cent">

@@ -10,7 +10,7 @@ function Register() {
 
   const { isDarkTheme } = useContext(ThemeContext);
   const location = useLocation()
-  const retainedData = location.state // from login page
+  const retainedData = location.state 
 
   var [username, setUsername] = useState('');
   var [email, setEmail] = useState('');
@@ -32,7 +32,7 @@ function Register() {
   }, []);
 
   const handleRegister = async (e) => {
-    e.preventDefault(); // prevents default submission, makes this function intercept 
+    e.preventDefault(); 
     setUsername(username.trim())
     setEmail(email.trim().toLowerCase())
     if (validateInput()) {
@@ -55,7 +55,7 @@ function Register() {
       } catch (error) {
         console.log(error)
         const newErrors = { username: '', email: '', password: '', password2: '', misc: ''}
-        if (error.response.status === 409) { // email already exists error
+        if (error.response.status === 409) { 
           document.getElementById("email").focus()
           newErrors.email = "Email already exists, please login instead."
         } else if (error.response.status === 500) {
@@ -67,12 +67,12 @@ function Register() {
     }
   };
   
-  // returns true if successful, otherwise return false
+  
   const validateInput = () => {
     let isValid = true
     const newErrors = { username: '', email: '', password: '', password2: '', misc: ''}
     if (username === "") {
-      document.getElementById("username").focus() // .focus() changes selection to that element
+      document.getElementById("username").focus() 
       newErrors.username = "Please enter a username."
       isValid = false
     }
@@ -81,7 +81,7 @@ function Register() {
       newErrors.email = "Please enter your email."
       isValid = false
     }
-    else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) // regex
+    else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) 
     {
       document.getElementById("email").focus()
       newErrors.email = "You have entered an invalid email address."

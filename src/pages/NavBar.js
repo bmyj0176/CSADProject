@@ -35,7 +35,7 @@ const NavBar = () => {
     <div id="main-body">
       <ul className="nv">
           <li className='nv-item'>
-            <Link to="/" className={location.pathname === "/" ? "activee" : ""}><img alt="Homepage" className="nyoom" src="./images/nyoom_icon.png"/*nyoom_icon.png*//></Link>
+            <Link to="/" className={location.pathname === "/" ? "activee" : ""}><img alt="Homepage" className="nyoom" src="./images/nyoom_icon.png"/></Link>
           </li>
           <li className='nv-item'>
             <Link to="/arrivaltimes" className={location.pathname === "/arrivaltimes" ? "activee" : "unactivee"}>Bus Arrival Times</Link>
@@ -47,7 +47,6 @@ const NavBar = () => {
           <li>
           <button style={{opacity:"0"}} id="test_button" onClick={test_function}> Test Button </button><span id="test_text"></span>
           </li>
-        {/*------ ABOVE IS FLOATED LEFT, BELOW IS FLOATED RIGHT -----------------------------*/}
           <li style={{ float: 'right' }}>
             <ToggleThemeButton/> 
           </li>

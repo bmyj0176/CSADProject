@@ -22,13 +22,11 @@ body, html{
  left: 3vw; 
 font-size: 7.2vh;
 padding-top: 10vh;
-/*font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
 font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 text-shadow: none;
 background: linear-gradient(15deg, #649ef4, #75fbe7);
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;
-/*-webkit-text-stroke: 2px rgb(19, 24, 43); */
 letter-spacing: normal;
 }
 
@@ -42,13 +40,13 @@ letter-spacing: normal;
   left: 4vw;}
 
   .subBody {
-    max-width: 47vw;  /* Use viewport width to limit the maximum width, ensuring better readability */
+    max-width: 47vw;  
     color: white;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     line-height: 1.6;
     position: relative;
-    font-size: 3vh;  /* Font size scales with viewport height */
-    left: 4vw;  /* Left positioning scales with the viewport width */
+    font-size: 3vh;  
+    left: 4vw; 
 }
 
 .Graphics-Video-Bus{
@@ -201,24 +199,24 @@ letter-spacing: normal;
 
 @keyframes slide-and-fade2 {
     0% {
-        transform: translateX(-1.68vh);  /* Start from a small negative offset */
+        transform: translateX(-1.68vh);  
         opacity: 1;
-        border-radius: 5.05vh;  /* Initial rounded corners */
+        border-radius: 5.05vh; 
     }
 
     70% {
-        transform: translateX(-16.86vh);  /* Continue sliding horizontally */
+        transform: translateX(-16.86vh);  
         opacity: 1;
         height: 40vh;
         width: 71.2vh;
-        border-radius: 5.05vh;  /* A more rounded corner in mid-animation */
+        border-radius: 5.05vh;  
     }
 
     100% {
-        transform: translateX(-16.86vh);  /* Final translation at the end */
-        height: 40vh;  /* Keep consistent height */
-        width: 80.1vh;  /* Slightly larger width for final state */
-        border-radius: 5.05vh;  /* Final rounded corners */
+        transform: translateX(-16.86vh);  
+        height: 40vh;  
+        width: 80.1vh;  
+        border-radius: 5.05vh;  
     }
 }
 
@@ -335,9 +333,9 @@ letter-spacing: normal;
 }
 
 .items { 
-  list-style-type: none; /* Remove bullets */
-  padding: 0;            /* Remove padding */
-  margin: 0;             /* Remove margin */
+  list-style-type: none; 
+  padding: 0;            
+  margin: 0;            
   display: flex; 
   position:absolute;
   }
@@ -559,9 +557,9 @@ letter-spacing: normal;
   position: absolute;
   text-shadow: none;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  left: 18vw; /* 18% of the viewport width */
+  left: 18vw; 
   color: rgb(89, 205, 218);
-  top: 3vh; /* 50% of the viewport height */
+  top: 3vh; 
   font-size: 6vh;
 }
 
@@ -653,9 +651,9 @@ letter-spacing: normal;
   z-index: 1;
   top: 27vh;
   white-space: nowrap;
-  left: -110%; /* Start completely outside the container to the right */
-  transform: translateX(8.4vw); /* Slide effect: start offset to the right */
-  transition: opacity 0.3s ease, transform 0.6s ease; /* Smooth appearance and sliding */
+  left: -110%; 
+  transform: translateX(8.4vw);
+  transition: opacity 0.3s ease, transform 0.6s ease;
 }
 
 .classText4 {
@@ -718,22 +716,22 @@ letter-spacing: normal;
       }
 
 .contt:hover .classText {
-  opacity: 1; /* Make the text visible */
-  transform: translateX(0); /* Slide into place */
+  opacity: 1; 
+  transform: translateX(0); 
 }
 
 .contt:hover .classText2 {
-  opacity: 1; /* Make the text visible */
-  transform: translateX(0); /* Slide into place */
+  opacity: 1; 
+  transform: translateX(0); 
 }
 .contt:hover .classText3 {
-  opacity: 1; /* Make the text visible */
-  transform: translateX(0); /* Slide into place */
+  opacity: 1; 
+  transform: translateX(0); 
 }
 
 .contt:hover .classText4 {
-  opacity: 1; /* Make the text visible */
-  transform: translateX(0); /* Slide into place */
+  opacity: 1; 
+  transform: translateX(0); 
 }
 
 .contt:hover{
@@ -844,7 +842,7 @@ letter-spacing: normal;
 
 .Transparency p{
   font-size: 2vw; 
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Keeps the font family the same */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
   
 }
 
@@ -1053,22 +1051,22 @@ letter-spacing: normal;
   display:block;
  margin-left:auto;
  margin-right:auto;
- width: 200px; /* Set the width */
- height: auto; /* Maintain aspect ratio */
+ width: 200px; 
+ height: auto; 
 }
 
 
 
 .fade {
-  transition: opacity 0.6s ease-in-out; /* Smooth fade transition */
+  transition: opacity 0.6s ease-in-out; 
 }
 
-/* Fade-in animation */
+
 .fade-in {
   opacity: 1;
 }
 
-/* Fade-out animation */
+
 .fade-out {
   opacity: 0.25;
 }
@@ -1141,7 +1139,7 @@ letter-spacing: normal;
   
 
 
-/*---------------------------------------------------------------------*/
+
 
 
 .banner2 {
@@ -1188,7 +1186,7 @@ letter-spacing: normal;
 }
 
 
-/* Button */
+
 .view-more-2 {
   display: inline-flex;
   align-items: center;
@@ -1217,7 +1215,7 @@ letter-spacing: normal;
 }
 
 
-/*-----------------------------------------------------------------------------------*/
+
 
 
 .banner3 {
@@ -1265,7 +1263,7 @@ letter-spacing: normal;
   line-height: 1.5;
 }
 
-/* Button */
+
 .view-more-3 {
   display: inline-flex;
   align-items: center;
@@ -1295,13 +1293,13 @@ letter-spacing: normal;
 
 
 
-/* ---------------------------------------------------------------------------------------------- */
+
 
 
 .credits{
   position: relative;
   background-color: rgb(51, 169, 212);
-  padding-bottom: 54vh; /* Adjusted for better responsiveness */
+  padding-bottom: 54vh; 
   max-width: 100%;
   width: 100vw;
 }

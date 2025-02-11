@@ -3,9 +3,9 @@ import fetch from 'node-fetch'
 
 const router = express.Router();
 
-// Bus Arrival API route
+
 router.get('/bus-arrival', async (req, res) => {
-    const busStopCode = req.query.busStopCode; // Getting busStopCode from query params
+    const busStopCode = req.query.busStopCode; 
   
     if (!busStopCode) {
       return res.status(400).json({ error: 'BusStopCode is required' });
@@ -17,8 +17,8 @@ router.get('/bus-arrival', async (req, res) => {
         {
           method: 'GET',
           headers: {
-            'AccountKey': process.env.LTA_API_KEY, // Your API key here
-            'Accept': 'application/json',  // You can specify this as JSON
+            'AccountKey': process.env.LTA_API_KEY, 
+            'Accept': 'application/json',  
           },
         }
       );
@@ -28,7 +28,7 @@ router.get('/bus-arrival', async (req, res) => {
       }
   
       const data = await response.json();
-      res.json(data); // Sending the API response data to React frontend
+      res.json(data); 
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: 'Internal server error' });

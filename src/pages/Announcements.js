@@ -42,7 +42,7 @@ const Announcements = () => {
     setData(data);
   };
 
-  // Add a new announcement
+  
   const handleAdd = async () => {
     if (!newAnnouncement.trim()) return;
     await AddAnnouncement({
@@ -52,7 +52,7 @@ const Announcements = () => {
     setNewAnnouncement("")
   };
 
-  // Delete an announcement
+  
   const handleDelete = async (index) => {
     await DeleteAnnouncement(data[index].id);
     await updateAnnouncements();
@@ -66,18 +66,18 @@ const Announcements = () => {
   useEffect(() => {
     const fetchTrainAlerts = async () => {
       try {
-        // EXPECTED STRUCTURE (from real case):
-        // "value":
-        // {
-        //   "Status": 1,
-        //   "AffectedSegments": [],
-        //   "Message": [
-        //     {
-        //     "Content": "9:00am: NSL - Please expect longer waiting time of up to 5 min on NSEWL train service due to an engineering vehicle fault. Free regular bus and bridging bus services are available between Bishan and Woodlands. Passengers are advised to use TEL and CCL.",
-        //     "CreatedDate": "2025-02-07 09:01:48"
-        //     }
-        //   ]
-        // }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         const response = await TrainAlertsService();
         if (response.value) {
           const value = response.value
@@ -97,19 +97,19 @@ const Announcements = () => {
     fetchTrainAlerts();
   }, []);
 
-// Load announcements from localStorage on first render
-  // useEffect(() => {
-  //   const savedAnnouncements = JSON.parse(localStorage.getItem("announcements")) || [];
-  //   setAnnouncements(savedAnnouncements);
-  // }, []);
 
-  // // Save to localStorage whenever announcements change
-  // useEffect(() => {
-  //   localStorage.setItem("announcements", JSON.stringify(announcements));
-  // }, [announcements]);
+  
+  
+  
+  
+
+  
+  
+  
+  
 
   if (loading) return <BouncyBouncy/>;
-  // if (error) return <p style={{ color: "red" }}>{error}</p>;
+  
   
   return (
     <>
@@ -138,8 +138,8 @@ const Announcements = () => {
           <input
             type="text"
             placeholder="New Announcement"
-            value={newAnnouncement}  // Bind the input value to the state
-            onChange={(e) => setNewAnnouncement(e.target.value)}  // Update the state as the user types
+            value={newAnnouncement}  
+            onChange={(e) => setNewAnnouncement(e.target.value)}  
           />
           <button onClick={handleAdd}>➕ Add</button>
           <pre>

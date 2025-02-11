@@ -1,17 +1,17 @@
-/*AT bar properties*/
+
 .at {
   list-style-type: none;
   margin: 12px;
   padding: 12px;
 }
 
-/*each AT bar element properties*/
+
 .at li {
   display: inline-block;
   margin-right: 20px;
 }
 
-/*no text underlines*/
+
 .at li button {
   display: inline-block;
   padding: 12px;
@@ -27,8 +27,8 @@
   grid-template-columns: 32% 40% 28%;
   max-width: 100%;
   margin: 0;
-  padding: 0; /* Removes any default padding */
-  list-style-type: none; /* Removes default list styling */
+  padding: 0; 
+  list-style-type: none; 
   .showFav{
     position:absolute;
     top: 44vh;
@@ -57,8 +57,8 @@
   grid-template-columns: 32% 62% 20%;
   max-width: 100%;
   margin: 0;
-  padding: 0; /* Removes any default padding */
-  list-style-type: none; /* Removes default list styling */
+  padding: 0; 
+  list-style-type: none; 
 
   .showFav{
     position:absolute;
@@ -84,28 +84,28 @@
 
 
 
-/* List items */
+
 .horizontal-list li {
- text-align: center; /* Centers the text inside each list item */
-  justify-content: center; /* Centers the contents horizontally within each li */
-  align-items: center; /* Centers the contents vertically within each li */
-  flex: 1; /* Optional: allows items to stretch and take up available space evenly */
+ text-align: center; 
+  justify-content: center; 
+  align-items: center; 
+  flex: 1; 
 
 }
 
 .horizontal-list2 li {
-  text-align: center; /* Centers the text inside each list item */
-   justify-content: center; /* Centers the contents horizontally within each li */
-   align-items: center; /* Centers the contents vertically within each li */
-   flex: 1; /* Optional: allows items to stretch and take up available space evenly */
+  text-align: center; 
+   justify-content: center; 
+   align-items: center; 
+   flex: 1; 
  
  }
 
 .horizontal-listHP li {
-  text-align: center; /* Centers the text inside each list item */
-   justify-content: center; /* Centers the contents horizontally within each li */
-   align-items: center; /* Centers the contents vertically within each li */
-   flex: 1; /* Optional: allows items to stretch and take up available space evenly */
+  text-align: center; 
+   justify-content: center; 
+   align-items: center; 
+   flex: 1; 
    
  }
  .horizontal-listHP{
@@ -152,7 +152,7 @@
   color: aquamarine;
 }
 
-/*----------------------------------------*/
+
 
 
 
@@ -408,15 +408,15 @@
 
 @keyframes slideIn2 {
   from {
-      /* Start off-screen to the right */
+      
     opacity: 0; 
     top: 35vh;
     left: auto;
     right: 20vw;
-    bottom: auto;/* Start invisible */
+    bottom: auto;
   }
   to {
-      /* End at its original position */
+      
     opacity: 1; 
     top: 11vh;
     right: 30vw;
@@ -450,20 +450,20 @@
 
 @keyframes slideIn {
   from {
-      /* Start off-screen to the right */
+      
     opacity: 0; 
     top: 40vh;
     right: auto;
     left: 35vw;
-    bottom: auto;/* Start invisible */
+    bottom: auto;
   }
   to {
-      /* End at its original position */
+      
     opacity: 1; 
     top: 20vh;
     right: auto;
     bottom: auto;
-    left: 27vw;/* Fully visible */
+    left: 27vw;
   }
 }
 

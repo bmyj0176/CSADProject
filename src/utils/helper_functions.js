@@ -1,25 +1,25 @@
 import { doxx, haversine, insertAndShift } from "./helper_functions2";
 import { BusArrival } from "./api_caller";
 
-// THIS FUNCTION PARSES ENTIRE JSON OBJECT FROM A FILE PATH
+
 export async function getjson(path) {
-    return fetch(path) // fetch json then return as promise
+    return fetch(path) 
     .then(response => {
-      return response.json() // parse into js object (promise)
+      return response.json() 
     })
     .then(data => {
-      return data // returns object
+      return data 
     })
   }
 
-// getBusTiming() returns the arrival times of the next 3 buses
-// INPUT1 BusStopCode - (string) 5 digit code of bus stop, e.g. '46971', '83139'
-// INPUT2 BusNumber - (string) bus number, e.g. 185, 901M
-// OUTPUT times[] - (list of strings) minutes until the next 3 buses arrive, e.g. [3, 12, 19]
-// buses arriving in <1 min will be "Now" and if there's no bus it'll be "-"
-// if there's no bus services, output will just be null
+
+
+
+
+
+
 export async function getBusTiming(BusStopCode, BusNumber) {
-    // Fetch bus arrival data
+    
     const response = await BusArrival(BusStopCode);
     if (!response || !response.Services) {
         return null 
@@ -28,7 +28,7 @@ export async function getBusTiming(BusStopCode, BusNumber) {
     if (services.length === 0) {
         return null
     }
-    const service = services.find(service => service["ServiceNo"] === BusNumber); // return all bus service matching it
+    const service = services.find(service => service["ServiceNo"] === BusNumber); 
     if (!service || !service.NextBus || !service.NextBus?.EstimatedArrival) {
         return null
     }
@@ -43,7 +43,7 @@ export async function getBusTiming(BusStopCode, BusNumber) {
             return "-";
         }
         const arrivalTime = new Date(nextBusDate);
-        let diffMinutes = Math.floor((arrivalTime - currentDate) / 60000); // Milliseconds to minutes
+        let diffMinutes = Math.floor((arrivalTime - currentDate) / 60000); 
         if (diffMinutes < 0) {
             diffMinutes = 0;
         }
@@ -51,9 +51,9 @@ export async function getBusTiming(BusStopCode, BusNumber) {
     });
 }
 
-// INPUT1 busStopCode - (string) bus stop code of bus stop you want to query, e.g. "46971"
-// INPUT2 key - (string) key of value you want to output, like "BusStopCode", "RoadName", "Description", "Latitude" or "Longitude"
-// OUTPUT BusStopInfo - (dict) consists of "BusStopCode", "RoadName", "Description", "Latitude" & "Longitude"
+
+
+
 export async function getBusStopInfo(BusStopCode, key) {
     const complete_list = await getjson('./datasets/bus_stops_complete.json');
     for (const dict of complete_list) {
@@ -64,9 +64,9 @@ export async function getBusStopInfo(BusStopCode, key) {
     return null
 }
 
-// INPUT1 BusService - (string) bus service e.g. "185"
-// INPUT2 direction - (int Number) either 1 or 2
-// OUTPUT stopNumberList - (list of String) all bus stops this bus service passes by, in order
+
+
+
 export async function getAllBusStops(BusService, direction) {
     const stopNumberList = []
     const data = await getjson('./datasets/busstops_map.json')
@@ -76,16 +76,16 @@ export async function getAllBusStops(BusService, direction) {
     return stopNumberList
 }
 
-// INPUT BusStopCode - (string) bus stop code of the bus stop
-// OUTPUT busServicesList - (list of strings) all bus services available at said bus stop
+
+
 export async function getAllBusServices(BusStopCode) {
     const data = await getjson('./datasets/bus_services_at_stop.json')
     return data[BusStopCode];
 }
 
-// INPUT1 BusService - (string) bus service e.g. "185"
-// OUTPUT directions - (list of dicts) list count is number of directions, dict = {direction: x, start: "stationName", end: "stationName"}
-// direction can only be 1 or 2; start and end is the busStopName of first and last stop (usually bus interchange)
+
+
+
 export async function getBusDirections(BusService) {
     const directions = [];
     const data = await getjson('./datasets/busstops_map.json');
@@ -105,10 +105,10 @@ export async function getBusDirections(BusService) {
     return directions
 }
 
-// INPUT1 BusService - (string) bus service connecting two stops
-// INPUT2 BSCode1 - (string) first bus stop code
-// INPUT3 BSCode2 - (string) second bus stop code
-// OUTPUT distance - (Number) distance in km between two bus stops
+
+
+
+
 export async function getRoadDistance(BusService, BSCode1, BSCode2) {
     let dist1 = null;
     let dist2 = null;
@@ -124,17 +124,17 @@ export async function getRoadDistance(BusService, BSCode1, BSCode2) {
     return Math.abs(BSCode1 - BSCode2);
 }
 
-// INPUT1 searchQuery - (string) the search term/substring for the list
-// INPUT2 list - (list of strings) the full list of things that can be searched for
-// INPUT3 cap - (int number) hard caps the total entries, default = 50 (RECOMMENDED TO REDUCE LAG)
-// OUTPUT outputList - (list of strings) list of entries that is a product of substring
+
+
+
+
 export function searchInList(searchQuery, inputList, cap = 50) {
     const outputList = []
-    const outputListIndexes = [] // primary search filtering
+    const outputListIndexes = [] 
     const cleaned_searchQuery = searchQuery.toLowerCase().replace(/\s+/g, '').replace(/[^\w\s]/g, '')
-    // PRIMARY SEARCH - if substring at start of string
+    
     for (let n = 0; n < inputList.length; n++) {
-        const cleaned_item = inputList[n].toLowerCase().replace(/\s+/g, '').replace(/[^\w\s]/g, '') // for search ease, remove spaces, special chars & case sensitivity
+        const cleaned_item = inputList[n].toLowerCase().replace(/\s+/g, '').replace(/[^\w\s]/g, '') 
         if (cleaned_item.startsWith(cleaned_searchQuery)) {
             outputList.push(inputList[n])
             outputListIndexes.push(n)
@@ -142,11 +142,11 @@ export function searchInList(searchQuery, inputList, cap = 50) {
                 return outputList;
         }
     }
-    // SECONDARY SEARCH - if substring at anywhere, will appear below primary search results
+    
     for (let n = 0; n < inputList.length; n++) { 
-        const cleaned_item = inputList[n].toLowerCase().replace(/\s+/g, '').replace(/[^\w\s]/g, '') // for search ease, remove spaces, special chars & case sensitivity
+        const cleaned_item = inputList[n].toLowerCase().replace(/\s+/g, '').replace(/[^\w\s]/g, '') 
         if (cleaned_item.includes(cleaned_searchQuery)) {
-            if (!outputListIndexes.includes(n)) // only if not already filtered by primary search
+            if (!outputListIndexes.includes(n)) 
                 outputList.push(inputList[n])
             if (cap != null && outputList.length >= cap) 
                 return outputList;
@@ -155,7 +155,7 @@ export function searchInList(searchQuery, inputList, cap = 50) {
     return outputList;
 }
 
-// same as searchInList, but list contains lists of 2, example: [[1, 2], [3, 4], [3, 5]]
+
 export function searchInDualList(searchQuery, inputList, cap = 50, splicelistsize = null) {
     let excludedList = []
     if (splicelistsize) {
@@ -163,12 +163,12 @@ export function searchInDualList(searchQuery, inputList, cap = 50, splicelistsiz
         inputList = inputList.map(sublist => sublist.slice(0, splicelistsize))
     }
     const outputList = []
-    const outputListIndexes = [] // primary search filtering
+    const outputListIndexes = [] 
     const cleaned_searchQuery = searchQuery.toLowerCase().replace(/\s+/g, '').replace(/[^\w\s]/g, '')
 
-    // PRIMARY SEARCH - if substring at start of string
+    
     for (let n = 0; n < inputList.length; n++) {
-        const cleaned_item = inputList[n].map(item => item.toLowerCase().replace(/\s+/g, '').replace(/[^\w\s]/g, '')) // for search ease, remove spaces, special chars & case sensitivity
+        const cleaned_item = inputList[n].map(item => item.toLowerCase().replace(/\s+/g, '').replace(/[^\w\s]/g, '')) 
         if (cleaned_item.some(item => item.startsWith(cleaned_searchQuery))) {
             outputList.push([...inputList[n], ...excludedList[n]])
             outputListIndexes.push(n)
@@ -176,11 +176,11 @@ export function searchInDualList(searchQuery, inputList, cap = 50, splicelistsiz
                 return outputList;
         }
     }
-    // SECONDARY SEARCH - if substring at anywhere, will appear below primary search results
+    
     for (let n = 0; n < inputList.length; n++) { 
-        const cleaned_item = inputList[n].map(item => item.toLowerCase().replace(/\s+/g, '').replace(/[^\w\s]/g, '')) // for search ease, remove spaces, special chars & case sensitivity
+        const cleaned_item = inputList[n].map(item => item.toLowerCase().replace(/\s+/g, '').replace(/[^\w\s]/g, '')) 
         if (cleaned_item.some(item => item.includes(cleaned_searchQuery))) {
-            if (!outputListIndexes.includes(n)) // only if not already filtered by primary search
+            if (!outputListIndexes.includes(n)) 
                 outputList.push([...inputList[n], ...excludedList[n]])
             if (cap != null && outputList.length >= cap) 
                 return outputList;
@@ -188,14 +188,14 @@ export function searchInDualList(searchQuery, inputList, cap = 50, splicelistsiz
     }
     return outputList;
 }
-// INPUT1 cap - (int number) hard caps the total entries, default = 50 (EXTREMELY RECOMMENDED TO REDUCE LAG)
-// OUTPUT outputList - (list of dicts) gives the top x closest bus stop codes to user location, and its distance in km
+
+
 export async function nearestBusStops(cap = 50) {
-    let outputList = Array(cap).fill({"BusStopCode": "", "Distance": Infinity}) // creates a list of cap size
+    let outputList = Array(cap).fill({"BusStopCode": "", "Distance": Infinity}) 
     
-    const [hereLat, hereLon] = await doxx(); // [position.coords.latitude, position.coords.longitude]
+    const [hereLat, hereLon] = await doxx(); 
     
-    // If coordinates are null, log an error and return early
+    
     if (hereLat === null || hereLon === null) {
         console.error("Unable to retrieve Geolocation data.");
         return null;
@@ -214,7 +214,7 @@ export async function nearestBusStops(cap = 50) {
     return outputList
 }
 
-// converts full mrt stn name to code like "Woodlands_TE" -> "TE2"
+
 export async function stationToCode(station_name) {
     const data = await getjson('./datasets/mrtname_code_map.json');
     return data[station_name]

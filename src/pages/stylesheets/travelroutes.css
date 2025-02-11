@@ -1,14 +1,14 @@
-/*tte bar properties*/
+
 .tte {
     list-style-type: none;
 
     overflow: hidden;
 }
 
-/*each tte bar element properties*/
+
 
   
-/*no text underlines*/
+
 .tte li a {
     display: inline-block;
     padding: 16px;

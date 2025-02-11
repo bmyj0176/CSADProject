@@ -3,7 +3,7 @@ import fetch from 'node-fetch'
 
 const router = express.Router();
 
-// Announcements API Route
+
 router.get('/train_alerts', async (req, res) => {
   
     try {
@@ -12,8 +12,8 @@ router.get('/train_alerts', async (req, res) => {
         {
           method: 'GET',
           headers: {
-            'AccountKey': process.env.LTA_API_KEY, // Your API key here
-            'Accept': 'application/json',  // You can specify this as JSON
+            'AccountKey': process.env.LTA_API_KEY, 
+            'Accept': 'application/json',  
           },
         }
       );
@@ -23,7 +23,7 @@ router.get('/train_alerts', async (req, res) => {
       }
   
       const data = await response.json();
-      res.json(data); // Sending the API response data to React frontend
+      res.json(data); 
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: 'Internal server error' });

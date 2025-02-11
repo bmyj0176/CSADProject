@@ -10,7 +10,7 @@ const BusRouteList = (props) => {
     const [busStopNameList, setBusStopNameList] = useState([])
     const [busTimesListList, setBusTimesListList] = useState([])
 
-    // updates list when props updates
+    
     useEffect(() => {
         const updateLists = async () => {
             const BusService = props.data.busNumber
@@ -27,7 +27,7 @@ const BusRouteList = (props) => {
             const busarrivallist_list = await Promise.all(
                 bsc_list.map((bsc) => getBusTiming(bsc, BusService))
             );
-            setBusTimesListList(busarrivallist_list); // Update the state with the fetched results
+            setBusTimesListList(busarrivallist_list); 
         }
         resetLists();
         updateLists();
@@ -60,7 +60,7 @@ const BusRouteList = (props) => {
         <>
         <h2>{"Bus Service: " + props.data.busNumber}</h2>
         {
-            (busStopNameList.length === stopNumbersList.length) ? // finished loading
+            (busStopNameList.length === stopNumbersList.length) ? 
             (
                 <>
                 <BusDirectionToggleButton 
@@ -101,7 +101,7 @@ const BusDirectionToggleButton = (props) => {
         </>
     )
 }
-// index, header, subheader, busTimesList, updateBusTimes
+
 const BusRouteElement = (props) => {
     return (
         <ArrivalTimesElement

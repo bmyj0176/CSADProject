@@ -23,7 +23,7 @@ export const login = async (email, password, navigate, inputSetErrors = null) =>
     console.log('Login failed');  
     if (inputSetErrors) {
       const newErrors = { email: '', password: '', misc: '' }
-      if (error.response.status === 404) { // email doesn't exist
+      if (error.response.status === 404) { 
         document.getElementById("email").focus()
         newErrors.email = "Email isn't registered."
       } else if (error.response.status === 401) {
@@ -43,7 +43,7 @@ function Login() {
   const { isDarkTheme } = useContext(ThemeContext);
   const navigate = useNavigate();
   const location = useLocation()
-  const retainedData = location.state // from login page
+  const retainedData = location.state 
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

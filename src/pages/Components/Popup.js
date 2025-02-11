@@ -13,7 +13,7 @@ function Popup() {
     localStorage.setItem('popup_done', 'yes')
   }
 
-  // Update localStorage when authentication state changes
+  
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {

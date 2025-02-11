@@ -12,8 +12,8 @@ form {
  display:block;
  margin-left:auto;
  margin-right:auto;
- width: 200px; /* Set the width */
- height: auto; /* Maintain aspect ratio */
+ width: 200px; 
+ height: auto; 
  padding: 20px;
 }
 

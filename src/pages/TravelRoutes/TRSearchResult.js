@@ -35,13 +35,13 @@ const TRSearchResult = (props) => {
       props.sendToSearchBar(props.dict)
     };
   
-    // BUTTON LAYOUT
+    
       return (
         <div className="containerTR">
             <button className='trbutton' onClick={handleClick}>
               <img style={{filter: isDarkTheme ? "invert(0%)" : "invert(100%)"}} className="img1"src="../images/icons/Addr.png"></img>
               <h3 className="busstopname">{header}</h3>
-              <p className="busstopnumber">{/*subheader1*/}</p>
+              <p className="busstopnumber">{}</p>
               <br/>
               {subheader2 && (subheader2)}
             </button>

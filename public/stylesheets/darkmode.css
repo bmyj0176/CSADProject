@@ -40,7 +40,6 @@ button, .buton{
 
 
 
-/*seperator*/
 
 
 
@@ -64,8 +63,8 @@ button, .buton{
 input {
   background-color: rgb(23, 32, 37);
   color: white;
-  border: 1px solid white; /* Optional: Add a white border */
-  padding: 5px;           /* Optional: Add some padding */
+  border: 1px solid white; 
+  padding: 5px;           
 }
 
 .busstopname {

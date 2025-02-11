@@ -10,7 +10,7 @@ const Page404 = () => {
   const goBack = () => {
     try {
       navigate(-1)
-    } catch { // if user doesnt have a prev page for some reason
+    } catch { 
       goToHomepage()
     }
   }

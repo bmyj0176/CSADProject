@@ -1,11 +1,11 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc, getDocs, updateDoc, deleteDoc, doc, onSnapshot } from "firebase/firestore";
-import { getAuth } from "firebase/auth"; // Import Firebase Auth
+import { getAuth } from "firebase/auth"; 
 import dotenv from 'dotenv';
 
 dotenv.config();
 
-// Firebase configuration object from Firebase Console
+
 const firebaseConfig = {
     apiKey: process.env.FIREBASE_API_KEY,
     authDomain: process.env.FIREBASE_AUTH_DOMAIN,
@@ -16,13 +16,13 @@ const firebaseConfig = {
     measurementId: process.env.FIREBASE_MEASUREMENT_ID
   };
   
-// Initialize Firebase
+
 const app = initializeApp(firebaseConfig);
 
-// Initialize Firebase Authentication before other services
+
 const auth = getAuth(app);
 
-// Initialize Firestore
+
 const db = getFirestore(app);
 
-export { db, auth }; // Export both Firestore and Auth
+export { db, auth }; 

@@ -1,13 +1,13 @@
 :root {
-    color-scheme: light dark; /* Declare both light and dark modes */
+    color-scheme: light dark; 
     --light-bg: #ffffff;
     --light-text: #000000;
     --dark-bg: #000000;
     --dark-text: #ffffff;
   }
   
-  /* Use light-dark() to change styles based on the color scheme */
+  
   body {
-    background-color: light-dark(var(--light-bg), var(--dark-bg)); /* Light bg in light mode, dark bg in dark mode */
-    color: light-dark(var(--light-text), var(--dark-text)); /* Light text in light mode, dark text in dark mode */
+    background-color: light-dark(var(--light-bg), var(--dark-bg)); 
+    color: light-dark(var(--light-text), var(--dark-text)); 
   } 

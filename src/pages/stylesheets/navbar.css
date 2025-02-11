@@ -2,7 +2,7 @@
   overflow-x: hidden;
 }
 
-/*navbar properties*/
+
 .nv {
   display: 'flex';
   height: 100%;
@@ -15,7 +15,7 @@
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-/*each navbar element properties*/
+
 .nv li {
   display: inline-block;
   position: relative;
@@ -29,7 +29,7 @@
   text-align: center;
 }
 
-/*spacing, inline*/
+
 .nv li a {
   height: 100%;
   display: inline-block;
@@ -37,12 +37,12 @@
   margin: 0px 0px 0px 0px;
 }
 
-/*properties when hovered*/
+
 .nv :hover {
   text-decoration: underline;
 }
 
-/*dropdown is hidden, edit profile properties*/
+
 .nv .dropdown-content {
   display: none;
   position: absolute;
@@ -59,7 +59,7 @@
   text-align: left;
 }
 
-/*display dropdown contents when profile is hovered*/
+
 .nv .dropdown:hover .dropdown-content {
   display: block;
 }
@@ -109,7 +109,7 @@
   border-radius: 6px;
   padding: 5px 0;
   
-  /* Position the tooltip */
+  
   position: absolute;
   z-index: 1;
   top: 170%;

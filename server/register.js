@@ -1,11 +1,11 @@
 import express from 'express';
 import { db, auth } from './firebase.js';
 import { createUserWithEmailAndPassword, getIdToken } from 'firebase/auth';
-import { doc, setDoc } from 'firebase/firestore';  // Firestore functions
+import { doc, setDoc } from 'firebase/firestore';  
 
 const router = express.Router();
 
-// Register route
+
 router.post('/register', async (req, res) => {
   const { username, email, password, savedarrivaltimes } = req.body;
 
@@ -13,10 +13,10 @@ router.post('/register', async (req, res) => {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
 
-    // login session token
+    
     const token = await user.getIdToken();
 
-    // save userdata
+    
     const userRef = doc(db, 'users', user.uid);
     await setDoc(userRef, {
       username,

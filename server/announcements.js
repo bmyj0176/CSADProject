@@ -1,16 +1,16 @@
 import express from 'express';
 import { db } from "./firebase.js";
-import { collection, addDoc, getDocs, doc, deleteDoc, updateDoc } from 'firebase/firestore';  // Firestore functions
+import { collection, addDoc, getDocs, doc, deleteDoc, updateDoc } from 'firebase/firestore';  
 
 const router = express.Router();
 
 router.post('/announcements/add', async (req, res) => { 
   try {
-    const { message } = req.body; // Get data from request body
+    const { message } = req.body; 
 
     const announcementsRef = collection(db, "announcements");
 
-    // Add new document
+    
     const docRef = await addDoc(announcementsRef, { message });
 
     return res.status(201).json({ id: docRef.id, message });
@@ -22,11 +22,11 @@ router.post('/announcements/add', async (req, res) => {
 
 router.post('/announcements/delete', async (req, res) => { 
   try {
-    const { id } = req.body; // Get document ID from request body
+    const { id } = req.body; 
 
     const docRef = doc(db, "announcements", id);
 
-    // Delete the document
+    
     await deleteDoc(docRef);
 
     return res.status(200).json({ message: "Document deleted successfully." });
@@ -41,7 +41,7 @@ router.get('/announcements/read', async (req, res) => {
     const announcementsRef = collection(db, "announcements");
     const querySnapshot = await getDocs(announcementsRef);
 
-    // Extract data from each document
+    
     const announcements = querySnapshot.docs.map(doc => ({
       id: doc.id,
       ...doc.data()
@@ -58,11 +58,11 @@ router.get('/announcements/read', async (req, res) => {
 
 router.post('/announcements/edit', async (req, res) => {
   try {
-    const { id, new_message } = req.body; // Get document ID and updated data from request body
+    const { id, new_message } = req.body; 
 
     const docRef = doc(db, "announcements", id);
 
-    // Update the document fields
+    
     await updateDoc(docRef, { message: new_message });
 
     return res.status(200).json({ message: "Document updated successfully." });

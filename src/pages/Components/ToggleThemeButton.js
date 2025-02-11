@@ -5,7 +5,7 @@ export const ThemeContext = createContext();
 export const ThemeProvider = ({ children }) => {
     const [isDarkTheme, setIsDarkTheme] = useState(true);
 
-    // Initialize theme from localStorage
+    
     useEffect(() => {
         const storedTheme = localStorage.getItem("darktheme_bool");
         if (storedTheme) {
@@ -15,18 +15,18 @@ export const ThemeProvider = ({ children }) => {
         }
     }, []);
 
-    // Apply the theme whenever isDarkTheme changes
+    
     useEffect(() => {
         const themeLink = document.getElementById("lightdarkmode");
         const targetElement = document.getElementById("theme-target");
 
         if (isDarkTheme) {
-            // Apply dark mode
+            
             themeLink.href = "../stylesheets/darkmode.css";
             targetElement.classList.remove("dark");
             targetElement.classList.add("light");
         } else {
-            // Apply light mode
+            
             themeLink.href = "../stylesheets/lightmode.css";
             targetElement.classList.remove("light");
             targetElement.classList.add("dark");

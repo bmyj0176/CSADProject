@@ -21,10 +21,10 @@ const ArrivalTimes = () => {
   const [selectedItem, setSelectedItem] = useState(null)
   const [recentSearches, setRecentSearches] = useState([])
   const [showFav, setShowFav] = useState(false)
-  const [selectedList, setSelectedList] = useState(-1) // "ATSearchBar" vs "SavedArrivalTimes"
+  const [selectedList, setSelectedList] = useState(-1) 
   const [favedItems, setFavedItems] = useState(() => {
     const storedFavedItems = localStorage.getItem("savedarrivaltimes")
-    if (!storedFavedItems) // no localstorage data
+    if (!storedFavedItems) 
       return []
     return JSON.parse(storedFavedItems)
   })
@@ -52,7 +52,7 @@ const ArrivalTimes = () => {
   useEffect(() => {
 
     const storedSearches = JSON.parse(localStorage.getItem("recentSearches")) || [];
-    setRecentSearches(storedSearches); // Safely load data from localStorage
+    setRecentSearches(storedSearches); 
   }, []);
 
 
@@ -104,7 +104,7 @@ const ArrivalTimes = () => {
           };
         }
       } else {
-        // Handle busNo and busStop buttons
+        
         if (
           (prevToggles.busNo == null && prevToggles.busStop == null) ||
           (!prevToggles.busNo && !prevToggles.busStop)
@@ -223,46 +223,9 @@ const ArrivalTimes = () => {
               <p>Near Me</p>
             </button>
         
-        {/* <ul className="at">
-           <li>
-            <button
-              style={chooseStyle("busNo")}
-              onClick={() => handleToggle("busNo")}
-            >
-              <p>Bus Services</p>
-            </button>
-          </li>
-          <li>
-            <button
-              style={chooseStyle("busStop")}
-              onClick={() => handleToggle("busStop")}
-            >
-              <p>Bus Stops</p>
-            </button>
-          </li> 
-          <li>
-            <button
-              style={chooseStyle("nearMe")}
-              onClick={() => handleToggle("nearMe")}
-            >
-              <p>Near Me 🏳️</p>
-            </button>
-          </li>
-        </ul>
-        <ATSearchBar
-          selectedList={selectedList}
-          setSelectedList={setSelectedList}
-          toggleStates={toggles}
-          receiveSearchResult={receiveSearchResult}
-          selectedItem={selectedItem}
-          onItemSelect={onItemSelect}
-        /> */
-        
-        }
       </li>
 
     
-      {/*(searchResult) console log it first its a dict/object not a value so its causing error :3:3*/}
 
       <li className='scroll'>
         {searchResult ?

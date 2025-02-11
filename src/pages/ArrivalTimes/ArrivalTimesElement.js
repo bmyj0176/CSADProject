@@ -52,7 +52,7 @@ const ArrivalTimesElement = (props) => {
         if (props.type) {
             props.passSearchResult(
                 {
-                    type: (props.type === "busNo") ? "busStop" : "busNo", // invert type
+                    type: (props.type === "busNo") ? "busStop" : "busNo", 
                     busService: props.busService,
                     busStopName: props.busStopName,
                     busStopCode: props.busStopCode,
@@ -69,7 +69,7 @@ const ArrivalTimesElement = (props) => {
     const handleFav = (e) => {
         e.stopPropagation();
         props.onFavItem(data, (favItem === 'selected' ? false : true))
-        setFavItem((prevState) => (prevState === 'selected' ? 'unselected' : 'selected')); // toggle
+        setFavItem((prevState) => (prevState === 'selected' ? 'unselected' : 'selected')); 
       };
 
     
@@ -83,7 +83,6 @@ const ArrivalTimesElement = (props) => {
             {(props.type) ?
                 (props.type === "busNo") ?
                 <>
-                    {/* CASE: A Bus Stop on a Buses' Route */}
                     <h2>{props.busStopName}</h2>
                     <h4>{props.busStopCode}</h4>  
                       
@@ -91,12 +90,10 @@ const ArrivalTimesElement = (props) => {
                 </>
                 :
                 <>
-                    {/* CASE: A Bus Service @ Bus Stop */}
                     <h2>{"Bus " + props.busService}</h2>
                 </>
                 :
                 <>
-                    {/* CASE: A Hybrid Display for Bookmarked ArrivalTimes */}
                     <h2 style={{color: isDarkTheme ? "rgb(81, 214, 255)" : "green"}} className="hello" >{"Bus " + props.busService}</h2>
                     <h4 style={{color: isDarkTheme ? "rgba(62, 245, 255, 0.532)" : "goldenrod"}} className="hello2">{"@ " + props.busStopName}</h4>
                    
@@ -106,7 +103,7 @@ const ArrivalTimesElement = (props) => {
             <div className='listbutton'>
                 <button onClick={onTimesClick} >
                     <img src="../images/reload.png"></img> </button>
-               <div className={(props.type) ? (props.type==="busNo") ? "timesNo" : "timesStop" : "timesHyb"}> { // list of arrivaltimes (x3)
+               <div className={(props.type) ? (props.type==="busNo") ? "timesNo" : "timesStop" : "timesHyb"}> { 
                     busTimesList.length === 0 ? 
                     <BouncyBouncy/> : 
                     busTimesList === null ?
@@ -114,7 +111,7 @@ const ArrivalTimesElement = (props) => {
                     busTimesList.map((busTime, index) => (
                         <span key={index}>
                             {index === 0 ? <span className="element">{busTime}</span> : busTime},&nbsp;&nbsp;
-                        </span> // each arrivaltime in mins
+                        </span> 
                     )) 
                 }
                
@@ -134,7 +131,7 @@ const ArrivalTimesElement = (props) => {
 const StarButton = (props) => {
 
     return (
-      <button // STAR BUTTONNNNNNNNN
+      <button 
           id={(props.type) ?
             (props.type === "busNo") ? "starbutton" : "starbutton2": "starbutton3"}
        

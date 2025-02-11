@@ -32,7 +32,7 @@ const SavedArrivalTimes = (props) => {
       }
     };
 
-    // Listen for custom localStorage updates
+    
     window.addEventListener("localStorageUpdate", handleStorageUpdate);
 
     return () => {

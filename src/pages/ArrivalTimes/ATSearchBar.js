@@ -8,11 +8,11 @@ import { ThemeContext } from '../Components/ToggleThemeButton';
 const ATSearchBar = (props) => {
     const MAX_BAR_SIZE = 15;
     const [bus_services_list, bus_stops_info_list] = [useRef([]), useRef([])];
-    const [searchBarValue, setSearchBarInput] = useState(''); // search bar value
-    const [barsCount, setBarsCount] = useState(0); // count of stacked bars
-    const [barsList, setBarsList] = useState([]); // contents of stacked bars
+    const [searchBarValue, setSearchBarInput] = useState(''); 
+    const [barsCount, setBarsCount] = useState(0); 
+    const [barsList, setBarsList] = useState([]); 
     
-    // once at start of lifecycle
+    
     useEffect(() => {
       const fetchNumbers = async () => {
         bus_services_list.current = await getjson('./datasets/bus_services.json');
@@ -24,7 +24,7 @@ const ATSearchBar = (props) => {
     
       const { isDarkTheme } = useContext(ThemeContext);
 
-    // updates when props.toggleStates or searchBarValue changes
+    
     useEffect(() => {
       updateSearchBar(searchBarValue);
       console.log(searchBarValue);
@@ -38,10 +38,10 @@ const ATSearchBar = (props) => {
       const updateSearchBar = async (value) => {
         const full_list = [];
         const filtered_list = [];
-        if (props.toggleStates['nearMe']) {// NEARME MODE
-          const nearest_services_and_dist = await nearestBusStops(10) // "BusStopCode": "xxxxx", "Distance": x}
-          if (!nearest_services_and_dist) { // unable to get geolocation data
-            setBarsList(null) // null for geolocation error
+        if (props.toggleStates['nearMe']) {
+          const nearest_services_and_dist = await nearestBusStops(10) 
+          if (!nearest_services_and_dist) { 
+            setBarsList(null) 
             setBarsCount(1)
             return
           }
@@ -53,7 +53,7 @@ const ATSearchBar = (props) => {
               distance: (Math.round(dict.Distance*1000))})
           }
         }
-        else if (value !== '') { // SEARCH BAR MODE
+        else if (value !== '') { 
           if (props.toggleStates['busNo'] === null || props.toggleStates['busNo']) {
             full_list.push({type: "busNo", list: bus_services_list.current});
           }                                                                     
@@ -62,16 +62,16 @@ const ATSearchBar = (props) => {
           }
           for (const dict of full_list) {
             let results = null
-            if (dict.type === "busNo") { // singular
+            if (dict.type === "busNo") { 
               results = searchInList(value, dict.list, (MAX_BAR_SIZE-filtered_list.length))
               for (const result of results)
                 filtered_list.push({
                 type: "busNo", 
                 busService: result})
-            } else if (dict.type === "busStop") { // dual
+            } else if (dict.type === "busStop") { 
               results = searchInDualList(value, dict.list, (MAX_BAR_SIZE - filtered_list.length), 2);
               for (const result of results) {
-                // Add item to filtered_list if it doesn't exceed MAX_BAR_SIZE
+                
                 filtered_list.push({
                   type: "busStop", 
                   busStopName: result[0],
@@ -81,12 +81,12 @@ const ATSearchBar = (props) => {
               }
             
               if (filtered_list.length >= MAX_BAR_SIZE) {
-                break; // exit the loop when max size is reached
+                break; 
               }
             }
         }
       }
-        else {// INACTIVE MODE (search bar empty)
+        else {
           setBarsCount(0);
           return
         }
@@ -96,7 +96,6 @@ const ATSearchBar = (props) => {
     
     return (
       <div className="container">
-        {/* searchbar disables if nearMe is off */}
         {!props.toggleStates['nearMe'] ?
          <input 
           style={{borderColor: isDarkTheme ? "rgb(255, 255, 255)": "black",
@@ -105,7 +104,6 @@ const ATSearchBar = (props) => {
           }}
           type="text"   placeholder="Search Here..." className="search_bar" value={searchBarValue} onChange={onChangeSearchBar}/> : 
          <h4>Please note that this may not be 100% accurate</h4> }
-        {/* stacked bars */}
         <div className="bars">
           {Array.from({ length: barsCount }, (_, index) => (
             <div key={index} className="bar">

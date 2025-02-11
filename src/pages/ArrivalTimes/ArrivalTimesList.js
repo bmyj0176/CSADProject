@@ -14,7 +14,7 @@ const ArrivalTimesList = (props) => {
     const [timesListList, setTimesListList] = useState([])
     const [lastSearchHistory, setLastSearchHistory] = useState(null)
 
-    // updates list when props updates
+    
     useEffect(() => {
         const resetLists = () => {
             setDirectionalData([]);
@@ -26,7 +26,7 @@ const ArrivalTimesList = (props) => {
         
         const updateSearchHistory = () => {
             if (props.data.searchHistory) {
-                const lastSearchHistoryItem = props.data.searchHistory[props.data.searchHistory.length-1] // last one
+                const lastSearchHistoryItem = props.data.searchHistory[props.data.searchHistory.length-1] 
                 setLastSearchHistory(lastSearchHistoryItem)
             }
         }
@@ -50,7 +50,7 @@ const ArrivalTimesList = (props) => {
                 );
                 setTimesListList(busarrivallist_list); 
             }
-            else { // "busStop" || "nearestBusStop"
+            else { 
                 const busStopCode = props.data.busStopCode
                 const busStopName = props.data.busStopName
                 const busServices = await getAllBusServices(busStopCode)
@@ -85,9 +85,9 @@ const ArrivalTimesList = (props) => {
 
     const passSearchResult = (value) => {
         let searchHistory;
-        if (props.data.searchHistory) { // search history found, use old list
+        if (props.data.searchHistory) { 
             searchHistory = props.data.searchHistory
-        } else { // search history not found, add new list
+        } else { 
             searchHistory = []
         }
         searchHistory.push(
@@ -99,12 +99,12 @@ const ArrivalTimesList = (props) => {
             }
         )
         value.searchHistory = searchHistory
-        props.receiveSearchResult(value) // pass it back to ArrivalTimes
+        props.receiveSearchResult(value) 
     };
 
     const onGoBackHistory = () => {
         let newSearchHistory = props.data.searchHistory
-        newSearchHistory.pop(); // remove last one
+        newSearchHistory.pop(); 
         let value = {
             type: lastSearchHistory.type,
             busService: lastSearchHistory.busService,
@@ -112,7 +112,7 @@ const ArrivalTimesList = (props) => {
             busStopCode: lastSearchHistory.busStopCode,
         }
         value.searchHistory = newSearchHistory
-        props.receiveSearchResult(value) // pass it back to ArrivalTimes
+        props.receiveSearchResult(value) 
     }
 
     return (
@@ -138,7 +138,7 @@ const ArrivalTimesList = (props) => {
             props.data.busStopName
         }</h2>
         {
-            (stopNamesList.length === stopCodesList.length && stopCodesList.length === servicesList.length) ? // finished loading
+            (stopNamesList.length === stopCodesList.length && stopCodesList.length === servicesList.length) ? 
             (
                 <div className="atlistwow">
                 <BusDirectionToggleButton 

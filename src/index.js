@@ -1,4 +1,4 @@
-/* eslint-disable react/react-in-jsx-scope */
+
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { ThemeProvider } from './pages/Components/ToggleThemeButton.js';
@@ -41,7 +41,7 @@ export default function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<NavBar />} >
-              {/*End of branch of NavBar*/}
+              {}
               <Route index element={<Homepage />} />
               <Route path="arrivaltimes" element={<ArrivalTimes />} />
               <Route path="travelroutes" element={<TravelRoutes />} />
@@ -49,7 +49,7 @@ export default function App() {
               <Route path="register" element={<Register />} />
               <Route path="*" element={<NoPage />} />
               <Route path="announcements" element={<Announcements />} />
-              </Route> {/*End of branch of NavBar*/}
+              </Route> {}
           </Routes> 
         </BrowserRouter>
       </ThemeProvider>

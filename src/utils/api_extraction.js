@@ -52,7 +52,7 @@ export async function busstops_map() {
     const rawdata = await axios.get(`${process.env.REACT_APP_BACKEND_API_URL}/api/bus-routes?skip=${num * 500}`);
     const value = rawdata.data.value;
     for (const dict of value) {
-      // creating 
+      
       if (!database[dict.ServiceNo]) {  
           database[dict.ServiceNo] = {};  
       }
@@ -62,13 +62,13 @@ export async function busstops_map() {
       }
       const innestMap = innerMap[dict.Direction];
       innestMap.push([dict.BusStopCode, dict.Distance]);
-      // storing start & end busstops
+      
       if (dict.Direction === 1) {
         if (!innerMap["startend1"]) {
           innerMap["startend1"] = [dict.BusStopCode, dict.BusStopCode];
         }
         innerMap["startend1"][1] = dict.BusStopCode ;
-      } else { // === 2
+      } else { 
         if (!innerMap["startend2"]) {
           innerMap["startend2"] = [dict.BusStopCode, dict.BusStopCode];
         }
@@ -102,7 +102,7 @@ export async function bus_services_at_stop() {
   const database = {};
   const data = await getjson('./datasets/bus_stops_complete.json');
   for (const dict of data) {
-    database[dict.BusStopCode] = []; // filling up first
+    database[dict.BusStopCode] = []; 
   }
   const map = await getjson('./datasets/busstops_map.json');
   for (const busService in map) {
@@ -129,16 +129,16 @@ export async function bus_services_at_stop() {
 
 function sortBusServices(list) {
   return list.sort((a, b) => {
-    // Extract numeric part for comparison
+    
     const numA = parseInt(a, 10);
     const numB = parseInt(b, 10);
 
-    // Handle cases where numeric part is equal (e.g., "243G" and "243W")
+    
     if (numA === numB) {
-      return a.localeCompare(b); // Compare full strings lexicographically
+      return a.localeCompare(b); 
     }
 
-    // Sort by numeric value
+    
     return numA - numB;
   });
 }
@@ -187,11 +187,11 @@ export async function mrt_to_bus2() {
   const buslist = await getjson('./datasets/bus_stops_complete.json')
   for (const mrt_dict of mrtlist) {
     database[mrt_dict.station_name] = [];
-    // Algorithm:
-    // 1. add the top 2 nearest bus stop
-    // 2. add any other bus stops within (2nd nearest bus stop + 0.1)km
-    let closest1_dict = Infinity; // nearest bus stop
-    let closest2_dict = Infinity; // 2nd nearest bus stop
+    
+    
+    
+    let closest1_dict = Infinity; 
+    let closest2_dict = Infinity; 
     for (const bus_dict of buslist) {
       const dist = haversine(mrt_dict.lat, mrt_dict.lng, bus_dict.Latitude, bus_dict.Longitude);
       if (dist < closest1_dict) {
@@ -218,7 +218,7 @@ export async function busstops_near_mrt() {
   const map = await getjson('./datasets/mrtname_code_map.json');
   for (const key in data) {
     for (const sublist of data[key]) {
-      if (!(sublist[0] in database)) { // not in database
+      if (!(sublist[0] in database)) { 
         database[sublist[0]] = [map[key]];
       } else {
         database[sublist[0]].push(map[key])
